@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" elementFormDefault="qualified" targetNamespace="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://aktestr3xapi.navitaire.com/UtilitiesManager.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="PaymentValidationErrorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Other" />
+      <xs:enumeration value="AccountNumber" />
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="ExpirationDate" />
+      <xs:enumeration value="RestrictionHours" />
+      <xs:enumeration value="MissingAccountNumber" />
+      <xs:enumeration value="MissingExpirationDate" />
+      <xs:enumeration value="PaymentSystemUnavailable" />
+      <xs:enumeration value="MissingParentPaymentID" />
+      <xs:enumeration value="InProcessPaymentChanged" />
+      <xs:enumeration value="InvalidNumberOfInstallments" />
+      <xs:enumeration value="CreditShellCommentRequired" />
+      <xs:enumeration value="NoQuotedCurrencyProvided" />
+      <xs:enumeration value="NoBaseCurrencyForBooking" />
+      <xs:enumeration value="QuotedCurrencyDoesNotMatchBaseCurrency" />
+      <xs:enumeration value="QuotedRefundAmountNotLessThanZero" />
+      <xs:enumeration value="QuotedPaymentAmountIsLessThanZero" />
+      <xs:enumeration value="RoleCodeNotFound" />
+      <xs:enumeration value="UnknownOrInactivePaymentMethod" />
+      <xs:enumeration value="DepositPaymentsNotAllowedForPaymentMethod" />
+      <xs:enumeration value="UnableToRetrieveRoleCodeSettings" />
+      <xs:enumeration value="DepositPaymentsNotAllowedForRole" />
+      <xs:enumeration value="PaymentMethodNotAllowedForRole" />
+      <xs:enumeration value="InvalidAccountNumberLength" />
+      <xs:enumeration value="PaymentTextIsRequired" />
+      <xs:enumeration value="InvalidPaymentTextLength" />
+      <xs:enumeration value="InvalidMiscPaymentFieldLength" />
+      <xs:enumeration value="MiscPaymentFieldRequired" />
+      <xs:enumeration value="BookingCurrencyIsInvalidForSkyPay" />
+      <xs:enumeration value="SkyPayExceptionThrown" />
+      <xs:enumeration value="InvalidAccountNumberForPaymentMethod" />
+      <xs:enumeration value="InvalidELVTransaction" />
+      <xs:enumeration value="BlackListedCard" />
+      <xs:enumeration value="InvalidPaymentAddress" />
+      <xs:enumeration value="InvalidSecurityCode" />
+      <xs:enumeration value="InvalidCurrencyCode" />
+      <xs:enumeration value="InvalidAmount" />
+      <xs:enumeration value="PossibleFraud" />
+      <xs:enumeration value="InvalidCustomerAccount" />
+      <xs:enumeration value="AccountHolderIsNotAnAgency" />
+      <xs:enumeration value="InvalidStartDate" />
+      <xs:enumeration value="InvalidInitialPaymentStatus" />
+      <xs:enumeration value="PaymentCurrencyMustMatchBookingCurrency" />
+      <xs:enumeration value="CollectedAmountMustMatchPaymentAmount" />
+      <xs:enumeration value="RefundsNotAllowedUsingThisPaymentMethod" />
+      <xs:enumeration value="CreditShellAmountGreaterThanOrEqualToZero" />
+      <xs:enumeration value="CreditFileAmountLessThanOrEqualToZero" />
+      <xs:enumeration value="InvalidPrepaidApprovalCodeLength" />
+      <xs:enumeration value="AccountNumberFailedModulousCheck" />
+      <xs:enumeration value="NoExternalRatesAvailable" />
+      <xs:enumeration value="ExternalCurrencyConversion" />
+      <xs:enumeration value="StoredCardSecurityViolation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">53</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AccountNumberDecryptionFailure">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">54</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unmapped">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PaymentValidationErrorType" nillable="true" type="tns:PaymentValidationErrorType" />
+</xs:schema>

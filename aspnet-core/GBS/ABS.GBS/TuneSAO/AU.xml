@@ -1,0 +1,326 @@
+<BaseResource xmlns:xsi="http://www.navitaire.com/dotREZ/Resources/Models" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+	<Insurances>
+		<Insurance>
+			<CultureCode>ar-SY</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>&lt;div dir="rtl"&gt;تغطية الأمتعة وتغطية نفقات إلغاء السفر  (إذا كان غير متوقع ولا يتضمن الإلغاء بواسطة AirAsia) &lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تغطية النفقات الطبية في الخارج لما يصل إلى 500,000 دولار أسترالي (ذهاباً وإياباً فقط)&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تغطية نفقات فقدان الأمتعة والمتعلقات الشخصية أو تلفها&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;خدمات مساعدة السفر في جميع أنحاء العالم على مدار الساعة&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;* تُطبق الشروط والأحكام والاستثناءات&lt;/div&gt;</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;div dir="rtl"&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;أقر بأنني قد قمت بقراءة نص بوليصة الحماية أثناء السفرTravel Insurance by AirAsia Policy&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;وبيان الكشف التفصيلي للبرنامج (PDS)&lt;/a&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;ودليل الخدمات المالية (FSG)&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;وأتفهم/نتفهم ونقبل بالشروط والأحكام والاستثناءات الواردة في بيان الكشف التفصيلي للبرنامج. إنني أوافق/ نحن نوافق على تلقي بيان الكشف التفصيلي للبرنامج وشهادة التأمين عبر البريد الإلكتروني. أقر بأن المعلومات المقدمة كاملة وصحيحة. أتفهم/نتفهم أنه سيتم نقل هذه المعلومات إلى Chubb، الذي سيعمل على تنظيمها وفقًا لـبيان الخصوصية&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/da/auen.html" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;font face="Arial, Verdana" size="2"&gt;ملاحظة: يتم تقديم الغطاء التأميني لهذا البرنامج من قبل شركة التأمينChubb Insurance Australia Limitedالتي تحمل رقم تسجيل ABN 23 001 642 020 والمرخص لها بمزاولة النشاط بموجب رخصة AFSL رقم 239687 (Chubb). تروج شركتا AirAsia X BHD وPT Indonesia AirAsia لهذا البرنامج. تقدم Chubb وAirAsia نصائح عامة لا أكثر دون أن يتأثر ذلك بأهدافك أو وضعك المالي أو احتياجاتك. للوقوف على ما إذا كان يحق لك استخدام هذا البرنامج، يُرجى قراءة نص بوليصة الحماية أثناء السفر Travel Insurance والبيان التفصيلي للبرنامج (PDS) ودليل الخدمات المالية (FSG).&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;&lt;br/&gt;&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;* تُطبق الشروط والأحكام والاستثناءات&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>&lt;div dir="rtl"&gt;تغطية الأمتعة وتغطية نفقات إلغاء السفر  (إذا كان غير متوقع ولا يتضمن الإلغاء بواسطة AirAsia) &lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تغطية النفقات الطبية في الخارج لما يصل إلى 500,000 دولار أسترالي (ذهاباً وإياباً فقط)&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تغطية نفقات فقدان الأمتعة والمتعلقات الشخصية أو تلفها&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;خدمات مساعدة السفر في جميع أنحاء العالم على مدار الساعة&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;* تُطبق الشروط والأحكام والاستثناءات&lt;/div&gt;</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;div dir="rtl"&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;أقر بأنني قد قمت بقراءة نص بوليصة الحماية أثناء السفرTravel Insurance by AirAsia Policy&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;وبيان الكشف التفصيلي للبرنامج (PDS)&lt;/a&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;ودليل الخدمات المالية (FSG)&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;وأتفهم/نتفهم ونقبل بالشروط والأحكام والاستثناءات الواردة في بيان الكشف التفصيلي للبرنامج. إنني أوافق/ نحن نوافق على تلقي بيان الكشف التفصيلي للبرنامج وشهادة التأمين عبر البريد الإلكتروني. أقر بأن المعلومات المقدمة كاملة وصحيحة. أتفهم/نتفهم أنه سيتم نقل هذه المعلومات إلى Chubb، الذي سيعمل على تنظيمها وفقًا لـبيان الخصوصية&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/da/auen.html" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;font face="Arial, Verdana" size="2"&gt;ملاحظة: يتم تقديم الغطاء التأميني لهذا البرنامج من قبل شركة التأمينChubb Insurance Australia Limitedالتي تحمل رقم تسجيل ABN 23 001 642 020 والمرخص لها بمزاولة النشاط بموجب رخصة AFSL رقم 239687 (Chubb). تروج شركتا AirAsia X BHD وPT Indonesia AirAsia لهذا البرنامج. تقدم Chubb وAirAsia نصائح عامة لا أكثر دون أن يتأثر ذلك بأهدافك أو وضعك المالي أو احتياجاتك. للوقوف على ما إذا كان يحق لك استخدام هذا البرنامج، يُرجى قراءة نص بوليصة الحماية أثناء السفر Travel Insurance والبيان التفصيلي للبرنامج (PDS) ودليل الخدمات المالية (FSG).&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;&lt;br/&gt;&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;* تُطبق الشروط والأحكام والاستثناءات&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>en-GB</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Luggage Cover and Travel Cancellation Expenses Cover (If unforeseen and not including cancellation by AirAsia)</CheckItem>
+					<CheckItem>Up to AUD 500,000 Overseas Medical Expenses Cover (Round Trip only)</CheckItem>
+					<CheckItem>Loss or Damage to Baggage and Personal Effects Cover </CheckItem>
+					<CheckItem>24-hour Worldwide Travel Assistance Services</CheckItem>
+					<CheckItem>*Terms, Conditions and Exclusions apply</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;I confirm that I have read the &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Tune Protect Travel-AirAsia Product Disclosure Statement (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; and &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Financial Service Guide (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt; and I/we understand and accept the terms, conditions and exclusions of the PDS. I/We agree to receive PDS and Certificate of Insurance by email. I confirm that the information submitted is complete and correct. I/We understand that this information will be passed to Chubb, who will handle in accordance with the &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;&lt;span style="font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Note: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) insures this product. AirAsia X BHD and PT Indonesia AirAsia (AirAsia) promote this product. Chubb and AirAsia provides general advice only and do not consider your objectives, financial situation or needs. To decide if this product is right for you, please read the Tune Protect Travel-AirAsia Product Disclosure Statement (PDS) and Financial Service Guide (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Terms, Conditions and Exclusions apply&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Luggage Cover and Travel Cancellation Expenses Cover (If unforeseen and not including cancellation by AirAsia)</CheckItem>
+					<CheckItem>Up to AUD 500,000 Overseas Medical Expenses Cover (Round Trip only)</CheckItem>
+					<CheckItem>Loss or Damage to Baggage and Personal Effects Cover </CheckItem>
+					<CheckItem>24-hour Worldwide Travel Assistance Services</CheckItem>
+					<CheckItem>*Terms, Conditions and Exclusions apply</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;I confirm that I have read the &lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Tune Protect Travel-AirAsia Product Disclosure Statement (PDS)&lt;/a&gt; and &lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Financial Service Guide (FSG)&lt;/a&gt; and I/we understand and accept the terms, conditions and exclusions of the PDS. I/We agree to receive PDS and Certificate of Insurance by email. I confirm that the information submitted is complete and correct. I/We understand that this information will be passed to Chubb, who will handle in accordance with the &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;&lt;span style="font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Note: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) insures this product. AirAsia X BHD and PT Indonesia AirAsia (AirAsia) promote this product. Chubb and AirAsia provides general advice only and do not consider your objectives, financial situation or needs. To decide if this product is right for you, please read the Tune Protect Travel-AirAsia Product Disclosure Statement (PDS) and Financial Service Guide (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Terms, Conditions and Exclusions apply&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>en-TT</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>ครอบคลุมสัมภาระสูญหายและ/หรือเสียหาย และครอบคลุมค่าใช้จ่ายในการยกเลิกการเดินทาง  (ในกรณีที่ไม่สามารถคาดการณ์ได้แต่ไม่รวมถึงการยกเลิกเที่ยวบินโดยแอร์เอเชีย)</CheckItem>
+					<CheckItem>คุ้มครองค่ารักษาพยาบาลต่างประเทศสูงสุดถึง AUD 500,000</CheckItem>
+					<CheckItem>คุ้มครองความสูญเสียหรือสัมภาระเสียหายและทรัพย์สินส่วนตัว</CheckItem>
+					<CheckItem>บริการให้ความช่วยเหลือฉุกเฉินฟรีตลอด 24 ชั่วโมง</CheckItem>
+					<CheckItem>*เป็นไปตามข้อกำหนดและเงื่อนไขและข้อจำกัดความคุ้มครอง</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="display: block; "&gt;&lt;span style="font-size: small;"&gt;ข้าพเจ้าขอยืนยันว่าข้าพเจ้าได้อ่านรายละเอียดใน&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;กรมธรรม์ประกันภัยการเดินทางของแอร์เอเชียและคำแถลงการณ์เปิดเผยแผนประกันภัย (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt;  และ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;คู่มือการให้บริการด้านการเงิน (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt;และข้าพเจ้าเข้าใจและยอมรับในข้อกำหนดและเงื่อนไขต่างๆ รวมทั้งข้อจำกัดความคุ้มครองของคำแถลงการณ์เปิดเผยแผนประกันภัย ข้าพเจ้า/เราตกลงยอมรับคำแถลงการณ์เปิดเผยแผนประกันภัยและใบรับรองการประกันภัยทางอีเมล ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวถูกต้องและเป็นความจริงทุกประการ ข้าพเจ้า/เราเข้าใจว่าข้อมูลดังกล่าวนี้จะถูกนำส่งไปให้ เอซ ผู้ซึ่งมีหน้าที่ดุแลรับผิดชอบตามเงื่อนไขนโยบายการรักษาความเป็นส่วนตัว&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;หมายเหตุ: แผนการประกันภัยนี้ให้การประกันภัยการเดินทางโดยบริษัท Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) แอร์เอเชียเอ็กซ์ เบอร์ฮาดและอินโดนีเซียแอร์เอเชีย (แอร์เอเชีย) เป็นผู้ส่งเสริมการขายประกันภัยการเดินทางนี้ เอซ และแอร์เอเชียให้ข้อมูลทั่วไปของผลิตภัณฑ์เท่านั้น ทั้งนี้มิได้มีการพิจารณาจัดเตรียมตามวัตถุประสงค์ สถานภาพทางการเงินหรือความต้องการเฉพาะบุคคลใดบุคคลหนึ่ง ก่อนตัดสินใจว่าแผนการประกันภัยนี้เหมาะกับคุณหรือไม่ กรุณาอ่านรายละเอียดนโยบายความคุ้มครองการประกันภัยการเดินทางของแอร์เอเชีย อินชัวร์และคำแถลงการณ์เปิดเผยแผนการประกันภัย (PDS) และคู่มือการให้บริการด้านการเงิน (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*เป็นไปตามข้อกำหนดและเงื่อนไขและข้อจำกัดความคุ้มครอง&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>ครอบคลุมสัมภาระสูญหายและ/หรือเสียหาย และครอบคลุมค่าใช้จ่ายในการยกเลิกการเดินทาง  (ในกรณีที่ไม่สามารถคาดการณ์ได้แต่ไม่รวมถึงการยกเลิกเที่ยวบินโดยแอร์เอเชีย)</CheckItem>
+					<CheckItem>คุ้มครองค่ารักษาพยาบาลต่างประเทศสูงสุดถึง AUD 500,000</CheckItem>
+					<CheckItem>คุ้มครองความสูญเสียหรือสัมภาระเสียหายและทรัพย์สินส่วนตัว</CheckItem>
+					<CheckItem>บริการให้ความช่วยเหลือฉุกเฉินฟรีตลอด 24 ชั่วโมง</CheckItem>
+					<CheckItem>*เป็นไปตามข้อกำหนดและเงื่อนไขและข้อจำกัดความคุ้มครอง</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="display: block; "&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;ข้าพเจ้าขอยืนยันว่าข้าพเจ้าได้อ่านรายละเอียดใน&lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;กรมธรรม์ประกันภัยการเดินทางของแอร์เอเชียและคำแถลงการณ์เปิดเผยแผนประกันภัย (PDS)&lt;/a&gt;  และ &lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;คู่มือการให้บริการด้านการเงิน (FSG)&lt;/a&gt; และข้าพเจ้าเข้าใจและยอมรับในข้อกำหนดและเงื่อนไขต่างๆ รวมทั้งข้อจำกัดความคุ้มครองของคำแถลงการณ์เปิดเผยแผนประกันภัย ข้าพเจ้า/เราตกลงยอมรับคำแถลงการณ์เปิดเผยแผนประกันภัยและใบรับรองการประกันภัยทางอีเมล ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวถูกต้องและเป็นความจริงทุกประการ ข้าพเจ้า/เราเข้าใจว่าข้อมูลดังกล่าวนี้จะถูกนำส่งไปให้ เอซ ผู้ซึ่งมีหน้าที่ดุแลรับผิดชอบตามเงื่อนไขนโยบายการรักษาความเป็นส่วนตัว&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;หมายเหตุ: แผนการประกันภัยนี้ให้การประกันภัยการเดินทางโดยบริษัท Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) แอร์เอเชียเอ็กซ์ เบอร์ฮาดและอินโดนีเซียแอร์เอเชีย (แอร์เอเชีย) เป็นผู้ส่งเสริมการขายประกันภัยการเดินทางนี้ เอซ และแอร์เอเชียให้ข้อมูลทั่วไปของผลิตภัณฑ์เท่านั้น ทั้งนี้มิได้มีการพิจารณาจัดเตรียมตามวัตถุประสงค์ สถานภาพทางการเงินหรือความต้องการเฉพาะบุคคลใดบุคคลหนึ่ง ก่อนตัดสินใจว่าแผนการประกันภัยนี้เหมาะกับคุณหรือไม่ กรุณาอ่านรายละเอียดนโยบายความคุ้มครองการประกันภัยการเดินทางของแอร์เอเชีย อินชัวร์และคำแถลงการณ์เปิดเผยแผนการประกันภัย (PDS) และคู่มือการให้บริการด้านการเงิน (FSG).&lt;/span&gt;
+&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;
+&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*เป็นไปตามข้อกำหนดและเงื่อนไขและข้อจำกัดความคุ้มครอง&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>id-ID</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Cakupan Bagasi dan Cakupan Biaya Pembatalan Perjalanan (untuk hal tak terduga dan tidak termasuk pembatalan oleh AirAsia)</CheckItem>
+					<CheckItem>Penggantian atas Biaya Medis di Luar negeri hingga AUD500,000 (hanya untuk Perjalanan Pulang Pergi)</CheckItem>
+					<CheckItem>Penggantian atas biaya untuk Kehilangan atau Kerusakan terhadap Bagasi dan Barang-Barang Pribadi</CheckItem>
+					<CheckItem>24 Jam Pelayanan Perjalanan Seluruh Dunia</CheckItem>
+					<CheckItem>*Syarat, Ketentuan dan Pengecualian berlaku</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Saya mengkonfirmasi bahwa saya telah membaca &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Susunan Kata Polis Perlindungan Perjalanan AirAsia dan Pernyataan Penyingkapan Produk (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; dan &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Panduan Layanan Finansial (FSG) &lt;/a&gt;&lt;span style="font-size: small;"&gt;dan saya/kami memahami dan menerima syarat, ketentuan dan pengecualian dalam PDS. Saya/Kami setuju untuk menerima PDS dan Sertifikat Asuransi melalui email. Saya mengkonfirmasi bahwa informasi yang diserahkan lengkap dan benar. Saya/Kami memahami bahwa informasi ini akan diteruskan ke Chubb, yang akan menangani berdasarkan &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Pernyataan Privasi Chubb&lt;/a&gt;&lt;span style="font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Catatan: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) mengasuransikan produk ini. AirAsia X BHD dan PT Indonesia AirAsia (AirAsia) mempromosikan produk ini. Chubb dan AirAsia hanya memberikan saran umum dan tidak mempertimbangkan tujuan, kondisi finansial maupun kebutuhan Anda. Untuk memutuskan apakah produk ini tepat untuk Anda, silakan membaca Susunan Kata Polis Insurans Perjalanan dan Pernyataan Penyingkapan Produk (PDS) serta Panduan Layanan Finansial (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*Syarat, Ketentuan dan Pengecualian berlaku.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Cakupan Bagasi dan Cakupan Biaya Pembatalan Perjalanan (untuk hal tak terduga dan tidak termasuk pembatalan oleh AirAsia)</CheckItem>
+					<CheckItem>Penggantian atas Biaya Medis di Luar negeri hingga AUD500,000 (hanya untuk Perjalanan Pulang Pergi)</CheckItem>
+					<CheckItem>Penggantian atas biaya untuk Kehilangan atau Kerusakan terhadap Bagasi dan Barang-Barang Pribadi</CheckItem>
+					<CheckItem>24 Jam Pelayanan Perjalanan Seluruh Dunia</CheckItem>
+					<CheckItem>*Syarat, Ketentuan dan Pengecualian berlaku</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Saya mengkonfirmasi bahwa saya telah membaca &lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Susunan Kata Polis Perlindungan Perjalanan AirAsia dan Pernyataan Penyingkapan Produk (PDS)&lt;/a&gt; dan &lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Panduan Layanan Finansial (FSG) &lt;/a&gt;dan saya/kami memahami dan menerima syarat, ketentuan dan pengecualian dalam PDS. Saya/Kami setuju untuk menerima PDS dan Sertifikat Asuransi melalui email. Saya mengkonfirmasi bahwa informasi yang diserahkan lengkap dan benar. Saya/Kami memahami bahwa informasi ini akan diteruskan ke Chubb, yang akan menangani berdasarkan &lt;a href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Pernyataan Privasi Chubb&lt;/a&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Catatan: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) mengasuransikan produk ini. AirAsia X BHD dan PT Indonesia AirAsia (AirAsia) mempromosikan produk ini. Chubb dan AirAsia hanya memberikan saran umum dan tidak mempertimbangkan tujuan, kondisi finansial maupun kebutuhan Anda. Untuk memutuskan apakah produk ini tepat untuk Anda, silakan membaca Susunan Kata Polis Insurans Perjalanan dan Pernyataan Penyingkapan Produk (PDS) serta Panduan Layanan Finansial (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*Syarat, Ketentuan dan Pengecualian berlaku&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>ja-JP</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>荷物保険および旅行キャンセル費用は、保障範囲です (ただし予期できなかった場合で、エアアジアによるキャンセルは含みません) </CheckItem>
+					<CheckItem>AUD500,000までの海外での医療費用に対する補償（往復旅行のみ）</CheckItem>
+					<CheckItem>手荷物および所持品の紛失または損傷に対する補償</CheckItem>
+					<CheckItem>- 世界中どこでも24時間対応のサポート</CheckItem>
+					<CheckItem>*ご利用条件と免責事項が適用されます</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;私は&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;エアアジア旅行保険･ポリシーの文言、金融商品開示文書（PDS）&lt;/a&gt;&lt;span style="font-size: small;"&gt;と&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;金融サービスガイド（FSG）&lt;/a&gt;&lt;span style="font-size: small;"&gt;を読み、私／私たちはPDSの諸条件と免責事項を理解し、これらを受諾することを確認します。 私／私たちはPDSおよび保険証書を電子メールで受け取ることに合意します。 私は提出した情報は完全で正しいことを確認します。 私／私たちはこの情報はChubbに渡され、ChubbはChubbプライバシー･ステートメントに従ってこれを処理することを理解しています。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;ご注意: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb)が本製品を保証します。 AirAsia X BHD および PT Indonesia AirAsia (AirAsia)は本製品を奨励しています。 ChubbとAirAsiaは一般的な助言を行うだけに留まり、お客様の目標、財政状態やニーズについては考慮しません。 本製品がお客様にとって適切であるかどうかを判断するには、エアアジアインシュアトラベルプロテクションポリシーの文言および金融商品開示文書（PDS）、金融サービスガイド（FSG）をお読みください。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*ご利用条件と免責事項が適用されます&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>荷物保険および旅行キャンセル費用は、保障範囲です (ただし予期できなかった場合で、エアアジアによるキャンセルは含みません) </CheckItem>
+					<CheckItem>AUD500,000までの海外での医療費用に対する補償（往復旅行のみ）</CheckItem>
+					<CheckItem>手荷物および所持品の紛失または損傷に対する補償</CheckItem>
+					<CheckItem>- 世界中どこでも24時間対応のサポート</CheckItem>
+					<CheckItem>*ご利用条件と免責事項が適用されます</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;私は&lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;エアアジア・トラベルプロテクション･ポリシーの文言、金融商品開示文書（PDS）&lt;/a&gt;と&lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;金融サービスガイド（FSG）&lt;/a&gt;を読み、私／私たちはPDSの諸条件と免責事項を理解し、これらを受諾することを確認します。 私／私たちはPDSおよび保険証書を電子メールで受け取ることに合意します。 私は提出した情報は完全で正しいことを確認します。 私／私たちはこの情報はChubbに渡され、ChubbはChubbプライバシー･ステートメントに従ってこれを処理することを理解しています。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;ご注意: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb)が本製品を保証します。 AirAsia X BHD および PT Indonesia AirAsia (AirAsia)は本製品を奨励しています。 ChubbとAirAsiaは一般的な助言を行うだけに留まり、お客様の目標、財政状態やニーズについては考慮しません。 本製品がお客様にとって適切であるかどうかを判断するには、エアアジアインシュアトラベルプロテクションポリシーの文言および金融商品開示文書（PDS）、金融サービスガイド（FSG）をお読みください。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*ご利用条件と免責事項が適用されます&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>ko-KR</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>수하물 및 여행 취소 비용 보장 (예상하지 못한 경우 및 에어아시아에 의한 취소는 포함되지 않음)</CheckItem>
+					<CheckItem>최대 AUD 500,000까지 해외 의료비 보상(왕복 여행시에만 해당)</CheckItem>
+					<CheckItem>수하물 및 소지품 분실 또는 파손 시 보상</CheckItem>
+					<CheckItem>24시간 전세계 여행지원서비스</CheckItem>
+					<CheckItem>*보험약관이 적용됩니다.</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;본인은 &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;에어아시아 여행자보험약관, 상품약관&lt;/a&gt;&lt;span style="font-size: small;"&gt;, &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;금융서비스가이드&lt;/a&gt;&lt;span style="font-size: small;"&gt;를 읽었음을 확인하며, 보험약관 및 상품약관의 예외 조항에 대하여 이해하였습니다. 본인은 상품약관 및 보험가입증서를 이메일로 수신하는 것에 동의합니다. 본인은 제출된 정보가 온전하며 정확하다는 것을 확인합니다. 본인은 제출된 정보가 &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb 개인정보보호정책&lt;/a&gt;&lt;span style="font-size: small;"&gt;에 따라 개인정보를 취급하는 Chubb로 전달됨을 이해합니다.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;참고: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb 보험)이 이 보험 상품을 제공합니다. 에어아시아 엑스와 PT 인도네시아 에어아시아는 이 보험 상품을 홍보합니다. Chubb와 에어아시아는 고객의 목적, 재정적 상황 또는 수요에 대하여 아무런 고려 없이 보험 상품에 관한 일반적인 안내를 제공할 뿐입니다. 이 보험 상품이 고객에게 적합한지를 결정하시려면 에어아시아 여행자보험 이용약관과 상품약관, 금융서비스가이드를 읽어보시기 바랍니다.&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>수하물 및 여행 취소 비용 보장 (예상하지 못한 경우 및 에어아시아에 의한 취소는 포함되지 않음)</CheckItem>
+					<CheckItem>최대 AUD 500,000까지 해외 의료비 보상(왕복 여행시에만 해당)</CheckItem>
+					<CheckItem>수하물 및 소지품 분실 또는 파손 시 보상</CheckItem>
+					<CheckItem>24시간 전세계 여행지원서비스</CheckItem>
+					<CheckItem>*보험약관이 적용됩니다.</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;본인은 &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;에어아시아 여행자보험약관, 상품약관&lt;/a&gt;&lt;span style="font-size: small;"&gt;, &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;금융서비스가이드&lt;/a&gt;&lt;span style="font-size: small;"&gt;를 읽었음을 확인하며, 보험약관 및 상품약관의 예외 조항에 대하여 이해하였습니다. 본인은 상품약관 및 보험가입증서를 이메일로 수신하는 것에 동의합니다. 본인은 제출된 정보가 온전하며 정확하다는 것을 확인합니다. 본인은 제출된 정보가 &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb 개인정보보호정책&lt;/a&gt;&lt;span style="font-size: small;"&gt;에 따라 개인정보를 취급하는 Chubb로 전달됨을 이해합니다.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;참고: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb 보험)이 이 보험 상품을 제공합니다. 에어아시아 엑스와 PT 인도네시아 에어아시아는 이 보험 상품을 홍보합니다. Chubb와 에어아시아는 고객의 목적, 재정적 상황 또는 수요에 대하여 아무런 고려 없이 보험 상품에 관한 일반적인 안내를 제공할 뿐입니다. 이 보험 상품이 고객에게 적합한지를 결정하시려면 에어아시아 여행자보험 이용약관과 상품약관, 금융서비스가이드를 읽어보시기 바랍니다.&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>ms-MY</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Perlindungan Bagasi dan Perlindungan Perbelanjaan bagi Pembatalan Perjalanan (Jika tidak terduga dan tidak termasuk pembatalan yang dilakukan oleh AirAsia)</CheckItem>
+					<CheckItem>Perlindungan Rawatan Perubatan Luar Negara Sehingga AUD 500,000 (Perjalanan Pergi Balik sahaja)</CheckItem>
+					<CheckItem>Perlindungan Kehilangan atau Kerosakan Bagasi dan Barangan Peribadi</CheckItem>
+					<CheckItem>Perkhidmatan Bantuan Perjalanan Seluruh Dunia 24 Jam</CheckItem>
+					<CheckItem>*Tertakluk kepada Terma, Syarat dan Pengecualian</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Saya mengesahkan bahawa saya telah membaca &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Ungkapan Polisi Perlindungan Perjalanan AirAsia dan Penyataan Pendedahan Produk (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; dan &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Panduan Perkhidmatan Kewangan (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt; dan saya/kami memahami dan menerima terma, syarat dan pengecualian PDS. Saya/Kami bersetuju untuk menerima PDS dan Sijil Insurans melalui e-mel. Saya mengesahkan bahawa maklumat yang dihantar adalah lengkap dan tepat. Saya/Kami memahami bahawa maklumat ini akan diserahkan kepada Chubb yang akan menguruskannya mengikut &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Pernyataan Privasi Chubb&lt;/a&gt;&lt;span style="font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Nota: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) menginsuranskan produk ini. AirAsia X BHD dan PT Indonesia AirAsia (AirAsia) mempromosikan produk ini. Chubb dan AirAsia menyediakan khidmat nasihat secara am sahaja dan tidak mengambil kira tujuan, keadaan kewangan mahupun keperluan anda. Untuk memutuskan sama ada produk ini sesuai untuk anda, sila baca Ungkapan Polisi Perlindungan Perjalanan dan Penyataan Pendedahan Produk (PDS) dan Panduan Perkhidmatan Kewangan (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Tertakluk kepada Terma, Syarat dan Pengecualian&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Perlindungan Bagasi dan Perlindungan Perbelanjaan bagi Pembatalan Perjalanan (Jika tidak terduga dan tidak termasuk pembatalan yang dilakukan oleh AirAsia)</CheckItem>
+					<CheckItem>Perlindungan Rawatan Perubatan Luar Negara Sehingga AUD 500,000 (Perjalanan Pergi Balik sahaja)</CheckItem>
+					<CheckItem>Perlindungan Kehilangan atau Kerosakan Bagasi dan Barangan Peribadi</CheckItem>
+					<CheckItem>Perkhidmatan Bantuan Perjalanan Seluruh Dunia 24 Jam</CheckItem>
+					<CheckItem>*Tertakluk kepada Terma, Syarat dan Pengecualian.</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Saya mengesahkan bahawa saya telah membaca &lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Ungkapan Polisi Perlindungan Perjalanan AirAsia dan Penyataan Pendedahan Produk (PDS)&lt;/a&gt; dan &lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Panduan Perkhidmatan Kewangan (FSG)&lt;/a&gt; dan saya/kami memahami dan menerima terma, syarat dan pengecualian PDS. Saya/Kami bersetuju untuk menerima PDS dan Sijil Insurans melalui e-mel. Saya mengesahkan bahawa maklumat yang dihantar adalah lengkap dan tepat. Saya/Kami memahami bahawa maklumat ini akan diserahkan kepada Chubb yang akan menguruskannya mengikut &lt;a href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Pernyataan Privasi Chubb&lt;/a&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Nota: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) menginsuranskan produk ini. AirAsia X BHD dan PT Indonesia AirAsia (AirAsia) mempromosikan produk ini. Chubb dan AirAsia menyediakan khidmat nasihat secara am sahaja dan tidak mengambil kira tujuan, keadaan kewangan mahupun keperluan anda. Untuk memutuskan sama ada produk ini sesuai untuk anda, sila baca Ungkapan Polisi Perlindungan Perjalanan dan Penyataan Pendedahan Produk (PDS) dan Panduan Perkhidmatan Kewangan (FSG).&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Tertakluk kepada Terma, Syarat dan Pengecualian.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>vi-VN</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Bảo Hiểm Hành Lý và Bảo Hiểm Chi Phí Hủy Chuyến Đi (nếu như không biết trước và không bao gồm việc hủy bỏ bởi AirAsia)</CheckItem>
+					<CheckItem>Chi Trả Tối Đa 500.000 AUD cho Chi Phí Y Tế Tại Nước Ngoài (chỉ dành cho Chuyến Bay Khứ Hồi)</CheckItem>
+					<CheckItem>Chi Trả cho Hư Hỏng hoặc Thất Lạc Hành Lý và Ảnh Hưởng Đến Cá Nhân</CheckItem>
+					<CheckItem>Dịch Vụ Hỗ Trợ Du Lịch Toàn Cầu 24 giờ </CheckItem>
+					<CheckItem>*Các Điều Khoản, Điều Kiện và Trường Hợp Ngoại Lệ được áp dụng</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Tôi xác nhận là đã đọc &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Điều Lệ Bảo Hiểm Du Lịch và Thông Tin Về Sản Phẩm AirAsia (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; and &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Hướng Dẫn Dịch Vụ Tài Chính (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt; và tôi/chúng tôi hiểu và chấp nhận các điều khoản, điều kiện và trường hợp ngoại lệ trong PDS. Tôi/chúng tôi đồng ý nhận PDS và Chứng Nhận Bảo Hiểm qua email. Tôi xác nhận rằng thông tin được gửi là hoàn chỉnh và chính xác. Tôi/chúng tôi hiểu rằng thông tin này sẽ được chuyển đến Chubb và đơn vị này sẽ xử lý thông tin tuân theo &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Điều lệ Chubb&lt;/a&gt;&lt;span style="font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Lưu ý: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL số 239687 (Chubb) bảo hiểm cho sản phẩm này. AirAsia X BHD và PT Indonesia AirAsia (AirAsia) giới thiệu sản phẩm này. Chubb và AirAsia chỉ đưa ra tư vấn chung và không xét đến mục đích, tình hình tài chính và nhu cầu của bạn. Để xác định xem sản phẩm này có phù hợp với bạn hay không, vui lòng đọc  Điều Lê Bảo Hiểm Du Lịch và Thông Tin Về Sản Phẩm AirAsia (PDS) và Hướng Dẫn Dịch Vụ Tài Chính (FSG)..&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*Các Điều Khoản, Điều Kiện và Trường Hợp Ngoại Lệ được áp dụng&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Bảo Hiểm Hành Lý và Bảo Hiểm Chi Phí Hủy Chuyến Đi (nếu như không biết trước và không bao gồm việc hủy bỏ bởi AirAsia)</CheckItem>
+					<CheckItem>Chi Trả Tối Đa 500.000 AUD cho Chi Phí Y Tế Tại Nước Ngoài (chỉ dành cho Chuyến Bay Khứ Hồi)</CheckItem>
+					<CheckItem>Chi Trả cho Hư Hỏng hoặc Thất Lạc Hành Lý và Ảnh Hưởng Đến Cá Nhân</CheckItem>
+					<CheckItem>Dịch Vụ Hỗ Trợ Du Lịch Toàn Cầu 24 giờ </CheckItem>
+					<CheckItem>*Các Điều Khoản, Điều Kiện và Trường Hợp Ngoại Lệ được áp dụng</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Tôi xác nhận là đã đọc &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;Điều Lệ Bảo Hiểm Du Lịch và Thông Tin Về Sản Phẩm AirAsia (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; and &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;Hướng Dẫn Dịch Vụ Tài Chính (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt; và tôi/chúng tôi hiểu và chấp nhận các điều khoản, điều kiện và trường hợp ngoại lệ trong PDS. Tôi/chúng tôi đồng ý nhận PDS và Chứng Nhận Bảo Hiểm qua email. Tôi xác nhận rằng thông tin được gửi là hoàn chỉnh và chính xác. Tôi/chúng tôi hiểu rằng thông tin này sẽ được chuyển đến Chubb và đơn vị này sẽ xử lý thông tin tuân theo &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Điều lệ Chubb&lt;/a&gt;&lt;span style="font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Lưu ý: Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL số 239687 (Chubb) bảo hiểm cho sản phẩm này. AirAsia X BHD và PT Indonesia AirAsia (AirAsia) giới thiệu sản phẩm này. Chubb và AirAsia chỉ đưa ra tư vấn chung và không xét đến mục đích, tình hình tài chính và nhu cầu của bạn. Để xác định xem sản phẩm này có phù hợp với bạn hay không, vui lòng đọc  Điều Lê Bảo Hiểm Du Lịch và Thông Tin Về Sản Phẩm AirAsia (PDS) và Hướng Dẫn Dịch Vụ Tài Chính (FSG)..&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*Các Điều Khoản, Điều Kiện và Trường Hợp Ngoại Lệ được áp dụng&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>zh-CN</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>行李覆盖和取消旅行保险覆盖 (‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‏‎‎‏‏‎‏‎‎‏‎‏‏‏‏‎‏‏‏‏‎‏‎‎‎‏‎‎‎‎‎‏‏‏‎‏‏‎‏‏‏‎‏‏‏‎‎‎‎‎‎‎‎‏‎‎‎‎‎‎‎‎‏‎‏‎‏‎‏‏‎‏‏‎‎‎‏‎‎‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‏‎‎‏‏‎‏‎‎‏‎‏‏‏‏‎‏‏‏‏‎‏‎‎‎‏‎‎‎‎‎‏‏‏‎‏‏‎‏‏‏‎‏‏‏‎‎‎‎‎‎‎‎‏‎‎‎‎‎‎‎‎‏‎‏‎‏‎‏‏‎‏‏‎‎‎‏‎‎若发生不包括由亚洲航空取消的突发事项‎‏‎‎‏‎‎‏‎‎‏‎)</CheckItem>
+					<CheckItem>最高达澳币500,000 元的海外医疗费用覆盖（仅限往返机票）</CheckItem>
+					<CheckItem>行李和个人财物遗失或损坏覆盖</CheckItem>
+					<CheckItem>24 小时全球旅行救援服务</CheckItem>
+					<CheckItem>*须遵守相关条，规定以及排除因素</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我确认已详阅亚航旅游保障条款的[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;产品披露声明(PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]以及[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;财务服务指南(FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]，而且我／我们了解并接受[产品披露声明(PDS)]的各项条款、条件及除外条款。 我／我们同意透过电子邮件接受[产品披露声明(PDS)]及保单。 我确认所提交的资讯内容完整且正确无误。 我／我们了解，此资讯将送交至 Chubb，并将依据[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb 隐私权声明&lt;/a&gt;&lt;span style="font-size: small;"&gt;]进行处理。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;请注意： 由 Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) 为本产品承保。 由AirAsia X BHD 及PT Indonesia AirAsia (AirAsia) 为本产品宣传。 Chubb 与亚航仅提供一般建议，并未考量您的目标、财务状况或需求。为了决定本产品是否符合您的需求，请详阅亚航旅游保障条款、[产品披露声明(PDS)]及[财务服务指南(FSG)]。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*须遵守相关条，规定以及排除因素&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>行李覆盖和取消旅行保险覆盖 (‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‏‎‎‏‏‎‏‎‎‏‎‏‏‏‏‎‏‏‏‏‎‏‎‎‎‏‎‎‎‎‎‏‏‏‎‏‏‎‏‏‏‎‏‏‏‎‎‎‎‎‎‎‎‏‎‎‎‎‎‎‎‎‏‎‏‎‏‎‏‏‎‏‏‎‎‎‏‎‎‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‏‎‎‏‏‎‏‎‎‏‎‏‏‏‏‎‏‏‏‏‎‏‎‎‎‏‎‎‎‎‎‏‏‏‎‏‏‎‏‏‏‎‏‏‏‎‎‎‎‎‎‎‎‏‎‎‎‎‎‎‎‎‏‎‏‎‏‎‏‏‎‏‏‎‎‎‏‎‎若发生不包括由亚洲航空取消的突发事项‎‏‎‎‏‎‎‏‎‎‏‎)</CheckItem>
+					<CheckItem>最高达澳币500,000 元的海外医疗费用覆盖（仅限往返机票）</CheckItem>
+					<CheckItem>行李和个人财物遗失或损坏覆盖</CheckItem>
+					<CheckItem>24 小时全球旅行救援服务</CheckItem>
+					<CheckItem>*须遵守相关条，规定以及排除因素y</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我确认已详阅亚航旅游保障条款的[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;产品披露声明(PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]以及[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;财务服务指南(FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]，而且我／我们了解并接受[产品披露声明(PDS)]的各项条款、条件及除外条款。 我／我们同意透过电子邮件接受[产品披露声明(PDS)]及保单。 我确认所提交的资讯内容完整且正确无误。 我／我们了解，此资讯将送交至 Chubb，并将依据[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb 隐私权声明&lt;/a&gt;&lt;span style="font-size: small;"&gt;]进行处理。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;请注意： 由 Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) 为本产品承保。 由AirAsia X BHD 及PT Indonesia AirAsia (AirAsia) 为本产品宣传。 Chubb 与亚航仅提供一般建议，并未考量您的目标、财务状况或需求。为了决定本产品是否符合您的需求，请详阅亚航旅游保障条款、[产品披露声明(PDS)]及[财务服务指南(FSG)]。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*须遵守相关条，规定以及排除因素&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+
+		<Insurance>
+			<CultureCode>zh-HK</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>行李保險及行程取消費用保險 (如果是不可預測的但不包括亞洲航空的取消)</CheckItem>
+					<CheckItem>最高達 500,000 澳元的海外醫療費用補償（僅限往返機票）</CheckItem>
+					<CheckItem>行李及私人物品之遺失或損壞補償</CheckItem>
+					<CheckItem>24 小時全球旅遊協助服務</CheckItem>
+					<CheckItem>*必須遵守條款、細則及除外條款</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;本人確認已詳閱 AirAsia[旅遊保障保險條款]、[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;產品披露聲明 (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]及[&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;財務服務指南 (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt;  且本人／吾等確實瞭解並接受[產品披露聲明 (PDS)]之各項條款、條件及除外條款。 本人／吾等同意透過電子郵件接受[產品披露聲明 (PDS)]及保險單。 本人確認所提交之資訊內容完整且正確無誤。 本人／吾等瞭解，此等資訊將送交至安達保險有限公司 (Chubb)，且將依據[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb保險有限公司隱私權聲明&lt;/a&gt;&lt;span style="font-size: small;"&gt;]進行處理。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： 由 Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) 為本產品承保。 由 AirAsia X BHD 及 PT Indonesia AirAsia (AirAsia) 為本產品宣傳。 Chubb 與亞洲航空僅提供一般性建議，並未考量您的目標、財務狀況或需求。 為決定本產品是否符合您的需求，請詳閱 AirAsia 保險[旅遊保障保險條款]、[產品披露聲明 (PDS)]及[財務服務指南 (FSG)]。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*必須遵守條款、細則及除外條款&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>行李保險及行程取消費用保險 (如果是不可預測的但不包括亞洲航空的取消)</CheckItem>
+					<CheckItem>最高達 500,000 澳元的海外醫療費用補償（僅限往返機票）</CheckItem>
+					<CheckItem>行李及私人物品之遺失或損壞補償</CheckItem>
+					<CheckItem>24 小時全球旅遊協助服務</CheckItem>
+					<CheckItem>* 必須遵守條款、細則及除外條款</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;本人確認已詳閱 AirAsia[旅遊保障保險條款]、[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;產品披露聲明 (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]及[&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;財務服務指南 (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt;  且本人／吾等確實瞭解並接受[產品披露聲明 (PDS)]之各項條款、條件及除外條款。 本人／吾等同意透過電子郵件接受[產品披露聲明 (PDS)]及保險單。 本人確認所提交之資訊內容完整且正確無誤。 本人／吾等瞭解，此等資訊將送交至安達保險有限公司 (Chubb)，且將依據[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb保險有限公司隱私權聲明&lt;/a&gt;&lt;span style="font-size: small;"&gt;]進行處理。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： 由 Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) 為本產品承保。 由 AirAsia X BHD 及 PT Indonesia AirAsia (AirAsia) 為本產品宣傳。 Chubb 與亞洲航空僅提供一般性建議，並未考量您的目標、財務狀況或需求。 為決定本產品是否符合您的需求，請詳閱 AirAsia 保險[旅遊保障保險條款]、[產品披露聲明 (PDS)]及[財務服務指南 (FSG)]。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*必須遵守條款、細則及除外條款&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>zh-TW</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>行李保險及行程取消費用保險 (如果是不可預測的但不包括亞洲航空的取消)</CheckItem>
+					<CheckItem>最高達 500,000 澳元的海外醫療費用補償（僅限往返機票）</CheckItem>
+					<CheckItem>行李及私人物品之遺失或損壞補償</CheckItem>
+					<CheckItem>24 小時全球旅遊協助服務</CheckItem>
+					<CheckItem>*必須遵守條款、細則及除外條款</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;本人確認已詳閱 AirAsia[旅遊保障保險條款]、[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;產品披露聲明 (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]及[&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;財務服務指南 (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt;  且本人／吾等確實瞭解並接受[產品披露聲明 (PDS)]之各項條款、條件及除外條款。 本人／吾等同意透過電子郵件接受[產品披露聲明 (PDS)]及保險單。 本人確認所提交之資訊內容完整且正確無誤。 本人／吾等瞭解，此等資訊將送交至安達保險有限公司 (Chubb)，且將依據[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb保險有限公司隱私權聲明&lt;/a&gt;&lt;span style="font-size: small;"&gt;]進行處理。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： 由 Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) 為本產品承保。 由 AirAsia X BHD 及 PT Indonesia AirAsia (AirAsia) 為本產品宣傳。 Chubb 與亞洲航空僅提供一般性建議，並未考量您的目標、財務狀況或需求。 為決定本產品是否符合您的需求，請詳閱 AirAsia 保險[旅遊保障保險條款]、[產品披露聲明 (PDS)]及[財務服務指南 (FSG)]。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*必須遵守條款、細則及除外條款&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>行李保險及行程取消費用保險 (如果是不可預測的但不包括亞洲航空的取消)</CheckItem>
+					<CheckItem>最高達 500,000 澳元的海外醫療費用補償（僅限往返機票）</CheckItem>
+					<CheckItem>行李及私人物品之遺失或損壞補償</CheckItem>
+					<CheckItem>24 小時全球旅遊協助服務</CheckItem>
+					<CheckItem>* 必須遵守條款、細則及除外條款</CheckItem>
+				</CheckItems>
+				<UpsellUrl />
+				<ConfirmContent>
+          &lt;span style="font-size: small;"&gt;本人確認已詳閱 AirAsia[旅遊保障保險條款]、[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" target="_blank"&gt;產品披露聲明 (PDS)&lt;/a&gt;&lt;span style="font-size: small;"&gt; ]及[&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" target="_blank"&gt;財務服務指南 (FSG)&lt;/a&gt;&lt;span style="font-size: small;"&gt;  且本人／吾等確實瞭解並接受[產品披露聲明 (PDS)]之各項條款、條件及除外條款。 本人／吾等同意透過電子郵件接受[產品披露聲明 (PDS)]及保險單。 本人確認所提交之資訊內容完整且正確無誤。 本人／吾等瞭解，此等資訊將送交至安達保險有限公司 (Chubb)，且將依據[ &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/au/en/da/auen.html" target="_blank"&gt;Chubb保險有限公司隱私權聲明&lt;/a&gt;&lt;span style="font-size: small;"&gt;]進行處理。&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： 由 Chubb Insurance Australia Limited ABN 23 001 642 020 AFSL No.239687 (Chubb) 為本產品承保。 由 AirAsia X BHD 及 PT Indonesia AirAsia (AirAsia) 為本產品宣傳。 Chubb 與亞洲航空僅提供一般性建議，並未考量您的目標、財務狀況或需求。 為決定本產品是否符合您的需求，請詳閱 AirAsia 保險[旅遊保障保險條款]、[產品披露聲明 (PDS)]及[財務服務指南 (FSG)]。&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;*必須遵守條款、細則及除外條款&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+				</ConfirmContent>
+			</Dom>
+		</Insurance>
+
+	</Insurances>
+</BaseResource>

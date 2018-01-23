@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.navitaire.com/WebServices/DataContracts/Voucher" elementFormDefault="qualified" targetNamespace="http://schemas.navitaire.com/WebServices/DataContracts/Voucher" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd4" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" />
+  <xs:import schemaLocation="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd3" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Common" />
+  <xs:complexType name="VoucherTransaction">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.navitaire.com/WebServices/DataContracts/Common" base="q1:ModifiedMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VoucherID" type="xs:long" />
+          <xs:element minOccurs="0" name="VoucherTransactionID" type="xs:long" />
+          <xs:element xmlns:q2="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" minOccurs="0" name="VoucherTransactionType" type="q2:VoucherTransactionType" />
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ForeignAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ForeignCurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RecordLocator" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VoucherTransaction" nillable="true" type="tns:VoucherTransaction" />
+  <xs:complexType name="VoucherIssuanceBatchRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.navitaire.com/WebServices/DataContracts/Common" base="q3:ModifiedMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VoucherBasisCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VoucherIssuanceID" type="xs:long" />
+          <xs:element minOccurs="0" name="IssuanceReasonCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ExpirationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="InventorySegmentKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RecordLocator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonID" type="xs:long" />
+          <xs:element minOccurs="0" name="NumberOfVouchersRequested" type="xs:int" />
+          <xs:element minOccurs="0" name="DepartureStation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ArrivalStation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CarrierCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DepartureDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OpSuffix" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SendFiles" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SSRCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VoucherIssuanceBatchRequest" nillable="true" type="tns:VoucherIssuanceBatchRequest" />
+  <xs:complexType name="Voucher">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.navitaire.com/WebServices/DataContracts/Common" base="q4:ModifiedMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VoucherID" type="xs:long" />
+          <xs:element xmlns:q5="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" minOccurs="0" name="VoucherType" type="q5:VoucherType" />
+          <xs:element minOccurs="0" name="VoucherBasisCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VoucherIssuanceID" type="xs:long" />
+          <xs:element xmlns:q6="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" minOccurs="0" name="Status" type="q6:VoucherStatus" />
+          <xs:element minOccurs="0" name="VoucherReference" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Available" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ForeignAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ForeignCurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Expiration" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RecordLocator" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonID" type="xs:long" />
+          <xs:element minOccurs="0" name="VoucherTransactions" nillable="true" type="tns:ArrayOfVoucherTransaction" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Voucher" nillable="true" type="tns:Voucher" />
+  <xs:complexType name="ArrayOfVoucherTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VoucherTransaction" nillable="true" type="tns:VoucherTransaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVoucherTransaction" nillable="true" type="tns:ArrayOfVoucherTransaction" />
+  <xs:complexType name="VoucherIssuance">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.navitaire.com/WebServices/DataContracts/Common" base="q7:ModifiedMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VoucherBasisCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VoucherIssuanceID" type="xs:long" />
+          <xs:element minOccurs="0" name="IssuanceReasonCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ExpirationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="InventorySegmentKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Vouchers" nillable="true" type="tns:ArrayOfVoucher" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VoucherIssuance" nillable="true" type="tns:VoucherIssuance" />
+  <xs:complexType name="ArrayOfVoucher">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Voucher" nillable="true" type="tns:Voucher" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVoucher" nillable="true" type="tns:ArrayOfVoucher" />
+</xs:schema>

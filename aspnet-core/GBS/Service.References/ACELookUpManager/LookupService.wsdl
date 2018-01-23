@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LookupService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="basicHttpsLookupService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://stgace.airasia.com/ACE/LookupService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://stgace.airasia.com/ACE/LookupService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://stgace.airasia.com/ACE/LookupService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://stgace.airasia.com/ACE/LookupService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ACE.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILookupService_AllowCurrency_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllowCurrency" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_AllowCurrency_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllowCurrencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetRouteList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRouteList" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetRouteList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRouteListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetExternalRateList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalRateList" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetExternalRateList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalRateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetCodeName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCodeName" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetCodeName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCodeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetFeeDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeeDetails" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetFeeDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeeDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetAGPosAmt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAGPosAmt" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetAGPosAmt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAGPosAmtResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetConvertAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConvertAmount" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetConvertAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConvertAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetCultureCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCultureCodes" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetCultureCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCultureCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetStationTimeZone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationTimeZone" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetStationTimeZone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationTimeZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetInternalRateList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInternalRateList" />
+  </wsdl:message>
+  <wsdl:message name="ILookupService_GetInternalRateList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInternalRateListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILookupService">
+    <wsdl:operation name="AllowCurrency">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/AllowCurrency" message="tns:ILookupService_AllowCurrency_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/AllowCurrencyResponse" message="tns:ILookupService_AllowCurrency_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetRouteList" message="tns:ILookupService_GetRouteList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetRouteListResponse" message="tns:ILookupService_GetRouteList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalRateList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetExternalRateList" message="tns:ILookupService_GetExternalRateList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetExternalRateListResponse" message="tns:ILookupService_GetExternalRateList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetCodeName" message="tns:ILookupService_GetCodeName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetCodeNameResponse" message="tns:ILookupService_GetCodeName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFeeDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetFeeDetails" message="tns:ILookupService_GetFeeDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetFeeDetailsResponse" message="tns:ILookupService_GetFeeDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAGPosAmt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetAGPosAmt" message="tns:ILookupService_GetAGPosAmt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetAGPosAmtResponse" message="tns:ILookupService_GetAGPosAmt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConvertAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetConvertAmount" message="tns:ILookupService_GetConvertAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetConvertAmountResponse" message="tns:ILookupService_GetConvertAmount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCultureCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetCultureCodes" message="tns:ILookupService_GetCultureCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetCultureCodesResponse" message="tns:ILookupService_GetCultureCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationTimeZone">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetStationTimeZone" message="tns:ILookupService_GetStationTimeZone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetStationTimeZoneResponse" message="tns:ILookupService_GetStationTimeZone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInternalRateList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILookupService/GetInternalRateList" message="tns:ILookupService_GetInternalRateList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILookupService/GetInternalRateListResponse" message="tns:ILookupService_GetInternalRateList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="basicHttpLookupService" type="tns:ILookupService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AllowCurrency">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/AllowCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteList">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetRouteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalRateList">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetExternalRateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeName">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetCodeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeeDetails">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetFeeDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAGPosAmt">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetAGPosAmt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConvertAmount">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetConvertAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCultureCodes">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetCultureCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationTimeZone">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetStationTimeZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInternalRateList">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetInternalRateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="basicHttpsLookupService" type="tns:ILookupService">
+    <wsp:PolicyReference URI="#basicHttpsLookupService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AllowCurrency">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/AllowCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteList">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetRouteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalRateList">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetExternalRateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeName">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetCodeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeeDetails">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetFeeDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAGPosAmt">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetAGPosAmt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConvertAmount">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetConvertAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCultureCodes">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetCultureCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationTimeZone">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetStationTimeZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInternalRateList">
+      <soap:operation soapAction="http://tempuri.org/ILookupService/GetInternalRateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LookupService">
+    <wsdl:port name="basicHttpLookupService" binding="tns:basicHttpLookupService">
+      <soap:address location="http://win-vf2ibk72ko6/ACE/LookupService.svc" />
+    </wsdl:port>
+    <wsdl:port name="basicHttpsLookupService" binding="tns:basicHttpsLookupService">
+      <soap:address location="https://stgace.airasia.com/ACE/LookupService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

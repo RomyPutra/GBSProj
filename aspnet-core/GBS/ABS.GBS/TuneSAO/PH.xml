@@ -1,0 +1,259 @@
+<BaseResource xmlns:xsi="http://www.navitaire.com/dotREZ/Resources/Models" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+	<Insurances>
+		<Insurance>
+			<CultureCode>ar-SY</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>&lt;div dir="rtl"&gt;تعويض إلغاء الرحلة أو&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تعويضات فقدان الأمتعة والمتعلقات الشخصية أو&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;خدمات مساعدة السفر في جميع أنحاء العالم على مدار&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تعويض الحماية من الحوادث&lt;/div&gt;</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/ar.png</UpsellUrl>
+				<ConfirmContent>&lt;div dir="rtl"&gt;&lt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;أقر بأنني قد قرأت وفهمت ووافقت على &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;الإعلانات والتراخيص&lt;/a&gt; المتعلقة بطلب التأمين وأقبل&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt; بـالشروط والأحكام&lt;/a&gt; المتعلقة بالبوليصة. ولقد علمت أنه في حالة عدم رغبتي في شراء حماية السفر من، يمكنني النقر فوق "لا شكراً..." لحذفها من خط سير الرحلة.&lt;p&gt; &lt;b&gt;&lt;i&gt;إجمالي الأقساط غير شاملة لجميع الضرائب والرسوم الأخرى&lt;/br&gt;&lt;/br&gt;&lt;b&gt; إذا كان الحجز الخاص بك أكثر من 90 يوما، يرجى أن تكون على علم بأن التأمين على السفر بواسطة   يغطي ما يصل الى 90 يوما من مدة السفر.&lt;/b&gt;
+&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;ملاحظة: برنامج تأمين السفر Travel Insurance هو برنامج معتمد بواسطة شركة Malayan Insurance Company, Inc (الفلبين) لرحلات الطيران PQ وAK، وبواسطة شركة Insurance Company of North America (a Chubb Company) لرحلات Z2.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>&lt;div dir="rtl"&gt;تعويض إلغاء الرحلة أو&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تعويضات فقدان الأمتعة والمتعلقات الشخصية أو&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;خدمات مساعدة السفر في جميع أنحاء العالم على مدار&lt;/div&gt;</CheckItem>
+					<CheckItem>&lt;div dir="rtl"&gt;تعويض الحماية من الحوادث&lt;/div&gt;</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/ar.png</UpsellUrl>
+				<ConfirmContent>&lt;div dir="rtl"&gt;&lt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;أقر بأنني قد قرأت وفهمت ووافقت على &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;الإعلانات والتراخيص&lt;/a&gt; المتعلقة بطلب التأمين وأقبل&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt; بـالشروط والأحكام&lt;/a&gt; المتعلقة بالبوليصة. ولقد علمت أنه في حالة عدم رغبتي في شراء حماية السفر من، يمكنني النقر فوق "لا شكراً..." لحذفها من خط سير الرحلة.&lt;p&gt; &lt;b&gt;&lt;i&gt;إجمالي الأقساط غير شاملة لجميع الضرائب والرسوم الأخرى&lt;/br&gt;&lt;/br&gt;&lt;b&gt; إذا كان الحجز الخاص بك أكثر من 90 يوما، يرجى أن تكون على علم بأن التأمين على السفر بواسطة   يغطي ما يصل الى 90 يوما من مدة السفر.&lt;/b&gt;
+&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;ملاحظة: برنامج تأمين السفر Travel Insurance هو برنامج معتمد بواسطة شركة Malayan Insurance Company, Inc (الفلبين) لرحلات الطيران PQ وAK، وبواسطة شركة Insurance Company of North America (a Chubb Company) لرحلات Z2.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>en-GB</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Flight Cancellation/delay benefit</CheckItem>
+					<CheckItem>Loss or Damage to Baggage and Personal Effects Benefits</CheckItem>
+					<CheckItem>24- hour Worldwide Travel Assistance Services</CheckItem>
+					<CheckItem>Personal Accident benefit</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/enmy.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;I confirm that I have read, understood and agreed with the &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;Declarations and Authorizations&lt;/a&gt;&lt;span style="font-size: small;"&gt; of the Insurance Application and accept the *&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;Terms &amp;amp; Conditions&lt;/a&gt;&lt;span style="font-size: small;"&gt; of the Policy. I understand that if I do not wish to buy Travel Insurance, I can click "No thanks..." to remove it from my itinerary. &lt;p&gt; &lt;b&gt;&lt;i&gt;Note: Gross premium is inclusive of all other taxes and charges. &lt;/br&gt;&lt;/br&gt;&lt;b&gt;If your booking is more than 90 days, please be informed that Travel Insurance covers up to 90 days of your travel duration.&lt;/b&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Note: Travel Insurance is underwritten by Malayan Insurance Company, Inc for PQ and AK flights and by Insurance Company of North America (a Chubb Company) for Z2 flights.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Flight Cancellation/delay benefit</CheckItem>
+					<CheckItem>Loss or Damage to Baggage and Personal Effects Benefits</CheckItem>
+					<CheckItem>24- hour Worldwide Travel Assistance Services</CheckItem>
+					<CheckItem>Personal Accident benefit</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/enmy.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;I confirm that I have read, understood and agreed with the &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;Declarations and Authorizations&lt;/a&gt; of the Insurance Application and accept the *&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;Terms &amp;amp; Conditions&lt;/a&gt; of the Policy. I understand that if I do not wish to buy Travel Insurance, I can click "No thanks..." to remove it from my itinerary. &lt;p&gt; &lt;b&gt;&lt;i&gt;Note: Gross premium is inclusive of all other taxes and charges. &lt;/br&gt;&lt;/br&gt;&lt;b&gt;If your booking is more than 90 days, please be informed that Travel Insurance covers up to 90 days of your travel duration.&lt;/b&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Note: Travel Insurance is underwritten by Malayan Insurance Company, Inc for PQ and AK flights and by Insurance Company of North America (a Chubb Company) for Z2 flights.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>en-TT</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>คุ้มครองการบอกเลิกการเดินทางหรือการล่าช้าของเที่ยวบิน</CheckItem>
+					<CheckItem>คุ้มครองความสูญเสียหรือสัมภาระเสียหายและทรัพย์สินส่วนตัว</CheckItem>
+					<CheckItem>บริการให้ความช่วยเหลือฉุกเฉินฟรีตลอด 24 ชั่วโมง</CheckItem>
+					<CheckItem>คุ้มครองความเสียหายจากอุบัติเหตุส่วนบุคคล</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/THTH.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="display: block; "&gt;&lt;span style="font-size: small;"&gt;ข้าพเจ้ายืนยันว่าข้าพเจ้าได้ศึกษาทำความเข้าใจ และยอมรับในข้อกำหนดและเงื่อนไขตามที่ได้ระบุไว้ใน  &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;ถ้อยคำประกาศและข้ออนุญาต&lt;/a&gt;&lt;span style="font-size: small;"&gt;ของการประกันภัย และยอมรับ&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;ข้อกำหนดและเงื่อนไข&lt;/a&gt;&lt;span style="font-size: small;"&gt;ของกรมธรรม์ดังกล่าว ข้าพเจ้าเข้าใจแล้วว่าหากข้าพเจ้าไม่ต้องการซื้อแผนประกันภัยการเดินทางของแอร์เอเชีย ข้าพเจ้าสามารถคลิก "ไม่ ขอบคุณ..."  เพื่อยกเลิกแผนประกันภัยออกจากหมายกำหนดการเดินทางของข้าพเจ้า&lt;p&gt; &lt;b&gt;&lt;i&gt;พรีเมี่ยม เบื้องต้น รวมภาษี อื่น ๆ และค่าใช้จ่าย. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; ในกรณีที่ท่านเดินทางมากกว่า 90 วัน โปรดทราบว่าประกันภัยการเดินทางมีระยะเวลาความคุ้มครองสูงสุด 90 วัน.&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;คุ้มครอง การเดินทาง แอร์เอเชีย รับประกันภัยโดย บริษัท ประกันภัย มลายู , Inc สำหรับ PQ และเที่ยวบิน AK, และโดย Insurance Company of North America (a Chubb Company) สำหรับเที่ยวบิน Z2&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>คุ้มครองการบอกเลิกการเดินทางหรือการล่าช้าของเที่ยวบิน</CheckItem>
+					<CheckItem>คุ้มครองความสูญเสียหรือสัมภาระเสียหายและทรัพย์สินส่วนตัว</CheckItem>
+					<CheckItem>บริการให้ความช่วยเหลือฉุกเฉินฟรีตลอด 24 ชั่วโมง</CheckItem>
+					<CheckItem>คุ้มครองความเสียหายจากอุบัติเหตุส่วนบุคคล</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/THTH.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;ข้าพเจ้ายืนยันว่าข้าพเจ้าได้ศึกษาทำความเข้าใจ และยอมรับในข้อกำหนดและเงื่อนไขตามที่ได้ระบุไว้ใน  &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;ถ้อยคำประกาศและข้ออนุญาต&lt;/a&gt;ของการประกันภัย และยอมรับ&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;ข้อกำหนดและเงื่อนไข&lt;/a&gt;ของกรมธรรม์ดังกล่าว ข้าพเจ้าเข้าใจแล้วว่าหากข้าพเจ้าไม่ต้องการซื้อแผนประกันภัยการเดินทางของแอร์เอเชีย ข้าพเจ้าสามารถคลิก "ไม่ ขอบคุณ..."  เพื่อยกเลิกแผนประกันภัยออกจากหมายกำหนดการเดินทางของข้าพเจ้า.&lt;p&gt; &lt;b&gt;&lt;i&gt;พรีเมี่ยม เบื้องต้น รวมภาษี อื่น ๆ และค่าใช้จ่าย. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; ในกรณีที่ท่านเดินทางมากกว่า 90 วัน โปรดทราบว่าประกันภัยการเดินทางมีระยะเวลาความคุ้มครองสูงสุด 90 วัน.&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;คุ้มครอง การเดินทาง แอร์เอเชีย รับประกันภัยโดย บริษัท ประกันภัย มลายู , Inc สำหรับ PQ และเที่ยวบิน AK, และโดย Insurance Company of North America (a Chubb Company) สำหรับเที่ยวบิน Z2&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>id-ID</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Manfaat Pembatalan atau penundaan penerbangan</CheckItem>
+					<CheckItem>Manfaat Kehilangan atau Kerusakan pada Bagasi dan kerugian personal</CheckItem>
+					<CheckItem>24 Jam Pelayanan Perjalanan Seluruh Dunia </CheckItem>
+					<CheckItem>Manfaat Kecelakaan Pribadi</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/bdid.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;Saya mengkonfirmasi bahwa saya telah membaca, memahami dan menyetujui &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;Deklarasi dan Otorisasi&lt;/a&gt;&lt;span style="font-size: small;"&gt; Permohonan Asuransi dan menerima  *&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;Syarat &amp;amp; Ketentuan&lt;/a&gt; &lt;span style="font-size: small;"&gt;Kebijakan tersebut. Saya memahami bahwa jika saya tidak ingin membeli Insurans Perjalanan, saya dapat mengklik "Tidak, terima kasih..." untuk menghapusnya dari rencana perjalanan saya.&lt;p&gt; &lt;b&gt;&lt;i&gt;Premi yang ditampilkan sudah termasuk semua pajak dan biaya lain.&lt;/br&gt;&lt;/br&gt;&lt;b&gt; Jika periode perjalanan Anda melebihi dari 90 hari, harap diingat bahwa asuransi perjalanan hanya memberikan perlindungan hingga 90 hari dari periode perjalanan Anda.&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-size: small;"&gt;Catatan: Insurans Perjalanan ditanggung oleh Malayan Insurance Company, Inc untuk penerbangan PQ dan AK dan Perusahaan Asuransi Amerika Utara (a Chubb Company) untuk penerbangan Z2.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Manfaat Pembatalan atau penundaan penerbangan</CheckItem>
+					<CheckItem>Manfaat Kehilangan atau Kerusakan pada Bagasi dan kerugian personal</CheckItem>
+					<CheckItem>24 Jam Pelayanan Perjalanan Seluruh Dunia</CheckItem>
+					<CheckItem>Manfaat Kecelakaan Pribadi</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/bdid.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Saya mengkonfirmasi bahwa saya telah membaca, memahami dan menyetujui &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;Deklarasi dan Otorisasi&lt;/a&gt; Permohonan Asuransi dan menerima  *&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;Syarat &amp;amp; Ketentuan&lt;/a&gt; Kebijakan tersebut. Saya memahami bahwa jika saya tidak ingin membeli Insurans Perjalanan, saya dapat mengklik "Tidak, terima kasih..." untuk menghapusnya dari rencana perjalanan saya.&lt;p&gt; &lt;b&gt;&lt;i&gt;Premi yang ditampilkan sudah termasuk semua pajak dan biaya lain.&lt;/br&gt;&lt;/br&gt;&lt;b&gt; Jika periode perjalanan Anda melebihi dari 90 hari, harap diingat bahwa asuransi perjalanan hanya memberikan perlindungan hingga 90 hari dari periode perjalanan Anda.&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Catatan: Insurans Perjalanan ditanggung oleh Malayan Insurance Company, Inc untuk penerbangan PQ dan AK dan Perusahaan Asuransi Amerika Utara (a Chubb Company) untuk penerbangan Z2.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>ja-JP</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>フライトの欠航／遅延時の補償</CheckItem>
+					<CheckItem>手荷物および所持品の紛失または損害に関する補償</CheckItem>
+					<CheckItem>24時間の世界中での旅行支援サービス</CheckItem>
+					<CheckItem>個人の傷害に関する補償</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/jajp.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;私は保険の申込に関する&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;声明および同意書&lt;/a&gt;&lt;span style="font-size: small;"&gt;を読み、理解し、同意したことを認め、*保険契約の&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;諸条件&lt;/a&gt;&lt;span style="font-size: small;"&gt;を受諾します。 エアアジア・トラベルプロテクションを購入したくない場合は、[不要です]をクリックし、自分の旅程表から 削除すればよいことを理解しています。&lt;p&gt; &lt;b&gt;&lt;i&gt;総保険料は、他のすべての税金、料金が含まれており。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 予約が90日間以上に及ぶ場合は、による旅行保険は旅行期間の最大90日間のみを対象にしますのでご注意ください。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;ご注意: エアアジアトラベル保護はPQとAKの航空券をおマレー保険会社、株式会社が引き受けさ、Z2便については北米の保険会社（a Chubb Company）が引き受けています。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>フライトの欠航／遅延時の補償</CheckItem>
+					<CheckItem>手荷物および所持品の紛失または損害に関する補償</CheckItem>
+					<CheckItem>24時間の世界中での旅行支援サービス</CheckItem>
+					<CheckItem>個人の傷害に関する補償</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/jajp.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;私は保険の申込に関する&lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;声明および同意書&lt;/a&gt;を読み、理解し、同意したことを認め、*保険契約の&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;諸条件&lt;/a&gt;を受諾します。 エアアジア・トラベルプロテクションを購入したくない場合は、[不要です]をクリックし、自分の旅程表から 削除すればよいことを理解しています。&lt;p&gt; &lt;b&gt;&lt;i&gt;総保険料は、他のすべての税金、料金が含まれており。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 予約が90日間以上に及ぶ場合は、による旅行保険は旅行期間の最大90日間のみを対象にしますのでご注意ください。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;エアアジアトラベル保護はPQとAKの航空券をおマレー保険会社、株式会社が引き受けさ、Z2便については北米の保険会社（a Chubb Company）が引き受けています。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>ko-KR</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>항공편 결항 또는 지연 시 보상</CheckItem>
+					<CheckItem>수하물 및 소지품 분실 또는 파손 시 보상</CheckItem>
+					<CheckItem>24시간 전세계 여행지원서비스</CheckItem>
+					<CheckItem>상해 보상</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/kokr.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;본인은 보험 가입신청서에 명시된 &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;고지 및 승인&lt;/a&gt;&lt;span style="font-size: small;"&gt;과 관련된 내용을 읽고 이해하였으며, 상기 내용과 &lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;보험약관&lt;/a&gt;&lt;span style="font-size: small;"&gt;에 동의함을 확인합니다. 에어아시아 여행자보험 가입을 원치 않을 경우 '가입 원치 않음'을 선택하여 여행 일정에서 제거할 수 있음을 이해합니다.&lt;p&gt; &lt;b&gt;&lt;i&gt;총 프리미엄 은 다른 모든 세금 및 요금이 포함 입니다. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 예약 내 여행 기간이 90일 이상인 경우 에어아시아가 제공하는 여행자보험은 여행 기간에 따라 90일까지만 보장합니다.  &lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;참고 사항 에어아시아 여행자보험은 PQ 및 AK 항공편의 경우 Malayan Insurance Company, Inc 에서, Z2 항공편의 경우 Insurance Company of North America(a Chubb Company)에서 보장합니다.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>항공편 결항 또는 지연 시 보상</CheckItem>
+					<CheckItem>수하물 및 소지품 분실 또는 파손 시 보상</CheckItem>
+					<CheckItem>24시간 전세계 여행지원서비스</CheckItem>
+					<CheckItem>상해 보상</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/kokr.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;본인은 보험 가입신청서에 명시된 &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;고지 및 승인&lt;/a&gt;과 관련된 내용을 읽고 이해하였으며, 상기 내용과 &lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;보험약관&lt;/a&gt;에 동의함을 확인합니다. 에어아시아 여행자보험 가입을 원치 않을 경우 '가입 원치 않음'을 선택하여 여행 일정에서 제거할 수 있음을 이해합니다.&lt;p&gt; &lt;b&gt;&lt;i&gt;총 프리미엄 은 다른 모든 세금 및 요금이 포함 입니다. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 예약 내 여행 기간이 90일 이상인 경우 에어아시아가 제공하는 여행자보험은 여행 기간에 따라 90일까지만 보장합니다.  &lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;참고 사항 에어아시아 여행자보험은 PQ 및 AK 항공편의 경우 Malayan Insurance Company, Inc 에서, Z2 항공편의 경우 Insurance Company of North America(a Chubb Company)에서 보장합니다.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>ms-MY</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Faedah kelewatan / Pembatalan Penerbangan</CheckItem>
+					<CheckItem>Faedah Kehilangan atau Kerosakan kepada Bagasi dan Barang-barang Persendirian</CheckItem>
+					<CheckItem>Perkhidmatan Bantuan Perjalanan Seluruh Dunia 24 Jam</CheckItem>
+					<CheckItem>Faedah Kemalangan Peribadi</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/bdmy.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;Saya mengesahkan yang saya sudah membaca, memahami dan bersetuju dengan&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;Pengisytiharan &amp;amp; Kebenaran&lt;/a&gt;&lt;span style="font-size: small;"&gt;  Permohonan Insurans dan menerima *&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;Terma &amp;amp; Syarat&lt;/a&gt;&lt;span style="font-size: small;"&gt;Polisi. Saya faham bahawa jika saya tidak mahu beli Insurans Perjalanan, saya boleh klik "Tidak, terima kasih." untuk membuangnya daripada jadual saya.&lt;p&gt; &lt;b&gt;&lt;i&gt;Kadar premium yang dipaparkan adalah termasuk cukai dan caj lain. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; Jika tempahan Anda melebihi daripada 90 hari, harap maklum bahawa Insurans Perjalanan hanya melindungi sehingga 90 hari tempoh perjalanan Anda.&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Nota: Insurans Perjalanan ditaja jamin oleh Malayan Insurance Company, Inc untuk penerbangan PQ dan AK dan oleh Insurance Company of North America (a Chubb Company) untuk penerbangan Z2.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Faedah kelewatan / Pembatalan Penerbangan</CheckItem>
+					<CheckItem>Faedah Kehilangan atau Kerosakan kepada Bagasi dan Barang-barang Persendirian</CheckItem>
+					<CheckItem>Perkhidmatan Bantuan Perjalanan Seluruh Dunia 24 Jam</CheckItem>
+					<CheckItem>Faedah Kemalangan Peribadi</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/bdmy.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Saya mengesahkan yang saya sudah membaca, memahami dan bersetuju dengan &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;Pengisytiharan &amp;amp; Kebenaran&lt;/a&gt;  Permohonan Insurans dan menerima *&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;Terma &amp;amp; Syarat&lt;/a&gt; Polisi. Saya faham bahawa jika saya tidak mahu beli Insurans Perjalanan, saya boleh klik "Tidak, terima kasih." untuk membuangnya daripada jadual saya.&lt;p&gt; &lt;b&gt;&lt;i&gt;Kadar premium yang dipaparkan adalah termasuk cukai dan caj lain. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; Jika tempahan Anda melebihi daripada 90 hari, harap maklum bahawa Insurans Perjalanan hanya melindungi sehingga 90 hari tempoh perjalanan Anda.&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Nota: Insurans Perjalanan ditaja jamin oleh Malayan Insurance Company, Inc untuk penerbangan PQ dan AK dan oleh Insurance Company of North America (a Chubb Company) untuk penerbangan Z2.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>vi-VN</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>Quyền lợi khi Hủy hoặc Trì Hoãn chuyến bay</CheckItem>
+					<CheckItem>Quyền Lợi trong trường hợp Hư Hỏng hoặc Thất Lạc Hành Lý và Ảnh Hưởng đến Quyền Lợi Cá Nhân</CheckItem>
+					<CheckItem>Dịch Vụ Hỗ Trợ Du Lịch Toàn Cầu 24 giờ</CheckItem>
+					<CheckItem>Quyền Lợi đối với Tai Nạn Cá Nhân</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/vnvi.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="display: block; "&gt;Tôi xác nhận là đã đọc, hiểu và đồng ý với &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt; Tuyên Bố và Ủy Quyền&lt;/a&gt; của  Đơn Đăng Ký Mua Bảo Hiểm và chấp nhận các &lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt; *Điều Khoản &amp;amp; Điều Kiện&lt;/a&gt; trong Hợp Đồng Bảo Hiểm. Hiểm Du Lịch, tôi có thể nhấp vào "Không, cảm ơn..." để xóa thông tin đó khỏi hành trình của mình.&lt;p&gt; &lt;b&gt;&lt;i&gt;Phí bảo hiểm gộp là đã bao gồm thuế và các phí khác. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; Nếu bạn đặt vé cho chuyến đi kéo dài trên 90 ngày thì xin lưu ý rằng Bảo hiểm Du lịch của chỉ bảo hiểm cho tối đa 90 ngày trong thời gian chuyến đi của bạn. &lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Lưu ý : Bảo vệ Du lịch được bảo lãnh bởi Công ty Bảo hiểm Malayan , Inc cho PQ và các chuyến bay AK và do Công ty Bảo hiểm Bắc Mỹ (a Chubb Company ) cho chuyến bay Z2. &lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>Quyền lợi khi Hủy hoặc Trì Hoãn chuyến bay</CheckItem>
+					<CheckItem>Quyền Lợi trong trường hợp Hư Hỏng hoặc Thất Lạc Hành Lý và Ảnh Hưởng đến Quyền Lợi Cá Nhân</CheckItem>
+					<CheckItem>Dịch Vụ Hỗ Trợ Du Lịch Toàn Cầu 24 giờ</CheckItem>
+					<CheckItem>Quyền Lợi đối với Tai Nạn Cá Nhân</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/vnvi.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="display: block; "&gt;Tôi xác nhận là đã đọc, hiểu và đồng ý với &lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt; Tuyên Bố và Ủy Quyền&lt;/a&gt; của  Đơn Đăng Ký Mua Bảo Hiểm và chấp nhận các &lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt; *Điều Khoản &amp;amp; Điều Kiện&lt;/a&gt; trong Hợp Đồng Bảo Hiểm. Hiểm Du Lịch, tôi có thể nhấp vào "Không, cảm ơn..." để xóa thông tin đó khỏi hành trình của mình.&lt;p&gt; &lt;b&gt;&lt;i&gt;Phí bảo hiểm gộp là đã bao gồm thuế và các phí khác. &lt;/br&gt;&lt;/br&gt;&lt;b&gt; Nếu bạn đặt vé cho chuyến đi kéo dài trên 90 ngày thì xin lưu ý rằng Bảo hiểm Du lịch của chỉ bảo hiểm cho tối đa 90 ngày trong thời gian chuyến đi của bạn. &lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;Lưu ý : Bảo vệ Du lịch được bảo lãnh bởi Công ty Bảo hiểm Malayan , Inc cho PQ và các chuyến bay AK và do Công ty Bảo hiểm Bắc Mỹ (a Chubb Company ) cho chuyến bay Z2. &lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>zh-CN</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>航班取消或延误赔偿</CheckItem>
+					<CheckItem>行李和个人财物遗失或损坏赔偿</CheckItem>
+					<CheckItem>24 小时全球旅行救援服务</CheckItem>
+					<CheckItem>人身意外保险赔偿</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/zhcn.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;我确认我已阅读、理解并同意投保单上的&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;声明与授权&lt;/a&gt;&lt;span style="font-size: small;"&gt;，且接受保单的&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;条款与条件&lt;/a&gt;&lt;span style="font-size: small;"&gt;。 我了解如果我不希望购买旅游保障，我可以点击[不需要，谢谢...]  把保险从行程表中移除。&lt;p&gt; &lt;b&gt;&lt;i&gt;毛保费已包括所有其他税费。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 请注意，若您的航班订购超过90天，旅游保险的旅程保障覆盖期最长仅为90天。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;请注意： PQ 与 AK 航班的旅游保障由 Malayan Insurance Company, Inc 承保；Z2 航班的旅游保障由北美保险公司 (a Chubb Company) 承保。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>航班取消或延误赔偿</CheckItem>
+					<CheckItem>行李和个人财物遗失或损坏赔偿</CheckItem>
+					<CheckItem>24 小时全球旅行救援服务</CheckItem>
+					<CheckItem>人身意外保险赔偿</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/zhcn.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;我确认我已阅读、理解并同意投保单上的&lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;声明与授权&lt;/a&gt;，且接受保单的&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;条款与条件&lt;/a&gt;。 我了解如果我不希望购买旅游保障，我可以点击[不需要，谢谢...]  把保险从行程表中移除。&lt;p&gt; &lt;b&gt;&lt;i&gt;毛保费已包括所有其他税费。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 请注意，若您的航班订购超过90天，旅游保险的旅程保障覆盖期最长仅为90天。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;请注意： PQ 与 AK 航班的旅游保障由 Malayan Insurance Company, Inc 承保；Z2 航班的旅游保障由北美保险公司 (a Chubb Company) 承保。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>zh-HK</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>航班取消或延誤賠償</CheckItem>
+					<CheckItem>行李和個人財物遺失或損壞賠償</CheckItem>
+					<CheckItem>24 小時全球旅遊援助服務</CheckItem>
+					<CheckItem>個人意外保險賠償</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/zhhk.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;本人確認已經閱讀、瞭解並同意保險申請書的&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;聲明及授權內容&lt;/a&gt;&lt;span style="font-size: small;"&gt; ，且接受這份保單的*&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;條款與條件&lt;/a&gt;&lt;span style="font-size: small;"&gt;。 我瞭解如不想購買旅遊保險，我可以按一下[不需要，謝謝...] 將保險從行程表中移除。&lt;p&gt; &lt;b&gt;&lt;i&gt;毛保費已包括所有其他稅費。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 如果旅程超過 90天，通知您旅遊保險的投保有效期為由出發日期起90天。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： PQ 與 AK 航班的旅遊保險為 Malayan Insurance Company, Inc 所承保；Z2 航班則為美商安達產物保險股份有限公司 (a Chubb Company) 所承保。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>航班取消或延誤賠償</CheckItem>
+					<CheckItem>行李和個人財物遺失或損壞賠償</CheckItem>
+					<CheckItem>24 小時全球旅遊援助服務</CheckItem>
+					<CheckItem>個人意外保險賠償</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/zhhk.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;本人確認已經閱讀、瞭解並同意保險申請書的&lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;聲明及授權內容&lt;/a&gt; ，且接受這份保單的*&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;條款與條件&lt;/a&gt;。 我瞭解如不想購買旅遊保險，我可以按一下[不需要，謝謝...] 將保險從行程表中移除。&lt;p&gt; &lt;b&gt;&lt;i&gt;毛保費已包括所有其他稅費。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 如果旅程超過 90天，通知您旅遊保險的投保有效期為由出發日期起90天。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： PQ 與 AK 航班的旅遊保險為 Malayan Insurance Company, Inc 所承保；Z2 航班則為美商安達產物保險股份有限公司 (a Chubb Company) 所承保。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+		<Insurance>
+			<CultureCode>zh-TW</CultureCode>
+			<Itnl>
+				<CheckItems>
+					<CheckItem>航班取消或延誤賠償</CheckItem>
+					<CheckItem>行李和個人財物遺失或損壞賠償</CheckItem>
+					<CheckItem>24 小時全球旅行援助服務</CheckItem>
+					<CheckItem>人身意外保險賠償</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/zhtw.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-size: small;"&gt;本人確認已經閱讀、瞭解並同意保險申請書的&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;聲明及授權內容&lt;/a&gt;&lt;span style="font-size: small;"&gt;，且接受這份保單的*&lt;/span&gt;&lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;條款與條件&lt;/a&gt;&lt;span style="font-size: small;"&gt;。 我瞭解如不想購買旅遊保險，我可以按一下[不需要，謝謝...] 將保險從行程表中移除。&lt;p&gt; &lt;b&gt;&lt;i&gt;毛保費已包括所有其他稅費。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 如果您預訂機票超過90天以上，通知您旅遊保險承包期限最多90天。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： PQ 與 AK 航班的旅遊保險為 Malayan Insurance Company, Inc 所承保；Z2 航班則為美商安達產物保險股份有限公司 (a Chubb Company) 所承保。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Itnl>
+			<Dom>
+				<CheckItems>
+					<CheckItem>航班取消或延誤賠償</CheckItem>
+					<CheckItem>行李和個人財物遺失或損壞賠償</CheckItem>
+					<CheckItem>24 小時全球旅行援助服務</CheckItem>
+					<CheckItem>人身意外保險賠償</CheckItem>
+				</CheckItems>
+				<UpsellUrl>https://static.tuneprotect.com/static/zhtw.png</UpsellUrl>
+				<ConfirmContent>&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;本人確認已經閱讀、瞭解並同意保險申請書的&lt;a href="https://tuneprotect.com/airasia/ph/en/da/phen.html" target="_blank"&gt;聲明及授權內容&lt;/a&gt;，且接受這份保單的*&lt;a href="https://tuneprotect.com/airasia/ph/travel_protection/policy_wording.php" target="_blank"&gt;條款與條件&lt;/a&gt;。 我瞭解如不想購買旅遊保險，我可以按一下[不需要，謝謝...] 將保險從行程表中移除。&lt;p&gt; &lt;b&gt;&lt;i&gt;毛保費已包括所有其他稅費。 &lt;/br&gt;&lt;/br&gt;&lt;b&gt; 如果您預訂機票超過90天以上，通知您旅遊保險承包期限最多90天。&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;請注意： PQ 與 AK 航班的旅遊保險為 Malayan Insurance Company, Inc 所承保；Z2 航班則為美商安達產物保險股份有限公司 (a Chubb Company) 所承保。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</ConfirmContent>
+			</Dom>
+		</Insurance>
+	</Insurances>
+</BaseResource>

@@ -1,0 +1,89 @@
+<div bsModal #editCustomerModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editCustomerModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #editCustomerForm="ngForm" id="frm_edit_customer" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>Edit Customer ID: {{customer.bizRegID}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input value="{{customer.companyName}}" id="name" type="text" name="CompanyName" [(ngModel)]="customer.companyName" required minlength="2" class="validate form-control">
+                                    <label for="name" class="form-label">Company Name</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input value="{{customer.address1}}" id="address" type="text" name="Address" [(ngModel)]="customer.address1" required minlength="2" class="validate form-control">
+                                    <label for="address" class="form-label">Address</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input value="{{customer.state}}" id="state" type="text" name="State" [(ngModel)]="customer.state" required minlength="2" class="validate form-control">
+                                    <label for="state" class="form-label">State</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input value="{{customer.country" id="country" type="text" name="Country" [(ngModel)]="customer.country" required minlength="2" class="validate form-control">
+                                    <label for="country" class="form-label">Country</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input value="{{customer.postalCode}}" id="postalcode" type="text" name="PostalCode" [(ngModel)]="customer.postalCode" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="postalcode" class="form-label">Postal Code</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-10">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input value="{{customer.email}}" id="email" type="email" name="Email" [(ngModel)]="customer.email" required minlength="2" class="validate form-control">
+                                    <label for="email" class="form-label">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="margin-top:10px;">
+                            <div class="form-group form-float">
+                                <input type="checkbox" class="validate filled-in" id="status" [checked]="customer.status" (change)="changeLabel()" required>
+                                <label for="status">{{status}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!editCustomerForm.form.valid" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

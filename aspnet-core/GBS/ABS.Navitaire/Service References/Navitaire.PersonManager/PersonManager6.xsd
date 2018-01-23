@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.navitaire.com/WebServices/ServiceContracts/PersonService" elementFormDefault="qualified" targetNamespace="http://schemas.navitaire.com/WebServices/ServiceContracts/PersonService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd2" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Person" />
+  <xs:import schemaLocation="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd6" namespace="http://schemas.navitaire.com/WebServices" />
+  <xs:element name="CommitPersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q1:personReqData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CommitPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q2:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindPersonsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q3:FindPersonRequestData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindPersonsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q4:FindPersonResponseData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q5:GetPersonRequestData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q6:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PersonID" type="xs:long" />
+  <xs:element name="GetPersonInfoDataRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q7:GetPersonInfoData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonInfoDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.navitaire.com/WebServices" minOccurs="0" ref="q8:PersonInfoData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePersonTrustLevelRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.navitaire.com/WebServices/DataContracts/Person" minOccurs="0" ref="q9:UpdatePersonTrustLevelReqData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

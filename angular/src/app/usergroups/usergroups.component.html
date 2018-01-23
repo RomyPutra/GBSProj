@@ -1,0 +1,147 @@
+<div class="row clearfix" [@routerTransition]>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="card main-content">
+			<div class="header">
+				<h2>
+					User Groups
+				</h2>
+				<ul class="header-dropdown m-r--5">
+					<i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+					<li class="dropdown">
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="material-icons">more_vert</i>
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="javascript:void(0);" class=" waves-effect <waves-block></waves-block>" (click)="refresh();"><i class="material-icons">refresh</i> Refresh</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="body table-responsive">
+
+				<dx-data-grid
+				id="gridContainer"
+				[rowAlternationEnabled]="true"
+				[showColumnLines]="false"
+				[showRowLines]="true"
+				[showBorders]="false"
+				[allowColumnResizing]="true"
+				[hoverStateEnabled]="true"
+				[columnResizingMode]="nextColumn"
+				[columnAutoWidth]="true"
+				[width]="950"
+				[dataSource]="groups" >
+				
+				<dxo-search-panel 
+					[visible]="true" 
+					[width]="240" 
+					placeholder="Search..."></dxo-search-panel>
+
+				<dxi-column 
+					dataField="" 
+					caption="#"
+					[allowFiltering]="false"
+					[width]="40"
+					[minWidth]="30"
+					[allowSorting]="false" 
+					cellTemplate="actionCellTemplate"></dxi-column>
+				<dxi-column dataField="groupName" caption="Group"></dxi-column>
+				<dxi-column dataField="CreateBy" caption="Create By"></dxi-column>
+				<dxi-column dataField="CreateDate" caption="Create Date" dataType="date"></dxi-column>
+				<dxi-column dataField="UpdateBy" caption="Update By"></dxi-column>
+				<dxi-column dataField="LastUpdate" caption="Update Date" dataType="date"></dxi-column>
+				<dxi-column dataField="status" caption="Status" cellTemplate="StatusCellTemplate" [width]="60"></dxi-column>
+
+				<div *dxTemplate="let row of 'actionCellTemplate'">
+					<div class="dropdown">
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="material-icons">more_vert</i>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dxgrid">
+							<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editGroup(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+							<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(row)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+						</ul>
+					</div>
+				</div>
+				<div *dxTemplate="let r of 'StatusCellTemplate'">
+							<td>
+                                <i class="material-icons" *ngIf="!r.status" style="color:green;">check_box</i>
+                                <i class="material-icons" *ngIf="r.status" style="color:red;">indeterminate_check_box</i>
+                            </td>
+				</div>
+
+
+				<dxo-remote-operations
+				[sorting]="true"
+				[paging]="true">
+			</dxo-remote-operations>
+			<dxo-paging [pageSize]="10"></dxo-paging>
+			<dxo-pager 
+				[showPageSizeSelector]="true"
+				[allowedPageSizes]="[5, 10, 20]"
+				[showInfo]="true">
+			</dxo-pager>
+	</dx-data-grid>
+
+				<!-- ******************************************************** --
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th style="text-align:center">#</th>
+							<th>Role</th>
+							<th>Group Name</th>
+							<th>Create By</th>
+							<th>Create Date</th>
+							<th>Update By</th>
+							<th>Update Date</th>
+							<th>
+                                <div style="text-align:center">Status</div>
+                            </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let r of groups | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+							<td class="dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<i class="material-icons">more_vert</i>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editGroup(r)"><i class="material-icons">create</i>{{r.groupCode}}</a></li> --
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editGroup(r)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+									<!-- <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editGroup()"><i class="material-icons">create</i>{{l('Edit')}}</a></li> --
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(r)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+								</ul>
+							</td>
+							<td>
+								<p *ngIf="r.appID == 1">DOE</p>
+								<p *ngIf="r.appID == 2">Generator</p>
+								<p *ngIf="r.appID == 3">Transporter</p>
+								<p *ngIf="r.appID == 4">Reciever</p>
+							</td>
+							<td>{{r.groupName}}</td>
+							<td>{{r.CreateBy}}</td>
+							<td>{{r.CreateDate | date:'dd/MM/yyyy'}}</td>
+							<td>{{r.UpdateBy}}</td>
+							<td>{{r.LastUpdate | date:'dd/MM/yyyy'}}</td>
+							<td align="center">
+                                <i class="material-icons" *ngIf="r.status" style="color:green;">check_box</i>
+                                <i class="material-icons" *ngIf="!r.status" style="color:red;">indeterminate_check_box</i>
+                            </td>
+						</tr>
+					</tbody>
+				</table>
+			<!-- ******************************************************** -->
+
+				<div class="text-align: center;" *ngIf="totalItems > pageSize">
+					<pagination-controls (pageChange)="getDataPage($event)" id="server"></pagination-controls>
+				</div>
+				<!-- <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="createUserGroup()">
+                    <i class="material-icons">add</i>
+                </button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<create-usergroup-modal #createUserGroupModal (modalSave)="refresh()"></create-usergroup-modal>
+<edit-usergroup-modal #editUserGroupModal (modalSave)="refresh()"></edit-usergroup-modal>

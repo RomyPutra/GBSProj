@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="AirAsia.ARMS.LookupWS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="AirAsia.ARMS.LookupWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="AirAsia.ARMS.LookupWS">
+      <s:element name="GetRBSDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RBSRequestDetails" type="tns:RBSRequestDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RBSRequestDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestDetails" type="tns:ArrayOfRBSRequestDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRBSRequestDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RBSRequestDetail" nillable="true" type="tns:RBSRequestDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RBSRequestDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SchemeSellCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchemeBuyCurrency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRBSDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRBSDetailsResult" type="tns:RBSResponseDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RBSResponseDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseDetails" type="tns:ArrayOfRBSResponseDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRBSResponseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RBSResponseDetail" nillable="true" type="tns:RBSResponseDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RBSResponseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SchemeSellCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchemeBuyCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RateQuoteId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AllowCurrency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuyCurrency" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AllowCurrencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllowCurrencyResult" type="tns:ArrayOfStCurrency" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStCurrency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="stCurrency" nillable="true" type="tns:stCurrency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="stCurrency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SBuy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSell" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSectorDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Departure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Arrival" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSectorDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSectorDetailResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorDetails" type="tns:ArrayOfSectorDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSectorDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SectorDetail" nillable="true" type="tns:SectorDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SectorDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Departure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Arrival" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TwoCharCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThreeCharCurrency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFlightDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCriterias" type="tns:ArrayOfSearchCriteria" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SearchCriteria" nillable="true" type="tns:SearchCriteria" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FlightDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlightNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFlightDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFlightDetailsResult" type="tns:Results" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Results">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SearchResults" type="tns:ArrayOfSearchResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSearchResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SearchResult" nillable="true" type="tns:SearchResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SearchResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FlightInfos" type="tns:ArrayOfFlightInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlightInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FlightInfo" nillable="true" type="tns:FlightInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FlightInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="registration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airlineCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="flightNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flightDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="timeDepart" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="timeArrive" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="bay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ETA" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="doorClosed" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="consequential" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="delay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="retime" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="cancel" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="resked" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="updatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="flightLoad" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUpdatedFlightDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCriterias" type="tns:ArrayOfSearchCriteria" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdatedFlightDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdatedFlightDetailsResult" type="tns:Results" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStationDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sStation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStationDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStationDetailsResult" type="tns:StationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StationResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Stations" type="tns:ArrayOfStation" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Station" nillable="true" type="tns:Station" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Station">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrencyDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrencyDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyDetailsResult" type="tns:CurrencyResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CurrencyResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Currencies" type="tns:ArrayOfCurrency" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCurrency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Currency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TwoCharCurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThreeCharCurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumericCurrecyCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSSRDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="tns:InputDetails" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InputDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="InputDetail" type="tns:ArrayOfInputDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInputDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InputDetail" nillable="true" type="tns:InputDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InputDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SSRCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PremiumBooking" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSSRDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSSRDetailsResult" type="tns:ResultDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="resultDetails" type="tns:ArrayOfResultDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResultDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResultDetail" nillable="true" type="tns:ResultDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResultDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SSRDetails" type="tns:ArrayOfSSRDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSSRDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SSRDetail" nillable="true" type="tns:SSRDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SSRDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SSRCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSRDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeDetail" type="tns:FeeDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FeeDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FeeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerritoryCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeeAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeeTax1" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeeTax2" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeeTax3" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeeTax4" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NSReq" type="tns:LogonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LogonRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:LogonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LogonResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactPerson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionTimeoutInterval" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Logout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFlightLoad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCriterias" type="tns:ArrayOfSearchCriteria" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightLoadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFlightLoadResult" type="tns:FlightLoadResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FlightLoadResults">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SearchResults" type="tns:ArrayOfFlightLoadResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlightLoadResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FlightLoadResult" nillable="true" type="tns:FlightLoadResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FlightLoadResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FlightLoads" type="tns:ArrayOfFlightLoad" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlightLoad">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FlightLoad" nillable="true" type="tns:FlightLoad" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FlightLoad">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="airlineCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="flightNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flightDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="paxLoad" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocalization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LocalizationRequest" type="tns:ArrayOfLocalization" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLocalization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Localization" nillable="true" type="tns:Localization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Localization">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TranslateByType" type="tns:EnumTranslateByType" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlightInfo" type="tns:FlightKey" />
+          <s:element minOccurs="0" maxOccurs="1" name="CultureCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocalizeResult" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EnumTranslateByType">
+        <s:restriction base="s:string">
+          <s:enumeration value="SSRCode" />
+          <s:enumeration value="FeeCode" />
+          <s:enumeration value="None" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="FlightKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FltNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DptrAirportCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArrivalAirportCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DptrDateTime" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocalizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocalizationResult" type="tns:LocalizationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LocalizationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Localization" type="tns:ArrayOfLocalization" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRouteList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Departure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Arrival" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRouteListResult" type="tns:RouteInfoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RouteInfoResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RouteInfo" type="tns:ArrayOfRouteInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRouteInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RouteInfo" nillable="true" type="tns:RouteInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RouteInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DepartureStation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartureStationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartureStationCurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartureTimeZoneCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArrivalStation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArrivalStationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArrivalStationCurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArrivalTimeZoneCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PointToPointFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConnectionFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="InternationalFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DomesticFlag" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStationTimeZone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sStation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStationTimeZoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStationTimeZoneResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRBSDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRBSDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetRBSDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRBSDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllowCurrencySoapIn">
+    <wsdl:part name="parameters" element="tns:AllowCurrency" />
+  </wsdl:message>
+  <wsdl:message name="AllowCurrencySoapOut">
+    <wsdl:part name="parameters" element="tns:AllowCurrencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSectorDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSectorDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetSectorDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSectorDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdatedFlightDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdatedFlightDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdatedFlightDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdatedFlightDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStationDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStationDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetStationDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStationDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSSRDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSSRDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetSSRDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSSRDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightLoadSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightLoad" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightLoadSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightLoadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocalizationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocalization" />
+  </wsdl:message>
+  <wsdl:message name="GetLocalizationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocalizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRouteList" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRouteListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStationTimeZoneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStationTimeZone" />
+  </wsdl:message>
+  <wsdl:message name="GetStationTimeZoneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStationTimeZoneResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LookupWSSoap">
+    <wsdl:operation name="GetRBSDetails">
+      <wsdl:input message="tns:GetRBSDetailsSoapIn" />
+      <wsdl:output message="tns:GetRBSDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllowCurrency">
+      <wsdl:input message="tns:AllowCurrencySoapIn" />
+      <wsdl:output message="tns:AllowCurrencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorDetail">
+      <wsdl:input message="tns:GetSectorDetailSoapIn" />
+      <wsdl:output message="tns:GetSectorDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <wsdl:input message="tns:GetFlightDetailsSoapIn" />
+      <wsdl:output message="tns:GetFlightDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedFlightDetails">
+      <wsdl:input message="tns:GetUpdatedFlightDetailsSoapIn" />
+      <wsdl:output message="tns:GetUpdatedFlightDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationDetails">
+      <wsdl:input message="tns:GetStationDetailsSoapIn" />
+      <wsdl:output message="tns:GetStationDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyDetails">
+      <wsdl:input message="tns:GetCurrencyDetailsSoapIn" />
+      <wsdl:output message="tns:GetCurrencyDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSSRDetails">
+      <wsdl:input message="tns:GetSSRDetailsSoapIn" />
+      <wsdl:output message="tns:GetSSRDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticates and creates a session for the specified user.</wsdl:documentation>
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ends a user's session and clears the session from the server.</wsdl:documentation>
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightLoad">
+      <wsdl:input message="tns:GetFlightLoadSoapIn" />
+      <wsdl:output message="tns:GetFlightLoadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalization">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">AirAsia localization.</wsdl:documentation>
+      <wsdl:input message="tns:GetLocalizationSoapIn" />
+      <wsdl:output message="tns:GetLocalizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get route list. All route will be return if the departure and arrival are empty.</wsdl:documentation>
+      <wsdl:input message="tns:GetRouteListSoapIn" />
+      <wsdl:output message="tns:GetRouteListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationTimeZone">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the station's timezone in minutes.</wsdl:documentation>
+      <wsdl:input message="tns:GetStationTimeZoneSoapIn" />
+      <wsdl:output message="tns:GetStationTimeZoneSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LookupWSSoap" type="tns:LookupWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRBSDetails">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetRBSDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllowCurrency">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/AllowCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorDetail">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetSectorDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetFlightDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedFlightDetails">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetUpdatedFlightDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationDetails">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetStationDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyDetails">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetCurrencyDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSSRDetails">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetSSRDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightLoad">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetFlightLoad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalization">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetLocalization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteList">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetRouteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationTimeZone">
+      <soap:operation soapAction="AirAsia.ARMS.LookupWS/GetStationTimeZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LookupWSSoap12" type="tns:LookupWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRBSDetails">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetRBSDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllowCurrency">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/AllowCurrency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSectorDetail">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetSectorDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetFlightDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedFlightDetails">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetUpdatedFlightDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationDetails">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetStationDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyDetails">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetCurrencyDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSSRDetails">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetSSRDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightLoad">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetFlightLoad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalization">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetLocalization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteList">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetRouteList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationTimeZone">
+      <soap12:operation soapAction="AirAsia.ARMS.LookupWS/GetStationTimeZone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LookupWS">
+    <wsdl:port name="LookupWSSoap" binding="tns:LookupWSSoap">
+      <soap:address location="https://testarms.airasia.com/aaws/lookupws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LookupWSSoap12" binding="tns:LookupWSSoap12">
+      <soap12:address location="https://testarms.airasia.com/aaws/lookupws.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

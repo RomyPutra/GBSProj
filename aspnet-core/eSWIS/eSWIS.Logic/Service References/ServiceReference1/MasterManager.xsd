@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfWasteCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WasteCode" nillable="true" type="WasteCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWasteCode" nillable="true" type="ArrayOfWasteCode" />
+  <xs:complexType name="WasteCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WasteCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WasteDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WasteCode" nillable="true" type="WasteCode" />
+  <xs:complexType name="ArrayOfWasteType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WasteType" nillable="true" type="WasteType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWasteType" nillable="true" type="ArrayOfWasteType" />
+  <xs:complexType name="WasteType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WasteTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WasteTypeDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WasteType" nillable="true" type="WasteType" />
+  <xs:complexType name="ArrayOfPackageType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PackageType" nillable="true" type="PackageType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPackageType" nillable="true" type="ArrayOfPackageType" />
+  <xs:complexType name="PackageType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PackageType" nillable="true" type="PackageType" />
+  <xs:complexType name="ArrayOfTransportVehicle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransportVehicle" nillable="true" type="TransportVehicle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransportVehicle" nillable="true" type="ArrayOfTransportVehicle" />
+  <xs:complexType name="TransportVehicle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Vehicle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransportVehicle" nillable="true" type="TransportVehicle" />
+  <xs:complexType name="ArrayOfTransType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransType" nillable="true" type="TransType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransType" nillable="true" type="ArrayOfTransType" />
+  <xs:complexType name="TransType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TransTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransTypeDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransType" nillable="true" type="TransType" />
+  <xs:complexType name="ArrayOfCompanyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyType" nillable="true" type="CompanyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompanyType" nillable="true" type="ArrayOfCompanyType" />
+  <xs:complexType name="CompanyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyTypeDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyType" nillable="true" type="CompanyType" />
+  <xs:complexType name="ArrayOfReceiveStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReceiveStatus" nillable="true" type="ReceiveStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReceiveStatus" nillable="true" type="ArrayOfReceiveStatus" />
+  <xs:complexType name="ReceiveStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReceiveStatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReceiveStatusDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiveStatus" nillable="true" type="ReceiveStatus" />
+</xs:schema>

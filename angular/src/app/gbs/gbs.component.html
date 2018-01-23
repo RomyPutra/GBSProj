@@ -1,0 +1,55 @@
+<h3>PAYMENT SETTINGS</h3>
+<div style="border-radius: 25px;border: 2px solid #73AD21;padding: 20px;background:white;">
+  <!-- <div class="body table-responsive"> -->
+    <!-- ******************************************************** -->
+    <dx-data-grid
+    id="gridContainer"
+    [rowAlternationEnabled]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [allowColumnResizing]="true"
+    [hoverStateEnabled]="true"
+    [columnResizingMode]="nextColumn"
+    [columnAutoWidth]="true"
+    [dataSource]="group" >
+    
+      <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+  
+      <dxi-column dataField="schemeCode" caption="Code"></dxi-column>
+      <dxi-column dataField="countryCode" caption="Country Code"></dxi-column>
+      <dxi-column dataField="currencyCode" caption="Currency"></dxi-column>
+      <dxi-column dataField="duration" caption="Dur (hrs)"></dxi-column>
+      <dxi-column dataField="minduration" caption="Min Dur (hrs)"></dxi-column>
+      <dxi-column dataField="paymentType" caption="Payment Type"></dxi-column>
+      <dxi-column dataField="attempt_1" caption="Att. 1 (hrs)"></dxi-column>
+      <dxi-column dataField="code_1" caption="Code 1"></dxi-column>
+      <dxi-column dataField="percentage_1" caption="Perc. 1(%)"></dxi-column>
+      <dxi-column dataField="attempt_2" caption="Att. 2 (hrs)"></dxi-column>
+      <dxi-column dataField="code_2" caption="Code 2"></dxi-column>
+      <dxi-column dataField="percentage_2" caption="Perc. 2(%)"></dxi-column>
+      <dxi-column dataField="attempt_3" caption="Att. 3 (hrs)"></dxi-column>
+      <dxi-column dataField="code_3" caption="Code 3"></dxi-column>
+      <dxi-column dataField="percentage_3" caption="Perc. 3(%)"></dxi-column>
+      <dxi-column dataField="minDeposit" caption="Min Pay"></dxi-column>
+      <dxi-column dataField="mixDeposit" caption="Max Pay"></dxi-column>
+      <dxi-column dataField="minDeposit2" caption="Min Pay2"></dxi-column>
+      <dxi-column dataField="mixDeposit2" caption="Max Pay2"></dxi-column>
+  
+      <dxo-remote-operations
+      [sorting]="true"
+      [paging]="true">
+      </dxo-remote-operations>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true">
+      </dxo-pager>
+    </dx-data-grid>
+    <!-- ******************************************************** -->
+  <!-- </div>   -->
+</div>

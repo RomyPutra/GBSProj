@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="faee1686-fd0b-427b-aa39-3fbcc51e8866" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://aktestr3xapi.navitaire.com/AccountManager.svc " Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AccountManager.xsd" MetadataType="Schema" ID="d3d58c9b-08ea-43e7-9734-5a5c63f40cca" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd2" />
+    <MetadataFile FileName="AccountManager1.xsd" MetadataType="Schema" ID="dbe431b2-d033-4a8e-a148-1dcbf2be980d" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd5" />
+    <MetadataFile FileName="AccountManager2.xsd" MetadataType="Schema" ID="1d890cc2-8d40-445c-85c2-7c685a6f6dc7" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd4" />
+    <MetadataFile FileName="AccountManager3.xsd" MetadataType="Schema" ID="a2491c0a-beb5-49f5-90c7-c26cc0db5b68" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd6" />
+    <MetadataFile FileName="AccountManager4.xsd" MetadataType="Schema" ID="87f48b18-3ed3-4f53-8031-0e1d391a0ffd" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd1" />
+    <MetadataFile FileName="AccountManager.disco" MetadataType="Disco" ID="e5b985d3-6cb7-44f5-bf23-6f857adda284" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?disco" />
+    <MetadataFile FileName="AccountManager.wsdl" MetadataType="Wsdl" ID="b71a6c96-b120-45d1-a230-91504be21037" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?wsdl" />
+    <MetadataFile FileName="AccountManager5.xsd" MetadataType="Schema" ID="2ba179c3-4ef8-4ef8-a746-b1601be42a43" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd0" />
+    <MetadataFile FileName="AccountManager6.xsd" MetadataType="Schema" ID="b5da8aa5-b7ed-49cd-a57e-c7bf3457dbcf" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/AccountManager.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

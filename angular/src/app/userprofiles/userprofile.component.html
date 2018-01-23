@@ -1,0 +1,100 @@
+<div class="row clearfix" [@routerTransition]>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="card main-content">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-8">
+						<h2>User Profiles</h2>
+					</div>
+					<div class="col-xs-12 col-sm-4 align-right">
+						<div class="switch panel-switch-btn">
+							
+							<input 
+								id="txtSearch" 
+								type="text" 
+								name="txtSearch" 
+								maxlength="32" 
+								minlength="2" 
+								class="form-control" 
+								placeholder="{{filterPlaceHolder}}" 
+								[(ngModel)]="filterText"
+								(keyup)="onFilterChange()">
+						</div>
+					</div>
+				</div>
+					
+				<ul class="header-dropdown m-r--5">
+					<!-- <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i> -->
+					<li class="dropdown">
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="material-icons">more_vert</i>
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+						</ul>
+					</li>
+				</ul> 
+			</div>
+			<div class="body table-responsive">
+			<!-- ******************************************************** -->
+				<dx-data-grid
+					id="gridContainer"
+					[rowAlternationEnabled]="dxGridConf.rowAlternationEnabled"
+					[showColumnLines]="dxGridConf.showColumnLines"
+					[showRowLines]="dxGridConf.showRowLines"
+					[showBorders]="dxGridConf.showBorders"
+					[allowColumnResizing]="dxGridConf.allowColumnResizing"
+					[hoverStateEnabled]="dxGridConf.hoverStateEnabled"
+					[columnResizingMode]="dxGridConf.columnResizingMode"
+					[columnAutoWidth]="dxGridConf.columnAutoWidth"
+					[dataSource]="dataSource" >
+
+					<dxi-column 
+						dataField="userID" 
+						caption="#"
+						[allowFiltering]="false"
+						[width]="40"
+						[minWidth]="30"
+						[allowSorting]="false" 
+						cellTemplate="actionCellTemplate"></dxi-column>
+					<dxi-column dataField="userID" sortOrder="asc"></dxi-column>
+					<dxi-column dataField="userName"></dxi-column>
+					<dxi-column dataField="lastLogin" dataType="date"></dxi-column>
+					<dxi-column dataField="refID"></dxi-column>
+
+					<div *dxTemplate="let row of 'actionCellTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid">
+								<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+								<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(row.data)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<dxo-remote-operations
+						[sorting]="true"
+						[paging]="true">
+					</dxo-remote-operations>
+					<dxo-paging [pageSize]="dxGridPager.pageSize"></dxo-paging>
+					<dxo-pager 
+						[showPageSizeSelector]="dxGridPager.showPageSizeSelector"
+						[allowedPageSizes]="dxGridPager.allowedPageSizes"
+						[showInfo]="dxGridPager.showInfo">
+					</dxo-pager>
+				</dx-data-grid>
+			<!-- ******************************************************** -->
+
+				<button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="createUserProfile()">
+					<i class="material-icons">add</i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<create-userprofile-modal #createUserprofileModal (modalSave)="refresh()"></create-userprofile-modal>
+<!-- <edit-userprofile-modal #editUserprofileModal (modalSave)="refresh()"></edit-userprofile-modal> -->
+<!-- <edit-userprofile-modal #editUserprofileModal (modalSave)="refresh()"></edit-userprofile-modal> -->

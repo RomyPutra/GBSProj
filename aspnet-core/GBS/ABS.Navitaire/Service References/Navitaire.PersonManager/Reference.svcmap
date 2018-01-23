@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a07a41e0-fc01-48fd-8aef-9d7e8b0223b3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://aktestr3xapi.navitaire.com/PersonManager.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PersonManager.wsdl" MetadataType="Wsdl" ID="e5504a02-dcbc-4865-91e9-d528ed1228ce" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?wsdl" />
+    <MetadataFile FileName="PersonManager.disco" MetadataType="Disco" ID="44008888-4e51-4b3e-a96e-68b7114c3a07" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?disco" />
+    <MetadataFile FileName="PersonManager.xsd" MetadataType="Schema" ID="e11a60c4-7997-46eb-a801-56da1ca95a05" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd6" />
+    <MetadataFile FileName="PersonManager1.xsd" MetadataType="Schema" ID="14a8a6ac-ccf4-4fd3-af40-bdc6fc957ea1" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd5" />
+    <MetadataFile FileName="PersonManager2.xsd" MetadataType="Schema" ID="24dfff71-faca-4618-addb-4b04d141930e" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd4" />
+    <MetadataFile FileName="PersonManager3.xsd" MetadataType="Schema" ID="3ccf9986-7a32-419a-ac08-5ce8b8a5825e" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd3" />
+    <MetadataFile FileName="PersonManager4.xsd" MetadataType="Schema" ID="520891df-8b4f-4cea-9b10-7995655bfa0c" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd2" />
+    <MetadataFile FileName="PersonManager5.xsd" MetadataType="Schema" ID="6142c823-6025-4529-bd72-f7340b5717e2" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd1" />
+    <MetadataFile FileName="PersonManager6.xsd" MetadataType="Schema" ID="d6b0d287-5324-45f8-9261-29c45dc147d9" SourceId="1" SourceUrl="https://aktestr3xapi.navitaire.com/PersonManager.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

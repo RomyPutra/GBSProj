@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menuname>
+	<text name="BtnPreviews"/>
+	<text name="BtnHome"/>
+	<text name="BtnManageBooking"/>
+	<text name="BtnSearchFlight"/>
+	<text name="EmailAdd"/>
+	<text name="Contact"/>
+	<text name="AvCredit"/>
+	<text name="Upcoming"/>
+	<text name="PendingPay"/>
+	<text name="PendingPassUp"/>
+	<text name="Confirm"/>
+	<text name="Cancellation"/>
+	<text name="UploadPass"/>
+	<text name="Notif"/>
+	<text name="Choose"/>
+	<text name="TransID"/>
+	<text name="RecordLoc"/>
+	<text name="BookDate"/>
+	<text name="Flight"/>
+	<text name="FlightFrom"/>
+	<text name="FlightTo"/>
+	<text name="PayExp"/>
+	<text name="CollAmt"/>
+	<text name="TotAmt"/>
+	<text name="AvgFare"/>
+	<text name="DueAmt"/>
+	<text name="Cur"/>
+	<text name="DueBfr"/>
+	<text name="Booking"/>
+	<text name="wascon"/>
+	<text name="waspenpass"/>
+	<text name="waspenpay"/>
+	<text name="wascre"/>
+	<text name="bookstrdt"/>
+	<text name="bookenddt"/>
+	<text name="status"/>
+	<text name="search"/>
+	<text name="expdate"/>
+</menuname>

@@ -1,0 +1,90 @@
+<div class="row clearfix" [@routerTransition]>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="card main-content">
+			<div class="header">
+				<h2>
+					List Of State
+				</h2>
+				<ul class="header-dropdown m-r--5">
+					<i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+					<li class="dropdown">
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="material-icons">more_vert</i>
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="body table-responsive">
+
+			<!-- ******************************************************** -->
+			<dx-data-grid
+			id="gridContainer"
+			[rowAlternationEnabled]="true"
+			[showColumnLines]="false"
+			[showRowLines]="true"
+			[showBorders]="false"
+			[allowColumnResizing]="true"
+			[hoverStateEnabled]="true"
+			[columnResizingMode]="nextColumn"
+			[columnAutoWidth]="true"
+			[dataSource]="state" >
+			
+				<dxo-search-panel 
+					[visible]="true" 
+					[width]="240" 
+					placeholder="Search..."></dxo-search-panel>
+					
+				<dxi-column 
+					dataField="countryCode" 
+					caption="#"
+					[allowFiltering]="false"
+					[width]="40"
+					[minWidth]="30"
+					[allowSorting]="false" 
+					cellTemplate="actionCellTemplate"></dxi-column>
+				<dxi-column dataField="countryCode" caption="Country Code" sortOrder="asc"></dxi-column>
+				<dxi-column dataField="countryDesc" caption="Country"></dxi-column>
+				<dxi-column dataField="stateCode" caption="State Code"></dxi-column>
+				<dxi-column dataField="stateDesc" caption="State"></dxi-column>
+				
+				<div *dxTemplate="let row of 'actionCellTemplate'">
+					<div class="dropdown">
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="material-icons">more_vert</i>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dxgrid">
+							<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editState(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+							<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(row.data)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+						</ul>
+					</div>
+				</div>
+  
+				<dxo-remote-operations
+					[sorting]="true"
+					[paging]="true">
+				</dxo-remote-operations>
+				<dxo-paging [pageSize]="10"></dxo-paging>
+				<dxo-pager 
+					[showPageSizeSelector]="true"
+					[allowedPageSizes]="[5, 10, 20]"
+					[showInfo]="true">
+				</dxo-pager>
+			 </dx-data-grid>
+			<!-- ******************************************************** -->
+
+				<div class="text-align: center;" *ngIf="totalItems > pageSize">
+					<pagination-controls (pageChange)="getDataPage($event)" id="server"></pagination-controls>
+				</div>
+				<button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="createUserProfile()">
+					<i class="material-icons">add</i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<create-state-modal #createStateModal (modalSave)="refresh()"></create-state-modal>
+<edit-state-modal #editStateModal (modalSave)="refresh()"></edit-state-modal> 

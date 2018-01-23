@@ -1,0 +1,116 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BlankMaster.master.cs" Inherits="GroupBooking.Web.Master.BlankMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Online group booking – AirAsia</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/far-min.css" xmlns:AKformatterExtension="urn:navitaire:formatters:mcc">
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/AKBase/Cultures/en-GB/ie7_standard-min.css" xmlns:AKformatterExtension="urn:navitaire:formatters:mcc"><![endif]-->
+    <link rel="icon" type="image/x-icon" href="../images/AKBase/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/AKBase/favicon.ico">
+    <meta name="GENERATOR" content="MSHTML 9.00.8112.16443">
+    <%--<script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
+    <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+    --%>
+</head>
+<body>
+    <div id="allWrap">
+
+    <form id="SkySales" runat="server">
+                <dx:ASPxCallback ID="ASPxCallback1" runat="server" ClientInstanceName="Callback">
+                    <ClientSideEvents CallbackComplete="function(s, e) { LoadingPanel.Hide(); }" />
+                </dx:ASPxCallback>
+
+                <dx:ASPxCallback ID="CallbackBox"  runat="server" ClientInstanceName="CallbackBox">
+                    <ClientSideEvents CallbackComplete="function(s, e) { LoadingPanel.Hide(); }" />
+                </dx:ASPxCallback>
+                <div id="header">
+                    <div id="brand">
+                        <a title="AirAsia - Now Everyone Can Fly" href="http://www.airasia.com/"><span>AirAsia - Now Everyone Can Fly</span></a></div>
+                    <div id="header_subtext">
+                    </div>
+                </div> 
+                <div class="clearAll">
+                </div>
+                <div id="wrapper">
+                    
+                    <div id="wrapper_l">
+                        <div id="wrapper_r">
+                                   
+    <div id="atAGlanceContent" style="height:462px">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    </div>
+    <div id="mainContent">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+    </div>
+    
+                <div class="clearAll">
+                </div>
+
+                <dx:ASPxLoadingPanel runat="server" ID="LoadingPanel" ClientInstanceName="LoadingPanel" Modal="True">
+                </dx:ASPxLoadingPanel>
+
+                </div>
+        </div>
+        </div>
+                </form>
+                <div class="clearAll">
+                </div>
+        
+<div id="footer">
+                    <div id="footer_upperdesign">
+                        <div id="footer_center">
+                            <div>
+                                <H3>
+                                    ABOUT US</H3>
+                                <P><a title="Corporate profile" href="http://www.airasia.com/my/en/corporate/corporateprofile.page" 
+target="_blank">Corporate profile</a></P>
+<P>
+            <a title="Investor relations" href="http://www.airasia.com/my/en/corporate/investormain.page" 
+target="_blank">Investor relations</a></P>
+                                <P>
+                                    <a title="Ad space" href="http://www.airasia.com/my/en/airspacead.page" 
+target="_blank">Ad space</a></P>
+                                <P>
+                                    <a title="Terms and Conditions" href="http://www.airasia.com/my/en/tnc_main.page" 
+target="_blank">Terms and Conditions</a></P>
+                                <P>
+                                    <a title="Sitemap" href="http://www.airasia.com/my/en/sitemap.page" target="_blank">Sitemap</a></P>
+                            </div>
+                            <div>
+                                <H3>
+                                    GET IN TOUCH</H3>
+                                <P>
+                                    <a title="Ask AirAsia" href="http://www.airasia.com/ask/" target="_blank">Ask 
+AirAsia</a></P>
+                                <P><a href="http://www.airasia.com/my/en/contactus.page" target="_parent">Our call centres</a></P>
+                                <P><a href="http://www.airasia.com/my/en/contactus_atsc.page" target="_parent">Our service centres</a></P>
+</div>
+                            <div>
+                                <H3>
+                                    OUR PARTNER</H3>
+                                <P>
+                                    <a title="Expedia" href="http://www.expedia.com.my/" 
+target="_blank">Expedia</a></P>
+                            </div>
+                            <div>
+                                <H3>LOGIN</H3>
+                                <P><a title="Administrative" href="http://172.30.2.253/GBS2/admin/adminlogin.aspx" target="_blank">Administrative</a></P>
+                            </div>
+                        </div>
+                        <div id="footer_right">Any usage of AirAsia.com states your compliance to our <a onclick="MM_openBrWindow('/my/en/termofuse.html','','scrollbars=yes,width=600,height=500')" href="javascript:void(0);">Term of use</a> and <a onclick="MM_openBrWindow('/my/en/privacypolicy.html','','scrollbars=yes,width=600,height=500')" href="javascript:void(0);">Privacy Policy</a><br />
+©2012 AirAsia. <a href="http://www.miibeian.gov.cn/" target="_blank"> YUE ICP BEI 09104530NO</a></div>
+                    </div>
+                    <div id="footer_design">
+                    </div>
+                </div>
+                <div class="clearAll">
+                </div>            
+    
+    </div>
+</body>
+</html>

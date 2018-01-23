@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "eService", "eService.vbproj", "{EF101EF1-5485-4B92-AF8A-4E42763A6C83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABS.Navitaire", "..\ABS.Navitaire\ABS.Navitaire.csproj", "{9A63EB52-C4EF-4854-BA77-2C11B3609A46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABS.Logic.GroupBooking", "..\ABS.Logic.GroupBooking\ABS.Logic.GroupBooking.csproj", "{DA0BC31D-429A-4722-BBB5-FFB628A7A8CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABS.Logic.Shared", "..\ABS.Logic.Shared\ABS.Logic.Shared.csproj", "{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF101EF1-5485-4B92-AF8A-4E42763A6C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF101EF1-5485-4B92-AF8A-4E42763A6C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF101EF1-5485-4B92-AF8A-4E42763A6C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF101EF1-5485-4B92-AF8A-4E42763A6C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A63EB52-C4EF-4854-BA77-2C11B3609A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A63EB52-C4EF-4854-BA77-2C11B3609A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A63EB52-C4EF-4854-BA77-2C11B3609A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A63EB52-C4EF-4854-BA77-2C11B3609A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA0BC31D-429A-4722-BBB5-FFB628A7A8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA0BC31D-429A-4722-BBB5-FFB628A7A8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA0BC31D-429A-4722-BBB5-FFB628A7A8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA0BC31D-429A-4722-BBB5-FFB628A7A8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://42.61.96.158:8080/tfs/cx%20projects
+		SccProjectUniqueName0 = ..\\ABS.Navitaire\\ABS.Navitaire.csproj
+		SccProjectName0 = ../ABS.Navitaire
+		SccAuxPath0 = http://42.61.96.158:8080/tfs/cx%20projects
+		SccLocalPath0 = ..\\ABS.Navitaire
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = ..\\ABS.Logic.GroupBooking\\ABS.Logic.GroupBooking.csproj
+		SccProjectName1 = ../ABS.Logic.GroupBooking
+		SccAuxPath1 = http://42.61.96.158:8080/tfs/cx%20projects
+		SccLocalPath1 = ..\\ABS.Logic.GroupBooking
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = ..\\ABS.Logic.Shared\\ABS.Logic.Shared.csproj
+		SccProjectName2 = ../ABS.Logic.Shared
+		SccAuxPath2 = http://42.61.96.158:8080/tfs/cx%20projects
+		SccLocalPath2 = ..\\ABS.Logic.Shared
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

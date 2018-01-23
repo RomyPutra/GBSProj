@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="en">
+  <texts>
+    <text name="BtnPreviews" value="Previous GBS" />
+    <text name="BtnHome" value="Home" />
+    <text name="BtnManageBooking" value="Manage My Booking" />
+    <text name="BtnSearchFlight" value="Search for Flight" />
+  	<text name="EmailAdd" value="Email Address" />
+	<text name="Contact" value="Contact Number"/>
+	<text name="AvCredit" value="Available Credit"/>
+	<text name="Upcoming" value="Upcoming Booking Expiry"/>
+	<text name="PendingPay" value="Pending Payment"/>
+	<text name="PendingPassUp" value="Pending Passenger Upload"/>
+	<text name="Confirm" value="Confirmed"/>
+	<text name="Cancellation" value="Cancellation"/>
+	<text name="UploadPass" value="Upload Passenger"/>
+	<text name="Notif" value="Notifications"/>
+	<text name="Choose" value="Choose"/>
+	<text name="TransID" value="Transaction ID"/>
+	<text name="RecordLoc" value="Record Locator"/>
+	<text name="BookDate" value="Booking Date"/>
+	<text name="Flight" value="Flight"/>
+	<text name="FlightFrom" value="Flight From"/>
+	<text name="FlightTo" value="Flight To"/>
+	<text name="PayExp" value="Payment Expiry"/>
+	<text name="CollAmt" value="Collected Amount"/>
+	<text name="TotAmt" value="Total Amount"/>
+	<text name="AvgFare" value="Average Fare"/>
+	<text name="DueAmt" value="Due Amount"/>
+	<text name="Cur" value="Currency"/>
+	<text name="DueBfr" value="Due before"/>
+	<text name="Booking" value="Booking"/>
+	<text name="wascon" value="was confirmed"/>
+	<text name="waspenpass" value="was pending for passenger upload"/>
+	<text name="waspenpay" value="was pending for payment"/>
+	<text name="wascre" value="was created and pending for payment"/>
+	<text name="bookstrdt" value="Booking Start Date"/>
+	<text name="bookenddt" value="Booking End Date"/>
+	<text name="status" value="Status"/>
+	<text name="search" value="Search"/>
+	<text name="expdate" value="Expiry Date"/>
+  </texts>
+</localizationDictionary>

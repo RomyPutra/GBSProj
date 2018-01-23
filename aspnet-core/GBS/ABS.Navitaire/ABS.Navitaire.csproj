@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A63EB52-C4EF-4854-BA77-2C11B3609A46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ABS</RootNamespace>
+    <AssemblyName>ABS.Navitaire</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Staging\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\myApp\DLLS\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\ABS.GBS\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\Users\vdralvintee\Desktop\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SEAL.Data">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SEAL.Data.3.0.0-preview2\lib\net40\SEAL.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SEAL.Model">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\SEAL.3.0.0-preview2\lib\net40\SEAL.Model.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sharpbrake.Client, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ABS.GBS\ABS.GBS\bin\Sharpbrake.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.VisualBasic" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIAgent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="APIAgent.Designer.cs">
+      <DependentUpon>APIAgent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="APIBase.Designer.cs">
+      <DependentUpon>APIBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIBooking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="APIBooking.Designer.cs">
+      <DependentUpon>APIBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AALookUpWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ACE.LookUpManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ACE.SessionManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Navitaire.AccountManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Navitaire.AgentManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Navitaire.BookingManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Navitaire.PersonManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Navitaire.SessionManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Navitaire.UtilitiesManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\Live\App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\Staging\App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.ArrayOfStCurrency.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.CurrencyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.FlightLoadResults.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.LocalizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.LogonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.RBSResponseDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.ResultDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.Results.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.RouteInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\ABS.AALookUpWS.StationResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AALookUpWS\lookupws.wsdl" />
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.AGPosAmtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.AllowCurrencyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetCodeNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetConvertAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetCultureCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetExternalRateListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetFeeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetInternalRateListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.GetRouteListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\ABS.ACE.LookUpManager.StationTimeZone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\LookupService.wsdl" />
+    <None Include="Service References\ACE.LookUpManager\LookupService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\LookupService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\LookupService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ACE.LookUpManager\LookupService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ACE.SessionManager\ABS.ACE.SessionManager.LogonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.SessionManager\ABS.ACE.SessionManager.LogoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ACE.SessionManager\SessionService.wsdl" />
+    <None Include="Service References\ACE.SessionManager\SessionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ACE.SessionManager\SessionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ACE.SessionManager\SessionService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\ABS.Navitaire.AccountManager.Account.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\ABS.Navitaire.AccountManager.AccountBatch.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\ABS.Navitaire.AccountManager.AccountTransaction.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\ABS.Navitaire.AccountManager.AvailableCreditResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\ABS.Navitaire.AccountManager.FindAccountTransactionResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager.wsdl" />
+    <None Include="Service References\Navitaire.AccountManager\AccountManager.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\ABS.Navitaire.AgentManager.Agent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\ABS.Navitaire.AgentManager.CommitAgentResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\ABS.Navitaire.AgentManager.FindAgentResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\ABS.Navitaire.AgentManager.Organization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\ABS.Navitaire.AgentManager.OrganizationGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\ABS.Navitaire.AgentManager.Role.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager.wsdl" />
+    <None Include="Service References\Navitaire.AgentManager\AgentManager.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.AddPaymentToBookingResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.AssignedSeatInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.AvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.Booking.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.BookingUpdateResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.CaptureBaggageEventResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.EquipmentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.FindBaggageEventResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.FindBookingResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.GetBookingFromStateFilteredResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.GetBookingHistoryResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.GetBookingPaymentResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.GetBookingStatelessFilteredResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.LowFareAVSMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.LowFareTripAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.MoveAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.MoveFeePriceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.MoveJourneyBookingsResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.PassengerBag.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.PassengerScoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.Payment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.PaymentFeePriceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.SeatAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.SeparateSegmentByEquipmentResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.SSRAvailabilityForBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.SSRAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.TripAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.TripAvailabilityWithSSRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.UpgradeAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\ABS.Navitaire.BookingManager.ValidationPayment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager1.wsdl" />
+    <None Include="Service References\Navitaire.BookingManager\BookingManager10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager101.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager102.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager103.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager104.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager105.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager106.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager107.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager108.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager109.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\ABS.Navitaire.PersonManager.FindPersonResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\ABS.Navitaire.PersonManager.GetPersonInfoList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\ABS.Navitaire.PersonManager.Person.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager.wsdl" />
+    <None Include="Service References\Navitaire.PersonManager\PersonManager.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.SessionManager\ABS.Navitaire.SessionManager.TransferSessionResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.SessionManager\SessionManager1.wsdl" />
+    <None Include="Service References\Navitaire.SessionManager\SessionManager5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.SessionManager\SessionManager51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.SessionManager\SessionManager52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.SessionManager\SessionManager53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.SessionManager\SessionManager54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.UtilitiesManager\ABS.Navitaire.UtilitiesManager.GetExternalRatesListResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Navitaire.UtilitiesManager\UtilitiesManager.wsdl" />
+    <None Include="Service References\Navitaire.UtilitiesManager\UtilitiesManager.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.UtilitiesManager\UtilitiesManager1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.UtilitiesManager\UtilitiesManager2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.UtilitiesManager\UtilitiesManager3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Navitaire.UtilitiesManager\UtilitiesManager4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AALookUpWS\" />
+    <WCFMetadataStorage Include="Service References\ACE.LookUpManager\" />
+    <WCFMetadataStorage Include="Service References\ACE.SessionManager\" />
+    <WCFMetadataStorage Include="Service References\Navitaire.AccountManager\" />
+    <WCFMetadataStorage Include="Service References\Navitaire.AgentManager\" />
+    <WCFMetadataStorage Include="Service References\Navitaire.BookingManager\" />
+    <WCFMetadataStorage Include="Service References\Navitaire.PersonManager\" />
+    <WCFMetadataStorage Include="Service References\Navitaire.SessionManager\" />
+    <WCFMetadataStorage Include="Service References\Navitaire.UtilitiesManager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.BookingManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.BookingManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.BookingManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.SessionManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.SessionManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.SessionManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AgentManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AgentManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AgentManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AccountManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AccountManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AccountManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.PersonManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.PersonManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.PersonManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AALookUpWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AALookUpWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AALookUpWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABS.Logic.Shared\ABS.Logic.Shared.csproj">
+      <Project>{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}</Project>
+      <Name>ABS.Logic.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.UtilitiesManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.UtilitiesManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.UtilitiesManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AccountManager\AccountManager.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.AgentManager\AgentManager.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.PersonManager\PersonManager.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ACE.SessionManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ACE.SessionManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ACE.SessionManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ACE.LookUpManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ACE.LookUpManager\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ACE.LookUpManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Navitaire.BookingManager\BookingManager1.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" /> -->
+  <!-- <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild"> -->
+  <!-- <PropertyGroup> -->
+  <!-- <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText> -->
+  <!-- </PropertyGroup> -->
+  <!-- <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" /> -->
+  <!-- </Target> -->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

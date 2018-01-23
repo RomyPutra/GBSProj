@@ -1,0 +1,64 @@
+<div bsModal #createUserGroupModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="createUserGroupModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #createUserGroupForm="ngForm" id="frm_create_usergroup" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Create New User Group")}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <label for="repeatSelect"> Repeat select: </label>
+                            <select name="repeatSelect" id="repeatSelect" ng-model="groups.groupCode">
+                                <option value="1">DOE</option>
+                                <option value="2">Generator</option>
+                                <option value="3">Transporter</option>
+                                <option value="4">Reciever</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="displayname" type="text" name="DisplayName" [(ngModel)]="groups.groupName" required maxlength="32" minlength="2"
+                                        class="validate form-control">
+                                    <label for="displayname" class="form-label">{{l("DisplayName")}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-1">
+                                <input type="checkbox" name="permission" value="{{groups.Status}}" class="filled-in" id="permission-{{permissionIndex}}"
+                                checked="checked" />
+                                <label for="permission-{{permissionIndex}}">{{permission.displayName}}</label>
+                            </div>
+                            <label>Actived</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!createUserGroupForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

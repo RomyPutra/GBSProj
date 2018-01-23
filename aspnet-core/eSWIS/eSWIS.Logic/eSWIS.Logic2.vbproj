@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{86ECF3C4-F6A8-4A57-B089-11B738343F5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>eSWIS.Logic</RootNamespace>
+    <AssemblyName>eSWIS.Logic</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>eSWIS.Logic.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>eSWIS.Logic.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <BaseAddress>4400640</BaseAddress>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>eSWISKA.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gibraltar.Agent">
+      <HintPath>..\eCN.Web\Bin\Gibraltar.Agent.dll</HintPath>
+    </Reference>
+    <Reference Include="Gibraltar.Agent.Web">
+      <HintPath>..\eCN.Web\Bin\Gibraltar.Agent.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SEAL.Data, Version=2.1.1.0, Culture=neutral, PublicKeyToken=2191253efa3a3bc4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SEAL.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SEAL.Model, Version=2.2.0.0, Culture=neutral, PublicKeyToken=2191253efa3a3bc4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SEAL.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\ANNOUNCEMENT.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\CompDict.Designer.vb">
+      <DependentUpon>CompDict.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\CompDict.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\ConsignDTL.Designer.vb">
+      <DependentUpon>ConsignDTL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\ConsignDTL.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\ConsignHDR.Designer.vb">
+      <DependentUpon>ConsignHDR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\ConsignHDR.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\ConsignLBL.Designer.vb">
+      <DependentUpon>ConsignLBL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\ConsignLBL.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\CONSIGNLOG.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\FileUpload.Designer.vb">
+      <DependentUpon>FileUpload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\FileUpload.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\InventoryHistory.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\InventorySubmit.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\ItemComponent.Designer.vb">
+      <DependentUpon>ItemComponent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\ItemComponent.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\NotaKonsainan.Designer.vb">
+      <DependentUpon>NotaKonsainan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\NotaKonsainan.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\NotifyItmComp.Designer.vb">
+      <DependentUpon>NotifyItmComp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\NotifyItmComp.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\TransactionDetails.Designer.vb">
+      <DependentUpon>TransactionDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\TransactionDetails.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\Transaction.Designer.vb">
+      <DependentUpon>Transaction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\Transaction.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\ItemLoc.Designer.vb">
+      <DependentUpon>ItemLoc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\ItemLoc.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\NotificationDetails.Designer.vb">
+      <DependentUpon>NotificationDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\NotificationDetails.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\TWG_SubmissionDtl.Designer.vb">
+      <DependentUpon>TWG_SubmissionDtl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\TWG_SubmissionDtl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\TWG_SubmissionHdr.Designer.vb">
+      <DependentUpon>TWG_SubmissionHdr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\TWG_SubmissionHdr.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\WACDtl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\WACHdr.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\WACTREATMENT.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CodeMaster\Unit.Designer.vb">
+      <DependentUpon>Unit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CodeMaster\Unit.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CodeMaster\WasteType.Designer.vb">
+      <DependentUpon>WasteType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CodeMaster\WasteType.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="eKAS.Designer.vb">
+      <DependentUpon>eKAS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="eKAS.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\PBT.Designer.vb">
+      <DependentUpon>PBT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSettings\PBT.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="eSWISLogic.Designer.vb">
+      <DependentUpon>eSWISLogic.vb</DependentUpon>
+    </Compile>
+    <Compile Include="eSWISLogic.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contract\License.Designer.vb">
+      <DependentUpon>License.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contract\License.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contract\LicenseItem.Designer.vb">
+      <DependentUpon>LicenseItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contract\LicenseItem.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\City.Designer.vb">
+      <DependentUpon>City.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSettings\City.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\Branch.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\SysPreft.Designer.vb">
+      <DependentUpon>SysPreft.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSettings\SysPreft.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\Country.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\Customer.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\Area.Designer.vb">
+      <DependentUpon>Area.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSettings\Area.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\State.Designer.vb">
+      <DependentUpon>State.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSettings\State.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GeneralSettings\UserProfile.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventory\Item.Designer.vb">
+      <DependentUpon>Item.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\Item.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventory\ItemCategory.Designer.vb">
+      <DependentUpon>ItemCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ItemCategory.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventory\StorageMaster.Designer.vb">
+      <DependentUpon>StorageMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\StorageMaster.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventory\WasteComponent.Designer.vb">
+      <DependentUpon>WasteComponent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\WasteComponent.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Log\MobileActivityLog.designer.vb">
+      <DependentUpon>MobileActivityLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Log\MobileActivityLog.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Contract\LicenseCategory.Designer.vb">
+      <DependentUpon>LicenseCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Contract\LicenseCategory.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Profiles\Company.designer.vb">
+      <DependentUpon>Company.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Company.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Profiles\EmployeeBranch.Designer.vb">
+      <DependentUpon>EmployeeBranch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\EmployeeBranch.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Profiles\Location.designer.vb">
+      <DependentUpon>Location.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Location.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Profiles\Employee.designer.vb">
+      <DependentUpon>Employee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Employee.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Profiles\Vehicle.designer.vb">
+      <DependentUpon>Vehicle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Vehicle.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Report.Designer.vb">
+      <DependentUpon>Report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Security\PermissionSet.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Security\UserGroup.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Security\UserProfile.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Actions\Notification.Designer.vb">
+      <DependentUpon>Notification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\Notification.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Security\UsrVerify.designer.vb">
+      <DependentUpon>UsrVerify.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UsrVerify.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TWG\TWG_RESDTL.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TWG\TWG_RESHDR.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_ACCMASTER.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_ACCSCOPE.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_BASECOMP.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_BASELABEL.Designer.vb">
+      <DependentUpon>WAC_BASELABEL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WAC\WAC_BASELABEL.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_BASELINE.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_CHARMASTER.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_CHARSCOPE.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_COMPCHART.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_UNIVCOMP.Designer.vb">
+      <DependentUpon>WAC_UNIVCOMP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WAC\WAC_UNIVCOMP.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_WASLABEL.Designer.vb">
+      <DependentUpon>WAC_WASLABEL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WAC\WAC_WASLABEL.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WAC\WAC_WRLIST.Designer.vb">
+      <DependentUpon>WAC_WRLIST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WAC\WAC_WRLIST.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="eSWISKA.snk" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eSWIS.Shared\eSWIS.Shared.vbproj">
+      <Project>{7484CAB1-B954-45E4-8E07-F46D28EF7489}</Project>
+      <Name>eSWIS.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

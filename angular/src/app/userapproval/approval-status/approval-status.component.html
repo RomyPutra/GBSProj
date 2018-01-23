@@ -1,0 +1,170 @@
+<div bsModal #approvalStatusModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="approvalStatusModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+        <div class="modal-dialog">
+    
+            <div #modalContent class="modal-content">
+    
+                <form *ngIf="active" #approvalStatusForm="ngForm" id="frm_approval_status" novalidate (ngSubmit)="save()">
+    
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="close()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">
+                            <!-- <span>{{l("userID")}} <span *ngIf="Approvals.isStatic"> (<span style="color:red">static</span>)</span></span>  -->
+                        <p> EDIT USER APPROVAL</p>
+                        </h4>
+                    </div>
+                    <div class="modal-body" *ngIf="Approvals">
+    
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="userID">User ID</label>
+                                        <p id="userID" name="userID" type="text">{{Approvals.userID}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+                                                
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="bizRegID">BIZ ID</label>
+                                        <p id="bizRegID" name="bizRegID" type="text">{{Approvals.bizRegID}}</p>        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="regNo">Register No.</label>
+                                        <p id="regNo" name="regNo" type="text">{{Approvals.regNo}}</p>        
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="accNo">Account Number</label>
+                                        <p id="accNo" name="accNo" type="text">{{Approvals.accNo}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="companyName">Company Name</label>
+                                        <p id="companyName" name="companyName" type="text">{{Approvals.companyName}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="requestDate1">Request Date 1</label>
+                                        <p id="requestDate1" name="requestDate1" type="text">{{Approvals.requestDate1}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="requestDate2">Request Date2 </label>
+                                        <p id="requestDate2" name="requestDate2" type="text">{{Approvals.requestDate2}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="syncLastUpd">Sync Date</label>
+                                        <p id="syncLastUpd" name="syncLastUpd" type="text">{{Approvals.syncLastUpd}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="lastSyncBy">Sync By</label>
+                                        <p id="lastSyncBy" name="lastSyncBy" type="text">{{Approvals.lastSyncBy}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label for="remark">Remark</label>
+                                        <p id="remark" name="remark" type="text">{{Approvals.remark}}</p>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix" >
+                            <label class="col-sm-12">Status Approval</label>
+                            <div class="col-sm-4">     
+                                <div class="form-group form-float">
+                                    <p align="center">
+                                        <input  id="chkPending" type="checkbox" class="filled-in chk-col-black" id="chkPending" [checked]="isChecked1" (change)="changeCheckbox('Pending')">
+                                        <label for="chkPending" title="displayPending">Pending</label>
+                                    </p>
+                                </div>
+                            </div>
+                        
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <p align="center">
+                                        <input id="chkApprove" type="checkbox" class="filled-in chk-col-green" id="chkApprove" [checked]="isChecked2" (change)="changeCheckbox('Approved')">
+                                        <label for="chkApprove" title="displayApprove">Approved</label>
+                                    </p>
+                                </div>
+                            </div>
+                        
+                            <div class="col-sm-4">
+                                <div class="form-group form-float">
+                                    <p align="center">
+                                        <input id="chkReject" type="checkbox" class="filled-in chk-col-red" id="chkReject" [checked]="isChecked3" (change)="changeCheckbox('Rejected')">
+                                        <label for="chkReject" title="displayReject">Reject</label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row clearfix" [hidden]="selectedState!=1">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label for="rejectremark">Reject Remark</label>
+                                            <textarea rows="4"  class="form-control no-resize" name="rejectRemark" [(ngModel)]="Approvals.rejectRemark" >{{Approvals.rejectRemark}}</textarea>                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                    <div class="modal-footer">
+                        <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                            {{l("Cancel")}}
+                        </button>
+                        <button [disabled]="!approvalStatusForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                            {{l("Save")}}
+                        </button>
+                    </div>
+                </div> 
+    
+                </form> 
+            </div>
+        </div>
+    </div>

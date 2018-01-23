@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.navitaire.com/WebServices/DataContracts/Utilities" elementFormDefault="qualified" targetNamespace="http://schemas.navitaire.com/WebServices/DataContracts/Utilities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://aktestr3xapi.navitaire.com/UtilitiesManager.svc?xsd=xsd4" namespace="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" />
+  <xs:complexType name="GetExternalRatesListResponseData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalRateList" nillable="true" type="tns:ArrayOfExternalRate" />
+      <xs:element minOccurs="0" name="ValidationErrorList" nillable="true" type="tns:ArrayOfValidationError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetExternalRatesListResponseData" nillable="true" type="tns:GetExternalRatesListResponseData" />
+  <xs:complexType name="ArrayOfExternalRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExternalRate" nillable="true" type="tns:ExternalRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExternalRate" nillable="true" type="tns:ArrayOfExternalRate" />
+  <xs:complexType name="ExternalRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RateID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExchangeRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="QuotedCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollectedCurrency" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalRate" nillable="true" type="tns:ExternalRate" />
+  <xs:complexType name="ArrayOfValidationError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ValidationError" nillable="true" type="tns:ValidationError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfValidationError" nillable="true" type="tns:ArrayOfValidationError" />
+  <xs:complexType name="ValidationError">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.navitaire.com/WebServices/DataContracts/Common/Enumerations" minOccurs="0" name="ErrorType" type="q1:PaymentValidationErrorType" />
+      <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValidationError" nillable="true" type="tns:ValidationError" />
+</xs:schema>

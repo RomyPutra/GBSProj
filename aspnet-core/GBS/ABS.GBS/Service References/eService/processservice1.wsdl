@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AppPassKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppPassKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppPassKeyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectionTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectionTestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditShellProcess">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreditShellProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditShellProcessResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditShellProcessByPNR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecordLocator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BatchNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditShellProcessByPNRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditShellProcessByPNRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupBookingEmailing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EmailType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AgentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PaymentAmt" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecordLocator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupBookingEmailingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupBookingEmailingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupBookingEmailingMultiPNR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EmailType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AgentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PaymentAmt" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecordLocator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupBookingEmailingMultiPNRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupBookingEmailingMultiPNRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CustomEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CustomEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentPasswordRetrievalProcess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgentPasswordRetrievalProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgentPasswordRetrievalProcessResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReminderProcess">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReminderProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReminderProcessResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResendReminder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="transID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResendReminderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResendReminderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LastProcessMessage">
+        <s:complexType />
+      </s:element>
+      <s:element name="LastProcessMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LastProcessMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelBooking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgentID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNR" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelBookingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelBookingResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetBooking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PNR" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetBookingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetBookingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelTransaction">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelTransactionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAllPaymentExpiryBookingDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Mode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAllPaymentExpiryBookingDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateAllPaymentExpiryBookingDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFlight">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateFlightResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFlightResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClearJourney">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClearJourneyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClearJourneyResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUnconfirmedTransaction">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateUnconfirmedTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUnconfirmedTransactionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePendingPaymentTransaction">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePendingPaymentTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePendingPaymentTransactionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePendingPassengerTransaction">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePendingPassengerTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePendingPassengerTransactionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestFlight">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLatestFlightResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLatestFlightResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AutoCancelFlight">
+        <s:complexType />
+      </s:element>
+      <s:element name="AutoCancelFlightResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AutoCancelFlightResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AppPassKeySoapIn">
+    <wsdl:part name="parameters" element="tns:AppPassKey" />
+  </wsdl:message>
+  <wsdl:message name="AppPassKeySoapOut">
+    <wsdl:part name="parameters" element="tns:AppPassKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionTest" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreditShellProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:CreditShellProcess" />
+  </wsdl:message>
+  <wsdl:message name="CreditShellProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:CreditShellProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreditShellProcessByPNRSoapIn">
+    <wsdl:part name="parameters" element="tns:CreditShellProcessByPNR" />
+  </wsdl:message>
+  <wsdl:message name="CreditShellProcessByPNRSoapOut">
+    <wsdl:part name="parameters" element="tns:CreditShellProcessByPNRResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupBookingEmailingSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupBookingEmailing" />
+  </wsdl:message>
+  <wsdl:message name="GroupBookingEmailingSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupBookingEmailingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupBookingEmailingMultiPNRSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupBookingEmailingMultiPNR" />
+  </wsdl:message>
+  <wsdl:message name="GroupBookingEmailingMultiPNRSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupBookingEmailingMultiPNRResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:CustomEmail" />
+  </wsdl:message>
+  <wsdl:message name="CustomEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:CustomEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgentPasswordRetrievalProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:AgentPasswordRetrievalProcess" />
+  </wsdl:message>
+  <wsdl:message name="AgentPasswordRetrievalProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:AgentPasswordRetrievalProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReminderProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:ReminderProcess" />
+  </wsdl:message>
+  <wsdl:message name="ReminderProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:ReminderProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResendReminderSoapIn">
+    <wsdl:part name="parameters" element="tns:ResendReminder" />
+  </wsdl:message>
+  <wsdl:message name="ResendReminderSoapOut">
+    <wsdl:part name="parameters" element="tns:ResendReminderResponse" />
+  </wsdl:message>
+  <wsdl:message name="LastProcessMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:LastProcessMessage" />
+  </wsdl:message>
+  <wsdl:message name="LastProcessMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:LastProcessMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelBooking" />
+  </wsdl:message>
+  <wsdl:message name="CancelBookingSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetBookingSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetBooking" />
+  </wsdl:message>
+  <wsdl:message name="TestGetBookingSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelTransaction" />
+  </wsdl:message>
+  <wsdl:message name="CancelTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAllPaymentExpiryBookingDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAllPaymentExpiryBookingDetails" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAllPaymentExpiryBookingDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAllPaymentExpiryBookingDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFlightSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFlight" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFlightSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClearJourneySoapIn">
+    <wsdl:part name="parameters" element="tns:ClearJourney" />
+  </wsdl:message>
+  <wsdl:message name="ClearJourneySoapOut">
+    <wsdl:part name="parameters" element="tns:ClearJourneyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUnconfirmedTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUnconfirmedTransaction" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUnconfirmedTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUnconfirmedTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePendingPaymentTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePendingPaymentTransaction" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePendingPaymentTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePendingPaymentTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePendingPassengerTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePendingPassengerTransaction" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePendingPassengerTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePendingPassengerTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestFlightSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLatestFlight" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestFlightSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLatestFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutoCancelFlightSoapIn">
+    <wsdl:part name="parameters" element="tns:AutoCancelFlight" />
+  </wsdl:message>
+  <wsdl:message name="AutoCancelFlightSoapOut">
+    <wsdl:part name="parameters" element="tns:AutoCancelFlightResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProcessServiceSoap">
+    <wsdl:operation name="AppPassKey">
+      <wsdl:input message="tns:AppPassKeySoapIn" />
+      <wsdl:output message="tns:AppPassKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <wsdl:input message="tns:ConnectionTestSoapIn" />
+      <wsdl:output message="tns:ConnectionTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreditShellProcess">
+      <wsdl:input message="tns:CreditShellProcessSoapIn" />
+      <wsdl:output message="tns:CreditShellProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreditShellProcessByPNR">
+      <wsdl:input message="tns:CreditShellProcessByPNRSoapIn" />
+      <wsdl:output message="tns:CreditShellProcessByPNRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupBookingEmailing">
+      <wsdl:input message="tns:GroupBookingEmailingSoapIn" />
+      <wsdl:output message="tns:GroupBookingEmailingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupBookingEmailingMultiPNR">
+      <wsdl:input message="tns:GroupBookingEmailingMultiPNRSoapIn" />
+      <wsdl:output message="tns:GroupBookingEmailingMultiPNRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomEmail">
+      <wsdl:input message="tns:CustomEmailSoapIn" />
+      <wsdl:output message="tns:CustomEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgentPasswordRetrievalProcess">
+      <wsdl:input message="tns:AgentPasswordRetrievalProcessSoapIn" />
+      <wsdl:output message="tns:AgentPasswordRetrievalProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReminderProcess">
+      <wsdl:input message="tns:ReminderProcessSoapIn" />
+      <wsdl:output message="tns:ReminderProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendReminder">
+      <wsdl:input message="tns:ResendReminderSoapIn" />
+      <wsdl:output message="tns:ResendReminderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LastProcessMessage">
+      <wsdl:input message="tns:LastProcessMessageSoapIn" />
+      <wsdl:output message="tns:LastProcessMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <wsdl:input message="tns:CancelBookingSoapIn" />
+      <wsdl:output message="tns:CancelBookingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetBooking">
+      <wsdl:input message="tns:TestGetBookingSoapIn" />
+      <wsdl:output message="tns:TestGetBookingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelTransaction">
+      <wsdl:input message="tns:CancelTransactionSoapIn" />
+      <wsdl:output message="tns:CancelTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAllPaymentExpiryBookingDetails">
+      <wsdl:input message="tns:UpdateAllPaymentExpiryBookingDetailsSoapIn" />
+      <wsdl:output message="tns:UpdateAllPaymentExpiryBookingDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFlight">
+      <wsdl:input message="tns:UpdateFlightSoapIn" />
+      <wsdl:output message="tns:UpdateFlightSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearJourney">
+      <wsdl:input message="tns:ClearJourneySoapIn" />
+      <wsdl:output message="tns:ClearJourneySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnconfirmedTransaction">
+      <wsdl:input message="tns:UpdateUnconfirmedTransactionSoapIn" />
+      <wsdl:output message="tns:UpdateUnconfirmedTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePendingPaymentTransaction">
+      <wsdl:input message="tns:UpdatePendingPaymentTransactionSoapIn" />
+      <wsdl:output message="tns:UpdatePendingPaymentTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePendingPassengerTransaction">
+      <wsdl:input message="tns:UpdatePendingPassengerTransactionSoapIn" />
+      <wsdl:output message="tns:UpdatePendingPassengerTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestFlight">
+      <wsdl:input message="tns:GetLatestFlightSoapIn" />
+      <wsdl:output message="tns:GetLatestFlightSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AutoCancelFlight">
+      <wsdl:input message="tns:AutoCancelFlightSoapIn" />
+      <wsdl:output message="tns:AutoCancelFlightSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProcessServiceSoap" type="tns:ProcessServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppPassKey">
+      <soap:operation soapAction="http://tempuri.org/AppPassKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <soap:operation soapAction="http://tempuri.org/ConnectionTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditShellProcess">
+      <soap:operation soapAction="http://tempuri.org/CreditShellProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditShellProcessByPNR">
+      <soap:operation soapAction="http://tempuri.org/CreditShellProcessByPNR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupBookingEmailing">
+      <soap:operation soapAction="http://tempuri.org/GroupBookingEmailing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupBookingEmailingMultiPNR">
+      <soap:operation soapAction="http://tempuri.org/GroupBookingEmailingMultiPNR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomEmail">
+      <soap:operation soapAction="http://tempuri.org/CustomEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentPasswordRetrievalProcess">
+      <soap:operation soapAction="http://tempuri.org/AgentPasswordRetrievalProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReminderProcess">
+      <soap:operation soapAction="http://tempuri.org/ReminderProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendReminder">
+      <soap:operation soapAction="http://tempuri.org/ResendReminder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastProcessMessage">
+      <soap:operation soapAction="http://tempuri.org/LastProcessMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <soap:operation soapAction="http://tempuri.org/CancelBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetBooking">
+      <soap:operation soapAction="http://tempuri.org/TestGetBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelTransaction">
+      <soap:operation soapAction="http://tempuri.org/CancelTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAllPaymentExpiryBookingDetails">
+      <soap:operation soapAction="http://tempuri.org/UpdateAllPaymentExpiryBookingDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFlight">
+      <soap:operation soapAction="http://tempuri.org/UpdateFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearJourney">
+      <soap:operation soapAction="http://tempuri.org/ClearJourney" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnconfirmedTransaction">
+      <soap:operation soapAction="http://tempuri.org/UpdateUnconfirmedTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePendingPaymentTransaction">
+      <soap:operation soapAction="http://tempuri.org/UpdatePendingPaymentTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePendingPassengerTransaction">
+      <soap:operation soapAction="http://tempuri.org/UpdatePendingPassengerTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestFlight">
+      <soap:operation soapAction="http://tempuri.org/GetLatestFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoCancelFlight">
+      <soap:operation soapAction="http://tempuri.org/AutoCancelFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProcessServiceSoap12" type="tns:ProcessServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppPassKey">
+      <soap12:operation soapAction="http://tempuri.org/AppPassKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <soap12:operation soapAction="http://tempuri.org/ConnectionTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditShellProcess">
+      <soap12:operation soapAction="http://tempuri.org/CreditShellProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditShellProcessByPNR">
+      <soap12:operation soapAction="http://tempuri.org/CreditShellProcessByPNR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupBookingEmailing">
+      <soap12:operation soapAction="http://tempuri.org/GroupBookingEmailing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupBookingEmailingMultiPNR">
+      <soap12:operation soapAction="http://tempuri.org/GroupBookingEmailingMultiPNR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomEmail">
+      <soap12:operation soapAction="http://tempuri.org/CustomEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentPasswordRetrievalProcess">
+      <soap12:operation soapAction="http://tempuri.org/AgentPasswordRetrievalProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReminderProcess">
+      <soap12:operation soapAction="http://tempuri.org/ReminderProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendReminder">
+      <soap12:operation soapAction="http://tempuri.org/ResendReminder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastProcessMessage">
+      <soap12:operation soapAction="http://tempuri.org/LastProcessMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <soap12:operation soapAction="http://tempuri.org/CancelBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetBooking">
+      <soap12:operation soapAction="http://tempuri.org/TestGetBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelTransaction">
+      <soap12:operation soapAction="http://tempuri.org/CancelTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAllPaymentExpiryBookingDetails">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAllPaymentExpiryBookingDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFlight">
+      <soap12:operation soapAction="http://tempuri.org/UpdateFlight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearJourney">
+      <soap12:operation soapAction="http://tempuri.org/ClearJourney" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnconfirmedTransaction">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUnconfirmedTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePendingPaymentTransaction">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePendingPaymentTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePendingPassengerTransaction">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePendingPassengerTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestFlight">
+      <soap12:operation soapAction="http://tempuri.org/GetLatestFlight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoCancelFlight">
+      <soap12:operation soapAction="http://tempuri.org/AutoCancelFlight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProcessService">
+    <wsdl:port name="ProcessServiceSoap" binding="tns:ProcessServiceSoap">
+      <soap:address location="http://172.20.128.15/eservice/processservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProcessServiceSoap12" binding="tns:ProcessServiceSoap12">
+      <soap12:address location="http://172.20.128.15/eservice/processservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

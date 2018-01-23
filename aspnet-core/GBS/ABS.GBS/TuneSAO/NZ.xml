@@ -1,0 +1,533 @@
+<BaseResource xmlns:xsi="http://www.navitaire.com/dotREZ/Resources/Models" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+  <Insurances>
+    <Insurance>
+      <CultureCode>ar-SY</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>
+            &lt;div dir="rtl"&gt;
+            فقدان الودائع ورسوم الإلغاء (بالنسبة للإلغاء أو التقليص أو إذا كنت غير قادر على إكمال رحلتك نتيجة لحدث غير متوقع خارج عن إرادتك، ولا يتضمن ذلك تأخيرات، إلغاء أو إعادة جدولة مزود النقل (مثل Air Asia))&lt;/div&gt;
+          </CheckItem>
+          <CheckItem>
+            &lt;div dir="rtl"&gt;فقدان، سرقة أو تلف الأمتعة*
+            &lt;/div&gt;
+          </CheckItem>
+          <CheckItem>
+            &lt;div dir="rtl"&gt;
+            تأخيرات السفر لأكثر من 6 ساعات*&lt;/div&gt;
+          </CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;الفقدان العرضي للحياة*&lt;/div&gt;</CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;المساعدة الطبية والمساعدة أثناء السفر لفترة 24ساعة في جميع أنحاء العالم*&lt;/div&gt;</CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;* تخضع التغطية للشروط والأحكام والاستثناءات الواردة بصيغة وثيقة التأمين؛ وتطبق الحدود والتجاوزات.&lt;/div&gt;</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;div dir="rtl"&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;أؤكد أنني قد قرأت بيان الإفصاح&lt;/span&gt;&lt;a href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt; بشأن التأمين على السفر بواسطة صيغة وثيقة AirAsia للتأمين &lt;/a&gt;&lt;a href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt; والكيان المالي للتأهيل(QFE) &lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;وأنا/ نحن نفهم ونقبل الشروط، الأحكام والاستثناءات الواردة بصيغة وثيقة التأمين. أنا / نحن نوافق على تلقي بيان الإفصاح بشأن التأمين على السفر بواسطة صيغة وثيقة AirAsia للتأمين والكيان المالي للتأهيل (QFE) وشهادة التأمين عن طريق البريد الإلكتروني. وأؤكد أن المعلومات المقدمة كاملة وصحيحة. أنا / نحن نفهم أن هذه المعلومات سيتم تمريرها إلى شركة  Chubb، التي ستتعامل معها وفقا لبيان Chubb بشأن الخصوصية.&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;Chubb Insurance New Zealand Limited بشأن الخصوصية&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;font face="Arial, Verdana" size="2"&gt;ملاحظة: تؤمن ACE للتأمين المحدودة (رقم الشركة 104656، رقم مزود الخدمات المالية 35924) على هذا المنتج. تُروج AirAsia X BHD  لهذا المنتج. تُوفرChubb وAirAsia   النُصح العام فقط، ولا تضع في اعتبارها أهدافك، أو وضعك المالي أو احتياجاتك. لتقرر ما إذا كان هذا المنتج مناسباً لك، يرجى قراءة بيان الإفصاح بشأن التأمين على السفر بواسطة صيغة وثيقة AirAsia للتأمين والكيان المالي للتأهيل(QFE).&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;&lt;br/&gt;&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;* تطبق الشروط والأحكام والاستثناءات&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>&lt;div dir="rtl"&gt;تغطية الأمتعة وتغطية نفقات إلغاء السفر  (إذا كان غير متوقع ولا يتضمن الإلغاء بواسطة AirAsia) &lt;/div&gt;</CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;تغطية النفقات الطبية في الخارج لما يصل إلى 500,000 دولار أسترالي (ذهاباً وإياباً فقط)&lt;/div&gt;</CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;تغطية نفقات فقدان الأمتعة والمتعلقات الشخصية أو تلفها&lt;/div&gt;</CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;خدمات مساعدة السفر في جميع أنحاء العالم على مدار الساعة&lt;/div&gt;</CheckItem>
+          <CheckItem>&lt;div dir="rtl"&gt;* تُطبق الشروط والأحكام والاستثناءات&lt;/div&gt;</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;div dir="rtl"&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;أقر بأنني قد قمت بقراءة نص بوليصة الحماية أثناء السفرTravel Insurance by AirAsia Policy&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/pds/auenpds.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;وبيان الكشف التفصيلي للبرنامج (PDS)&lt;/a&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/fsg/auenfsg.pdf" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;ودليل الخدمات المالية (FSG)&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;وأتفهم/نتفهم ونقبل بالشروط والأحكام والاستثناءات الواردة في بيان الكشف التفصيلي للبرنامج. إنني أوافق/ نحن نوافق على تلقي بيان الكشف التفصيلي للبرنامج وشهادة التأمين عبر البريد الإلكتروني. أقر بأن المعلومات المقدمة كاملة وصحيحة. أتفهم/نتفهم أنه سيتم نقل هذه المعلومات إلى Chubb، الذي سيعمل على تنظيمها وفقًا لـبيان الخصوصية&lt;/span&gt;&lt;a href="https://tuneprotect.com/airasia/au/en/da/auen.html" style="font-family: Arial, Verdana; font-size: small;" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;&lt;span style="font-family: Arial, Verdana; font-size: small;"&gt;.&lt;/span&gt;&lt;p class="tncUnderWritten"&gt;&lt;span style="font-family: Arial, Verdana; font-size: x-small;"&gt;&lt;font face="Arial, Verdana" size="2"&gt;ملاحظة: يتم تقديم الغطاء التأميني لهذا البرنامج من قبل شركة التأمين Chubb Insurance New Zealand Limited التي تحمل رقم تسجيل ABN 23 001 642 020 والمرخص لها بمزاولة النشاط بموجب رخصة AFSL رقم 239687 (Chubb). تروج شركتا AirAsia X BHD وPT Indonesia AirAsia لهذا البرنامج. تقدم Chubb وAirAsia نصائح عامة لا أكثر دون أن يتأثر ذلك بأهدافك أو وضعك المالي أو احتياجاتك. للوقوف على ما إذا كان يحق لك استخدام هذا البرنامج، يُرجى قراءة نص بوليصة الحماية أثناء السفر Travel Insurance by AirAsia والبيان التفصيلي للبرنامج (PDS) ودليل الخدمات المالية (FSG).&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;&lt;br/&gt;&lt;/font&gt;&lt;font face="Arial, Verdana" size="2"&gt;* تُطبق الشروط والأحكام والاستثناءات&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>en-GB</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>Loss of Deposits and Cancellation Charges (for the cancellation, curtailment or if you are unable to complete your Journey due to an unforeseen event beyond your control, not including Transport Provider (e.g Air Asia) delays, cancellation or rescheduling)</CheckItem>
+          <CheckItem>Loss, Theft or Damage of luggage*</CheckItem>
+          <CheckItem>Travel delays over 6 hours* </CheckItem>
+          <CheckItem>Accidental loss of life*</CheckItem>
+          <CheckItem>24-hour Worldwide Travel and Medical Assistance*</CheckItem>
+          <CheckItem>*Cover is subject to the full terms, conditions and exclusions of the Policy Wording; limits and excesses apply.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;I confirm that I have read the &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Tune Protect Travel-AirAsia Policy Wording
+          &lt;/a&gt;
+          and
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Qualifying Financial Entity (QFE) Disclosure Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; and I/We understand and accept the terms, conditions and exclusions of policy wording. I/We agree to receive the Tune Protect Travel-AirAsia Policy Wording and Qualifying Financial Entity (QFE) Disclosure Statement and certificate of insurance by email. I confirm that the information submitted is complete and correct. I/We understand that this information will be passed to Chubb, who will handle it in accordance with the &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Note: Chubb Insurance New Zealand Limited (Company Number 104656, Financial Services Provider Number 35924) insures this product. AirAsia X BHD promote this product. Chubb and AirAsia provides general advice only and do not consider your objectives, financial situation or needs. To decide if this product is right for you, please read the Tune Protect Travel-AirAsia Policy Wording and Qualifying Financial Entity (QFE) Disclosure Statement.
+          &lt;br /&gt;Terms, Conditions and Exclusions apply
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>Loss of Deposits and Cancellation Charges (for the cancellation, curtailment or if you are unable to complete your Journey due to an unforeseen event beyond your control, not including Transport Provider (e.g Air Asia) delays, cancellation or rescheduling)</CheckItem>
+          <CheckItem>Loss, Theft or Damage of luggage*</CheckItem>
+          <CheckItem>Travel delays over 6 hours* </CheckItem>
+          <CheckItem>Accidental loss of life*</CheckItem>
+          <CheckItem>24-hour Worldwide Travel and Medical Assistance*</CheckItem>
+          <CheckItem>*Cover is subject to the full terms, conditions and exclusions of the Policy Wording; limits and excesses apply.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;I confirm that I have read the &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Tune Protect Travel-AirAsia Policy Wording&lt;/a&gt;
+          and
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Qualifying Financial Entity (QFE) Disclosure Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; and I/We understand and accept the terms, conditions and exclusions of policy wording. I/We agree to receive the Tune Protect Travel-AirAsia Policy Wording and Qualifying Financial Entity (QFE) Disclosure Statement and certificate of insurance by email. I confirm that the information submitted is complete and correct. I/We understand that this information will be passed to Chubb, who will handle it in accordance with the &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Note: Chubb Insurance New Zealand Limited (Company Number 104656, Financial Services Provider Number 35924) insures this product. AirAsia X BHD promote this product. Chubb and AirAsia provides general advice only and do not consider your objectives, financial situation or needs. To decide if this product is right for you, please read the Tune Protect Travel-AirAsia Policy Wording and Qualifying Financial Entity (QFE) Disclosure Statement.
+          &lt;br /&gt;Terms, Conditions and Exclusions apply
+          &lt;/span&gt;
+          &lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>en-TT</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>คุ้มครองการสูญเสียเงินมัดจำและค่าธรรมเนียมการยกเลิก (การยกเลิก การลดจำนวน หรือกรณีที่คุณไม่สามารถเดินทางได้เนื่องจากเหตุสุดวิสัยแต่ไม่รวมถึงความล่าช้า การยกเลิก หรือการเปลี่ยนแปลงตารางการเดินทางของผู้ให้บริการการเดินทาง (เช่น แอร์เอเชีย)</CheckItem>
+          <CheckItem>คุ้มครองการสูญหาย การโจรกรรม หรือความเสียหายที่เกิดขึ้นกับสัมภาระ*</CheckItem>
+          <CheckItem>คุ้มครองการเดินทางที่ล่าช้ากว่ากำหนดเกิน 6 ชั่วโมง* </CheckItem>
+          <CheckItem>คุ้มครองอุบัติเหตุที่ถึงแก่ชีวิต*</CheckItem>
+          <CheckItem>คุ้มครองการเดินทางและการรักษาพยาบาลตลอด 24 ชั่วโมง*</CheckItem>
+          <CheckItem>*ความคุ้มครองเป็นไปตามข้อกำหนด เงื่อนไข และข้อจำกัดความคุ้มครองของรายละเอียดกรมธรรม์ซึ่งเป็นไปตามข้อจำกัดและข้อยกเว้น</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;ข้าพเจ้าของยืนยันว่าข้าพเจ้าได้ศึกษารายละเอีย &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;กรมธรรม์ของแผนประกันภัยการเดินทางของแอร์เอเชีย
+          &lt;/a&gt;
+          และ
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;คำชี้แจงการเปิดเผยข้อมูลคุณสมบัติสถานะทางการเงิน (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; ตลอดจนข้าพเจ้าได้ทำความเข้าใจข้อกำหนด เงื่อนไข และข้อจำกัดความคุ้มครองของรายละเอียดกรมธรรม์ ข้าพเจ้ายินยอมรับรายละเอียดกรมธรรม์ของแผนประกันภัยการเดินทางจากแอร์เอเชียและคำชี้แจงการเปิดเผยข้อมูลคุณสมบัติสถานะทางการเงิน (QFE) ตลอดจนใบรับรองการประกันภัยผ่านทางอีเมล ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวถูกต้องและเป็นความจริงทุกประการ ข้าพเจ้าเข้าใจว่าข้อมูลดังกล่าวจะถูกส่งต่อไปยัง Chubb ซึ่งเป็นผู้ดูแลข้อมูลโดยเป็นไป  &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;ตามคำชี้แจงสิทธิ์ส่วนบุคคลของ Chubb&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;หมายเหตุ: Chubb Insurance New Zealand Limited (หมายเลขทะเบียนบริษัท 104656 หมายเลขทะเบียนผู้ให้บริการทางการเงิน 35924) เป็นผู้รับประกันภัยการเดินทางดังกล่าว แอร์เอเชียเอ็กซ์ เบอร์ฮัดเป็นผู้ส่งเสริมการขายแผนประกันภัยการเดินทางดังกล่าว Chubb และแอร์เอเชียสามารถให้คำแนะนำทั่วไปเท่านั้น แต่จะไม่สามารถพิจารณาวัตถุประสงค์ สถานะและความต้องการทางการเงินของคุณได้   ก่อนตัดสินใจว่าแผนการประกันภัยดังกล่าวเหมาะสมกับคุณหรือไม่ กรุณาอ่านรายละเอียดนโยบายความคุ้มครองการประกันภัยการเดินทางของแอร์เอเชียและคำชี้แจงการเปิดเผยข้อมูลคุณสมบัติสถานะทางการเงิน (QFE)
+          &lt;br /&gt;*เป็นไปตามข้อกำหนดและเงื่อนไขและข้อจำกัดความคุ้มครอง
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>คุ้มครองการสูญเสียเงินมัดจำและค่าธรรมเนียมการยกเลิก (การยกเลิก การลดจำนวน หรือกรณีที่คุณไม่สามารถเดินทางได้เนื่องจากเหตุสุดวิสัยแต่ไม่รวมถึงความล่าช้า การยกเลิก หรือการเปลี่ยนแปลงตารางการเดินทางของผู้ให้บริการการเดินทาง (เช่น แอร์เอเชีย)</CheckItem>
+          <CheckItem>คุ้มครองการสูญหาย การโจรกรรม หรือความเสียหายที่เกิดขึ้นกับสัมภาระ*</CheckItem>
+          <CheckItem>คุ้มครองการเดินทางที่ล่าช้ากว่ากำหนดเกิน 6 ชั่วโมง* </CheckItem>
+          <CheckItem>คุ้มครองอุบัติเหตุที่ถึงแก่ชีวิต*</CheckItem>
+          <CheckItem>คุ้มครองการเดินทางและการรักษาพยาบาลตลอด 24 ชั่วโมง*</CheckItem>
+          <CheckItem>*ความคุ้มครองเป็นไปตามข้อกำหนด เงื่อนไข และข้อจำกัดความคุ้มครองของรายละเอียดกรมธรรม์ซึ่งเป็นไปตามข้อจำกัดและข้อยกเว้น</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;ข้าพเจ้าของยืนยันว่าข้าพเจ้าได้ศึกษารายละเอีย &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;กรมธรรม์ของแผนประกันภัยการเดินทางของแอร์เอเชีย
+          &lt;/a&gt;
+          และ
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;คำชี้แจงการเปิดเผยข้อมูลคุณสมบัติสถานะทางการเงิน (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; ตลอดจนข้าพเจ้าได้ทำความเข้าใจข้อกำหนด เงื่อนไข และข้อจำกัดความคุ้มครองของรายละเอียดกรมธรรม์ ข้าพเจ้ายินยอมรับรายละเอียดกรมธรรม์ของแผนประกันภัยการเดินทางจากแอร์เอเชียและคำชี้แจงการเปิดเผยข้อมูลคุณสมบัติสถานะทางการเงิน (QFE) ตลอดจนใบรับรองการประกันภัยผ่านทางอีเมล ข้าพเจ้าขอรับรองว่าข้อมูลดังกล่าวถูกต้องและเป็นความจริงทุกประการ ข้าพเจ้าเข้าใจว่าข้อมูลดังกล่าวจะถูกส่งต่อไปยัง Chubb ซึ่งเป็นผู้ดูแลข้อมูลโดยเป็นไป  &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;ตามคำชี้แจงสิทธิ์ส่วนบุคคลของ Chubb&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;หมายเหตุ: Chubb Insurance New Zealand Limited (หมายเลขทะเบียนบริษัท 104656 หมายเลขทะเบียนผู้ให้บริการทางการเงิน 35924) เป็นผู้รับประกันภัยการเดินทางดังกล่าว แอร์เอเชียเอ็กซ์ เบอร์ฮัดเป็นผู้ส่งเสริมการขายแผนประกันภัยการเดินทางดังกล่าว Chubb และแอร์เอเชียสามารถให้คำแนะนำทั่วไปเท่านั้น แต่จะไม่สามารถพิจารณาวัตถุประสงค์ สถานะและความต้องการทางการเงินของคุณได้   ก่อนตัดสินใจว่าแผนการประกันภัยดังกล่าวเหมาะสมกับคุณหรือไม่ กรุณาอ่านรายละเอียดนโยบายความคุ้มครองการประกันภัยการเดินทางของแอร์เอเชียและคำชี้แจงการเปิดเผยข้อมูลคุณสมบัติสถานะทางการเงิน (QFE)
+          &lt;br /&gt;*เป็นไปตามข้อกำหนดและเงื่อนไขและข้อจำกัดความคุ้มครอง
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>id-ID</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>Kehilangan Deposit dan Biaya Pembatalan (untuk pembatalan, pengurangan atau jika Anda tidak dapat menyelesaikan Perjalanan Anda karena suatu peristiwa yang tak terduga di luar kendali Anda, tidak termasuk penundaan, pembatalan atau penjadwalan ulang yang dilakukan oleh penyedia Transportasi (misalnya, Air Asia)</CheckItem>
+          <CheckItem>Kehilangan, Kecurian atau Kerusakan Bagasi*</CheckItem>
+          <CheckItem>Penundaan perjalanan di atas 6 jam* </CheckItem>
+          <CheckItem>Kecelakaan yang menyebabkan kehilangan nyawa*</CheckItem>
+          <CheckItem>perjalanan ke seluruh dunia dan bantuan medis 24 jam *</CheckItem>
+          <CheckItem>* Kover asuransi tergantung pada persyaratan lengkap, ketentuan dan pengecualian yang disebutkan di Kata-kata Kebijakan; batas dan ekses berlaku.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Saya menyatakan bahwa saya telah membaca &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Asuransi Perjalanan dengan Kata-kata Kebijakan dari AirAsia
+          &lt;/a&gt;
+          dan
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Pernyataan Pengungkapan dari Badan Keuangan yang Berkompeten (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; dan saya/kami mengerti dan menerima persyaratan, ketentuan dan pengecualian yang disebutkan di Kata-kata Kebijakan. Saya / kami setuju untuk menerima Asuransi Perjalanan oleh Kata-kata Kebijakan dari AirAsia dan Pernyataan Pengungkapan dari Badan Keuangan yang Berkompeten (QFE) serta Sertifikat Asuransi melalui email. Saya tegaskan bahwa informasi yang dikirimkan sudah lengkap dan benar. Saya/kami memahami bahwa informasi ini akan dikirimkan kepada Chubb, yang akan menangani informasi ini sesuai dengan&lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Pernyataan Privasi Chubb&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Catatan: Chubb Insurance New Zealand Limited (nomor perusahaan 104656, Nomor Penyedia Jasa Keuangan 35924) menjamin produk ini. AirAsia X BHD mempromosikan produk ini. Chubb dan AirAsia hanya menyediakan saran umum dan tidak mempertimbangkan tujuan, finansial atau kebutuhan Anda. Untuk memutuskan apakah produk ini tepat untuk Anda, silakan baca Asuransi Perjalanan dengan Kata-kata Kebijakan dari AirAsia dan Pernyataan Pengungkapan dari Badan Keuangan yang Berkompeten (QFE).
+          &lt;br /&gt;*Syarat, Ketentuan, dan Pengecualian berlaku.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>Kehilangan Deposit dan Biaya Pembatalan (untuk pembatalan, pengurangan atau jika Anda tidak dapat menyelesaikan Perjalanan Anda karena suatu peristiwa yang tak terduga di luar kendali Anda, tidak termasuk penundaan, pembatalan atau penjadwalan ulang yang dilakukan oleh penyedia Transportasi (misalnya, Air Asia)</CheckItem>
+          <CheckItem>Kehilangan, Kecurian atau Kerusakan Bagasi*</CheckItem>
+          <CheckItem>Penundaan perjalanan di atas 6 jam* </CheckItem>
+          <CheckItem>Kecelakaan yang menyebabkan kehilangan nyawa*</CheckItem>
+          <CheckItem>perjalanan ke seluruh dunia dan bantuan medis 24 jam *</CheckItem>
+          <CheckItem>* Kover asuransi tergantung pada persyaratan lengkap, ketentuan dan pengecualian yang disebutkan di Kata-kata Kebijakan; batas dan ekses berlaku.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Saya menyatakan bahwa saya telah membaca &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Asuransi Perjalanan dengan Kata-kata Kebijakan dari AirAsia
+          &lt;/a&gt;
+          dan
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Pernyataan Pengungkapan dari Badan Keuangan yang Berkompeten (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; dan saya/kami mengerti dan menerima persyaratan, ketentuan dan pengecualian yang disebutkan di Kata-kata Kebijakan. Saya / kami setuju untuk menerima Asuransi Perjalanan oleh Kata-kata Kebijakan dari AirAsia dan Pernyataan Pengungkapan dari Badan Keuangan yang Berkompeten (QFE) serta Sertifikat Asuransi melalui email. Saya tegaskan bahwa informasi yang dikirimkan sudah lengkap dan benar. Saya/kami memahami bahwa informasi ini akan dikirimkan kepada Chubb, yang akan menangani informasi ini sesuai dengan&lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Pernyataan Privasi Chubb&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Catatan: Chubb Insurance New Zealand Limited (nomor perusahaan 104656, Nomor Penyedia Jasa Keuangan 35924) menjamin produk ini. AirAsia X BHD mempromosikan produk ini. Chubb dan AirAsia hanya menyediakan saran umum dan tidak mempertimbangkan tujuan, finansial atau kebutuhan Anda. Untuk memutuskan apakah produk ini tepat untuk Anda, silakan baca Asuransi Perjalanan dengan Kata-kata Kebijakan dari AirAsia dan Pernyataan Pengungkapan dari Badan Keuangan yang Berkompeten (QFE).
+          &lt;br /&gt;*Syarat, Ketentuan, dan Pengecualian berlaku.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>ja-JP</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>デポジットの徴集とキャンセル料（キャンセル、フライト区間の短縮、または不可抗力による旅程完了の不能（エアアジアを含む旅客輸送会社の責任による遅延、キャンセル、またはスケジュール変更を除く）があった場合）</CheckItem>
+          <CheckItem>手荷物の紛失、盗難、または破損*</CheckItem>
+          <CheckItem>6時間以上のフライトの遅延* </CheckItem>
+          <CheckItem>不慮の事故による死亡*</CheckItem>
+          <CheckItem>24時間体制の全席の旅行および医療支援*</CheckItem>
+          <CheckItem>*補償内容は傷害保険約款集の約款および例外に基づきます。制限額とエクセス（自己負担額）が適用されます。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;私は &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;エアアジア旅行保険の傷害保険約款集
+          &lt;/a&gt;
+          と
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Qualifying Financial Entity（QFE）の開示陳述書&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; を読み、傷害保険約款集の約款および補償対象外の項目を理解してこれに同意します。私は、エアアジア旅行保険の傷害保険約款集とQualifying Financial Entity（QFE）の開示陳述書、保険証書Eメールで受け取ることに同意します。私は、送信する情報が完全かつ正確であることに同意します。私は、この情報がエース損害保険株式会社に提供され、同社のプライバシーに関する声明に基づいて取り扱われることを理解しています。 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;ご注意:チャブ保険ニュージーランド・リミテッド（会社番号104656、金融サービス提供者番号35924）が本商品の提供会社です。エアアジアX BHDは本商品を販売しています。Chubb およびエアアジアは一般的な助言の提供のみを行うもので、ご搭乗者の目的、資産状況、またはニーズを考慮してはいません。本商品の適格性の判断については、エアアジア旅行保険の傷害保険約款集とQualifying Financial Entity（QFE）の開示陳述書をお読みください。
+          &lt;br /&gt;* ご利用条件と免責事項が適用されます
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>デポジットの徴集とキャンセル料（キャンセル、フライト区間の短縮、または不可抗力による旅程完了の不能（エアアジアを含む旅客輸送会社の責任による遅延、キャンセル、またはスケジュール変更を除く）があった場合）</CheckItem>
+          <CheckItem>手荷物の紛失、盗難、または破損*</CheckItem>
+          <CheckItem>6時間以上のフライトの遅延* </CheckItem>
+          <CheckItem>不慮の事故による死亡*</CheckItem>
+          <CheckItem>24時間体制の全席の旅行および医療支援*</CheckItem>
+          <CheckItem>*補償内容は傷害保険約款集の約款および例外に基づきます。制限額とエクセス（自己負担額）が適用されます。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;私は &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;エアアジア旅行保険の傷害保険約款集
+          &lt;/a&gt;
+          と
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Qualifying Financial Entity（QFE）の開示陳述書&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; を読み、傷害保険約款集の約款および補償対象外の項目を理解してこれに同意します。私は、エアアジア旅行保険の傷害保険約款集とQualifying Financial Entity（QFE）の開示陳述書、保険証書Eメールで受け取ることに同意します。私は、送信する情報が完全かつ正確であることに同意します。私は、この情報がエース損害保険株式会社に提供され、同社のプライバシーに関する声明に基づいて取り扱われることを理解しています。 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb Privacy Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;ご注意:チャブ保険ニュージーランド・リミテッド（会社番号104656、金融サービス提供者番号35924）が本商品の提供会社です。エアアジアX BHDは本商品を販売しています。Chubb およびエアアジアは一般的な助言の提供のみを行うもので、ご搭乗者の目的、資産状況、またはニーズを考慮してはいません。本商品の適格性の判断については、エアアジア旅行保険の傷害保険約款集とQualifying Financial Entity（QFE）の開示陳述書をお読みください。
+          &lt;br /&gt;* ご利用条件と免責事項が適用されます
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>ko-KR</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>교통 수단 제공자(에어아시아 등)에 의한 지연, 취소, 재일정이 아닌 갑작스런 일로 인해 여행을 하지 못하는 경우 발생하는 보증금 몰수 및 취소수수료</CheckItem>
+          <CheckItem>분실, 도난, 수하물 파손*</CheckItem>
+          <CheckItem>6시간을 초과하는 지연* </CheckItem>
+          <CheckItem>사고로 인한 사망*</CheckItem>
+          <CheckItem>24시간 전세계 여행 및 의료 지원*</CheckItem>
+          <CheckItem>*약관, Policy Wording에 명시된 예외 사항, 제한 사항, 본인 부담금 등이 보장 내역에 적용됩니다.  </CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;본인은 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;에어아시아 여행자보험약관, 상품약관
+          &lt;/a&gt;
+          과
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Qualifying Financial Entity (QFE) Disclosure Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 가 제공하는 여행자보험 약관과 보장 불가 사항을 읽고 이해하고 이에 동의함을 확인합니다. 나는 AirAsia Policy Wording과 Qualifying Financial Entity가 제공하는 여행자보험 약관과 보험가입증서를 이메일로 수신하였음을 확인합니다. 나는 제출된 정보가 온전하며 정확하다는 것을 확인합니다. 나는 제출된 정보가  &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb 개인정보보호정책&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;참고 사항: Chubb Insurance New Zealand Limited(법인 번호 104656, 금융상품제공자 번호 35924)가 이 상품을 제공합니다. 에어아시아 엑스는 이 상품을 홍보합니다. Chubb 와 에어아시아는 고객의 목적, 재정적 상황 또는 수요에 대하여 아무런 고려 없이 보험 상품에 관한 일반적인 안내를 제공할 뿐입니다. 이 보험 상품이 고객에게 적합한지를 결정하려면 AirAsia Policy Wording과 Qualifying Financial Entity가 제공하는 여행자보험 약관을 읽어보시기 바랍니다.
+          &lt;br /&gt;*보험약관 및 예외 사항이 적용됩니다.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>교통 수단 제공자(에어아시아 등)에 의한 지연, 취소, 재일정이 아닌 갑작스런 일로 인해 여행을 하지 못하는 경우 발생하는 보증금 몰수 및 취소수수료</CheckItem>
+          <CheckItem>분실, 도난, 수하물 파손*</CheckItem>
+          <CheckItem>6시간을 초과하는 지연* </CheckItem>
+          <CheckItem>사고로 인한 사망*</CheckItem>
+          <CheckItem>24시간 전세계 여행 및 의료 지원*</CheckItem>
+          <CheckItem>*약관, Policy Wording에 명시된 예외 사항, 제한 사항, 본인 부담금 등이 보장 내역에 적용됩니다.  </CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;본인은 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;에어아시아 여행자보험약관, 상품약관
+          &lt;/a&gt;
+          과
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Qualifying Financial Entity (QFE) Disclosure Statement&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 가 제공하는 여행자보험 약관과 보장 불가 사항을 읽고 이해하고 이에 동의함을 확인합니다. 나는 AirAsia Policy Wording과 Qualifying Financial Entity가 제공하는 여행자보험 약관과 보험가입증서를 이메일로 수신하였음을 확인합니다. 나는 제출된 정보가 온전하며 정확하다는 것을 확인합니다. 나는 제출된 정보가  &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb 개인정보보호정책&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;참고 사항: Chubb Insurance New Zealand Limited(법인 번호 104656, 금융상품제공자 번호 35924)가 이 상품을 제공합니다. 에어아시아 엑스는 이 상품을 홍보합니다. Chubb 와 에어아시아는 고객의 목적, 재정적 상황 또는 수요에 대하여 아무런 고려 없이 보험 상품에 관한 일반적인 안내를 제공할 뿐입니다. 이 보험 상품이 고객에게 적합한지를 결정하려면 AirAsia Policy Wording과 Qualifying Financial Entity가 제공하는 여행자보험 약관을 읽어보시기 바랍니다.
+          &lt;br /&gt;*보험약관 및 예외 사항이 적용됩니다.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>ms-MY</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>Kehilangan Deposit dan Caj Pembatalan (untuk pembatalan, pemendekan atau jika anda tidak dapat melengkapkan Perjalanan anda disebabkan oleh keadaan yang di luar kawalan anda, tidak termasuk Penyedia Pengangkutan (contoh: Air Asia) kelewatan, pembatalan atau penjadualan semula)</CheckItem>
+          <CheckItem>Kehilangan, Kecurian atau Kerosakan pada bagasi*</CheckItem>
+          <CheckItem>Kelewatan perjalanan melebihi 6 jam*</CheckItem>
+          <CheckItem>Kehilangan nyawa akibat kemalangan*</CheckItem>
+          <CheckItem>bantuan perjalanan dan perubatan 24 jam seluruh dunia*</CheckItem>
+          <CheckItem>*Perlindungan adalah tertakluk pada terma, syarat dan pengecualian penuh Ungkapan Polisi; tertakluk pada had dan lebihan.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Saya mengesahkan bahawa saya telah membaca &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Ungkapan Polisi Insurans Perjalanan AirAsia
+          &lt;/a&gt;
+          dan
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Pernyataan Pendedahan Entiti Kewangan Berkelayakan (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; dan saya/kami memahami dan menerima terma, syarat dan pengecualian Ungkapan Polisi. Saya/Kami bersetuju untuk merima Ungkapan Polisi Insurans Perjalanan AirAsia dan Pernyataan Pendedahan Qualifying Financial Entity (QFE) dan Perakuan Insurans melalui e-mel. Saya mengesahkan bahawa maklumat yang dihantar adalah lengkap dan betul. Saya/Kami memahami bahawa maklumat ini akan diserahkan kepada Chubb yang akan menguruskannya mengikut &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Pernyataan Privasi Chubb &lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Nota: Chubb Insurance New Zealand Limited (Nombor Syarikat 104656, Nombor Penyedia Perkhidmatan Kewangan 35924) menginsuranskan produk ini. AirAsia X BHD mempromosikan produk ini. Chubb dan AirAsia menyediakan khidmat nasihat secara am sahaja dan tidak mengambil kira tujuan, keadaan kewangan mahupun keperluan anda. Bagi memutuskan sama ada produk ini sesuai untuk anda, sila baca Ungkapan Polisi Insurans Perjalanan AirAsia dan Pernyataan Pendedahan Qualifying Financial Entity (QFE).
+          &lt;br /&gt;*Tertakluk pada Terma, Syarat dan Pengecualian.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>Kehilangan Deposit dan Caj Pembatalan (untuk pembatalan, pemendekan atau jika anda tidak dapat melengkapkan Perjalanan anda disebabkan oleh keadaan yang di luar kawalan anda, tidak termasuk Penyedia Pengangkutan (contoh: Air Asia) kelewatan, pembatalan atau penjadualan semula)</CheckItem>
+          <CheckItem>Kehilangan, Kecurian atau Kerosakan pada bagasi*</CheckItem>
+          <CheckItem>Kelewatan perjalanan melebihi 6 jam*</CheckItem>
+          <CheckItem>Kehilangan nyawa akibat kemalangan*</CheckItem>
+          <CheckItem>bantuan perjalanan dan perubatan 24 jam seluruh dunia*</CheckItem>
+          <CheckItem>*Perlindungan adalah tertakluk pada terma, syarat dan pengecualian penuh Ungkapan Polisi; tertakluk pada had dan lebihan.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Saya mengesahkan bahawa saya telah membaca &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Ungkapan Polisi Insurans Perjalanan AirAsia
+          &lt;/a&gt;
+          dan
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Pernyataan Pendedahan Entiti Kewangan Berkelayakan (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; dan saya/kami memahami dan menerima terma, syarat dan pengecualian Ungkapan Polisi. Saya/Kami bersetuju untuk merima Ungkapan Polisi Insurans Perjalanan AirAsia dan Pernyataan Pendedahan Qualifying Financial Entity (QFE) dan Perakuan Insurans melalui e-mel. Saya mengesahkan bahawa maklumat yang dihantar adalah lengkap dan betul. Saya/Kami memahami bahawa maklumat ini akan diserahkan kepada Chubb yang akan menguruskannya mengikut &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Pernyataan Privasi Chubb &lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Nota: Chubb Insurance New Zealand Limited (Nombor Syarikat 104656, Nombor Penyedia Perkhidmatan Kewangan 35924) menginsuranskan produk ini. AirAsia X BHD mempromosikan produk ini. Chubb dan AirAsia menyediakan khidmat nasihat secara am sahaja dan tidak mengambil kira tujuan, keadaan kewangan mahupun keperluan anda. Bagi memutuskan sama ada produk ini sesuai untuk anda, sila baca Ungkapan Polisi Insurans Perjalanan AirAsia dan Pernyataan Pendedahan Qualifying Financial Entity (QFE).
+          &lt;br /&gt;*Tertakluk pada Terma, Syarat dan Pengecualian.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>vi-VN</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>Mất Tiền đặt cọc và Lệ phí Hủy chuyến bay (cho việc hủy bỏ hoặc cắt giảm hoặc nếu bạn không thể hoàn thành Hành trình do một sự kiện không thể lường trước nằm ngoài tầm kiểm soát của bạn, không bao gồm chậm trễ, hủy chuyến hoặc thay đổi lịch trình của Nhà cung cấp Dịch vụ Vận tải (ví dụ, AirAsia).</CheckItem>
+          <CheckItem>Mất, Bị lấy trộm hoặc Thiệt hại hành lý*</CheckItem>
+          <CheckItem>Trì hoãn hành trình trên 6 tiếng*</CheckItem>
+          <CheckItem>Tử vong do tai nạn*</CheckItem>
+          <CheckItem>Hỗ trợ du lịch và y tế toàn cầu 24 giờ*</CheckItem>
+          <CheckItem>*Được chi trả theo các điều khoản, điều kiện và ngoại lệ đầy đủ của Nội dung Chính sách; áp dụng các giới hạn và phí thu thêm.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Tôi xác nhận là đã đọc &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Nội dung Chính sách Bảo hiểm Du lịch của AirAsia
+          &lt;/a&gt;
+          và
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Bản Công bố của Tổ chức Tài chính Đủ điều kiện (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; dvà tôi/chúng tôi hiểu và chấp nhận các điều khoản,  điều kiện và ngoại lệ của Nội dung Chính sách. Tôi/Chúng tôi đồng ý nhận Nội dung Chính sách Bảo hiểm Du lịch của AirAsia và Bản Công bố của Tổ chức Tài chính Đủ điều kiện (QFE) và Giấy chứng nhận Bảo hiểm qua email. Tôi xác nhận rằng thông tin được cung cấp là đầy đủ và chính xác. Tôi/Chúng tôi hiểu rằng thông tin này sẽ được chuyển cho Chubb, bên sẽ xử lý thông tin tuân thủ theo &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Tuyên bố Quyền riêng tư của Chubb &lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Lưu ý: Chubb Insurance New Zealand Limited (Mã số công ty 104656, Mã số Nhà cung cấp Dịch vụ Tài chính 35924) bảo hiểm cho sản phẩm này. AirAsia X BHD xúc tiến sản phẩm này. Chubb và AirAsia chỉ cung cấp tư vấn chung và không xem xét các mục tiêu, tình hình tài chính hoặc nhu cầu của bạn. Để quyết định liệu sản phẩm này có phù hợp với bạn không, vui lòng đọc Nội dung Chính sách Bảo hiểm Du lịch của AirAsia và Bản Công bố của Tổ chức Tài chính Đủ điều kiện (QFE).
+          &lt;br /&gt;*Các điều khoản, Điều kiện và Ngoại lệ được áp dụng.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>Mất Tiền đặt cọc và Lệ phí Hủy chuyến bay (cho việc hủy bỏ hoặc cắt giảm hoặc nếu bạn không thể hoàn thành Hành trình do một sự kiện không thể lường trước nằm ngoài tầm kiểm soát của bạn, không bao gồm chậm trễ, hủy chuyến hoặc thay đổi lịch trình của Nhà cung cấp Dịch vụ Vận tải (ví dụ, AirAsia).</CheckItem>
+          <CheckItem>Mất, Bị lấy trộm hoặc Thiệt hại hành lý*</CheckItem>
+          <CheckItem>Trì hoãn hành trình trên 6 tiếng*</CheckItem>
+          <CheckItem>Tử vong do tai nạn*</CheckItem>
+          <CheckItem>Hỗ trợ du lịch và y tế toàn cầu 24 giờ*</CheckItem>
+          <CheckItem>*Được chi trả theo các điều khoản, điều kiện và ngoại lệ đầy đủ của Nội dung Chính sách; áp dụng các giới hạn và phí thu thêm.</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;Tôi xác nhận là đã đọc &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;Nội dung Chính sách Bảo hiểm Du lịch của AirAsia
+          &lt;/a&gt;
+          và
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;Bản Công bố của Tổ chức Tài chính Đủ điều kiện (QFE)&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; dvà tôi/chúng tôi hiểu và chấp nhận các điều khoản,  điều kiện và ngoại lệ của Nội dung Chính sách. Tôi/Chúng tôi đồng ý nhận Nội dung Chính sách Bảo hiểm Du lịch của AirAsia và Bản Công bố của Tổ chức Tài chính Đủ điều kiện (QFE) và Giấy chứng nhận Bảo hiểm qua email. Tôi xác nhận rằng thông tin được cung cấp là đầy đủ và chính xác. Tôi/Chúng tôi hiểu rằng thông tin này sẽ được chuyển cho Chubb, bên sẽ xử lý thông tin tuân thủ theo &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Tuyên bố Quyền riêng tư của Chubb&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;Lưu ý: Chubb Insurance New Zealand Limited (Mã số công ty 104656, Mã số Nhà cung cấp Dịch vụ Tài chính 35924) bảo hiểm cho sản phẩm này. AirAsia X BHD xúc tiến sản phẩm này. Chubb và AirAsia chỉ cung cấp tư vấn chung và không xem xét các mục tiêu, tình hình tài chính hoặc nhu cầu của bạn. Để quyết định liệu sản phẩm này có phù hợp với bạn không, vui lòng đọc Nội dung Chính sách Bảo hiểm Du lịch của AirAsia và Bản Công bố của Tổ chức Tài chính Đủ điều kiện (QFE).
+          &lt;br /&gt;*Các điều khoản, Điều kiện và Ngoại lệ được áp dụng.
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>zh-CN</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>损失订金或取消收费（由于超出您的控制，不包括运输供应商无法预料的事件（如亚洲航空）延误，取消或重新安排而取消，提早结束旅程或无法完成旅程）.</CheckItem>
+          <CheckItem>行李丢失、被盗或损坏*</CheckItem>
+          <CheckItem>航班耽误超过6 小时*</CheckItem>
+          <CheckItem>意外身故*</CheckItem>
+          <CheckItem>24 小时全球紧急旅游及医疗援助*</CheckItem>
+          <CheckItem>*承保受保单内容之全部条款、细则和除外原因约束，包括保额及自付额。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我确认我阅读并接受『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;AirAsia 旅游保险保单内容
+          &lt;/a&gt;
+          』及『
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;合格金融实体（QFE）披露声明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 』，并接受这些条款，条件和政策措辞的除外原因。我/我们同意 AirAsia 单内容及合格金融实体（QFE）披露声明，并通过电子邮件领取旅游保险证书。我确认提交的信息完整无误。我/我们明白，以上资料将被送到Chubb 并按Chubb的隐私声明处理。我确认所提交的资讯内容完整且正确无误。我／我们了解，此资讯将送交至 Chubb，并将依据『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb 隐私权声明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;请注意：Chubb Insurance New Zealand Limited（公司编号104656，金融服务提供商号码35924）保证本产品。这项产品由 AirAsia X BHD 推广。Chubb 与亚航仅提供一般建议，并未考量您的目的、财务状况或需求。为了决定本产品是否符合您的需求，请详阅亚航旅游保障条款、『产品披露声明(PDS)』及『财务服务指南(FSG)』。
+          &lt;br /&gt;*须遵守相关条，规定以及排除因素
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>损失订金或取消收费（由于超出您的控制，不包括运输供应商无法预料的事件（如亚洲航空）延误，取消或重新安排而取消，提早结束旅程或无法完成旅程）.</CheckItem>
+          <CheckItem>行李丢失、被盗或损坏*</CheckItem>
+          <CheckItem>航班耽误超过6 小时*</CheckItem>
+          <CheckItem>意外身故*</CheckItem>
+          <CheckItem>24 小时全球紧急旅游及医疗援助*</CheckItem>
+          <CheckItem>*承保受保单内容之全部条款、细则和除外原因约束，包括保额及自付额。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我确认我阅读并接受『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;AirAsia 旅游保险保单内容
+          &lt;/a&gt;
+          』及『
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;合格金融实体（QFE）披露声明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 』，并接受这些条款，条件和政策措辞的除外原因。我/我们同意 AirAsia 单内容及合格金融实体（QFE）披露声明，并通过电子邮件领取旅游保险证书。我确认提交的信息完整无误。我/我们明白，以上资料将被送到Chubb 并按Chubb的隐私声明处理。我确认所提交的资讯内容完整且正确无误。我／我们了解，此资讯将送交至 Chubb，并将依据『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb 隐私权声明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;请注意：Chubb Insurance New Zealand Limited（公司编号104656，金融服务提供商号码35924）保证本产品。这项产品由 AirAsia X BHD 推广。Chubb 与亚航仅提供一般建议，并未考量您的目的、财务状况或需求。为了决定本产品是否符合您的需求，请详阅亚航旅游保障条款、『产品披露声明(PDS)』及『财务服务指南(FSG)』。
+          &lt;br /&gt;*须遵守相关条，规定以及排除因素
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>zh-HK</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>損失訂金或取消收費（由於超出你的控制，不包括運輸供應商無法預料的事件（如Air Asia）延誤，取消或重新安排而取消，提早結束旅程或無法完成旅程）</CheckItem>
+          <CheckItem>行李丟失、失竊、損壞*</CheckItem>
+          <CheckItem>行程延誤超過6 小時*</CheckItem>
+          <CheckItem>意外身亡*</CheckItem>
+          <CheckItem>24小時全球旅遊和醫療援助*</CheckItem>
+          <CheckItem>*承保受保單內容之全部條款、細則和除外原因約束，包括保額及自付額。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我確認我閱讀並接受『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;AirAsia 旅遊保險保單內容
+          &lt;/a&gt;
+          』及『
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;合格金融實體（QFE）披露聲明，&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 』，並接受這些條款，條件和政策措辭的除外原因。我/我們同意AirAsia 保單內容及合格金融實體（QFE）披露聲明，並通過電子郵件領取旅遊保險證書。我確認提交的信息完整無誤。。我/我們明白，以上資料將被送到Chubb 並按『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb的隱私聲明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;注：丘博保險新西蘭有限公司（公司編號104656，金融服務提供商號碼35924）保證本產品。AirAsia X BHD推廣本產品。 Chubb 和AirAsia 只提供一般建議，不考慮你的目的，財務狀況或需要。為了確保本產品適合您，請閱讀AirAsia旅行保險保單內容及合格金融實體（QFE）披露聲明。
+          &lt;br /&gt;*受條款及細則，及除外規定約束
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>損失訂金或取消收費（由於超出你的控制，不包括運輸供應商無法預料的事件（如Air Asia）延誤，取消或重新安排而取消，提早結束旅程或無法完成旅程）</CheckItem>
+          <CheckItem>行李丟失、失竊、損壞*</CheckItem>
+          <CheckItem>行程延誤超過6 小時*</CheckItem>
+          <CheckItem>意外身亡*</CheckItem>
+          <CheckItem>24小時全球旅遊和醫療援助*</CheckItem>
+          <CheckItem>*承保受保單內容之全部條款、細則和除外原因約束，包括保額及自付額。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我確認我閱讀並接受『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;AirAsia 旅遊保險保單內容
+          &lt;/a&gt;
+          』及『
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;合格金融實體（QFE）披露聲明，&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 』，並接受這些條款，條件和政策措辭的除外原因。我/我們同意AirAsia 保單內容及合格金融實體（QFE）披露聲明，並通過電子郵件領取旅遊保險證書。我確認提交的信息完整無誤。。我/我們明白，以上資料將被送到Chubb 並按『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb的隱私聲明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;注：丘博保險新西蘭有限公司（公司編號104656，金融服務提供商號碼35924）保證本產品。AirAsia X BHD推廣本產品。 Chubb 和AirAsia 只提供一般建議，不考慮你的目的，財務狀況或需要。為了確保本產品適合您，請閱讀AirAsia旅行保險保單內容及合格金融實體（QFE）披露聲明。
+          &lt;br /&gt;*受條款及細則，及除外規定約束
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+    <Insurance>
+      <CultureCode>zh-TW</CultureCode>
+      <Itnl>
+        <CheckItems>
+          <CheckItem>損失訂金或取消收費（由於超出你的控制，不包括運輸供應商無法預料的事件（如Air Asia）延誤，取消或重新安排而取消，提早結束旅程或無法完成旅程）</CheckItem>
+          <CheckItem>行李丟失、失竊、損壞*</CheckItem>
+          <CheckItem>行程延誤超過6 小時*</CheckItem>
+          <CheckItem>意外身亡*</CheckItem>
+          <CheckItem>24小時全球旅遊和醫療援助*</CheckItem>
+          <CheckItem>*承保受保單內容之全部條款、細則和除外原因約束，包括保額及自付額。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我確認我閱讀並接受『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;AirAsia 旅遊保險保單內容
+          &lt;/a&gt;
+          』及『
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;合格金融實體（QFE）披露聲明，&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 』，並接受這些條款，條件和政策措辭的除外原因。我/我們同意AirAsia 保單內容及合格金融實體（QFE）披露聲明，並通過電子郵件領取旅遊保險證書。我確認提交的信息完整無誤。。我/我們明白，以上資料將被送到Chubb 並按『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb的隱私聲明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;注：丘博保險新西蘭有限公司（公司編號104656，金融服務提供商號碼35924）保證本產品。AirAsia X BHD推廣本產品。 Chubb 和AirAsia 只提供一般建議，不考慮你的目的，財務狀況或需要。為了確保本產品適合您，請閱讀AirAsia旅行保險保單內容及合格金融實體（QFE）披露聲明。
+          &lt;br /&gt;*受條款及細則，及除外規定約束
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Itnl>
+      <Dom>
+        <CheckItems>
+          <CheckItem>損失訂金或取消收費（由於超出你的控制，不包括運輸供應商無法預料的事件（如Air Asia）延誤，取消或重新安排而取消，提早結束旅程或無法完成旅程）</CheckItem>
+          <CheckItem>行李丟失、失竊、損壞*</CheckItem>
+          <CheckItem>行程延誤超過6 小時*</CheckItem>
+          <CheckItem>意外身亡*</CheckItem>
+          <CheckItem>24小時全球旅遊和醫療援助*</CheckItem>
+          <CheckItem>*承保受保單內容之全部條款、細則和除外原因約束，包括保額及自付額。</CheckItem>
+        </CheckItems>
+        <UpsellUrl></UpsellUrl>
+        <ConfirmContent>
+          &lt;span style="font-size: small;"&gt;我確認我閱讀並接受『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/pds/nzenpds.pdf" target="_blank"&gt;AirAsia 旅遊保險保單內容
+          &lt;/a&gt;
+          』及『
+          &lt;a style="font-size: small;" href="https://www.tuneprotect.com/airasia/nz/qfe/nzenqfe.pdf" target="_blank"&gt;合格金融實體（QFE）披露聲明，&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; 』，並接受這些條款，條件和政策措辭的除外原因。我/我們同意AirAsia 保單內容及合格金融實體（QFE）披露聲明，並通過電子郵件領取旅遊保險證書。我確認提交的信息完整無誤。。我/我們明白，以上資料將被送到Chubb 並按『 &lt;/span&gt;
+          &lt;a style="font-size: small;" href="https://tuneprotect.com/airasia/nz/en/da/nzen.html" target="_blank"&gt;Chubb的隱私聲明&lt;/a&gt;
+          &lt;span style="font-size: small;"&gt; &lt;br /&gt;注：丘博保險新西蘭有限公司（公司編號104656，金融服務提供商號碼35924）保證本產品。AirAsia X BHD推廣本產品。 Chubb 和AirAsia 只提供一般建議，不考慮你的目的，財務狀況或需要。為了確保本產品適合您，請閱讀AirAsia旅行保險保單內容及合格金融實體（QFE）披露聲明。
+          &lt;br /&gt;*受條款及細則，及除外規定約束
+          &lt;/span&gt;&lt;/p&gt;
+        </ConfirmContent>
+      </Dom>
+    </Insurance>
+  </Insurances>
+</BaseResource>
