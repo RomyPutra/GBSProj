@@ -50,6 +50,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ABS.Logic.Shared, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GBSdll\ABS.Logic.Shared.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\..\myApp\DLLS\log4net.dll</HintPath>
     </Reference>
@@ -626,12 +630,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ABS.Logic.Shared\ABS.Logic.Shared.csproj">
-      <Project>{2DFD53C5-092C-4079-BFF4-07AD4CC121B6}</Project>
-      <Name>ABS.Logic.Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Navitaire.UtilitiesManager\configuration91.svcinfo" />

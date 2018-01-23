@@ -65,6 +65,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\GBSPart\aspnet-core\GBS\ABS.Logic.GroupBooking\bin\Debug\ABS.Logic.GroupBooking.dll</HintPath>
     </Reference>
+    <Reference Include="ABS.Logic.Shared, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GBSdll\ABS.Logic.Shared.dll</HintPath>
+    </Reference>
     <Reference Include="ABS.Navitaire, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\GBSPart\aspnet-core\GBS\ABS.Logic.GroupBooking\bin\Debug\ABS.Navitaire.dll</HintPath>
@@ -2845,10 +2849,6 @@
     <ProjectReference Include="..\ABS.Insure\ABS.Insure.csproj">
       <Project>{8e3728eb-de77-4e05-9e96-05d4b45176af}</Project>
       <Name>ABS.Insure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ABS.Logic.Shared\ABS.Logic.Shared.csproj">
-      <Project>{2dfd53c5-092c-4079-bff4-07ad4cc121b6}</Project>
-      <Name>ABS.Logic.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

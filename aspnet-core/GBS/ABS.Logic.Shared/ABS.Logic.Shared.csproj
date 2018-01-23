@@ -66,10 +66,11 @@
     </Reference>
     <Reference Include="SEAL.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=2191253efa3a3bc4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\SEAL.Security.dll</HintPath>
+      <HintPath>..\GBSdll\SEAL.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Sharpbrake.Client">
-      <HintPath>..\..\..\..\..\Users\vdralvintee\Desktop\Sharpbrake.Client.dll</HintPath>
+    <Reference Include="Sharpbrake.Client, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GBSdll\Sharpbrake.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

@@ -54,6 +54,14 @@
     <Reference Include="ABS.Logic.GroupBooking">
       <HintPath>bin\Debug\ABS.Logic.GroupBooking.dll</HintPath>
     </Reference>
+    <Reference Include="ABS.Logic.Shared, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GBSdll\ABS.Logic.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="ABS.Navitaire, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GBSdll\ABS.Navitaire.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v16.1">
       <HintPath>bin\Debug\DevExpress.Data.v16.1.dll</HintPath>
     </Reference>
@@ -145,16 +153,6 @@
   <ItemGroup>
     <Content Include="bin\Debug\SEAL.Data.dll" />
     <Content Include="bin\Debug\SEAL.Model.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ABS.Logic.Shared\ABS.Logic.Shared.csproj">
-      <Project>{2dfd53c5-092c-4079-bff4-07ad4cc121b6}</Project>
-      <Name>ABS.Logic.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ABS.Navitaire\ABS.Navitaire.csproj">
-      <Project>{9a63eb52-c4ef-4854-ba77-2c11b3609a46}</Project>
-      <Name>ABS.Navitaire</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" /> -->
