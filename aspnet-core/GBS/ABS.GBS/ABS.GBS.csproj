@@ -69,161 +69,124 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\GBSPart\aspnet-core\GBS\ABS.Logic.GroupBooking\bin\Debug\ABS.Navitaire.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Charts.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Charts.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.Charts.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.CodeParser.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.CodeParser.v16.1">
+      <HintPath>..\GBSdll\DevExpress.CodeParser.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Data.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Data.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Data.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.DataAccess.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.DataAccess.v16.1">
+      <HintPath>..\GBSdll\DevExpress.DataAccess.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Office.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Office.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.Office.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Pdf.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Pdf.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.Pdf.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v16.1.Drawing, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Pdf.v16.1.Drawing.dll</HintPath>
+    <Reference Include="DevExpress.Pdf.v16.1.Drawing">
+      <HintPath>..\GBSdll\DevExpress.Pdf.v16.1.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.PivotGrid.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.PivotGrid.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Printing.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Printing.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.Printing.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.RichEdit.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.RichEdit.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.RichEdit.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Sparkline.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Sparkline.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.Sparkline.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.SpellChecker.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.SpellChecker.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.SpellChecker.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.SpellChecker.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.TreeMap.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.TreeMap.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.TreeMap.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.TreeMap.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Utils.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Utils.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Utils.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.ASPxHtmlEditor.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.ASPxHtmlEditor.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxPivotGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.ASPxPivotGrid.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.ASPxPivotGrid.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.ASPxScheduler.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxScheduler.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.ASPxScheduler.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxSpellChecker.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.ASPxSpellChecker.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.ASPxSpellChecker.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxThemes.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.ASPxThemes.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.ASPxThemes.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.ASPxTreeList.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.ASPxTreeList.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.Resources.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.Resources.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.Resources.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Web.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Web.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Web.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.Xpo.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpo.v16.1">
+      <HintPath>..\GBSdll\DevExpress.Xpo.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraBars.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraBars.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraBars.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraCharts.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraCharts.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraCharts.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v16.1.Web, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraCharts.v16.1.Web.dll</HintPath>
+    <Reference Include="DevExpress.XtraCharts.v16.1.Web">
+      <HintPath>..\GBSdll\DevExpress.XtraCharts.v16.1.Web.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraEditors.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraEditors.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraGauges.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.XtraGauges.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraGrid.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraGrid.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraGrid.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraLayout.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraLayout.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraLayout.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraPivotGrid.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraPivotGrid.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraPrinting.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraPrinting.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraPrinting.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraReports.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraReports.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraReports.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v16.1.Web, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraReports.v16.1.Web.dll</HintPath>
+    <Reference Include="DevExpress.XtraReports.v16.1.Web">
+      <HintPath>..\GBSdll\DevExpress.XtraReports.v16.1.Web.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraScheduler.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraScheduler.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraScheduler.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraScheduler.v16.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.XtraScheduler.v16.1.Core">
+      <HintPath>..\GBSdll\DevExpress.XtraScheduler.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=dda9a637d2fffec4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DevExpress.XtraTreeList.v16.1.dll</HintPath>
+    <Reference Include="DevExpress.XtraTreeList.v16.1">
+      <HintPath>..\GBSdll\DevExpress.XtraTreeList.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DocumentFormat.OpenXml.dll</HintPath>
+      <HintPath>..\GBSdll\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Extensions, Version=2.1.5722.40337, Culture=neutral, PublicKeyToken=bebd372c505097f2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DocumentFormat.OpenXml.Extensions.dll</HintPath>
+      <HintPath>..\GBSdll\DocumentFormat.OpenXml.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -231,9 +194,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <HintPath>..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\GBSdll\MiniProfiler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -248,17 +210,14 @@
       <HintPath>..\..\packages\SEAL.3.0.0-preview2\lib\net40\SEAL.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SEAL.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=2191253efa3a3bc4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\SEAL.Security.dll</HintPath>
+    <Reference Include="SEAL.Security">
+      <HintPath>..\GBSdll\SEAL.Security.dll</HintPath>
     </Reference>
-    <Reference Include="SEAL.WEB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\SEAL.WEB.dll</HintPath>
+    <Reference Include="SEAL.WEB">
+      <HintPath>..\GBSdll\SEAL.WEB.dll</HintPath>
     </Reference>
-    <Reference Include="Sharpbrake.Client, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Sharpbrake.Client.dll</HintPath>
+    <Reference Include="Sharpbrake.Client">
+      <HintPath>..\GBSdll\Sharpbrake.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
