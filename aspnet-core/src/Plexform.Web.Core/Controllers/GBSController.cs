@@ -84,7 +84,7 @@ namespace Plexform.Controllers
 			);
 		}
 		[HttpPut]
-		public async Task<bool> Update([FromBody]ABS.Logic.GroupBooking.Booking.PaymentInfo input)
+		public async Task<bool> Update([FromBody]ABS.Logic.GroupBooking.Booking.PaymentInfo[] input)
 		{
 			bool res = false;
 			try

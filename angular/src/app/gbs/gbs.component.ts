@@ -18,6 +18,9 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
     groups: GBSDto = null;
 	events: Array<string> = [];
 	selectedItems: any[] = [];
+	listGrid: Array<GBSDto> = [];
+	hold: number = 0;
+	hold1: number = 1;
 
 	constructor(
 		injector: Injector,
@@ -83,27 +86,34 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 	  }
 
 	edit(data: any): void {
-		this.groups = data.key;
-		this.groups.grpid = 'AA';
-        this._gbsService.update(this.groups)
-		.finally(() => {
-			this.saving = false;
-		})
-		.subscribe((result: GBSDto) => {
-			if (result) {
-				this.notify.info(this.l('SavedSuccessfully'));
-			} else {
-				this.notify.error('Save failed!');
-			}
-		});
-}
+		if (this.hold === this.hold1) {
+			this.hold = 1;
+			this._gbsService.update(this.listGrid)
+			.finally(() => {
+				this.saving = false;
+			})
+			.subscribe((result: GBSDto[]) => {
+				if (result) {
+					this.notify.info(this.l('SavedSuccessfully'));
+					this.hold = 0;
+				} else {
+					this.notify.error('Save failed!');
+					this.hold = 0;
+				}
+			});	
+		} else {
+			this.hold1 = this.hold1 + 1;
+		};
+	}
 
 	logEvent(eventName) {
         this.events.unshift(eventName);
     }
 
 	logEvents(data: any) {
+		this.hold = this.hold + 1;
 		this.selectedItems = data.key;
+		this.listGrid.push(data.key);
         // this.selectedItems.forEach((item) => {
         //     this.dataSource.remove(item);
         //     this.dataGrid.instance.refresh();

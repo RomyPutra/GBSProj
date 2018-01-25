@@ -18,6 +18,7 @@ namespace Plexform.Models
 	}
 	public class PaymentSchemeModels
 	{
+		public string GRPID { get; set; }
 		public string SchemeCode { get; set; }
 		public string CountryCode { get; set; }
 		public string CurrencyCode { get; set; }

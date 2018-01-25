@@ -27,6 +27,15 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="ABS.GBS">
+      <HintPath>..\..\GBS\GBSdll\ABS.GBS.dll</HintPath>
+    </Reference>
+    <Reference Include="ABS.Insure">
+      <HintPath>..\..\GBS\GBSdll\ABS.Insure.dll</HintPath>
+    </Reference>
+    <Reference Include="ABS.Navitaire">
+      <HintPath>..\..\GBS\GBSdll\ABS.Navitaire.dll</HintPath>
+    </Reference>
     <Reference Include="Sharpbrake.Client">
       <HintPath>..\..\GBS\GBSdll\Sharpbrake.Client.dll</HintPath>
     </Reference>

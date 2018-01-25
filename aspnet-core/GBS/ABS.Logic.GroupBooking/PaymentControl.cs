@@ -1184,70 +1184,38 @@ namespace ABS.Logic.GroupBooking.Booking
 				return null;
 			}
 		}
-		public bool SavePaymentScheme(PaymentInfo pInfo)
+		public bool SavePaymentScheme(PaymentInfo[] pInfo)
 		{
 			bool rValue = false;
 			ArrayList lstSQL = new ArrayList();
 			string strSQL = string.Empty;
 			try
 			{
-				GetSchemeByCode(pInfo.GRPID, pInfo.CountryCode, pInfo.SchemeCode);
-				//PaymentInfo pyDetail = GetSchemeByCode(pInfo.GRPID, pInfo.CountryCode, pInfo.SchemeCode);
+				foreach (PaymentInfo xInfo in pInfo)
+				{
+					GetSchemeByCode(xInfo.GRPID, xInfo.CountryCode, xInfo.SchemeCode);
 
-				objSQL.AddField("DEPOPAYSCHEME.SchemeCode", pInfo.SchemeCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.CountryCode", pInfo.CountryCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.GRPID", pInfo.GRPID, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Duration", pInfo.Duration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.MinDuration", pInfo.MinDuration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.FirstDeposit", pInfo.FirstDeposit, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.Description", pInfo.Description, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.PaymentType", pInfo.PaymentType, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Attempt_1", pInfo.Attempt_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Code_1", pInfo.Code_1, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Percentage_1", pInfo.Percentage_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Attempt_2", pInfo.Attempt_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Code_2", pInfo.Code_2, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Percentage_2", pInfo.Percentage_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Attempt_3", pInfo.Attempt_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Code_3", pInfo.Code_3, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				objSQL.AddField("DEPOPAYSCHEME.Percentage_3", pInfo.Percentage_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PaymentMode", pInfo.PaymentMode, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.CreateBy", pInfo.CreateBy, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.SyncCreate", pInfo.SyncCreate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.SyncLastUpd", pInfo.SyncLastUpd, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LastSyncBy", pInfo.LastSyncBy, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.Reminder_1", pInfo.Reminder_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.Reminder_2", pInfo.Reminder_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.SchemeCode", xInfo.SchemeCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.CountryCode", xInfo.CountryCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Duration", xInfo.Duration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.MinDuration", xInfo.MinDuration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.PaymentType", xInfo.PaymentType, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Attempt_1", xInfo.Attempt_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Code_1", xInfo.Code_1, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Percentage_1", xInfo.Percentage_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Attempt_2", xInfo.Attempt_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Code_2", xInfo.Code_2, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Percentage_2", xInfo.Percentage_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Attempt_3", xInfo.Attempt_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Code_3", xInfo.Code_3, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("DEPOPAYSCHEME.Percentage_3", xInfo.Percentage_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
 
-				//objSQL.AddField("DEPOPAYSCHEME.Deposit_1", pInfo.Deposit_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.IsNominal_1", pInfo.IsNominal_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LDeposit_11", pInfo.LDeposit_11, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LDuration_11", pInfo.LDuration_11, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LDeposit_12", pInfo.LDeposit_12, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LDuration_12", pInfo.LDuration_12, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LDeposit_13", pInfo.LDeposit_13, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.LDuration_13", pInfo.LDuration_13, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PDeposit_11", pInfo.PDeposit_11, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PDuration_11", pInfo.PDuration_11, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PDeposit_12", pInfo.PDeposit_12, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PDuration_12", pInfo.PDuration_12, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PDeposit_13", pInfo.PDeposit_13, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.PDuration_13", pInfo.PDuration_13, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.Deposit_2", pInfo.Deposit_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPOPAYSCHEME.Deposit_3", pInfo.Deposit_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'");
+					lstSQL.Add(strSQL);
 
-				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + pInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + pInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + pInfo.SchemeCode + "'");
-				lstSQL.Add(strSQL);
-
-				//objSQL.AddField("DEPODURATION.Currency", pInfo.CurrencyCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPODURATION.MinDeposit", pInfo.Mindeposit, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPODURATION.MaxDeposit", pInfo.Maxdeposit, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPODURATION.MinDeposit2", pInfo.Mindeposit2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//objSQL.AddField("DEPODURATION.MaxDeposit2", pInfo.Maxdeposit2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-				//strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + pInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + pInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + pInfo.SchemeCode + "'");
-
-				strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + pInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + pInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + pInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + pInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + pInfo.Maxdeposit2 + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode WHERE DEPOPAYSCHEME.GRPID='" + pInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + pInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + pInfo.SchemeCode + "'";
-				lstSQL.Add(strSQL);
+					strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'";
+					lstSQL.Add(strSQL);
+				}
 
 				rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
 				if (rValue == false)

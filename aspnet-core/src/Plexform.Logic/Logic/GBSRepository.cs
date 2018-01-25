@@ -84,6 +84,7 @@ namespace Plexform.GBS
 						};
 						list.Add(new Models.PaymentSchemeModels
 						{
+							GRPID = dt.Rows[i]["GRPID"].ToString(),
 							SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
 							CountryCode = dt.Rows[i]["CountryCode"].ToString(),
 							Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
@@ -169,7 +170,7 @@ namespace Plexform.GBS
 			return await Task.FromResult(list);
 		}
 
-		public Task<bool> Update(PaymentInfo InfoScheme)
+		public Task<bool> Update(PaymentInfo[] InfoScheme)
 		{
 			PaymentControl Scheme = new PaymentControl();
 			var res = false;
