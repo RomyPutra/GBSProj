@@ -18,8 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\eSWIS\eSWIS.Logic\eSWIS.Logic.vbproj" />
     <ProjectReference Include="..\..\eSWIS\eSWIS.Shared\eSWIS.Shared.vbproj" />
-    <ProjectReference Include="..\..\GBS\ABS.GBS\ABS.GBS.csproj" />
-    <ProjectReference Include="..\..\GBS\ABS.Insure\ABS.Insure.csproj" />
     <ProjectReference Include="..\..\GBS\ABS.Logic.GroupBooking\ABS.Logic.GroupBooking.csproj" />
     <ProjectReference Include="..\..\GBS\ABS.Logic.Shared\ABS.Logic.Shared.csproj" />
     <ProjectReference Include="..\Plexform.Core\Plexform.Core.csproj" />
@@ -30,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Sharpbrake.Client">
-      <HintPath>..\..\..\..\GBSPart\aspnet-core\ABS.Navitaire\bin\Debug\Sharpbrake.Client.dll</HintPath>
+      <HintPath>..\..\GBS\GBSdll\Sharpbrake.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

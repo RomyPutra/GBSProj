@@ -13,7 +13,7 @@
     [columnResizingMode]="nextColumn"
     [columnAutoWidth]="true"
     [dataSource]="group"
-    (onFieldDataChanged)="onFieldDataChanged($event)"
+    (onRowUpdated)="logEvents($event)"
     (onContentReady)="onContentReady($event)"
     (onCellPrepared)="onCellPrepared($event)">
     

@@ -1,0 +1,114 @@
+<div bsModal #editPaySchemeModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editPaySchemeModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+  
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #editUserForm="ngForm" id="frm_edit_user" novalidate (ngSubmit)="save()">
+  
+              <div class="modal-header">
+                  <button type="button" class="close" (click)="close()" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title">
+                      <span>{{l("Edit PayScheme")}}</span>
+                  </h4>
+              </div>
+              <div class="modal-body">
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                    <li role="presentation" class="active"><a href="#scheme-details" data-toggle="tab">PayScheme</a></li>
+                    <li role="presentation"><a href="#user-roles" data-toggle="tab">Roles</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane animated fadeIn active" id="scheme-details">
+
+                        <div class="row clearfix" style="margin-top:10px;">
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <!-- <input id="schemecode" type="text" name="SchemeCode" required maxlength="32" minlength="2" class="validate form-control"> -->
+                                        <input id="schemecode" type="text" name="SchemeCode" required maxlength="32" minlength="2" class="validate form-control">
+                                        <label for="schemecode" class="form-label">{{l("schemecode")}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="countrycode" type="text" name="countrycode" required maxlength="32" class="validate form-control">
+                                        <label for="countrycode" class="form-label">{{l("countrycode")}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="currency" type="text" name="Currency" required maxlength="32" class="validate form-control">
+                                        <label for="currency" class="form-label">{{l("currency")}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="duration" type="text" name="duration" required maxlength="32" class="validate form-control">
+                                        <label for="duration" class="form-label">{{l("duration")}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="minduration" type="text" name="minduration" required maxlength="32" class="validate form-control">
+                                        <label for="minduration" class="form-label">{{l("minduration")}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="paymenttype" type="text" name="paymenttype" required maxlength="32" minlength="2" class="validate form-control">
+                                        <label for="paymenttype" class="form-label">{{l("paymenttype")}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane animated fadeIn" id="user-roles">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <ng-template ngFor let-role [ngForOf]="roles" let-roleIndex="index">
+                                    <div class="col-sm-6">
+                                        <input type="checkbox" name="role" value="{{role.normalizedName}}" title="{{role.description}}" class="filled-in" id="role-{{roleIndex}}" checked="checked" />
+                                        <label for="role-{{roleIndex}}" title="{{role.displayName}}">{{role.name}}</label>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+  
+              <div class="modal-footer">
+                  <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                      {{l("Cancel")}}
+                  </button>
+                  <button [disabled]="!editUserForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                      {{l("Save")}}
+                  </button>
+              </div>
+  
+        </form>
+        </div>
+    </div>
+  </div>
+  

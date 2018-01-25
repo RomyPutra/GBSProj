@@ -103,11 +103,11 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
     }
 
 	logEvents(data: any) {
-		this.selectedItems = data;
+		this.selectedItems = data.key;
         // this.selectedItems.forEach((item) => {
         //     this.dataSource.remove(item);
         //     this.dataGrid.instance.refresh();
         // });
-        this.events.unshift(this.selectedItems[0]);
+        this.events.unshift(this.selectedItems['duration']);
     }
 }
