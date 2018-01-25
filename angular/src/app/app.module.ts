@@ -55,6 +55,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { CreateCustomerComponent } from './customers/create-customer/create-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 import { GBSComponent } from './gbs/gbs.component';
+import { EditPaySchemeComponent } from './gbs/update-payscheme/update-payscheme.component';
 
 @NgModule({
     declarations: [
@@ -92,7 +93,8 @@ import { GBSComponent } from './gbs/gbs.component';
         CustomersComponent,
         EditCustomerComponent,
         CreateCustomerComponent,
-        GBSComponent
+        GBSComponent,
+        EditPaySchemeComponent
 ],
     imports: [
         CommonModule,

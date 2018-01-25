@@ -59,7 +59,7 @@ namespace Plexform.GBS
 			return await Task.FromResult(signature);
 		}
 
-		public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetAllScheme(string GRPID = "", string TransID = "")
+		public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetAllScheme(string GRPID = "")
 		{
 			IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
 			PaymentInfo Model = new PaymentInfo();
@@ -67,7 +67,7 @@ namespace Plexform.GBS
 			DataTable dt;
 			try
 			{
-				dt = Scheme.GetAllScheme(GRPID, TransID);
+				dt = Scheme.GetSchemeByCode(GRPID);
 				if (dt != null && dt.Rows.Count > 0)
 				{
 					for (int i = 0; i < dt.Rows.Count; i++)
@@ -89,11 +89,6 @@ namespace Plexform.GBS
 							Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
 							Minduration = Convert.ToInt32(dt.Rows[i]["MinDuration"]),
 							PaymentType = dt.Rows[i]["PaymentType"].ToString(),
-							//CurrencyCode = dt.Rows[i]["Currency"].ToString(),
-							//MinDeposit = Convert.ToInt32(dt.Rows[i]["MinDeposit"]),
-							//MaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]),
-							//MinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]),
-							//MaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]),
 							CurrencyCode = Currency,
 							MinDeposit = xMinDeposit,
 							MaxDeposit = xMaxDeposit,
@@ -117,6 +112,80 @@ namespace Plexform.GBS
 				var temp = ex.ToString();
 			}
 			return await Task.FromResult(list);
+		}
+
+		public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetSchemeByCode(string GRPID = "", string CountryCode = "", string SchemeCode = "")
+		{
+			IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
+			PaymentInfo Model = new PaymentInfo();
+			ABS.Logic.GroupBooking.Booking.PaymentControl Scheme = new PaymentControl();
+			DataTable dt;
+			try
+			{
+				dt = Scheme.GetSchemeByCode(GRPID, CountryCode, SchemeCode);
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						string Currency = "";
+						int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
+						if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
+						{
+							Currency = dt.Rows[i]["Currency"].ToString();
+							xMinDeposit = Convert.ToInt32(dt.Rows[i]["MinDeposit"]);
+							xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
+							xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
+							xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
+						};
+						list.Add(new Models.PaymentSchemeModels
+						{
+							SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
+							CountryCode = dt.Rows[i]["CountryCode"].ToString(),
+							Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
+							Minduration = Convert.ToInt32(dt.Rows[i]["MinDuration"]),
+							PaymentType = dt.Rows[i]["PaymentType"].ToString(),
+							CurrencyCode = Currency,
+							MinDeposit = xMinDeposit,
+							MaxDeposit = xMaxDeposit,
+							MinDeposit2 = xMinDeposit2,
+							MaxDeposit2 = xMaxDeposit2,
+							Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
+							Code_1 = dt.Rows[i]["Code_1"].ToString(),
+							Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
+							Attempt_2 = Convert.ToInt32(dt.Rows[i]["Attempt_2"]),
+							Code_2 = dt.Rows[i]["Code_2"].ToString(),
+							Percentage_2 = Convert.ToInt32(dt.Rows[i]["Percentage_2"]),
+							Attempt_3 = Convert.ToInt32(dt.Rows[i]["Attempt_3"]),
+							Code_3 = dt.Rows[i]["Code_3"].ToString(),
+							Percentage_3 = Convert.ToInt32(dt.Rows[i]["Percentage_3"])
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(list);
+		}
+
+		public Task<bool> Update(PaymentInfo InfoScheme)
+		{
+			PaymentControl Scheme = new PaymentControl();
+			var res = false;
+			try
+			{
+				res = Scheme.SavePaymentScheme(InfoScheme);
+				//string conn = _appConfiguration.GetConnectionString(PlexformConsts.ESWISConnectionString);
+				//eSWIS.Logic.UserSecurity.UserGroup obj = new eSWIS.Logic.UserSecurity.UserGroup(conn);
+				//string message = "";
+				//res = obj.Update(cont, ref message);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
 		}
 
 		public async Task<IList<Plexform.Models.GBSModels>> GetBookingByPNR(string id = "")

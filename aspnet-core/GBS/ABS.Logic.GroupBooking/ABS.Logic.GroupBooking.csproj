@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ABS.Logic.GroupBooking">
-      <HintPath>bin\Debug\ABS.Logic.GroupBooking.dll</HintPath>
+      <HintPath>..\GBSdll\ABS.Logic.GroupBooking.dll</HintPath>
     </Reference>
     <Reference Include="ABS.Logic.Shared, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -63,21 +63,21 @@
       <HintPath>..\GBSdll\ABS.Navitaire.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v16.1">
-      <HintPath>bin\Debug\DevExpress.Data.v16.1.dll</HintPath>
+      <HintPath>..\GBSdll\DevExpress.Data.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.v16.1">
-      <HintPath>bin\Debug\DevExpress.Web.v16.1.dll</HintPath>
+      <HintPath>..\GBSdll\DevExpress.Web.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\log4net.dll</HintPath>
+      <HintPath>..\GBSdll\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MiniProfiler">
-      <HintPath>bin\Debug\MiniProfiler.dll</HintPath>
+      <HintPath>..\GBSdll\MiniProfiler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\GBSdll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SEAL.Data">
       <SpecificVersion>False</SpecificVersion>
@@ -90,10 +90,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SEAL.Security">
-      <HintPath>bin\Debug\SEAL.Security.dll</HintPath>
+      <HintPath>..\GBSdll\SEAL.Security.dll</HintPath>
     </Reference>
     <Reference Include="Sharpbrake.Client">
-      <HintPath>bin\Debug\Sharpbrake.Client.dll</HintPath>
+      <HintPath>..\GBSdll\Sharpbrake.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -150,10 +150,10 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\SEAL.Data.dll" />
-    <Content Include="bin\Debug\SEAL.Model.dll" />
-  </ItemGroup>
+  <!-- <ItemGroup> -->
+    <!-- <Content Include="..\GBSdll\SEAL.Data.dll" /> -->
+    <!-- <Content Include="..\GBSdll\SEAL.Model.dll" /> -->
+  <!-- </ItemGroup> -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" /> -->
   <!-- <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild"> -->

@@ -55,14 +55,14 @@
       <HintPath>..\GBSdll\ABS.Logic.Shared.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\myApp\DLLS\log4net.dll</HintPath>
+      <HintPath>..\GBSdll\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <HintPath>..\ABS.GBS\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <HintPath>..\GBSdll\MiniProfiler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\Users\vdralvintee\Desktop\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\GBSdll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SEAL.Data">
       <SpecificVersion>False</SpecificVersion>
@@ -76,7 +76,7 @@
     </Reference>
     <Reference Include="Sharpbrake.Client, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ABS.GBS\ABS.GBS\bin\Sharpbrake.Client.dll</HintPath>
+      <HintPath>...\GBSdll\Sharpbrake.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

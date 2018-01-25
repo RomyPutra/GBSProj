@@ -1,5 +1,5 @@
 <h3>PAYMENT SETTINGS</h3>
-<div style="border-radius: 25px;border: 2px solid #73AD21;padding: 20px;background:white;">
+<div style="border-radius: 25px;padding: 20px;background:white;">
   <!-- <div class="body table-responsive"> -->
     <!-- ******************************************************** -->
     <dx-data-grid
@@ -12,13 +12,27 @@
     [hoverStateEnabled]="true"
     [columnResizingMode]="nextColumn"
     [columnAutoWidth]="true"
-    [dataSource]="group" >
+    [dataSource]="group"
+    (onFieldDataChanged)="onFieldDataChanged($event)"
+    (onContentReady)="onContentReady($event)"
+    (onCellPrepared)="onCellPrepared($event)">
     
       <dxo-search-panel 
         [visible]="true" 
         [width]="240" 
         placeholder="Search..."></dxo-search-panel>
   
+      <dxo-editing mode="batch" [allowUpdating]="true"></dxo-editing>
+
+      <!-- <dxi-column 
+      dataField="schemeCode" 
+      caption="#"
+      [allowFiltering]="false"
+      [width]="40"
+      [minWidth]="30"
+      [allowSorting]="false" 
+      cellTemplate="actionCellTemplate"></dxi-column> -->
+
       <dxi-column dataField="schemeCode" caption="Code"></dxi-column>
       <dxi-column dataField="countryCode" caption="Country Code"></dxi-column>
       <dxi-column dataField="currencyCode" caption="Currency"></dxi-column>
@@ -39,11 +53,22 @@
       <dxi-column dataField="minDeposit2" caption="Min Pay2"></dxi-column>
       <dxi-column dataField="mixDeposit2" caption="Max Pay2"></dxi-column>
   
+					<div *dxTemplate="let row of 'actionCellTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid">
+								<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="logEvents(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+							</ul>
+						</div>
+          </div>
+          
       <dxo-remote-operations
       [sorting]="true"
       [paging]="true">
       </dxo-remote-operations>
-      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-paging [pageSize]="5"></dxo-paging>
       <dxo-pager 
         [showPageSizeSelector]="true"
         [allowedPageSizes]="[5, 10, 20]"
@@ -52,4 +77,17 @@
     </dx-data-grid>
     <!-- ******************************************************** -->
   <!-- </div>   -->
+  <div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+    </div>
+    <ul>
+        <li *ngFor="let event of events">{{event}}</li>
+    </ul>
 </div>
+</div>
+
+<update-payscheme-modal #updatePayschemeModal (modalSave)="refresh()"></update-payscheme-modal>

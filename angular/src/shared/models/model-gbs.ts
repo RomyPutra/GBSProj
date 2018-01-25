@@ -61,6 +61,7 @@ export class GBSDto implements IGBSDto {
     // flightnum: string;
     // carriercode: string;
     // bookingsum: number;
+    grpid: string;
     schemeCode: string;
     countryCode: string;
     currencyCode: string;
@@ -109,6 +110,7 @@ export class GBSDto implements IGBSDto {
             // this.carriercode = data['carriercode'];
             // this.bookingsum = data['bookingSum'];
 
+            this.grpid = data['grpid'];
             this.schemeCode = data['schemeCode'];
             this.countryCode = data['countryCode'];
             this.currencyCode = data['currencyCode'];
@@ -141,6 +143,7 @@ export class GBSDto implements IGBSDto {
         // data['flightNum'] = this.flightnum;
         // data['carriercode'] = this.carriercode;
         // data['bookingSum'] = this.bookingsum;
+        data['grpid'] = this.grpid;
         data['schemeCode'] = this.schemeCode;
         data['countryCode'] = this.countryCode;
         data['currencyCode'] = this.currencyCode;
@@ -180,6 +183,7 @@ export interface IGBSDto {
     // flightnum: string;
     // carriercode: string;
     // bookingsum: number;
+    grpid: string;
     schemeCode: string;
     countryCode: string;
     currencyCode: string;

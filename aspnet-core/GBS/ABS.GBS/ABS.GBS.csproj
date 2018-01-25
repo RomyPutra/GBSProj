@@ -63,7 +63,7 @@
   <ItemGroup>
     <Reference Include="ABS.Logic.GroupBooking, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GBSPart\aspnet-core\GBS\ABS.Logic.GroupBooking\bin\Debug\ABS.Logic.GroupBooking.dll</HintPath>
+      <HintPath>..\GBSdll\ABS.Logic.GroupBooking.dll</HintPath>
     </Reference>
     <Reference Include="ABS.Logic.Shared, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -71,7 +71,7 @@
     </Reference>
     <Reference Include="ABS.Navitaire, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\GBSPart\aspnet-core\GBS\ABS.Logic.GroupBooking\bin\Debug\ABS.Navitaire.dll</HintPath>
+      <HintPath>..\GBSdll\ABS.Navitaire.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Charts.v16.1.Core">
       <HintPath>..\GBSdll\DevExpress.Charts.v16.1.Core.dll</HintPath>

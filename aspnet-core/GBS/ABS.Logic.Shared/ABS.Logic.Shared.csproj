@@ -52,7 +52,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\Users\vdralvintee\Desktop\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\GBSdll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SEAL.Data, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -109,9 +109,9 @@
       <LastGenOutput>SystemMsg.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\SEAL.Security.dll" />
-  </ItemGroup>
+  <!-- <ItemGroup> -->
+    <!-- <Content Include="bin\Debug\SEAL.Security.dll" /> -->
+  <!-- </ItemGroup> -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
