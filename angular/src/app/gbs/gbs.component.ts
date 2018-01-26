@@ -112,6 +112,7 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 
 	logEvents(data: any) {
 		this.hold = this.hold + 1;
+		this.hold1 = 1;
 		this.selectedItems = data.key;
 		this.listGrid.push(data.key);
         // this.selectedItems.forEach((item) => {

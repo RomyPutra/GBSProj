@@ -327,10 +327,9 @@ namespace ABS.Logic.GroupBooking.Booking
         //ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         LogControl log = new LogControl();
         SystemLog SystemLog = new SystemLog();
-
-		//string ConnStr = "Server=172.20.145.11;Database=GBSPILOT;Trusted_Connection=True; User=gbs; Password=p@ssw0rd;";//System.Configuration.ConfigurationManager.ConnectionStrings["ConnStr"].ToString();
-		string ConnStr = "Data Source=172.20.145.11;Initial Catalog = GBSPILOT; Persist Security Info=True;User ID = gbs; Password=p@ssw0rd; connection timeout = 60; Application Name = GBS";
-
+		string ConnStr = "";
+		//string ConnStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnStr"].ToString();
+		//string ConnStr = "Data Source=172.20.145.11;Initial Catalog = GBSPILOT; Persist Security Info=True;User ID = gbs; Password=p@ssw0rd; connection timeout = 60; Application Name = GBS";
 
 		public enum SaveType
         {
@@ -1040,6 +1039,11 @@ namespace ABS.Logic.GroupBooking.Booking
 
 		//added by romy
 		#region NewScheme
+		public bool ConnectionURl(string conn)
+		{
+			this.ConnStr = conn;
+			return true;
+		}
 		public DateTime getBookingDate(string Transid, ref Boolean newGBS)
 		{
 			String strSQL = string.Empty;

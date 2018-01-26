@@ -16,13 +16,14 @@ namespace Plexform.GBS
 	public class GBSRepository : SEAL.Model.Moyenne.CoreStandard
 	{
 		protected static DataAccess objDCom;
-		AdminControl.StrucAdminSet _AdminSet = new AdminControl.StrucAdminSet();
-		AdminControl objAdmin = new AdminControl();
-		AdminControl.StrucAdminSet AdminSet;
-		SystemLog SystemLog = new SystemLog();
-		USRPROFILE_Info UsrInfo = new USRPROFILE_Info();
-		BookingControl objBooking = new BookingControl();
-		//ABS.Navitaire.APIBooking absNavitaire = new ABS.Navitaire.APIBooking("");
+		AdminControl.StrucAdminSet _AdminSet;
+		AdminControl objAdmin;
+		AdminControl.StrucAdminSet adminSet;
+		SystemLog systemLog;
+		USRPROFILE_Info usrInfo;
+		BookingControl objBooking;
+		PaymentControl scheme;
+
 
 		private readonly IConfigurationRoot _appConfiguration;
 
@@ -31,22 +32,29 @@ namespace Plexform.GBS
 			_appConfiguration = AppConfigurations.Get(
 				typeof(GBSRepository).GetAssembly().GetDirectoryPathOrNull()
 			);
+			_AdminSet = new AdminControl.StrucAdminSet();
+			objAdmin = new AdminControl();
+			systemLog = new SystemLog();
+			usrInfo = new USRPROFILE_Info();
+			objBooking = new BookingControl();
+			scheme = new PaymentControl();
+			scheme.ConnectionURl(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString));
 		}
 
 		public async Task<string> GetSignaturesAsync()
 		{
 			NavitaireSessionManger.ISessionManager objsession = new NavitaireSessionManger.SessionManagerClient();
-			NavitaireSessionManger.LogonRequest Logonreq = new NavitaireSessionManger.LogonRequest();
+			NavitaireSessionManger.LogonRequest logonReq = new NavitaireSessionManger.LogonRequest();
 			string signature = "";
 			try
 			{
-				Logonreq.logonRequestData = new NavitaireSessionManger.LogonRequestData();
-				Logonreq.logonRequestData.DomainCode = "def";
-				Logonreq.logonRequestData.AgentName = "APIGRPBOOK";
-				Logonreq.logonRequestData.Password = "grp@book1";
-				Logonreq.ContractVersion = 3413;
+				logonReq.logonRequestData = new NavitaireSessionManger.LogonRequestData();
+				logonReq.logonRequestData.DomainCode = "def";
+				logonReq.logonRequestData.AgentName = "APIGRPBOOK";
+				logonReq.logonRequestData.Password = "grp@book1";
+				logonReq.ContractVersion = 3413;
 
-				NavitaireSessionManger.LogonResponse logonResponse = await objsession.LogonAsync(Logonreq);
+				NavitaireSessionManger.LogonResponse logonResponse = await objsession.LogonAsync(logonReq);
 				if (logonResponse != null && logonResponse.Signature.ToString() != string.Empty)
 				{
 					signature = logonResponse.Signature;
@@ -63,11 +71,10 @@ namespace Plexform.GBS
 		{
 			IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
 			PaymentInfo Model = new PaymentInfo();
-			ABS.Logic.GroupBooking.Booking.PaymentControl Scheme = new PaymentControl();
 			DataTable dt;
 			try
 			{
-				dt = Scheme.GetSchemeByCode(GRPID);
+				dt = scheme.GetSchemeByCode(GRPID);
 				if (dt != null && dt.Rows.Count > 0)
 				{
 					for (int i = 0; i < dt.Rows.Count; i++)
@@ -119,11 +126,10 @@ namespace Plexform.GBS
 		{
 			IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
 			PaymentInfo Model = new PaymentInfo();
-			ABS.Logic.GroupBooking.Booking.PaymentControl Scheme = new PaymentControl();
 			DataTable dt;
 			try
 			{
-				dt = Scheme.GetSchemeByCode(GRPID, CountryCode, SchemeCode);
+				dt = scheme.GetSchemeByCode(GRPID, CountryCode, SchemeCode);
 				if (dt != null && dt.Rows.Count > 0)
 				{
 					for (int i = 0; i < dt.Rows.Count; i++)
@@ -140,6 +146,7 @@ namespace Plexform.GBS
 						};
 						list.Add(new Models.PaymentSchemeModels
 						{
+							GRPID = dt.Rows[i]["GRPID"].ToString(),
 							SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
 							CountryCode = dt.Rows[i]["CountryCode"].ToString(),
 							Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
@@ -172,15 +179,10 @@ namespace Plexform.GBS
 
 		public Task<bool> Update(PaymentInfo[] InfoScheme)
 		{
-			PaymentControl Scheme = new PaymentControl();
 			var res = false;
 			try
 			{
-				res = Scheme.SavePaymentScheme(InfoScheme);
-				//string conn = _appConfiguration.GetConnectionString(PlexformConsts.ESWISConnectionString);
-				//eSWIS.Logic.UserSecurity.UserGroup obj = new eSWIS.Logic.UserSecurity.UserGroup(conn);
-				//string message = "";
-				//res = obj.Update(cont, ref message);
+				res = scheme.SavePaymentScheme(InfoScheme);
 			}
 			catch (Exception ex)
 			{
@@ -193,7 +195,7 @@ namespace Plexform.GBS
 		{
 			IList<Plexform.Models.GBSModels> list = new List<Plexform.Models.GBSModels>();
 			NavitaireSessionManger.ISessionManager objsession = new NavitaireSessionManger.SessionManagerClient();
-			NavitaireSessionManger.LogonRequest Logonreq = new NavitaireSessionManger.LogonRequest();
+			NavitaireSessionManger.LogonRequest logonReq = new NavitaireSessionManger.LogonRequest();
 			NavitaireBookingManager.IBookingManager bookingAPI = new NavitaireBookingManager.BookingManagerClient();
 			NavitaireBookingManager.GetBookingRequest request = new NavitaireBookingManager.GetBookingRequest();
 			NavitaireBookingManager.GetBookingResponse bookingResp;
@@ -247,23 +249,15 @@ namespace Plexform.GBS
 		{
 			if (ValidateAdmin(Username, Password) == true)
 			{
-				//added by diana 20131115 - save lastlogintime
 				DateTime timeNow = DateTime.Now;
 
-				UsrInfo = objAdmin.GetSingleUSRPROFILE(Username, "USRPROFILE.UserName");
-				UsrInfo.LastLogin = DateTime.Now;
-				UsrInfo.SyncLastUpd = DateTime.Now;
-				UsrInfo.LastSyncBy = UsrInfo.UserID;
-				UsrInfo = objAdmin.SaveUserProfile(UsrInfo, null, ABS.Logic.GroupBooking.Agent.AdminControl.EnumSaveType.Update);
+				usrInfo = objAdmin.GetSingleUSRPROFILE(Username, "USRPROFILE.UserName");
+				usrInfo.LastLogin = DateTime.Now;
+				usrInfo.SyncLastUpd = DateTime.Now;
+				usrInfo.LastSyncBy = usrInfo.UserID;
+				usrInfo = objAdmin.SaveUserProfile(usrInfo, null, ABS.Logic.GroupBooking.Agent.AdminControl.EnumSaveType.Update);
 
-				//Session["SessionLogin"] = UsrInfo.LastLogin;
-				//end added by diana 20131115 - save lastlogintime
-
-				//check blacklist
-
-				AdminSet = objAdmin.AdminSet;
-				//Shared.Common.SetAdminSession(AdminSet);
-				//Response.Redirect("../public/agentmain.aspx",false);
+				adminSet = objAdmin.AdminSet;
 
 				return true;
 
