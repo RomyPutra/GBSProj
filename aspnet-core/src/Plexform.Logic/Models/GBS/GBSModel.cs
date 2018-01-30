@@ -38,14 +38,12 @@ namespace Plexform.Models
 		public long MaxDeposit { get; set; }
 		public long MinDeposit2 { get; set; }
 		public long MaxDeposit2 { get; set; }
-		//public long BookingID { get; set; }
-		//public string PNR { get; set; }
-		//public string CurrencyCode { get; set; }
-		//public string DepartStation { get; set; }
-		//public string ArrivalStation { get; set; }
-		//public string FlightNum { get; set; }
-		//public string Carriercode { get; set; }
-		//public decimal BookingSum { get; set; }
-		//public IList<NavitaireBookingManager.GetBookingResponse> Functions { get; set; }
+		//public string PrevCountry { get; set; }
+	}
+	public class CountryModels
+	{
+		public string CountryCode { get; set; }
+		public string CountryName { get; set; }
+		public string CurrencyCode { get; set; }
 	}
 }

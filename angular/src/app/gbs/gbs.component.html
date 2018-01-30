@@ -34,25 +34,55 @@
       [allowSorting]="false" 
       cellTemplate="actionCellTemplate"></dxi-column> -->
 
-      <dxi-column dataField="schemeCode" caption="Code"></dxi-column>
-      <dxi-column dataField="countryCode" caption="Country Code"></dxi-column>
-      <dxi-column dataField="currencyCode" caption="Currency"></dxi-column>
-      <dxi-column dataField="duration" caption="Dur (hrs)"></dxi-column>
-      <dxi-column dataField="minduration" caption="Min Dur (hrs)"></dxi-column>
-      <dxi-column dataField="paymentType" caption="Payment Type"></dxi-column>
+      <dxi-column dataField="schemeCode" caption="Code" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="countryCode" caption="Country Code" [allowEditing]="false">
+        <dxo-lookup
+          [dataSource]="countrys"
+          displayExpr="countryName"
+          valueExpr="countryID">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="currencyCode" caption="Currency" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="duration" caption="Dur (hrs)" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="minduration" caption="Min Dur (hrs)" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="paymentType" caption="Payment Type">
+        <dxo-lookup
+          [dataSource]="paytype"
+          displayExpr="Type"
+          valueExpr="Type">
+        </dxo-lookup>
+      </dxi-column>
       <dxi-column dataField="attempt_1" caption="Att. 1 (hrs)"></dxi-column>
-      <dxi-column dataField="code_1" caption="Code 1"></dxi-column>
+      <dxi-column dataField="code_1" caption="Code 1">
+        <dxo-lookup
+          [dataSource]="codex"
+          displayExpr="Code"
+          valueExpr="Code">
+        </dxo-lookup>
+      </dxi-column>
       <dxi-column dataField="percentage_1" caption="Perc. 1(%)"></dxi-column>
       <dxi-column dataField="attempt_2" caption="Att. 2 (hrs)"></dxi-column>
-      <dxi-column dataField="code_2" caption="Code 2"></dxi-column>
+      <dxi-column dataField="code_2" caption="Code 2">
+        <dxo-lookup
+          [dataSource]="codex"
+          displayExpr="Code"
+          valueExpr="Code">
+        </dxo-lookup>
+      </dxi-column>
       <dxi-column dataField="percentage_2" caption="Perc. 2(%)"></dxi-column>
       <dxi-column dataField="attempt_3" caption="Att. 3 (hrs)"></dxi-column>
-      <dxi-column dataField="code_3" caption="Code 3"></dxi-column>
+      <dxi-column dataField="code_3" caption="Code 3">
+        <dxo-lookup
+          [dataSource]="codex"
+          displayExpr="Code"
+          valueExpr="Code">
+        </dxo-lookup>
+      </dxi-column>
       <dxi-column dataField="percentage_3" caption="Perc. 3(%)"></dxi-column>
       <dxi-column dataField="minDeposit" caption="Min Pay"></dxi-column>
-      <dxi-column dataField="mixDeposit" caption="Max Pay"></dxi-column>
+      <dxi-column dataField="maxDeposit" caption="Max Pay"></dxi-column>
       <dxi-column dataField="minDeposit2" caption="Min Pay2"></dxi-column>
-      <dxi-column dataField="mixDeposit2" caption="Max Pay2"></dxi-column>
+      <dxi-column dataField="maxDeposit2" caption="Max Pay2"></dxi-column>
   
 					<div *dxTemplate="let row of 'actionCellTemplate'">
 						<div class="dropdown">

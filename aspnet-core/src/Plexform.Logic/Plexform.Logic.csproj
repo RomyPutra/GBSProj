@@ -12,33 +12,18 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
     <PackageReference Include="SEAL" Version="3.0.0-preview2" />
+    <PackageReference Include="Sharpbrake.Client" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.4.1" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\eSWIS\eSWIS.Logic\eSWIS.Logic.vbproj" />
     <ProjectReference Include="..\..\eSWIS\eSWIS.Shared\eSWIS.Shared.vbproj" />
-    <ProjectReference Include="..\..\GBS\ABS.Logic.GroupBooking\ABS.Logic.GroupBooking.csproj" />
-    <ProjectReference Include="..\..\GBS\ABS.Logic.Shared\ABS.Logic.Shared.csproj" />
     <ProjectReference Include="..\Plexform.Core\Plexform.Core.csproj" />
     <ProjectReference Include="..\Plexform.Migrator\Plexform.Migrator.csproj" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="ABS.GBS">
-      <HintPath>..\..\GBS\GBSdll\ABS.GBS.dll</HintPath>
-    </Reference>
-    <Reference Include="ABS.Insure">
-      <HintPath>..\..\GBS\GBSdll\ABS.Insure.dll</HintPath>
-    </Reference>
-    <Reference Include="ABS.Navitaire">
-      <HintPath>..\..\GBS\GBSdll\ABS.Navitaire.dll</HintPath>
-    </Reference>
-    <Reference Include="Sharpbrake.Client">
-      <HintPath>..\..\GBS\GBSdll\Sharpbrake.Client.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />

@@ -2,65 +2,115 @@ import { state } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { strictEqual } from 'assert';
 
-// export class CreateGroupDto implements ICreateGroupDto {
-//     appID: number;
-//     groupName: string;
-//     status: number;
+export class GBSCountryDto implements IGBSCountryDto {
+    countryID: string;
+    countryName: string;
+    currencyCode: string;
 
-//     constructor(data?: ICreateGroupDto) {
-//         if (data) {
-//             for (var property in data) {
-//                 if (data.hasOwnProperty(property))
-//                     (<any>this)[property] = (<any>data)[property];
-//             }
-//         }
-//     }
+    static fromJS(data: any): GBSCountryDto {
+        let result = new GBSCountryDto();
+        result.init(data);
+        return result;
+    }
 
-//     init(data?: any) {
-//         if (data) {
-//             this.appID = data['appid'];
-//             this.groupName = data['groupName'];
-//             this.status = data['status'];
-//         }
-//     }
+    constructor(data?: IGBSCountryDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    (<any>this)[property] = (<any>data)[property];
+                }
+            }
+        }
+    }
 
-//     static fromJS(data: any): CreateGroupDto {
-//         let result = new CreateGroupDto();
-//         result.init(data);
-//         return result;
-//     }
+    init(data?: any) {
+        if (data) {
+            this.countryID = data['countryCode'];
+            this.countryName = data['countryName'];
+            this.currencyCode = data['currencyCode'];
+        }
+    }
 
-//     toJSON(data?: any) {
-//         data = typeof data === 'object' ? data : {};
-//         data['appid'] = this.appID;
-//         data['groupName'] = this.groupName;
-//         data['status'] = this.status;
-//         return data; 
-//     }
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data['countryCode'] = this.countryID;
+        data['countryName'] = this.countryName;
+        data['currencyCode'] = this.currencyCode;
+    return data;
+    }
 
-//     clone() {
-//         const json = this.toJSON();
-//         let result = new CreateGroupDto();
-//         result.init(json);
-//         return result;
-//     }
-// }
+    clone() {
+        const json = this.toJSON();
+        let result = new GBSCountryDto();
+        result.init(json);
+        return result;
+    }
+}
 
-// export interface ICreateGroupDto {
-//     appID: number;
-//     groupName: string;
-//     status: number;
-// }
+export interface IGBSCountryDto {
+    countryID: string;
+    countryName: string;
+    currencyCode: string;
+}
+
+export class PagedResultDtoOfGBSCountryDto implements IPagedResultDtoOfGBSCountryDto {
+    totalCount: number;
+    items: GBSCountryDto[];
+
+    static fromJS(data: any): PagedResultDtoOfGBSCountryDto {
+        let result = new PagedResultDtoOfGBSCountryDto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: IPagedResultDtoOfGBSCountryDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    (<any>this)[property] = (<any>data)[property];
+                }
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data['totalCount'];
+            if (data['items'] && data['items'].constructor === Array) {
+                this.items = [];
+                for (let item of data['items']) {
+                    this.items.push(GBSCountryDto.fromJS(item));
+                }
+            }
+        }
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data['totalCount'] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data['items'] = [];
+            for (let item of this.items) {
+                data['items'].push(item.toJSON());
+            }
+        }
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new PagedResultDtoOfGBSCountryDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IPagedResultDtoOfGBSCountryDto {
+    totalCount: number;
+    items: GBSCountryDto[];
+}
 
 export class GBSDto implements IGBSDto {
-    // bookingid: number;
-    // recordlocator: string;
-    // currencycode: string;
-    // departstation: string;
-    // arrivalstation: string;
-    // flightnum: string;
-    // carriercode: string;
-    // bookingsum: number;
     grpid: string;
     schemeCode: string;
     countryCode: string;
@@ -81,6 +131,7 @@ export class GBSDto implements IGBSDto {
     maxDeposit: number;
     minDeposit2: number;
     maxDeposit2: number;
+    // prevCountry: string;
 
 
     static fromJS(data: any): GBSDto {
@@ -101,15 +152,6 @@ export class GBSDto implements IGBSDto {
 
     init(data?: any) {
         if (data) {
-            // this.bookingid = data['bookingID'];
-            // this.recordlocator = data['pnr'];
-            // this.currencycode = data['currencyCode'];
-            // this.departstation = data['departStation'];
-            // this.arrivalstation = data['arrivalStation'];
-            // this.flightnum = data['flightNum'];
-            // this.carriercode = data['carriercode'];
-            // this.bookingsum = data['bookingSum'];
-
             this.grpid = data['grpid'];
             this.schemeCode = data['schemeCode'];
             this.countryCode = data['countryCode'];
@@ -130,19 +172,12 @@ export class GBSDto implements IGBSDto {
             this.maxDeposit = data['maxDeposit'];
             this.minDeposit2 = data['minDeposit2'];
             this.maxDeposit2 = data['maxDeposit2'];
+            // this.prevCountry = data['prevCountry'];
         }
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        // data['bookingID'] = this.bookingid;
-        // data['pnr'] = this.recordlocator;
-        // data['currencyCode'] = this.currencycode;
-        // data['departStation'] = this.departstation;
-        // data['arrivalStation'] = this.arrivalstation;
-        // data['flightNum'] = this.flightnum;
-        // data['carriercode'] = this.carriercode;
-        // data['bookingSum'] = this.bookingsum;
         data['grpid'] = this.grpid;
         data['schemeCode'] = this.schemeCode;
         data['countryCode'] = this.countryCode;
@@ -163,6 +198,7 @@ export class GBSDto implements IGBSDto {
         data['maxDeposit'] = this.maxDeposit;
         data['minDeposit2'] = this.minDeposit2;
         data['maxDeposit2'] = this.maxDeposit2;
+        // data['prevCountry'] = this.prevCountry;
     return data;
     }
 
@@ -175,14 +211,6 @@ export class GBSDto implements IGBSDto {
 }
 
 export interface IGBSDto {
-    // bookingid: number;
-    // recordlocator: string;
-    // currencycode: string;
-    // departstation: string;
-    // arrivalstation: string;
-    // flightnum: string;
-    // carriercode: string;
-    // bookingsum: number;
     grpid: string;
     schemeCode: string;
     countryCode: string;
@@ -203,6 +231,7 @@ export interface IGBSDto {
     maxDeposit: number;
     minDeposit2: number;
     maxDeposit2: number;
+    // prevCountry: string;
 }
 
 export class PagedResultDtoOfGBSDto implements IPagedResultDtoOfGBSDto {

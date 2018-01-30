@@ -1,10 +1,12 @@
+import { GbsCodex, GbsPayType } from './../../shared/service-proxies/service-proxies';
 // import { EditPaySchemeComponent } from './update-payscheme/update-payscheme.component';
 // import { CreateUserGroupComponent } from './create-usergroup/create-usergroup.component';
 import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { GBSDto, PagedResultDtoOfGBSDto } from '@shared/models/model-gbs';
-import { GetBookingServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GBSDto, PagedResultDtoOfGBSDto, GBSCountryDto, PagedResultDtoOfGBSCountryDto } from '@shared/models/model-gbs';
+import { GetBookingServiceProxy, GbsCodex, GbsPayType } from '@shared/service-proxies/service-proxies';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
+import data_grid from 'devextreme/ui/data_grid';
 
 @Component({
   	templateUrl: './gbs.component.html',
@@ -13,12 +15,15 @@ import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing
 export class GBSComponent extends PagedListingComponentBase<GBSDto> {
     // @ViewChild('updatePayschemeModal') updatePayschemeModal: EditPaySchemeComponent;
     active: boolean = false;
-    saving: boolean = false;
+	saving: boolean = false;
+	code: string;
+	countrys: GBSCountryDto[];
+	countryx: GBSCountryDto;
 	group: GBSDto[];
-    groups: GBSDto = null;
-	events: Array<string> = [];
-	selectedItems: any[] = [];
+	// selectedItems: any[] = [];
 	listGrid: Array<GBSDto> = [];
+	codex: GbsCodex[];
+	paytype: GbsPayType[];
 	hold: number = 0;
 	hold1: number = 1;
 
@@ -30,6 +35,8 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 	}
 
 	protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
+		this.codex = this._gbsService.getCodex();
+		this.paytype = this._gbsService.getPayType();
 		this._gbsService.getbookingbypnr(request.skipCount, request.maxResultCount)
 			.finally(() => {
 				finishedCallback();
@@ -37,6 +44,16 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 			.subscribe((result: PagedResultDtoOfGBSDto) => {
 				if (result.items.length > 0) {
 					this.group = result.items;
+				}
+				this.showPaging(result, pageNumber);
+			});
+			this._gbsService.getCountry(request.skipCount, request.maxResultCount)
+			.finally(() => {
+				finishedCallback();
+			})
+			.subscribe((result: PagedResultDtoOfGBSCountryDto) => {
+				if (result.items.length > 0) {
+					this.countrys = result.items;
 				}
 				this.showPaging(result, pageNumber);
 			});
@@ -76,11 +93,6 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
         }
     }
 
-	onFieldDataChanged(e) {
-		var updatedField = e.dataField;
-		var newValue = e.value;
-	}
-
 	protected delete(entity: GBSDto): void {
 		throw new Error('Method not implemented.');
 	  }
@@ -106,19 +118,23 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 		};
 	}
 
-	logEvent(eventName) {
-        this.events.unshift(eventName);
-    }
-
 	logEvents(data: any) {
-		this.hold = this.hold + 1;
-		this.hold1 = 1;
-		this.selectedItems = data.key;
-		this.listGrid.push(data.key);
-        // this.selectedItems.forEach((item) => {
-        //     this.dataSource.remove(item);
-        //     this.dataGrid.instance.refresh();
-        // });
-        this.events.unshift(this.selectedItems['duration']);
+		if (data.newData['countryCode'] === undefined) {
+			this.hold = this.hold + 1;
+			this.hold1 = 1;
+			// this.selectedItems = data.key;
+			this.listGrid.push(data.key);
+		} else {
+			this.code = data.newData['countryCode'];
+			this._gbsService.get(this.code)
+			.subscribe((result: GBSCountryDto) => {
+				this.countryx = result;
+				data.key['currencyCode'] = this.countryx.currencyCode;
+				this.hold = this.hold + 1;
+				this.hold1 = 1;
+				// this.selectedItems = data.key;
+				this.listGrid.push(data.key);
+			});
+		}
     }
 }
