@@ -556,6 +556,206 @@ namespace Plexform.GBS
 		}
 		#endregion
 
+		#region Logic_FlightTimeGroup
+		public class FlttimegroupInfo
+		{
+			private string _FTGroupCode = String.Empty;
+			private DateTime _StartTime;
+			private DateTime _EndTime;
+			private System.Guid _rowguid;
+			private DateTime _SyncCreate;
+			private DateTime _SyncLastUpd;
+			private DateTime _CreateDate;
+			private DateTime _UpdateDate;
+			private string _LastSyncBy = String.Empty;
+			private string _CreateBy = String.Empty;
+			private string _UpdateBy = String.Empty;
+			private byte _Active;
+			private byte _Status;
+			private byte _Inuse;
+
+			#region Public Properties
+			// '' <summary>
+			// '' Mandatory
+			// '' </summary>
+			public string FTGroupCode
+			{
+				get
+				{
+					return _FTGroupCode;
+				}
+				set
+				{
+					_FTGroupCode = value;
+				}
+			}
+			public DateTime StartTime
+			{
+				get
+				{
+					return _StartTime;
+				}
+				set
+				{
+					_StartTime = value;
+				}
+			}
+			public DateTime EndTime
+			{
+				get
+				{
+					return _EndTime;
+				}
+				set
+				{
+					_EndTime = value;
+				}
+			}
+			public System.Guid rowguid
+			{
+				get
+				{
+					return _rowguid;
+				}
+				set
+				{
+					_rowguid = value;
+				}
+			}
+			public byte Status
+			{
+				get
+				{
+					return _Status;
+				}
+				set
+				{
+					_Status = value;
+				}
+			}
+			public byte Inuse
+			{
+				get
+				{
+					return _Inuse;
+				}
+				set
+				{
+					_Inuse = value;
+				}
+			}
+			public DateTime SyncCreate
+			{
+				get
+				{
+					return _SyncCreate;
+				}
+				set
+				{
+					_SyncCreate = value;
+				}
+			}
+			public DateTime SyncLastUpd
+			{
+				get
+				{
+					return _SyncLastUpd;
+				}
+				set
+				{
+					_SyncLastUpd = value;
+				}
+			}
+			public string LastSyncBy
+			{
+				get
+				{
+					return _LastSyncBy;
+				}
+				set
+				{
+					_LastSyncBy = value;
+				}
+			}
+			public DateTime CreateDate
+			{
+				get
+				{
+					return _CreateDate;
+				}
+				set
+				{
+					_CreateDate = value;
+				}
+			}
+			public string CreateBy
+			{
+				get
+				{
+					return _CreateBy;
+				}
+				set
+				{
+					_CreateBy = value;
+				}
+			}
+			public DateTime UpdateDate
+			{
+				get
+				{
+					return _UpdateDate;
+				}
+				set
+				{
+					_UpdateDate = value;
+				}
+			}
+			public string UpdateBy
+			{
+				get
+				{
+					return _UpdateBy;
+				}
+				set
+				{
+					_UpdateBy = value;
+				}
+			}
+			public byte Active
+			{
+				get
+				{
+					return _Active;
+				}
+				set
+				{
+					_Active = value;
+				}
+			}
+			#endregion
+		}
+		public DataTable GetFLTTIMEGROUPList(string FieldCond = "", string SQL = "")
+		{
+			if ((StartConnection() == true))
+			{
+				if (((SQL == null) || (SQL == String.Empty)))
+				{
+					strSQL = "SELECT FTGroupCode,convert(varchar(5), StartTime, 108),convert(varchar(5), EndTime, 108),Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
+					strSQL += "CreateBy,UpdateDate,UpdateBy,Active FROM FlTTIMEGROUP " + FieldCond;
+				}
+				else
+				{
+					strSQL = SQL;
+				}
+				return ((DataTable)(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, FlttimegroupInfo.MyInfo.TableName)));
+			}
+			else
+			{
+				return null;
+			}
+		}
+		#endregion
+
 		#region Comunicate
 		public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
 		{

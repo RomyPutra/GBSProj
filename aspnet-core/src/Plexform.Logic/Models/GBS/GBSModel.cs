@@ -46,4 +46,18 @@ namespace Plexform.Models
 		public string CountryName { get; set; }
 		public string CurrencyCode { get; set; }
 	}
+	public class FltTimeGroupModels
+	{
+		public string FTGroupCode { get; set; }
+		public DateTime StartTime { get; set; }
+		public DateTime EndTime { get; set; }
+		public DateTime SyncCreate { get; set; }
+		public DateTime SyncLastUpd { get; set; }
+		public DateTime CreateDate { get; set; }
+		public DateTime UpdateDate { get; set; }
+		public string LastSyncBy { get; set; }
+		public string CreateBy { get; set; }
+		public string UpdateBy { get; set; }
+		public int Active { get; set; }
+	}
 }
