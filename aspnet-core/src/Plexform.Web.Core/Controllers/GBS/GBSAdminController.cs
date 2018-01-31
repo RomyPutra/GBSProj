@@ -152,5 +152,24 @@ namespace Plexform.Controllers
 				Scheme.Count
 			);
 		}
-	}
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.AGENTTIERModels>> GetAgentTireListGrid()
+        {
+            IList<Plexform.Models.AGENTTIERModels> Scheme = new List<Plexform.Models.AGENTTIERModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetAgentTierGrid();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.AGENTTIERModels>(
+                ObjectMapper.Map<List<Plexform.Models.AGENTTIERModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+    }
 }

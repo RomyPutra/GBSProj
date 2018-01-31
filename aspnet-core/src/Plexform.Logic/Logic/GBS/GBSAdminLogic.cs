@@ -771,10 +771,6 @@ namespace Plexform.GBS
 		}
         #endregion
 
-        #region Agent Tier
-
-        #endregion
-
         #region AGENTACCESSFARE
         public class AGENTACCESSFAREInfo
 		{
@@ -1049,10 +1045,292 @@ namespace Plexform.GBS
 				return null;
 			}
 		}
-		#endregion
+        #endregion
 
-		#region Comunicate
-		public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
+        #region AGENTTIER
+        public class AgentTierInfo
+        {
+            private System.String _MarketCode = String.Empty;
+            private System.String _InTier = String.Empty;
+            private System.String _InSubTier = String.Empty;
+            private System.String _OutTier = String.Empty;
+            private System.String _OutSubTier = String.Empty;
+            private System.String _InAgentID = String.Empty;
+            private System.String _OutAgentID = String.Empty;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
+
+            #region properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+            public System.String InTier
+            {
+                get
+                {
+                    return _InTier;
+                }
+
+                set
+                {
+                    _InTier = value;
+                }
+            }
+            public System.String InSubTier
+            {
+                get
+                {
+                    return _InSubTier;
+                }
+
+                set
+                {
+                    _InSubTier = value;
+                }
+            }
+            public System.String OutTier
+            {
+                get
+                {
+                    return _OutTier;
+                }
+
+                set
+                {
+                    _OutTier = value;
+                }
+            }
+            public System.String OutSubTier
+            {
+                get
+                {
+                    return _OutSubTier;
+                }
+
+                set
+                {
+                    _OutSubTier = value;
+                }
+            }
+            public System.String InAgentID
+            {
+                get
+                {
+                    return _InAgentID;
+                }
+
+                set
+                {
+                    _InAgentID = value;
+                }
+            }
+            public System.String OutAgentID
+            {
+                get
+                {
+                    return _OutAgentID;
+                }
+
+                set
+                {
+                    _OutAgentID = value;
+                }
+            }
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetAgentTierListGrid(string FieldCond = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+                strSQL = "SELECT M.Analyst, AT.MarketCode, ";
+                strSQL += "M.InRoute, AT.InTier, AT.InSubTier, AG.ContactFirstName + ' ' + AG.ContactLastName InAgent, AG.Email InAgentEmail, AG.AgentID InAgentID, ";
+                strSQL += "M.OutRoute, AT.OutTier, AT.OutSubTier, AGT.ContactFirstName + ' ' + AGT.ContactLastName OutAgent, AGT.Email OutAgentEmail, AGT.AgentID OutAgentID, ";
+                strSQL += "CAST(AT.CreateDate as date) CreateDate, CAST(AT.UpdateDate as date) UpdateDate ";
+                strSQL += "FROM AD_AgentTier AT INNER JOIN AD_Market M ON AT.MarketCode = M.MarketCode ";
+                strSQL += "LEFT JOIN AG_PROFILE AG ON AT.InAgentID = AG.AgentID ";
+                strSQL += "LEFT JOIN AG_PROFILE AGT ON AT.OutAgentID = AGT.AgentID";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_AgentTier does not exist.");
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region Comunicate
+        public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
 		{
 			IList<Plexform.Models.CountryModels> list = new List<Plexform.Models.CountryModels>();
 			PaymentInfo Model = new PaymentInfo();
@@ -1310,6 +1588,47 @@ namespace Plexform.GBS
 			}
 			return await Task.FromResult(list);
 		}
-		#endregion
-	}
+
+        public async Task<IList<Plexform.Models.AGENTTIERModels>> GetAgentTierGrid()
+        {
+            IList<Plexform.Models.AGENTTIERModels> list = new List<Plexform.Models.AGENTTIERModels>();
+            AgentTierInfo Model = new AgentTierInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetAgentTierListGrid();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.AGENTTIERModels
+                        {
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InTier = dt.Rows[i]["InTier"].ToString(),
+                            InSubTier = dt.Rows[i]["InSubTier"].ToString(),
+                            InAgent = dt.Rows[i]["InAgent"].ToString(),
+                            InAgentEmail = dt.Rows[i]["InAgentEmail"].ToString(),
+                            InAgentID = dt.Rows[i]["InAgentID"].ToString(),
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutTier = dt.Rows[i]["OutTier"].ToString(),
+                            OutSubTier = dt.Rows[i]["OutSubTier"].ToString(),
+                            OutAgent = dt.Rows[i]["OutAgent"].ToString(),
+                            OutAgentEmail = dt.Rows[i]["OutAgentEmail"].ToString(),
+                            OutAgentID = dt.Rows[i]["OutAgentID"].ToString(),
+                            CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
+                            UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+        #endregion
+    }
 }

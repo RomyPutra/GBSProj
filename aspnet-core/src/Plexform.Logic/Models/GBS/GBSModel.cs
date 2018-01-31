@@ -81,4 +81,24 @@ namespace Plexform.Models
 		public System.String Tier2 { get; set; }
 		public System.String Generic { get; set; }
 	}
+
+    public class AGENTTIERModels
+    {
+        public System.String MarketCode { get; set; }
+        public System.String Analyst { get; set; }
+        public System.String InRoute { get; set; }
+        public System.String InTier { get; set; }
+        public System.String InSubTier { get; set; }
+        public System.String InAgent { get; set; }
+        public System.String InAgentEmail { get; set; }
+        public System.String InAgentID { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.String OutTier { get; set; }
+        public System.String OutSubTier { get; set; }
+        public System.String OutAgent { get; set; }
+        public System.String OutAgentEmail { get; set; }
+        public System.String OutAgentID { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdateDate { get; set; }
+    }
 }
