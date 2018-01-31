@@ -769,11 +769,14 @@ namespace Plexform.GBS
 				return null;
 			}
 		}
-		#endregion
+        #endregion
 
+        #region Agent Tier
 
-		#region AGENTACCESSFARE
-		public class AGENTACCESSFAREInfo
+        #endregion
+
+        #region AGENTACCESSFARE
+        public class AGENTACCESSFAREInfo
 		{
 			private System.String _MarketCode = String.Empty;
 			private System.String _InTier = String.Empty;
