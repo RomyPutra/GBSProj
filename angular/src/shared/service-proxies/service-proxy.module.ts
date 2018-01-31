@@ -1,4 +1,5 @@
-﻿// import { UnitServiceProxy } from '@shared/service-proxies/service-proxies';
+﻿import { GetFlightTimeServiceProxy } from '@shared/service-proxies/service-proxies';
+// import { UnitServiceProxy } from '@shared/service-proxies/service-proxies';
 import { NgModule } from '@angular/core';
 
 import * as ApiServiceProxies from './service-proxies';
@@ -21,7 +22,8 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.StateServiceProxy,
         ApiServiceProxies.CustomerServiceProxy,
         ApiServiceProxies.CountryServiceProxy,
-        ApiServiceProxies.GetBookingServiceProxy
+        ApiServiceProxies.GetBookingServiceProxy,
+        ApiServiceProxies.GetFlightTimeServiceProxy
     ]
 })
 export class ServiceProxyModule { }

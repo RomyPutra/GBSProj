@@ -95,5 +95,62 @@ namespace Plexform.Controllers
 
 			return ObjectMapper.Map<bool>(res);
 		}
+
+		[HttpGet]
+		public async Task<ListResultContainer<Plexform.Models.FltTimeGroupModels>> GroupTime(string Filter = "")
+		{
+			IList<Plexform.Models.FltTimeGroupModels> Scheme = new List<Plexform.Models.FltTimeGroupModels>();
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+				Scheme = await repo.GroupTime(Filter);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return new ListResultContainer<Plexform.Models.FltTimeGroupModels>(
+				ObjectMapper.Map<List<Plexform.Models.FltTimeGroupModels>>(Scheme),
+				Scheme.Count
+			);
+		}
+
+		[HttpGet]
+		public async Task<ListResultContainer<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFareAll(string Filter = "")
+		{
+			IList<Plexform.Models.AGENTACCESSFAREModels> Scheme = new List<Plexform.Models.AGENTACCESSFAREModels>();
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+				Scheme = await repo.GetAgentAccessFareAll(Filter);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return new ListResultContainer<Plexform.Models.AGENTACCESSFAREModels>(
+				ObjectMapper.Map<List<Plexform.Models.AGENTACCESSFAREModels>>(Scheme),
+				Scheme.Count
+			);
+		}
+
+		[HttpGet]
+		public async Task<ListResultContainer<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFarePIVOT()
+		{
+			IList<Plexform.Models.AGENTACCESSFAREModels> Scheme = new List<Plexform.Models.AGENTACCESSFAREModels>();
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+				Scheme = await repo.GetAgentAccessFarePIVOT();
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return new ListResultContainer<Plexform.Models.AGENTACCESSFAREModels>(
+				ObjectMapper.Map<List<Plexform.Models.AGENTACCESSFAREModels>>(Scheme),
+				Scheme.Count
+			);
+		}
 	}
 }

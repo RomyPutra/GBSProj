@@ -7645,7 +7645,8 @@ fieldset[disabled] .form-control {
         font-weight: 600;
         padding: 8px 16px; }
       .sidebar .menu .list i.material-icons {
-        margin-top: 4px; }
+        /* margin-top: 4px;  */
+      }
       .sidebar .menu .list .menu-toggle:after, .sidebar .menu .list .menu-toggle:before {
         position: absolute;
         top: calc(50% - 14px);
@@ -7687,7 +7688,8 @@ fieldset[disabled] .form-control {
         -webkit-transform: scale(1);
         transform: scale(1); }
       .sidebar .menu .list a {
-        color: #747474;
+        /* color: #747474; */
+        color: white;
         position: relative;
         display: inline-flex;
         vertical-align: middle;
@@ -7700,7 +7702,8 @@ fieldset[disabled] .form-control {
           top: calc(50% - 7.5px);
           right: 15px; }
         .sidebar .menu .list a span {
-          margin: 7px 0 7px 12px;
+          /* margin: 7px 0 7px 12px; */
+          margin: 0px 0 0px 8px;
           color: #333;
           font-weight: bold;
           font-size: 14px;

@@ -35,7 +35,7 @@
       cellTemplate="actionCellTemplate"></dxi-column> -->
 
       <dxi-column dataField="schemeCode" caption="Code" [allowEditing]="false"></dxi-column>
-      <dxi-column dataField="countryCode" caption="Country Code" [allowEditing]="false">
+      <dxi-column dataField="countryCode" caption="Country" [allowEditing]="false">
         <dxo-lookup
           [dataSource]="countrys"
           displayExpr="countryName"
@@ -95,10 +95,10 @@
 						</div>
           </div>
           
-      <dxo-remote-operations
+      <!-- <dxo-remote-operations
       [sorting]="true"
       [paging]="true">
-      </dxo-remote-operations>
+      </dxo-remote-operations> -->
       <dxo-paging [pageSize]="5"></dxo-paging>
       <dxo-pager 
         [showPageSizeSelector]="true"
@@ -108,17 +108,6 @@
     </dx-data-grid>
     <!-- ******************************************************** -->
   <!-- </div>   -->
-  <div id="events">
-    <div>
-        <div class="caption">
-            Fired events
-        </div>
-        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
-    </div>
-    <ul>
-        <li *ngFor="let event of events">{{event}}</li>
-    </ul>
-</div>
 </div>
 
-<update-payscheme-modal #updatePayschemeModal (modalSave)="refresh()"></update-payscheme-modal>
+<!-- <update-payscheme-modal #updatePayschemeModal (modalSave)="refresh()"></update-payscheme-modal> -->

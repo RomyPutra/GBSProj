@@ -49,7 +49,7 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
             return '/app/admin/users';
         }
 
-        return '/app/home';
-        // return '/app/gbs';
+        // return '/app/home';
+        return '/app/gbs';
     }
 }

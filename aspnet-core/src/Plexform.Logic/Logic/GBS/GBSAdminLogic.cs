@@ -736,20 +736,312 @@ namespace Plexform.GBS
 		}
 		public DataTable GetFLTTIMEGROUPList(string FieldCond = "", string SQL = "")
 		{
-			if ((StartConnection() == true))
+			DataTable dt = new DataTable();
+			String strSQL = string.Empty;
+			try
 			{
-				if (((SQL == null) || (SQL == String.Empty)))
+				//strSQL = "SELECT FTGroupCode,convert(varchar(5), StartTime, 108) StartTime,convert(varchar(5), EndTime, 108) EndTime,Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
+				strSQL = "SELECT FTGroupCode,CAST(Starttime as Time(0)) StartTime,CAST(Endtime as Time(0)) EndTime,Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
+				strSQL += "CreateBy,UpdateDate,UpdateBy,Active FROM AD_FlTTIMEGROUP " + FieldCond;
+
+				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
 				{
-					strSQL = "SELECT FTGroupCode,convert(varchar(5), StartTime, 108),convert(varchar(5), EndTime, 108),Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
-					strSQL += "CreateBy,UpdateDate,UpdateBy,Active FROM FlTTIMEGROUP " + FieldCond;
+					connection.Open();
+					SqlCommand cmd = new SqlCommand(strSQL, connection);
+					SqlDataAdapter da = new SqlDataAdapter(cmd);
+					da.Fill(dt);
+					connection.Close();
+
+					if (dt != null && dt.Rows.Count > 0)
+					{
+						return dt;
+					}
+					else
+					{
+						return null;
+						throw new ApplicationException("FlightTime does not exist.");
+					}
 				}
-				else
-				{
-					strSQL = SQL;
-				}
-				return ((DataTable)(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, FlttimegroupInfo.MyInfo.TableName)));
+				return null;
 			}
-			else
+			catch (Exception ex)
+			{
+				return null;
+			}
+		}
+		#endregion
+
+
+		#region AGENTACCESSFARE
+		public class AGENTACCESSFAREInfo
+		{
+			private System.String _MarketCode = String.Empty;
+			private System.String _InTier = String.Empty;
+			private System.String _OutTier = String.Empty;
+			private System.String _InFareClass = String.Empty;
+			private System.String _OutFareClass = String.Empty;
+			private System.Guid _rowguid;
+			private System.Byte _Status;
+			private System.Byte _Inuse;
+			private System.DateTime _SyncCreate;
+			private System.DateTime _SyncLastUpd;
+			private System.String _LastSyncBy = String.Empty;
+			private System.DateTime _CreateDate;
+			private System.String _CreateBy = String.Empty;
+			private System.DateTime _UpdateDate;
+			private System.String _UpdateBy = String.Empty;
+			private System.Byte _Active;
+
+			#region Public Properties
+			public String MarketCode
+			{
+				get
+				{
+					return _MarketCode;
+				}
+				set
+				{
+					_MarketCode = value;
+				}
+			}
+			public String InTier
+			{
+				get
+				{
+					return _InTier;
+				}
+				set
+				{
+					_InTier = value;
+				}
+			}
+			public String OutTier
+			{
+				get
+				{
+					return _OutTier;
+				}
+				set
+				{
+					_OutTier = value;
+				}
+			}
+			public String InFareClass
+			{
+				get
+				{
+					return _InFareClass;
+				}
+				set
+				{
+					_InFareClass = value;
+				}
+			}
+			public String OutFareClass
+			{
+				get
+				{
+					return _OutFareClass;
+				}
+				set
+				{
+					_OutFareClass = value;
+				}
+			}
+			public System.Guid rowguid
+			{
+				get
+				{
+					return _rowguid;
+				}
+				set
+				{
+					_rowguid = value;
+				}
+			}
+			public Byte Status
+			{
+				get
+				{
+					return _Status;
+				}
+				set
+				{
+					_Status = value;
+				}
+			}
+			public Byte Inuse
+			{
+				get
+				{
+					return _Inuse;
+				}
+				set
+				{
+					_Inuse = value;
+				}
+			}
+			public DateTime SyncCreate
+			{
+				get
+				{
+					return _SyncCreate;
+				}
+				set
+				{
+					_SyncCreate = value;
+				}
+			}
+			public DateTime SyncLastUpd
+			{
+				get
+				{
+					return _SyncLastUpd;
+				}
+				set
+				{
+					_SyncLastUpd = value;
+				}
+			}
+			public String LastSyncBy
+			{
+				get
+				{
+					return _LastSyncBy;
+				}
+				set
+				{
+					_LastSyncBy = value;
+				}
+			}
+			public DateTime CreateDate
+			{
+				get
+				{
+					return _CreateDate;
+				}
+				set
+				{
+					_CreateDate = value;
+				}
+			}
+			public String CreateBy
+			{
+				get
+				{
+					return _CreateBy;
+				}
+				set
+				{
+					_CreateBy = value;
+				}
+			}
+			public DateTime UpdateDate
+			{
+				get
+				{
+					return _UpdateDate;
+				}
+				set
+				{
+					_UpdateDate = value;
+				}
+			}
+			public String UpdateBy
+			{
+				get
+				{
+					return _UpdateBy;
+				}
+				set
+				{
+					_UpdateBy = value;
+				}
+			}
+			public Byte Active
+			{
+				get
+				{
+					return _Active;
+				}
+				set
+				{
+					_Active = value;
+				}
+			}
+			#endregion
+		}
+
+		public DataTable GetAGENTACCESSFAREList(string FieldCond = "")
+		{
+			DataTable dt = new DataTable();
+			String strSQL = string.Empty;
+			try
+			{
+
+				strSQL = "SELECT MarketCode, InTier, InFareClass, OutTier, OutFareClass, Status, Flag, Inuse, Active, SyncCreate, SyncLastUpd, LastSyncBy, CreateDate, CreateBy, UpdateDate, UpdateBy ";
+				strSQL += "FROM AD_AGENTACCESSFARE";
+
+				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+				{
+					connection.Open();
+					SqlCommand cmd = new SqlCommand(strSQL, connection);
+					SqlDataAdapter da = new SqlDataAdapter(cmd);
+					da.Fill(dt);
+					connection.Close();
+
+					if (dt != null && dt.Rows.Count > 0)
+					{
+						return dt;
+					}
+					else
+					{
+						return null;
+						throw new ApplicationException("AGENTACCESSFARE does not exist.");
+					}
+				}
+				//return null;
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+		}
+		public DataTable GetAGENTACCESSFAREPIVOT()
+		{
+			DataTable dt = new DataTable();
+			String strSQL = string.Empty;
+			try
+			{
+
+				strSQL = "SELECT MarketCode, [1] AS [Tier 1], [2] AS [Tier 2], [3] AS [Tier 3], [Generic] AS [Generic] ";
+				strSQL += "FROM ";
+				strSQL += "(SELECT MarketCode, InTier, InFareClass FROM AD_AGENTACCESSFARE) p ";
+				strSQL += "PIVOT ( ";
+				strSQL += "MAX(INFARECLASS) FOR INTIER IN ( [1],[2],[3],[Generic]) ) AS pvt ";
+				strSQL += "ORDER BY pvt.MarketCode";
+
+				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+				{
+					connection.Open();
+					SqlCommand cmd = new SqlCommand(strSQL, connection);
+					SqlDataAdapter da = new SqlDataAdapter(cmd);
+					da.Fill(dt);
+					connection.Close();
+
+					if (dt != null && dt.Rows.Count > 0)
+					{
+						return dt;
+					}
+					else
+					{
+						return null;
+						throw new ApplicationException("AGENTACCESSFARE does not exist.");
+					}
+				}
+				//return null;
+			}
+			catch (Exception ex)
 			{
 				return null;
 			}
@@ -909,6 +1201,111 @@ namespace Plexform.GBS
 				var temp = ex.ToString();
 			}
 			return Task.FromResult(res);
+		}
+
+		public async Task<IList<Plexform.Models.FltTimeGroupModels>> GroupTime(string Filter = "")
+		{
+			IList<Plexform.Models.FltTimeGroupModels> list = new List<Plexform.Models.FltTimeGroupModels>();
+			FlttimegroupInfo Model = new FlttimegroupInfo();
+			DataTable dt;
+			try
+			{
+				dt = GetFLTTIMEGROUPList(Filter);
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						list.Add(new Models.FltTimeGroupModels
+						{
+							FTGroupCode = dt.Rows[i]["FTGroupCode"].ToString(),
+							StartTime = (TimeSpan)dt.Rows[i]["StartTime"],
+							EndTime = (TimeSpan)dt.Rows[i]["EndTime"],
+							SyncCreate = (DateTime)dt.Rows[i]["SyncCreate"],
+							SyncLastUpd = (DateTime)dt.Rows[i]["SyncLastUpd"],
+							CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
+							UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"],
+							LastSyncBy = dt.Rows[i]["LastSyncBy"].ToString(),
+							CreateBy = dt.Rows[i]["CreateBy"].ToString(),
+							UpdateBy = dt.Rows[i]["UpdateBy"].ToString(),
+							Active = Convert.ToInt32(dt.Rows[i]["Active"])
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(list);
+		}
+
+		public async Task<IList<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFareAll(string Filter = "")
+		{
+			IList<Plexform.Models.AGENTACCESSFAREModels> list = new List<Plexform.Models.AGENTACCESSFAREModels>();
+			AGENTACCESSFAREInfo Model = new AGENTACCESSFAREInfo();
+			DataTable dt;
+			try
+			{
+				dt = GetAGENTACCESSFAREList(Filter);
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						list.Add(new Models.AGENTACCESSFAREModels
+						{
+							MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+							InTier = dt.Rows[i]["InTier"].ToString(),
+							OutTier = dt.Rows[i]["OutTier"].ToString(),
+							InFareClass = dt.Rows[i]["InFareClass"].ToString(),
+							OutFareClass = dt.Rows[i]["OutFareClass"].ToString(),
+							Status = Convert.ToInt32(dt.Rows[i]["Status"]),
+							Inuse = Convert.ToInt32(dt.Rows[i]["Inuse"]),
+							SyncCreate = (DateTime)dt.Rows[i]["SyncCreate"],
+							SyncLastUpd = (DateTime)dt.Rows[i]["SyncLastUpd"],
+							LastSyncBy = dt.Rows[i]["LastSyncBy"].ToString(),
+							CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
+							CreateBy = dt.Rows[i]["CreateBy"].ToString(),
+							UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"],
+							Active = Convert.ToInt32(dt.Rows[i]["Active"]),
+							UpdateBy = dt.Rows[i]["UpdateBy"].ToString()
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(list);
+		}
+
+		public async Task<IList<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFarePIVOT()
+		{
+			IList<Plexform.Models.AGENTACCESSFAREModels> list = new List<Plexform.Models.AGENTACCESSFAREModels>();
+			AGENTACCESSFAREInfo Model = new AGENTACCESSFAREInfo();
+			DataTable dt;
+			try
+			{
+				dt = GetAGENTACCESSFAREPIVOT();
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						list.Add(new Models.AGENTACCESSFAREModels
+						{
+							MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+							Tier1 = dt.Rows[i]["Tier 1"].ToString(),
+							Tier2 = dt.Rows[i]["Tier 2"].ToString(),
+							Generic = dt.Rows[i]["Generic"].ToString()
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(list);
 		}
 		#endregion
 	}

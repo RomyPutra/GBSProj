@@ -49,8 +49,8 @@ namespace Plexform.Models
 	public class FltTimeGroupModels
 	{
 		public string FTGroupCode { get; set; }
-		public DateTime StartTime { get; set; }
-		public DateTime EndTime { get; set; }
+		public TimeSpan StartTime { get; set; }
+		public TimeSpan EndTime { get; set; }
 		public DateTime SyncCreate { get; set; }
 		public DateTime SyncLastUpd { get; set; }
 		public DateTime CreateDate { get; set; }
@@ -59,5 +59,26 @@ namespace Plexform.Models
 		public string CreateBy { get; set; }
 		public string UpdateBy { get; set; }
 		public int Active { get; set; }
+	}
+	public class AGENTACCESSFAREModels
+	{
+		public System.String MarketCode { get; set; }
+		public System.String InTier { get; set; }
+		public System.String OutTier { get; set; }
+		public System.String InFareClass { get; set; }
+		public System.String OutFareClass { get; set; }
+		public int Status { get; set; }
+		public int Inuse { get; set; }
+		public System.DateTime SyncCreate { get; set; }
+		public System.DateTime SyncLastUpd { get; set; }
+		public System.String LastSyncBy { get; set; }
+		public System.DateTime CreateDate { get; set; }
+		public System.String CreateBy { get; set; }
+		public System.DateTime UpdateDate { get; set; }
+		public System.String UpdateBy { get; set; }
+		public int Active { get; set; }
+		public System.String Tier1 { get; set; }
+		public System.String Tier2 { get; set; }
+		public System.String Generic { get; set; }
 	}
 }

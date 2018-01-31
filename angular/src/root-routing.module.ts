@@ -2,8 +2,8 @@
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/app/home', pathMatch: 'full' },
-    // { path: '', redirectTo: '/app/gbs', pathMatch: 'full' },
+    // { path: '', redirectTo: '/app/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/app/gbs', pathMatch: 'full' },
     {
         path: 'account',
         loadChildren: 'account/account.module#AccountModule', //Lazy load account module

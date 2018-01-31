@@ -34,3 +34,28 @@
     border-color: transparent;
     background-color: #2199e8;
 }
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.theme-red .sidebar .menu .list li.active > :first-child i, .theme-red .sidebar .menu .list li.active > :first-child span {
+    color:whitesmoke; 
+}
+.theme-red .navbar {
+    background-color: #18283c; 
+}
+.sidebar .menu .list a span {
+    color:whitesmoke; 
+}

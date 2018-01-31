@@ -8,7 +8,7 @@ import { templateJitUrl } from '@angular/compiler';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 
 @Component({
-    selector: 'update-payscheme-modal',
+    // selector: 'update-payscheme-modal',
     templateUrl: './update-payscheme.component.html'
 })
 export class EditPaySchemeComponent extends AppComponentBase {

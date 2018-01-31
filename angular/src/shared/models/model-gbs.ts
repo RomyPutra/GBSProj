@@ -290,3 +290,140 @@ export interface IPagedResultDtoOfGBSDto {
     totalCount: number;
     items: GBSDto[];
 }
+
+export class FlightTimeDto implements IFlightTimeDto {
+	ftGroupCode: string;
+	startTime: Date;
+	endTime: Date;
+	syncCreate: Date;
+	syncLastUpd: Date;
+	createDate: Date;
+	updateDate: Date;
+	lastSyncBy: string;
+	createBy: string;
+	updateBy: string;
+	active: number;
+
+    static fromJS(data: any): FlightTimeDto {
+        let result = new FlightTimeDto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: IFlightTimeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    (<any>this)[property] = (<any>data)[property];
+                }
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+			this.ftGroupCode = data['ftGroupCode'];
+			this.startTime = data['startTime'];
+			this.endTime = data['endTime'];
+			this.syncCreate = data['syncCreate'];
+			this.syncLastUpd = data['syncLastUpd'];
+			this.createDate = data['createDate'];
+			this.updateDate = data['updateDate'];
+			this.lastSyncBy = data['lastSyncBy'];
+			this.createBy = data['createBy'];
+			this.updateBy = data['updateBy'];
+			this.active = data['active'];
+        }
+    }
+
+    toJSON(data?: any) {
+		data['endTime'] = this.endTime;
+		data['syncCreate'] = this.syncCreate;
+		data['syncLastUpd'] = this.syncLastUpd;
+		data['createDate'] = this.createDate;
+		data['updateDate'] = this.updateDate;
+		data['lastSyncBy'] = this.lastSyncBy;
+		data['createBy'] = this.createBy;
+		data['updateBy'] = this.updateBy;
+		data['active'] = this.active;
+		return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new FlightTimeDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IFlightTimeDto {
+	ftGroupCode: string;
+	startTime: Date;
+	endTime: Date;
+	syncCreate: Date;
+	syncLastUpd: Date;
+	createDate: Date;
+	updateDate: Date;
+	lastSyncBy: string;
+	createBy: string;
+	updateBy: string;
+	active: number;
+}
+
+export class PagedResultDtoOfFlightTimeDto implements IPagedResultDtoOfFlightTimeDto {
+    totalCount: number;
+    items: FlightTimeDto[];
+
+    static fromJS(data: any): PagedResultDtoOfFlightTimeDto {
+        let result = new PagedResultDtoOfFlightTimeDto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: IPagedResultDtoOfFlightTimeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    (<any>this)[property] = (<any>data)[property];
+                }
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data['totalCount'];
+            if (data['items'] && data['items'].constructor === Array) {
+                this.items = [];
+                for (let item of data['items']) {
+                    this.items.push(FlightTimeDto.fromJS(item));
+                }
+            }
+        }
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data['totalCount'] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data['items'] = [];
+            for (let item of this.items) {
+                data['items'].push(item.toJSON());
+            }
+        }
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new PagedResultDtoOfFlightTimeDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IPagedResultDtoOfFlightTimeDto {
+    totalCount: number;
+    items: FlightTimeDto[];
+}
