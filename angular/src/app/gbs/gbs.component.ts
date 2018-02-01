@@ -5,7 +5,7 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import data_grid from 'devextreme/ui/data_grid';
 import { GBSDto, PagedResultDtoOfGBSDto, GBSCountryDto, PagedResultDtoOfGBSCountryDto } from '@shared/models/model-gbs';
-import { GetBookingServiceProxy, GbsCodex, GbsPayType } from '@shared/service-proxies/service-proxies';
+import { GetBookingServiceProxy, GbsCodex, GbsPayType } from '@shared/service-proxies/proxy-payscheme';
 
 @Component({
   	templateUrl: './gbs.component.html',

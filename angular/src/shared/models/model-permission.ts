@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 import { Observable } from 'rxjs/Observable';
 
 export class ListResultDtoOfPermissionDto implements IListResultDtoOfPermissionDto {

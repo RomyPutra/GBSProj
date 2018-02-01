@@ -43,7 +43,7 @@ export class RegisterInput implements IRegisterInput {
         data["emailAddress"] = this.emailAddress;
         data["password"] = this.password;
         data["captchaResponse"] = this.captchaResponse;
-        return data; 
+        return data;
     }
 
     clone() {
@@ -91,7 +91,7 @@ export class RegisterOutput implements IRegisterOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["canLogin"] = this.canLogin;
-        return data; 
+        return data;
     }
 
     clone() {
@@ -163,6 +163,10 @@ export class AuthenticateResultModel implements IAuthenticateResultModel {
     expireInSeconds: number;
     userId: string;
     groupName: string;
+    parentID: string;
+    stateCode: string;
+    appID: string;
+    accessCode: string;
 
     constructor(data?: IAuthenticateResultModel) {
         if (data) {
@@ -180,6 +184,10 @@ export class AuthenticateResultModel implements IAuthenticateResultModel {
             this.expireInSeconds = data["expireInSeconds"];
             this.userId = data["userId"];
             this.groupName = data["groupName"];
+            this.parentID = data["parentID"];
+            this.stateCode = data["stateCode"];
+            this.appID = data["appID"];
+            this.accessCode = data["accessCode"];
         }
     }
 
@@ -196,6 +204,10 @@ export class AuthenticateResultModel implements IAuthenticateResultModel {
         data["expireInSeconds"] = this.expireInSeconds;
         data["userId"] = this.userId;
         data["groupName"] = this.groupName;
+        data["parentID"] = this.parentID;
+        data["stateCode"] = this.stateCode;
+        data["appID"] = this.appID;
+        data["accessCode"] = this.accessCode;
         return data;
     }
 
@@ -213,6 +225,10 @@ export interface IAuthenticateResultModel {
     expireInSeconds: number;
     userId: string;
     groupName: string;
+    parentID: string;
+    stateCode: string;
+    appID: string;
+    accessCode: string;
 }
 
 export class ExternalLoginProviderInfoModel implements IExternalLoginProviderInfoModel {
@@ -245,7 +261,7 @@ export class ExternalLoginProviderInfoModel implements IExternalLoginProviderInf
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["clientId"] = this.clientId;
-        return data; 
+        return data;
     }
 
     clone() {
@@ -294,7 +310,7 @@ export class ExternalAuthenticateModel implements IExternalAuthenticateModel {
         data["authProvider"] = this.authProvider;
         data["providerKey"] = this.providerKey;
         data["providerAccessCode"] = this.providerAccessCode;
-        return data; 
+        return data;
     }
 
     clone() {
@@ -347,7 +363,7 @@ export class ExternalAuthenticateResultModel implements IExternalAuthenticateRes
         data["encryptedAccessToken"] = this.encryptedAccessToken;
         data["expireInSeconds"] = this.expireInSeconds;
         data["waitingForActivation"] = this.waitingForActivation;
-        return data; 
+        return data;
     }
 
     clone() {

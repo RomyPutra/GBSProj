@@ -19,25 +19,25 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { Http, Headers, ResponseContentType, Response } from '@angular/http';
 import { UnitDto, PagedResultDtoOfUnitDto } from './../models/model-unit';
-import { IsTenantAvailableOutput, IsTenantAvailableInput, CreateTenantDto, PagedResultDtoOfTenantDto, TenantLoginInfoDto,
-        TenantDto, IsTenantAvailableOutputState } from './../models/model-tenant';
-import { RegisterInput, RegisterOutput, AuthenticateModel, AuthenticateResultModel, ExternalLoginProviderInfoModel,
-    ExternalAuthenticateModel, ExternalAuthenticateResultModel } from './../models/model-account';
+import {
+    IsTenantAvailableOutput, IsTenantAvailableInput, CreateTenantDto, PagedResultDtoOfTenantDto, TenantLoginInfoDto,
+    TenantDto, IsTenantAvailableOutputState
+} from './../models/model-tenant';
+import {
+    RegisterInput, RegisterOutput, AuthenticateModel, AuthenticateResultModel, ExternalLoginProviderInfoModel,
+    ExternalAuthenticateModel, ExternalAuthenticateResultModel
+} from './../models/model-account';
 import { ChangeUiThemeInput } from './../models/model-configuration';
 import { CreateRoleDto, RoleDto, PagedResultDtoOfRoleDto, ListResultDtoOfRoleDto } from './../models/model-role';
 import { ListResultDtoOfPermissionDto } from './../models/model-permission';
 import { GetCurrentLoginInformationsOutput } from './../models/model-session';
 import { UserDto, CreateUserDto, PagedResultDtoOfUserDto, ChangeUserLanguageDto } from './../models/model-user';
-import { UserGroupDto, CreateGroupDto, PagedResultDtoOfUserGroupDto } from './../models/model-usergroup';
-import { UserProfileDto, PagedResultDtoOfUserProfileDto } from "./../models/model-userprofile";
-import { PermissionSetDto, PagedResultDtoOfPermissionSetDto, IPermissionFunctionDto } from './../models/model-permissionset';
+import { UserGroupDto, PagedResultDtoOfUserGroupDto } from './../models/model-usergroup';
+import { PermissionSetDto, PagedResultDtoOfPermissionSetDto, PermissionFunctionDto } from './../models/model-permissionset';
 import { ConsignmentDto, PagedResultDtoOfConsignmentDto } from './../models/model-consignment';
 import { UserApprovalDto, PagedResultDtoOfUserApprovalDto } from './../models/model-userapproval';
-import { StateDto, PagedResultDtoOfStateDto } from './../models/model-state';
-import { CustomerDto, PagedResultDtoOfCustomerDto, CreateCustomerDto } from './../models/model-customer';
-import { CountryDto, PagedResultDtoOfCountryDto } from './../models/model-country';
-import { GBSDto, PagedResultDtoOfGBSDto, GBSCountryDto, PagedResultDtoOfGBSCountryDto, FlightTimeDto, PagedResultDtoOfFlightTimeDto } from './../models/model-gbs';
-import { AgentTierDto, PagedResultDtoOfAgentTierDto, AgentAccessFareDto, PagedResultDtoOfAgentAccessFareDto } from '@shared/models/model-gbsagent';
+import { ItemCategoryDto, PagedResultDtoOfItemCategoryDto } from './../models/model-itemcategory';
+import { StockDto, PagedResultDtoOfStockDto } from './../models/model-stock';
 
 import * as moment from 'moment';
 
@@ -49,7 +49,7 @@ export class AccountServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -64,16 +64,16 @@ export class AccountServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processIsTenantAvailable(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -88,7 +88,7 @@ export class AccountServiceProxy {
     }
 
     protected processIsTenantAvailable(response: Response): Observable<IsTenantAvailableOutput> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -114,16 +114,16 @@ export class AccountServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processRegister(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -138,7 +138,7 @@ export class AccountServiceProxy {
     }
 
     protected processRegister(response: Response): Observable<RegisterOutput> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -161,7 +161,7 @@ export class ConfigurationServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -176,15 +176,15 @@ export class ConfigurationServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processChangeUiTheme(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -199,7 +199,7 @@ export class ConfigurationServiceProxy {
     }
 
     protected processChangeUiTheme(response: Response): Observable<void> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -219,7 +219,7 @@ export class RoleServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -234,16 +234,16 @@ export class RoleServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -258,7 +258,7 @@ export class RoleServiceProxy {
     }
 
     protected processCreate(response: Response): Observable<RoleDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -290,16 +290,16 @@ export class RoleServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "put",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processUpdate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -314,7 +314,7 @@ export class RoleServiceProxy {
     }
 
     protected processUpdate(response: Response): Observable<RoleDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -344,17 +344,17 @@ export class RoleServiceProxy {
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "delete",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processDelete(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -369,7 +369,7 @@ export class RoleServiceProxy {
     }
 
     protected processDelete(response: Response): Observable<void> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -395,15 +395,15 @@ export class RoleServiceProxy {
         let url_ = this.baseUrl + "/api/services/app/Role/GetAllPermissions";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetAllPermissions(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -418,7 +418,7 @@ export class RoleServiceProxy {
     }
 
     protected processGetAllPermissions(response: Response): Observable<ListResultDtoOfPermissionDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -448,18 +448,18 @@ export class RoleServiceProxy {
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGet(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -474,7 +474,7 @@ export class RoleServiceProxy {
     }
 
     protected processGet(response: Response): Observable<RoleDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -504,22 +504,22 @@ export class RoleServiceProxy {
         if (skipCount === undefined || skipCount === null)
             throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
         else
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         if (maxResultCount === undefined || maxResultCount === null)
             throw new Error("The parameter 'maxResultCount' must be defined and cannot be null.");
         else
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetAll(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -534,7 +534,7 @@ export class RoleServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfRoleDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -563,7 +563,7 @@ export class SessionServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -575,19 +575,19 @@ export class SessionServiceProxy {
         // let url_ = this.baseUrl + "/api/services/app/Session/GetCurrentLoginInformations";
         if (userID === undefined || userID === null)
             userID = "";
-        
-        let url_ = this.baseUrl + "/api/eswis/ESWISAuth/GetCurrentLoginInformations?userID="+userID;
+
+        let url_ = this.baseUrl + "/api/eswis/ESWISAuth/GetCurrentLoginInformations?userID=" + userID;
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetCurrentLoginInformations(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -602,7 +602,7 @@ export class SessionServiceProxy {
     }
 
     protected processGetCurrentLoginInformations(response: Response): Observable<GetCurrentLoginInformationsOutput> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -625,7 +625,7 @@ export class TenantServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -640,16 +640,16 @@ export class TenantServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -664,7 +664,7 @@ export class TenantServiceProxy {
     }
 
     protected processCreate(response: Response): Observable<TenantDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -694,17 +694,17 @@ export class TenantServiceProxy {
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "delete",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processDelete(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -719,7 +719,7 @@ export class TenantServiceProxy {
     }
 
     protected processDelete(response: Response): Observable<void> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -746,18 +746,18 @@ export class TenantServiceProxy {
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGet(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -772,7 +772,7 @@ export class TenantServiceProxy {
     }
 
     protected processGet(response: Response): Observable<TenantDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -802,22 +802,22 @@ export class TenantServiceProxy {
         if (skipCount === undefined || skipCount === null)
             throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
         else
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         if (maxResultCount === undefined || maxResultCount === null)
             throw new Error("The parameter 'maxResultCount' must be defined and cannot be null.");
         else
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetAll(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -832,7 +832,7 @@ export class TenantServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfTenantDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -864,16 +864,16 @@ export class TenantServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "put",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processUpdate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -888,7 +888,7 @@ export class TenantServiceProxy {
     }
 
     protected processUpdate(response: Response): Observable<TenantDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -917,7 +917,7 @@ export class TokenAuthServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -933,16 +933,16 @@ export class TokenAuthServiceProxy {
 
         const content_ = JSON.stringify(model);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processAuthenticate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -957,7 +957,7 @@ export class TokenAuthServiceProxy {
     }
 
     protected processAuthenticate(response: Response): Observable<AuthenticateResultModel> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -980,15 +980,15 @@ export class TokenAuthServiceProxy {
         let url_ = this.baseUrl + "/api/TokenAuth/GetExternalAuthenticationProviders";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetExternalAuthenticationProviders(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1003,7 +1003,7 @@ export class TokenAuthServiceProxy {
     }
 
     protected processGetExternalAuthenticationProviders(response: Response): Observable<ExternalLoginProviderInfoModel[]> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1033,16 +1033,16 @@ export class TokenAuthServiceProxy {
 
         const content_ = JSON.stringify(model);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processExternalAuthenticate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1057,7 +1057,7 @@ export class TokenAuthServiceProxy {
     }
 
     protected processExternalAuthenticate(response: Response): Observable<ExternalAuthenticateResultModel> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1080,7 +1080,7 @@ export class UserServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -1095,16 +1095,16 @@ export class UserServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1119,7 +1119,7 @@ export class UserServiceProxy {
     }
 
     protected processCreate(response: Response): Observable<UserDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1151,16 +1151,16 @@ export class UserServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "put",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processUpdate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1175,7 +1175,7 @@ export class UserServiceProxy {
     }
 
     protected processUpdate(response: Response): Observable<UserDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1205,17 +1205,17 @@ export class UserServiceProxy {
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "delete",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processDelete(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1230,7 +1230,7 @@ export class UserServiceProxy {
     }
 
     protected processDelete(response: Response): Observable<void> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1256,15 +1256,15 @@ export class UserServiceProxy {
         let url_ = this.baseUrl + "/api/services/app/User/GetRoles";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetRoles(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1279,7 +1279,7 @@ export class UserServiceProxy {
     }
 
     protected processGetRoles(response: Response): Observable<ListResultDtoOfRoleDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1311,15 +1311,15 @@ export class UserServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processChangeLanguage(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1334,7 +1334,7 @@ export class UserServiceProxy {
     }
 
     protected processChangeLanguage(response: Response): Observable<void> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1361,18 +1361,18 @@ export class UserServiceProxy {
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGet(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1387,7 +1387,7 @@ export class UserServiceProxy {
     }
 
     protected processGet(response: Response): Observable<UserDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1417,22 +1417,22 @@ export class UserServiceProxy {
         if (skipCount === undefined || skipCount === null)
             throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
         else
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         if (maxResultCount === undefined || maxResultCount === null)
             throw new Error("The parameter 'maxResultCount' must be defined and cannot be null.");
         else
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processGetAll(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -1447,7 +1447,7 @@ export class UserServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfUserDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1476,11 +1476,11 @@ export class UnitServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
-    
+
     /**
      * @return Success
      */
@@ -1489,7 +1489,7 @@ export class UnitServiceProxy {
 
         url_ = url_.replace(/[?&]$/, '');
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -1513,7 +1513,7 @@ export class UnitServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfUnitDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1542,7 +1542,7 @@ export class UserGroupServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
@@ -1551,44 +1551,44 @@ export class UserGroupServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    create(input: CreateGroupDto): Observable<UserGroupDto> {
+    create(input: UserGroupDto): Observable<boolean> {
         let url_ = this.baseUrl + "/api/eswis/UserGroup/Create";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
                 try {
                     return this.processCreate(response_);
                 } catch (e) {
-                    return <Observable<UserGroupDto>><any>Observable.throw(e);
+                    return <Observable<boolean>><any>Observable.throw(e);
                 }
             } else
-                return <Observable<UserGroupDto>><any>Observable.throw(response_);
+                return <Observable<boolean>><any>Observable.throw(response_);
         });
     }
 
-    protected processCreate(response: Response): Observable<UserGroupDto> {
-        const status = response.status; 
+    protected processCreate(response: Response): Observable<boolean> {
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
             const _responseText = response.text();
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? UserGroupDto.fromJS(resultData200) : new UserGroupDto();
+            result200 = resultData200 ? true : false;
             return Observable.of(result200);
         } else if (status === 401) {
             const _responseText = response.text();
@@ -1600,51 +1600,51 @@ export class UserGroupServiceProxy {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Observable.of<UserGroupDto>(<any>null);
+        return Observable.of<boolean>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-        update(input: UserGroupDto): Observable<UserGroupDto> {
+    update(input: UserGroupDto): Observable<boolean> {
         let url_ = this.baseUrl + "/api/eswis/UserGroup/Update";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "put",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processUpdate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
                 try {
                     return this.processUpdate(response_);
                 } catch (e) {
-                    return <Observable<UserGroupDto>><any>Observable.throw(e);
+                    return <Observable<boolean>><any>Observable.throw(e);
                 }
             } else
-                return <Observable<UserGroupDto>><any>Observable.throw(response_);
+                return <Observable<boolean>><any>Observable.throw(response_);
         });
     }
 
-    protected processUpdate(response: Response): Observable<UserGroupDto> {
-        const status = response.status; 
+    protected processUpdate(response: Response): Observable<boolean> {
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
             const _responseText = response.text();
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? UserGroupDto.fromJS(resultData200) : new UserGroupDto();
+            result200 = resultData200 ? true : false;
             return Observable.of(result200);
         } else if (status === 401) {
             const _responseText = response.text();
@@ -1656,7 +1656,63 @@ export class UserGroupServiceProxy {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Observable.of<UserGroupDto>(<any>null);
+        return Observable.of<boolean>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    delete(input: UserGroupDto): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/eswis/UserGroup/Delete";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            method: "put",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processDelete(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processDelete(response_);
+                } catch (e) {
+                    return <Observable<boolean>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<boolean>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processDelete(response: Response): Observable<boolean> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? true : false;
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<boolean>(<any>null);
     }
 
     // /**
@@ -1772,14 +1828,14 @@ export class UserGroupServiceProxy {
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         }
         else {
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         }
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1825,12 +1881,12 @@ export class UserGroupServiceProxy {
     /**
      * @return Success
      */
-    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserGroupDto> {
+    getAll(): Observable<PagedResultDtoOfUserGroupDto> {
         let url_ = this.baseUrl + '/api/eswis/UserGroup/GetAllUserGroup';
 
         url_ = url_.replace(/[?&]$/, '');
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -1854,7 +1910,7 @@ export class UserGroupServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfUserGroupDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -1878,330 +1934,16 @@ export class UserGroupServiceProxy {
 }
 
 @Injectable()
-export class UserProfileServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    create(input: UserProfileDto): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/UserProfile/Create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-        // const content_ = input.toJSON();
-
-        let options_ : any = {
-            body: content_,
-            method: "post",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processCreate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processCreate(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processCreate(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    update(input: UserProfileDto): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/UserProfile/Update";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            method: "put",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processUpdate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processUpdate(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processUpdate(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    delete(id: string): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/UserProfile/Delete?";
-        if (id === undefined || id === null)
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        else
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "delete",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processDelete(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processDelete(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processDelete(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-    /**
-     * @return Success
-     */
-    get(id: number): Observable<UserProfileDto> {
-        let url_ = this.baseUrl + "/api/services/app/User/Get?";
-        if (id === undefined || id === null) {
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
-        }
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGet(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGet(response_);
-                } catch (e) {
-                    return <Observable<UserProfileDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<UserProfileDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGet(response: Response): Observable<UserProfileDto> {
-        const status = response.status;
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? UserProfileDto.fromJS(resultData200) : new UserProfileDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<UserProfileDto>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    getAll(skipCount: number, maxResultCount: number, orderby: string, filterText?: string): Observable<PagedResultDtoOfUserProfileDto> {
-        let url_ = this.baseUrl + '/api/eswis/UserProfile/GetAllUserProfile?';
-
-        if (skipCount === undefined || skipCount === null) {
-            throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "skipCount=" + encodeURIComponent("" + skipCount) + "&"; 
-        }
-        if (maxResultCount === undefined || maxResultCount === null) {
-            throw new Error("The parameter 'maxResultCount' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "limit=" + encodeURIComponent("" + maxResultCount) + "&"; 
-        }
-        if (orderby === undefined || orderby === null) {
-            throw new Error("The parameter 'orderby' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "orderby=" + encodeURIComponent("" + orderby) + "&"; 
-        }
-
-        if (filterText !== undefined || filterText !== null) {
-            url_ += "filter=" + encodeURIComponent("" + filterText) + "&"; 
-        }
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetAll(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetAll(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfUserProfileDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfUserProfileDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetAll(response: Response): Observable<PagedResultDtoOfUserProfileDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfUserProfileDto.fromJS(resultData200) : new PagedResultDtoOfUserProfileDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfUserProfileDto>(<any>null);
-    }
-}
-
-@Injectable()
 export class PermissionSetServiceProxy {
     private http: Http;
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
-    
+
     /**
      * @return Success
      */
@@ -2211,10 +1953,10 @@ export class PermissionSetServiceProxy {
             throw new Error("The parameter 'accessCode' must be defined and cannot be null.");
         }
         else {
-            url_ += "accessCode=" + encodeURIComponent("" + accessCode) + "&"; 
+            url_ += "accessCode=" + encodeURIComponent("" + accessCode) + "&";
         }
-        
-        let options_ : any = {
+
+        let options_: any = {
             method: "get",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -2238,7 +1980,7 @@ export class PermissionSetServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfPermissionSetDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -2264,22 +2006,22 @@ export class PermissionSetServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    update(input: IPermissionFunctionDto[]): Observable<boolean> {
+    update(input: PermissionFunctionDto[]): Observable<boolean> {
         let url_ = this.baseUrl + "/api/eswis/Permission/Update";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "put",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processUpdate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -2294,7 +2036,63 @@ export class PermissionSetServiceProxy {
     }
 
     protected processUpdate(response: Response): Observable<boolean> {
-        const status = response.status; 
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? true : false;
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<boolean>(false);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    create(input: PermissionFunctionDto): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/eswis/Permission/Create";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+        
+        let options_: any = {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+        
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processCreate(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processCreate(response_);
+                } catch (e) {
+                    return <Observable<boolean>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<boolean>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processCreate(response: Response): Observable<boolean> {
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -2323,11 +2121,11 @@ export class ConsignmentServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
     }
-   
+
     /**
      * @return Success
      */
@@ -2337,17 +2135,17 @@ export class ConsignmentServiceProxy {
             throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
         }
         else {
-            url_ += "skipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "skipCount=" + encodeURIComponent("" + skipCount) + "&";
         }
         if (maxResultCount === undefined || maxResultCount === null) {
             throw new Error("The parameter 'maxResultCount' must be defined and cannot be null.");
         }
         else {
-            url_ += "limit=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "limit=" + encodeURIComponent("" + maxResultCount) + "&";
         }
         url_ = url_.replace(/[?&]$/, '');
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -2371,7 +2169,7 @@ export class ConsignmentServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfConsignmentDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -2400,22 +2198,22 @@ export class UserApprovalServiceProxy {
     private baseUrl: string;
     protected jsonParseReviver: (key: string, value: any) => any = undefined;
 
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl ? baseUrl : "";
         // this.baseUrl = AppConsts.remoteServiceBaseUrl;
     }
 
-// ============== SHOW TO TABLE =========================
- /**
-     * @return Success 
-     */
+    // ============== SHOW TO TABLE =========================
+    /**
+        * @return Success 
+        */
     getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserApprovalDto> {
         let url_ = this.baseUrl + '/api/eswis/UserApproval/GetUserAccessList';
 
         url_ = url_.replace(/[?&]$/, '');
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -2439,7 +2237,7 @@ export class UserApprovalServiceProxy {
     }
 
     protected processGetAll(response: Response): Observable<PagedResultDtoOfUserApprovalDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -2463,23 +2261,23 @@ export class UserApprovalServiceProxy {
 
 
     // ============================= GET EDIT  =====================
-     /**
-     * @return Success
-     */
+    /**
+    * @return Success
+    */
     get(userID: string): Observable<UserApprovalDto> {
         let url_ = this.baseUrl + "/api/eswis/UserApproval/GetApprovalEdit?";
         if (userID === undefined || userID === null) {
             throw new Error("The parameter 'id' must be defined and cannot be null.");
         }
         else {
-            url_ += "userID=" + encodeURIComponent("" + userID) + "&"; 
+            url_ += "userID=" + encodeURIComponent("" + userID) + "&";
         }
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_ : any = {
+        let options_: any = {
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2534,16 +2332,16 @@ export class UserApprovalServiceProxy {
 
         const content_ = JSON.stringify(input);
 
-        let options_ : any = {
+        let options_: any = {
             body: content_,
             method: "put",
             headers: new Headers({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
 
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
+        return this.http.request(url_, options_).flatMap((response_: any) => {
             return this.processUpdate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof Response) {
@@ -2558,7 +2356,7 @@ export class UserApprovalServiceProxy {
     }
 
     protected processUpdate(response: Response): Observable<UserApprovalDto> {
-        const status = response.status; 
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
@@ -2581,13 +2379,333 @@ export class UserApprovalServiceProxy {
     }
 }
 
+export class StockServiceProxy {
+    private http: Http;
+    private baseUrl: string;
+    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @return Success
+     */
+    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStockDto> {
+        let url_ = this.baseUrl + '/api/eswis/Stock/GetAll';
+
+        url_ = url_.replace(/[?&]$/, '');
+
+        let options_: any = {
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processGetAll(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processGetAll(response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfStockDto>><any>Observable.throw(e);
+                }
+            } else {
+                return <Observable<PagedResultDtoOfStockDto>><any>Observable.throw(response_);
+            }
+        });
+    }
+
+    protected processGetAll(response: Response): Observable<PagedResultDtoOfStockDto> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfStockDto.fromJS(resultData200) : new PagedResultDtoOfStockDto();
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<PagedResultDtoOfStockDto>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    create(input: StockDto): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/eswis/Stock/Create";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+        // const content_ = input.toJSON();
+
+        let options_: any = {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processCreate(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processCreate(response_);
+                } catch (e) {
+                    return <Observable<boolean>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<boolean>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processCreate(response: Response): Observable<boolean> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? true : false;
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<boolean>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    update(input: StockDto): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/eswis/Stock/Update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            method: "put",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processUpdate(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processUpdate(response_);
+                } catch (e) {
+                    return <Observable<boolean>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<boolean>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processUpdate(response: Response): Observable<boolean> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? true : false;
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<boolean>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    delete(input: StockDto): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/eswis/Stock/Delete";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            method: "put",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processDelete(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processDelete(response_);
+                } catch (e) {
+                    return <Observable<boolean>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<boolean>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processDelete(response: Response): Observable<boolean> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? true : false;
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<boolean>(<any>null);
+    }
+}
+
+export class CategoryServiceProxy {
+    private http: Http;
+    private baseUrl: string;
+    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+
+    constructor( @Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @return Success
+     */
+    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfItemCategoryDto> {
+        let url_ = this.baseUrl + '/api/eswis/ItemCategory/GetAll';
+
+        url_ = url_.replace(/[?&]$/, '');
+
+        let options_: any = {
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processGetAll(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processGetAll(response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfItemCategoryDto>><any>Observable.throw(e);
+                }
+            } else {
+                return <Observable<PagedResultDtoOfItemCategoryDto>><any>Observable.throw(response_);
+            }
+        });
+    }
+
+    protected processGetAll(response: Response): Observable<PagedResultDtoOfItemCategoryDto> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfItemCategoryDto.fromJS(resultData200) : new PagedResultDtoOfItemCategoryDto();
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException("A server error occurred.", status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<PagedResultDtoOfItemCategoryDto>(<any>null);
+    }
+}
+
+function throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): Observable<any> {
+    if (result !== null && result !== undefined)
+        return Observable.throw(result);
+    else
+        return Observable.throw(new SwaggerException(message, status, response, headers, null));
+}
+
+function blobToText(blob: any): Observable<string> {
+    return new Observable<string>((observer: any) => {
+        if (!blob) {
+            observer.next("");
+            observer.complete();
+        } else {
+            let reader = new FileReader();
+            reader.onload = function () {
+                observer.next(this.result);
+                observer.complete();
+            }
+            reader.readAsText(blob);
+        }
+    });
+}
 
 export class SwaggerException extends Error {
     message: string;
-    status: number; 
-    response: string; 
+    status: number;
+    response: string;
     headers: { [key: string]: any; };
-    result: any; 
+    result: any;
 
     constructor(message: string, status: number, response: string, headers: { [key: string]: any; }, result: any) {
         super();
@@ -2604,1464 +2722,4 @@ export class SwaggerException extends Error {
     static isSwaggerException(obj: any): obj is SwaggerException {
         return obj.isSwaggerException === true;
     }
-}
-
-//=================================== STATE PROXY ===========================
-@Injectable()
-export class StateServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    create(input: StateDto): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/State/Create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-        // const content_ = input.toJSON();
-
-        let options_ : any = {
-            body: content_,
-            method: "post",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processCreate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processCreate(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processCreate(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    update(input: StateDto): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/State/Update";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            method: "put",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processUpdate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processUpdate(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processUpdate(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    delete(CountryCode: string, StateCode: string): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/State/Delete?";
-        if (CountryCode === undefined && StateCode === undefined || CountryCode === null && StateCode === null )
-            throw new Error("The parameter 'CountryCode' must be defined and cannot be null.");
-        else
-            url_ += "CountryCode=" + encodeURIComponent("" + CountryCode) + "&StateCode=" + encodeURIComponent("" + StateCode) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "delete",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processDelete(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processDelete(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processDelete(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-    /**
-     * @return Success
-     */
-    get(id: number): Observable<StateDto> {
-        let url_ = this.baseUrl + "/api/services/app/User/Get?";
-        if (id === undefined || id === null) {
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
-        }
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGet(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGet(response_);
-                } catch (e) {
-                    return <Observable<StateDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<StateDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGet(response: Response): Observable<StateDto> {
-        const status = response.status;
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? StateDto.fromJS(resultData200) : new StateDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<StateDto>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStateDto> {
-        let url_ = this.baseUrl + '/api/eswis/State/GetAllState';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetAll(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetAll(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfStateDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfStateDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetAll(response: Response): Observable<PagedResultDtoOfStateDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfStateDto.fromJS(resultData200) : new PagedResultDtoOfStateDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfStateDto>(<any>null);
-    }
-}
-
-@Injectable()
-export class CountryServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    create(input: CountryDto): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/Country/Create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-        // const content_ = input.toJSON();
-
-        let options_ : any = {
-            body: content_,
-            method: "post",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processCreate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processCreate(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processCreate(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    update(input: CountryDto): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/Country/Update";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            method: "put",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processUpdate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processUpdate(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processUpdate(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    delete(id: string): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/eswis/Country/Delete?";
-        if (id === undefined || id === null)
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        else
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "delete",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processDelete(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processDelete(response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<boolean>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processDelete(response: Response): Observable<boolean> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? true : false;
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<boolean>(<any>null);
-    }
-    /**
-     * @return Success
-     */
-    get(id: number): Observable<CountryDto> {
-        let url_ = this.baseUrl + "/api/services/app/User/Get?";
-        if (id === undefined || id === null) {
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
-        }
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGet(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGet(response_);
-                } catch (e) {
-                    return <Observable<CountryDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<CountryDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGet(response: Response): Observable<CountryDto> {
-        const status = response.status;
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? CountryDto.fromJS(resultData200) : new CountryDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<CountryDto>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfCountryDto> {
-        let url_ = this.baseUrl + '/api/eswis/Country/GetAll';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetAll(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetAll(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfCountryDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfCountryDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetAll(response: Response): Observable<PagedResultDtoOfCountryDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfCountryDto.fromJS(resultData200) : new PagedResultDtoOfCountryDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfCountryDto>(<any>null);
-    }
-}
-
-export class GbsCodex {
-    Code: string;
-}
-export class GbsPayType {
-    Type: string;
-}
-let GbsCodexs: GbsCodex[] = [{
-    "Code": "DOB"
-}, {
-    "Code": "STD"
-}];
-let GbsPayTypes: GbsPayType[] = [{
-    "Type": "DEPO"
-}, {
-    "Type": "FULL"
-}];
-@Injectable()
-export class GetBookingServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-    /**
-     * @return Success
-     */
-    getCodex() {
-        return GbsCodexs;
-    }
-    getPayType() {
-        return GbsPayTypes;
-    }
-    /**
-     * @return Success
-     */
-    get(id: string): Observable<GBSCountryDto> {
-        let url_ = this.baseUrl + "/api/GBSAdmin/GetAllCountry?";
-        if (id === undefined || id === null) {
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "CountryID=" + encodeURIComponent("" + id) + "&"; 
-        }
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGet(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGet(response_);
-                } catch (e) {
-                    return <Observable<GBSCountryDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<GBSCountryDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGet(response: Response): Observable<GBSCountryDto> {
-        const status = response.status;
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200.items[0] ? GBSCountryDto.fromJS(resultData200.items[0]) : new GBSCountryDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<GBSCountryDto>(<any>null);
-    }
-    /**
-     * @return Success
-     */
-    getCountry(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfGBSCountryDto> {
-        let url_ = this.baseUrl + '/api/GBSAdmin/GetAllCountry';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetCountry(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetCountry(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfGBSCountryDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfGBSCountryDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetCountry(response: Response): Observable<PagedResultDtoOfGBSCountryDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfGBSCountryDto.fromJS(resultData200) : new PagedResultDtoOfGBSCountryDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfGBSCountryDto>(<any>null);
-    }
-    /**
-     * @return Success
-     */
-    getbookingbypnr(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfGBSDto> {
-        let url_ = this.baseUrl + '/api/GBSAdmin/PaymentScheme?GRPID=AA';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetBooking(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetBooking(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfGBSDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfGBSDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetBooking(response: Response): Observable<PagedResultDtoOfGBSDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfGBSDto.fromJS(resultData200) : new PagedResultDtoOfGBSDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfGBSDto>(<any>null);
-    }
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-        update(input: Array<GBSDto>): Observable<Array<GBSDto>> {
-        let url_ = this.baseUrl + "/api/GBSAdmin/UpdatePaymentScheme";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            method: "put",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processUpdate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processUpdate(response_);
-                } catch (e) {
-                    return <Observable<Array<GBSDto>>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<Array<GBSDto>>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processUpdate(response: Response): Observable<Array<GBSDto>> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? GBSDto.fromJS(resultData200) : new GBSDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<Array<GBSDto>>(<any>null);
-    }
-}
-
-@Injectable()
-export class GetFlightTimeServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-    /**
-     * @return Success
-     */
-    getFlighttime(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfFlightTimeDto> {
-        let url_ = this.baseUrl + '/api/GBSAdmin/GroupTime';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetFlightTime(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetFlightTime(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfFlightTimeDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfFlightTimeDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetFlightTime(response: Response): Observable<PagedResultDtoOfFlightTimeDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfFlightTimeDto.fromJS(resultData200) : new PagedResultDtoOfFlightTimeDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfFlightTimeDto>(<any>null);
-    }
-    // /**
-    //  * @input (optional) 
-    //  * @return Success
-    //  */
-    //     update(input: Array<FlightTimeDto>): Observable<Array<FlightTimeDto>> {
-    //     let url_ = this.baseUrl + "/api/GBSAdmin/UpdatePaymentScheme";
-    //     url_ = url_.replace(/[?&]$/, "");
-
-    //     const content_ = JSON.stringify(input);
-
-    //     let options_ : any = {
-    //         body: content_,
-    //         method: "put",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json", 
-    //             "Accept": "application/json"
-    //         })
-    //     };
-
-    //     return this.http.request(url_, options_).flatMap((response_ : any) => {
-    //         return this.processUpdate(response_);
-    //     }).catch((response_: any) => {
-    //         if (response_ instanceof Response) {
-    //             try {
-    //                 return this.processUpdate(response_);
-    //             } catch (e) {
-    //                 return <Observable<Array<FlightTimeDto>>><any>Observable.throw(e);
-    //             }
-    //         } else
-    //             return <Observable<Array<FlightTimeDto>>><any>Observable.throw(response_);
-    //     });
-    // }
-
-    // protected processUpdate(response: Response): Observable<Array<FlightTimeDto>> {
-    //     const status = response.status; 
-
-    //     let _headers: any = response.headers ? response.headers.toJSON() : {};
-    //     if (status === 200) {
-    //         const _responseText = response.text();
-    //         let result200: any = null;
-    //         let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-    //         result200 = resultData200 ? FlightTimeDto.fromJS(resultData200) : new FlightTimeDto();
-    //         return Observable.of(result200);
-    //     } else if (status === 401) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status === 403) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status !== 200 && status !== 204) {
-    //         const _responseText = response.text();
-    //         return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-    //     }
-    //     return Observable.of<Array<FlightTimeDto>>(<any>null);
-    // }
-}
-
-@Injectable()
-export class GetAgentTierServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-    /**
-     * @return Success
-     */
-    getAgentTier(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfAgentTierDto> {
-        let url_ = this.baseUrl + '/api/GBSAdmin/GetAgentTireListGrid';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetAgentTier(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetAgentTier(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfAgentTierDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfAgentTierDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetAgentTier(response: Response): Observable<PagedResultDtoOfAgentTierDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfAgentTierDto.fromJS(resultData200) : new PagedResultDtoOfAgentTierDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfAgentTierDto>(<any>null);
-    }
-    // /**
-    //  * @input (optional) 
-    //  * @return Success
-    //  */
-    //     update(input: Array<AgentTierDto>): Observable<Array<AgentTierDto>> {
-    //     let url_ = this.baseUrl + "/api/GBSAdmin/UpdatePaymentScheme";
-    //     url_ = url_.replace(/[?&]$/, "");
-
-    //     const content_ = JSON.stringify(input);
-
-    //     let options_ : any = {
-    //         body: content_,
-    //         method: "put",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json", 
-    //             "Accept": "application/json"
-    //         })
-    //     };
-
-    //     return this.http.request(url_, options_).flatMap((response_ : any) => {
-    //         return this.processUpdate(response_);
-    //     }).catch((response_: any) => {
-    //         if (response_ instanceof Response) {
-    //             try {
-    //                 return this.processUpdate(response_);
-    //             } catch (e) {
-    //                 return <Observable<Array<AgentTierDto>>><any>Observable.throw(e);
-    //             }
-    //         } else
-    //             return <Observable<Array<AgentTierDto>>><any>Observable.throw(response_);
-    //     });
-    // }
-
-    // protected processUpdate(response: Response): Observable<Array<AgentTierDto>> {
-    //     const status = response.status; 
-
-    //     let _headers: any = response.headers ? response.headers.toJSON() : {};
-    //     if (status === 200) {
-    //         const _responseText = response.text();
-    //         let result200: any = null;
-    //         let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-    //         result200 = resultData200 ? AgentTierDto.fromJS(resultData200) : new AgentTierDto();
-    //         return Observable.of(result200);
-    //     } else if (status === 401) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status === 403) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status !== 200 && status !== 204) {
-    //         const _responseText = response.text();
-    //         return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-    //     }
-    //     return Observable.of<Array<AgentTierDto>>(<any>null);
-    // }
-}
-
-@Injectable()
-export class GetAgentAccessFareServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-    /**
-     * @return Success
-     */
-    getAgentAccessFare(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfAgentAccessFareDto> {
-        let url_ = this.baseUrl + '/api/GBSAdmin/GetAgentAccessFarePIVOT';
-
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetAgentAccessFare(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetAgentAccessFare(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfAgentAccessFareDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfAgentAccessFareDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetAgentAccessFare(response: Response): Observable<PagedResultDtoOfAgentAccessFareDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfAgentAccessFareDto.fromJS(resultData200) : new PagedResultDtoOfAgentAccessFareDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfAgentAccessFareDto>(<any>null);
-    }
-    // /**
-    //  * @input (optional) 
-    //  * @return Success
-    //  */
-    //     update(input: Array<AgentAccessFareDto>): Observable<Array<AgentAccessFareDto>> {
-    //     let url_ = this.baseUrl + "/api/GBSAdmin/UpdatePaymentScheme";
-    //     url_ = url_.replace(/[?&]$/, "");
-
-    //     const content_ = JSON.stringify(input);
-
-    //     let options_ : any = {
-    //         body: content_,
-    //         method: "put",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json", 
-    //             "Accept": "application/json"
-    //         })
-    //     };
-
-    //     return this.http.request(url_, options_).flatMap((response_ : any) => {
-    //         return this.processUpdate(response_);
-    //     }).catch((response_: any) => {
-    //         if (response_ instanceof Response) {
-    //             try {
-    //                 return this.processUpdate(response_);
-    //             } catch (e) {
-    //                 return <Observable<Array<AgentAccessFareDto>>><any>Observable.throw(e);
-    //             }
-    //         } else
-    //             return <Observable<Array<AgentAccessFareDto>>><any>Observable.throw(response_);
-    //     });
-    // }
-
-    // protected processUpdate(response: Response): Observable<Array<AgentAccessFareDto>> {
-    //     const status = response.status; 
-
-    //     let _headers: any = response.headers ? response.headers.toJSON() : {};
-    //     if (status === 200) {
-    //         const _responseText = response.text();
-    //         let result200: any = null;
-    //         let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-    //         result200 = resultData200 ? AgentAccessFareDto.fromJS(resultData200) : new AgentAccessFareDto();
-    //         return Observable.of(result200);
-    //     } else if (status === 401) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status === 403) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status !== 200 && status !== 204) {
-    //         const _responseText = response.text();
-    //         return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-    //     }
-    //     return Observable.of<Array<AgentAccessFareDto>>(<any>null);
-    // }
-}
-
-@Injectable()
-export class CustomerServiceProxy {
-    private http: Http;
-    private baseUrl: string;
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
-
-    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    create(input: CreateCustomerDto): Observable<CustomerDto> {
-        let url_ = this.baseUrl + "/api/eswis/Customer/Create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            method: "post",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_ : any) => {
-            return this.processCreate(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processCreate(response_);
-                } catch (e) {
-                    return <Observable<CustomerDto>><any>Observable.throw(e);
-                }
-            } else
-                return <Observable<CustomerDto>><any>Observable.throw(response_);
-        });
-    }
-
-    protected processCreate(response: Response): Observable<CustomerDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? CustomerDto.fromJS(resultData200) : new CustomerDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<CustomerDto>(<any>null);
-    }
-
-    // /**
-    //  * @input (optional) 
-    //  * @return Success
-    //  */
-    // update(input: CustomerDto): Observable<CustomerDto> {
-    //     let url_ = this.baseUrl + "/api/eswis/Customer/Update";
-    //     url_ = url_.replace(/[?&]$/, "");
-
-    //     const content_ = JSON.stringify(input);
-
-    //     let options_ : any = {
-    //         body: content_,
-    //         method: "put",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json", 
-    //             "Accept": "application/json"
-    //         })
-    //     };
-
-    //     return this.http.request(url_, options_).flatMap((response_ : any) => {
-    //         return this.processUpdate(response_);
-    //     }).catch((response_: any) => {
-    //         if (response_ instanceof Response) {
-    //             try {
-    //                 return this.processUpdate(response_);
-    //             } catch (e) {
-    //                 return <Observable<CustomerDto>><any>Observable.throw(e);
-    //             }
-    //         } else
-    //             return <Observable<CustomerDto>><any>Observable.throw(response_);
-    //     });
-    // }
-
-    // protected processUpdate(response: Response): Observable<CustomerDto> {
-    //     const status = response.status; 
-
-    //     let _headers: any = response.headers ? response.headers.toJSON() : {};
-    //     if (status === 200) {
-    //         const _responseText = response.text();
-    //         let result200: any = null;
-    //         let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-    //         result200 = resultData200 ? CustomerDto.fromJS(resultData200) : new CustomerDto();
-    //         return Observable.of(result200);
-    //     } else if (status === 401) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status === 403) {
-    //         const _responseText = response.text();
-    //         return throwException("A server error occurred.", status, _responseText, _headers);
-    //     } else if (status !== 200 && status !== 204) {
-    //         const _responseText = response.text();
-    //         return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-    //     }
-    //     return Observable.of<CustomerDto>(<any>null);
-    // }
-
-    /**
-     * @return Success
-     */
-    get(bizRegID: string): Observable<CustomerDto> {
-        let url_ = this.baseUrl + "/api/eswis/Customer/Get?";
-        if (bizRegID === undefined || bizRegID === null) {
-            throw new Error("The parameter 'bizRegID' must be defined and cannot be null.");
-        }
-        else {
-            url_ += "bizRegID=" + encodeURIComponent("" + bizRegID) + "&"; 
-        }
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGet(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGet(response_);
-                } catch (e) {
-                    return <Observable<CustomerDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<CustomerDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGet(response: Response): Observable<CustomerDto> {
-        const status = response.status;
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? CustomerDto.fromJS(resultData200) : new CustomerDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<CustomerDto>(<any>null);
-    }
-   
-    /**
-     * @return Success
-     */
-    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfCustomerDto> {
-        let url_ = this.baseUrl + '/api/eswis/Customer/GetAll?limit=50';
-        url_ = url_.replace(/[?&]$/, '');
-
-        let options_ : any = {
-            method: "get",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request(url_, options_).flatMap((response_: any) => {
-            return this.processGetAll(response_);
-        }).catch((response_: any) => {
-            if (response_ instanceof Response) {
-                try {
-                    return this.processGetAll(response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfCustomerDto>><any>Observable.throw(e);
-                }
-            } else {
-                return <Observable<PagedResultDtoOfCustomerDto>><any>Observable.throw(response_);
-            }
-        });
-    }
-
-    protected processGetAll(response: Response): Observable<PagedResultDtoOfCustomerDto> {
-        const status = response.status; 
-
-        let _headers: any = response.headers ? response.headers.toJSON() : {};
-        if (status === 200) {
-            const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfCustomerDto.fromJS(resultData200) : new PagedResultDtoOfCustomerDto();
-            return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.text();
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Observable.of<PagedResultDtoOfCustomerDto>(<any>null);
-    }
-}
-
-function throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): Observable<any> {
-    if(result !== null && result !== undefined)
-        return Observable.throw(result);
-    else
-        return Observable.throw(new SwaggerException(message, status, response, headers, null));
-}
-
-function blobToText(blob: any): Observable<string> {
-    return new Observable<string>((observer: any) => {
-        if (!blob) {
-            observer.next("");
-            observer.complete();
-        } else {
-            let reader = new FileReader(); 
-            reader.onload = function() { 
-                observer.next(this.result);
-                observer.complete();
-            }
-            reader.readAsText(blob); 
-        }
-    });
 }

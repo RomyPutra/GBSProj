@@ -1,0 +1,106 @@
+<div bsModal #createEditCurrencyModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="createEditCurrencyModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #createUserForm="ngForm" id="frm_create_user" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span *ngIf="action===ActionState.Create">Create New Currency</span>
+                        <span *ngIf="action===ActionState.Edit">Edit Currency</span>
+                    </h4>
+                </div>
+                <div class="modal-body">    
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="currencyCode" type="text" name="currencyCode" [(ngModel)]="data.currencyCode" required maxlength="10" minlength="1" class="validate form-control" [disabled]="action===ActionState.Edit">
+                                    <label for="currencyCode" class="form-label">Currency Code</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="currencyDesc" type="text" name="currencyDesc" [(ngModel)]="data.currencyDesc" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="currencyDesc" class="form-label">Currency Desc</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select name="countryCode" class="form-control" id="countryCode" [(ngModel)]="data.countryCode" [disabled]="action===ActionState.Edit">
+                                        <option value=""></option>
+                                        <option *ngFor="let data of countries;" value="{{data.countryCode}}">{{data.countryDesc}}</option>
+                                    </select>
+                                    <label for="selectUserGroup" class="form-label">Choose a country</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="rate" type="number" name="rate" [(ngModel)]="data.rate" required maxlength="10" minlength="1" class="validate form-control">
+                                    <label for="rate" class="form-label">Rate</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="unit" type="number" name="unit" [(ngModel)]="data.unit" required maxlength="10" minlength="1" class="validate form-control">
+                                    <label for="unit" class="form-label">Unit</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="currencySymbol" type="text" name="currencySymbol" [(ngModel)]="data.currencySymbol" class="validate form-control">
+                                    <label for="currencySymbol" class="form-label">Currency symbol</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="filled-in" id="currencyActive" name="currencyActive" [(ngModel)]="isActive">
+                                <label for="currencyActive">Active</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!createUserForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

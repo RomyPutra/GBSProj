@@ -1,8 +1,26 @@
-﻿import { GetFlightTimeServiceProxy } from '@shared/service-proxies/service-proxies';
-// import { UnitServiceProxy } from '@shared/service-proxies/service-proxies';
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 
 import * as ApiServiceProxies from './service-proxies';
+import { CurrencyServiceProxy } from './proxy-currency';
+import { EmployeeServiceProxy } from './proxy-employee';
+import { CustomerServiceProxy } from './proxy-customer';
+import { LocationServiceProxy } from './proxy-location';
+import { VehicleServiceProxy } from './proxy-vehicle';
+import { UserProfileServiceProxy } from './proxy-userprofile';
+import { IndustryServiceProxy, SubIndustryServiceProxy } from './proxy-industry';
+import { CodeMasterServiceProxy } from './proxy-codemaster';
+import { PBTServiceProxy } from './proxy-pbt';
+import { CountryServiceProxy } from './proxy-country';
+import { StateServiceProxy } from './proxy-state';
+import { AreaServiceProxy } from './proxy-area';
+import { CityServiceProxy } from './proxy-city';
+import { RegistrationServiceProxy } from './proxy-registration';
+import { PermissionServiceProxy } from './proxy-permission';
+import { UploadServiceProxy } from './proxy-upload';
+import { GetAgentAccessFareServiceProxy } from './proxy-accessfare';
+import { GetAgentTierServiceProxy } from './proxy-agenttier';
+import { GetFlightTimeServiceProxy } from './proxy-flighttime';
+import { GetBookingServiceProxy } from './proxy-payscheme';
 
 @NgModule({
     providers: [
@@ -15,17 +33,32 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.ConfigurationServiceProxy,
         ApiServiceProxies.UnitServiceProxy,
         ApiServiceProxies.UserGroupServiceProxy,
-        ApiServiceProxies.UserProfileServiceProxy,
         ApiServiceProxies.PermissionSetServiceProxy,
         ApiServiceProxies.ConsignmentServiceProxy,
         ApiServiceProxies.UserApprovalServiceProxy,
-        ApiServiceProxies.StateServiceProxy,
-        ApiServiceProxies.CustomerServiceProxy,
-        ApiServiceProxies.CountryServiceProxy,
-        ApiServiceProxies.GetBookingServiceProxy,
-        ApiServiceProxies.GetFlightTimeServiceProxy,
-        ApiServiceProxies.GetAgentTierServiceProxy,
-        ApiServiceProxies.GetAgentAccessFareServiceProxy
+        ApiServiceProxies.CategoryServiceProxy,
+        ApiServiceProxies.StockServiceProxy,
+        CurrencyServiceProxy,
+        EmployeeServiceProxy,
+        CustomerServiceProxy,
+        LocationServiceProxy,
+        VehicleServiceProxy,
+        UserProfileServiceProxy,
+        IndustryServiceProxy,
+        SubIndustryServiceProxy,
+        CodeMasterServiceProxy,
+        PBTServiceProxy,
+        CountryServiceProxy,
+        StateServiceProxy,
+        AreaServiceProxy,
+        CityServiceProxy,
+        RegistrationServiceProxy,
+        PermissionServiceProxy,
+        UploadServiceProxy,
+        GetBookingServiceProxy,
+        GetFlightTimeServiceProxy,
+        GetAgentTierServiceProxy,
+        GetAgentAccessFareServiceProxy
     ]
 })
 export class ServiceProxyModule { }

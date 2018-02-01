@@ -1,27 +1,12 @@
 <div class="row clearfix" [@routerTransition]>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card main-content">
-            <div class="header">
-                <h2>
-                    UserAppoval
-                </h2>
-                <ul class="header-dropdown m-r--5">
-                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
             <div class="body table-responsive">
   
                 <!-- ******************************************************** -->
                 <dx-data-grid
                     id="gridContainer"
+                    (onToolbarPreparing)="onToolbarPreparing($event)"
                     [rowAlternationEnabled]="dxGridConf.rowAlternationEnabled"
 					[showColumnLines]="dxGridConf.showColumnLines"
 					[showRowLines]="dxGridConf.showRowLines"
@@ -32,10 +17,27 @@
 					[columnAutoWidth]="dxGridConf.columnAutoWidth"
                     [dataSource]="userappoval" >
                     
+                    <div *dxTemplate="let data of 'gridTitleTemplate'">
+                        <span class="dx-header-title">
+                            User Approval
+                        </span>
+                    </div>
+
+                    <div *dxTemplate="let data of 'gridMenuTemplate'">
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dxgrid-header">
+                                <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <dxo-search-panel 
                         [visible]="true" 
                         [width]="240" 
-                        placeholder="Search..."></dxo-search-panel>
+                        placeholder="{{filterPlaceHolder}}"></dxo-search-panel>
                         
                     <dxi-column 
                         dataField="rowID" 
@@ -51,7 +53,7 @@
                     <dxi-column dataField="requestDate2" caption="Req. Date" dataType="date"></dxi-column>
                     <dxi-column dataField="companyName" caption="Company"></dxi-column>
                     <dxi-column dataField="bizRegID" caption="Biz Req ID"></dxi-column>
-                    <dxi-column dataField="statusDesc" caption="Status" cellTemplate="StatusCellTemplate"></dxi-column>            
+                    <dxi-column dataField="statusDesc" caption="Status" cellTemplate="statusCellTemplate"></dxi-column>            
                     
                     <div *dxTemplate="let row of 'actionCellTemplate'">
                         <div class="dropdown">
@@ -59,19 +61,15 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dxgrid">
-                                <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="ChangeStatus(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="changeStatus(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div *dxTemplate="let r of 'StatusCellTemplate'">
-                        <p [ngStyle]="StatusStyle(r.data.statusDesc)">{{r.data.statusDesc}}</p>
+                    <div *dxTemplate="let r of 'statusCellTemplate'">
+                        <p [ngStyle]="statusStyle(r.data.statusDesc)">{{r.data.statusDesc}}</p>
                     </div>
 
-                    <dxo-remote-operations
-                        [sorting]="true"
-                        [paging]="true">
-                    </dxo-remote-operations>
                     <dxo-paging [pageSize]="dxGridPager.pageSize"></dxo-paging>
 					<dxo-pager 
 						[showPageSizeSelector]="dxGridPager.showPageSizeSelector"

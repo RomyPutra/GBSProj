@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs/Observable';
 
 export class CountryDto implements ICountryDto {
-    countryCode : string
-    countryDesc : string
-    active : string
-    createBy : string
-    createDate : string
-    
+    countryCode: string;
+    countryDesc: string;
+    active: number;
+    flag: number;
+    createBy: string;
+    createDate: Date;
 
     static fromJS(data: any): CountryDto {
         let result = new CountryDto();
@@ -29,6 +29,7 @@ export class CountryDto implements ICountryDto {
             this.countryCode = data['countryCode'];
             this.countryDesc = data['countryDesc'];
             this.active = data['active'];
+            this.flag = data['flag'];
             this.createBy = data['createBy'];
             this.createDate = data['createDate'];
         }
@@ -36,10 +37,11 @@ export class CountryDto implements ICountryDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data['countryCode'] = this.countryCode;
-        data['countryDesc'] =this.countryDesc; 
+        data['countryCode'] = this.countryCode  ;
+        data['countryDesc'] = this.countryDesc;
         data['active'] = this.active;
-        data['createBy'] = this.createBy; 
+        data['flag'] = this.flag;
+        data['createBy'] = this.createBy ;
         data['createDate'] = this.createDate;
         return data;
     }
@@ -53,11 +55,12 @@ export class CountryDto implements ICountryDto {
 }
 
 export interface ICountryDto {
-    countryCode : string
-    countryDesc : string
-    active : string
-    createBy : string
-    createDate : string
+    countryCode: string;
+    countryDesc: string;
+    active: number;
+    flag: number;
+    createBy: string;
+    createDate: Date;
 }
 
 export class PagedResultDtoOfCountryDto implements IPagedResultDtoOfCountryDto {
@@ -82,10 +85,10 @@ export class PagedResultDtoOfCountryDto implements IPagedResultDtoOfCountryDto {
 
     init(data?: any) {
         if (data) {
-            this.totalCount = data['totalCount'];
-            if (data['items'] && data['items'].constructor === Array) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
                 this.items = [];
-                for (let item of data['items']) {
+                for (let item of data["items"]) {
                     this.items.push(CountryDto.fromJS(item));
                 }
             }
@@ -94,11 +97,11 @@ export class PagedResultDtoOfCountryDto implements IPagedResultDtoOfCountryDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data['totalCount'] = this.totalCount;
+        data["totalCount"] = this.totalCount;
         if (this.items && this.items.constructor === Array) {
-            data['items'] = [];
+            data["items"] = [];
             for (let item of this.items) {
-                data['items'].push(item.toJSON());
+                data["items"].push(item.toJSON());
             }
         }
         return data;

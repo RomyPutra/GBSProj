@@ -48,7 +48,7 @@
                 <dxi-column dataField="id" sortOrder="asc"></dxi-column>
                 <dxi-column dataField="fullName"></dxi-column>
                 <dxi-column dataField="emailAddress"></dxi-column>
-                <dxi-column dataField="isActive" cellTemplate="StatusCellTemplate" [width]="60"></dxi-column>
+                <dxi-column dataField="isActive" cellTemplate="statusCellTemplate" [width]="60"></dxi-column>
 
                 <div *dxTemplate="let row of 'actionCellTemplate'">
                     <div class="dropdown">
@@ -61,7 +61,7 @@
                         </ul>
                     </div>
                 </div>
-                <div *dxTemplate="let r of 'StatusCellTemplate'">
+                <div *dxTemplate="let r of 'statusCellTemplate'">
                     <td>
                         <i class="material-icons" *ngIf="!r.isActive" style="color:green;">check_box</i>
                         <i class="material-icons" *ngIf="r.isActive" style="color:red;">indeterminate_check_box</i>

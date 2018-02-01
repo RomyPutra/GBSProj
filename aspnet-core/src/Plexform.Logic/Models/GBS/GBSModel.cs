@@ -89,7 +89,6 @@ namespace Plexform.Models
         public System.String InTier3 { get; set; }
         public System.String InGeneric { get; set; }
     }
-
     public class AGENTTIERModels
     {
         public System.String MarketCode { get; set; }

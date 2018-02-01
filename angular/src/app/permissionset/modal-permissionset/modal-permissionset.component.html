@@ -1,0 +1,90 @@
+<div bsModal #permissionsetModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="permissionsetModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #createUserForm="ngForm" id="frm_create_user" (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span *ngIf="action===ActionState.Create">Create New Permission Set</span>
+                        <span *ngIf="action===ActionState.Edit">Edit Permission Set</span>
+                    </h4>
+                </div>
+                <div class="modal-body">  
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12 mb-0">
+                            <mat-form-field class="material-full-width">
+                                <input type="text" placeholder="User Group" matInput [formControl]="controlUserGroup" [matAutocomplete]="autoUserGroup" [(ngModel)]="selectedUserGroup" (blur)="onBlurUserGroup()" required>
+                                <mat-autocomplete #autoUserGroup="matAutocomplete" [displayWith]="displayUserGroup" >
+                                    <mat-option *ngFor="let data of filteredUserGroups | async" [value]="data" >
+                                        {{ displayUserGroup(data) }}
+                                    </mat-option> 
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div> 
+                    <div class="row clearfix" style="margin-top:15px;">
+                        <div class="col-sm-6 mb-0">
+                            <mat-form-field class="material-full-width">
+                                <input type="text" placeholder="Module" matInput [formControl]="controlSysModule" [matAutocomplete]="autoSysModule" [(ngModel)]="selectedSysModule" (blur)="onBlurSysModule()" required>
+                                <mat-autocomplete #autoSysModule="matAutocomplete" [displayWith]="displaySysModule" >
+                                    <mat-option *ngFor="let data of filteredSysModules | async" [value]="data" >
+                                        {{ displaySysModule(data) }}
+                                    </mat-option> 
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6 mb-0">
+                            <mat-form-field class="material-full-width">
+                                <input type="text" placeholder="Function" matInput [formControl]="controlSysFunction" [matAutocomplete]="autoSysFunction" [(ngModel)]="selectedSysFunction" (blur)="onBlurSysFunction()" required>
+                                <mat-autocomplete #autoSysFunction="matAutocomplete" [displayWith]="displaySysFunction" >
+                                    <mat-option *ngFor="let data of filteredSysFunctions | async" [value]="data" >
+                                        {{ displaySysFunction(data) }}
+                                    </mat-option> 
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:20px;">
+                        <div class="col-sm-2 mb-0">
+                            <input type="checkbox" class="filled-in" id="create" name="create" [(ngModel)]="isCreate">
+                            <label for="create">Create</label>
+                        </div>
+                        <div class="col-sm-2 mb-0">
+                            <input type="checkbox" class="filled-in" id="update" name="update" [(ngModel)]="isUpdate">
+                            <label for="update">Update</label>
+                        </div>
+                        <div class="col-sm-2 mb-0">
+                            <input type="checkbox" class="filled-in" id="delete" name="delete" [(ngModel)]="isDelete">
+                            <label for="delete">Delete</label>
+                        </div>
+                        <div class="col-sm-2 mb-0">
+                            <input type="checkbox" class="filled-in" id="print" name="print" [(ngModel)]="isPrint">
+                            <label for="print">Print</label>
+                        </div>
+                        <div class="col-sm-2 mb-0">
+                            <input type="checkbox" class="filled-in" id="process" name="process" [(ngModel)]="isProcess">
+                            <label for="process">Process</label>
+                        </div>
+                        <div class="col-sm-2 mb-0">
+                            <input type="checkbox" class="filled-in" id="deny" name="deny" [(ngModel)]="isDeny">
+                            <label for="deny">Deny</label>
+                        </div>
+                    </div>
+                        
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!createUserForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,86 +1,93 @@
-import { AppComponentBase } from "shared/app-component-base";
+import { ActionState } from '@shared/models/enums';
+import { AppComponentBase } from 'shared/app-component-base';
 import { Component, Injector, ViewChild, OnInit } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { PermissionSetDto, PagedResultDtoOfPermissionSetDto, IPermissionFunctionDto } from '@shared/models/model-permissionset';
+import { PermissionSetDto, PagedResultDtoOfPermissionSetDto, PermissionFunctionDto } from '@shared/models/model-permissionset';
 import { PermissionSetServiceProxy } from '@shared/service-proxies/service-proxies';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import { UserGroupDto, PagedResultDtoOfUserGroupDto } from '@shared/models/model-usergroup';
 import { UserGroupServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ModalPermissionsetComponent } from './modal-permissionset/modal-permissionset.component';
+
 @Component({
   templateUrl: './permissionset.component.html',
-    animations: [appModuleAnimation()]
+  animations: [appModuleAnimation()]
 })
 // export class UnitsComponent implements OnInit {
-export class PermissionsetComponent extends AppComponentBase implements OnInit  {
+export class PermissionsetComponent extends AppComponentBase implements OnInit {
+
+  @ViewChild('permissionsetModal') permissionsetModal: ModalPermissionsetComponent;
+
   active: boolean = false;
   datas: PermissionSetDto[] = [];
   changedDataIndex: number[][] = [];
   userGroups: UserGroupDto[] = [];
-  public isTableLoading = false;
   selectedAccessCode = '';
 
   constructor(
-      injector: Injector,
-      private _service: PermissionSetServiceProxy,
-      private _serviceUserGroup: UserGroupServiceProxy
+    injector: Injector,
+    private _service: PermissionSetServiceProxy,
+    private _serviceUserGroup: UserGroupServiceProxy
   ) {
-      super(injector);
+    super(injector);
   }
 
   ngOnInit(): void {
+    this.loadingMessage = 'Loading...';
     this.refresh();
   }
 
   refresh(): void {
-      this.getUserGroup();
+    this.changedDataIndex = [];
+    this.getUserGroup();
   }
 
   public getUserGroup(): void {
-      this.isTableLoading = true;
-      this.populateUserGroup(() => {
-          this.isTableLoading = false;
-          if (this.selectedAccessCode !== '') {
-            this.getPermissions(this.selectedAccessCode);
-          }
-      });
+    this.isBusy = true;
+    this.populateUserGroup(() => {
+      this.isBusy = false;
+      if (this.selectedAccessCode !== '') {
+        this.getPermissions(this.selectedAccessCode);
+      }
+    });
   }
 
   private populateUserGroup(finishedCallback: Function): void {
-      this._serviceUserGroup.getAll(0, 0)
-          .finally(() => {
-            finishedCallback();
-          })
-          .subscribe((result: PagedResultDtoOfUserGroupDto) => {
-            this.userGroups = result.items;
-          });
+    this._serviceUserGroup.getAll()
+      .finally(() => {
+        finishedCallback();
+      })
+      .subscribe((result: PagedResultDtoOfUserGroupDto) => {
+        this.userGroups = result.items;
+      });
   }
 
   public getPermissions(accessCode: string): void {
-    this.isTableLoading = true;
+    this.isBusy = true;
     this.populatePermissions(accessCode, () => {
-        this.isTableLoading = false;
-    });
-}
-  private populatePermissions(accessCode: string, finishedCallback: Function) {
-    this._service.getAll(accessCode)
-    .finally(() => {
-        finishedCallback();
-    })
-    .subscribe((result: PagedResultDtoOfPermissionSetDto) => {
-        // result.items[0].expanded = true;
-        this.datas = result.items;
+      this.isBusy = false;
     });
   }
+  private populatePermissions(accessCode: string, finishedCallback: Function) {
+    this._service.getAll(accessCode)
+      .finally(() => {
+        finishedCallback();
+      })
+      .subscribe((result: PagedResultDtoOfPermissionSetDto) => {
+        // result.items[0].expanded = true;
+        this.datas = result.items;
+      });
+  }
 
-  userInRole(data: IPermissionFunctionDto): string {
+  userInRole(data: PermissionFunctionDto): string {
     if (data.allowEdit) {
-        return "checked";
+      return 'checked';
     } else {
-        return "";
+      return '';
     }
   }
 
-  changeSelect(){
+  changeSelect() {
     this.getPermissions(this.selectedAccessCode);
   }
 
@@ -114,52 +121,55 @@ export class PermissionsetComponent extends AppComponentBase implements OnInit  
   }
 
   protected expandSelected(data: PermissionSetDto): void {
-    this.datas.forEach(function(val) {
+    this.datas.forEach(function (val) {
       val.expanded = false;
     });
     data.expanded = true;
   }
 
   protected delete(unit: PermissionSetDto): void {
-      abp.message.confirm(
-          "Delete unit '" + unit.moduleID + "'?",
-          (result: boolean) => {
-              if (result) {
-                //   this._userService.delete(user.id)
-                //       .subscribe(() => {
-                //           abp.notify.info("Deleted User: " + user.fullName);
-                //           this.refresh();
-                //       });
-              }
-          }
-      );
+    abp.message.confirm(
+      "Delete unit '" + unit.moduleID + "'?",
+      (result: boolean) => {
+        if (result) {
+          //   this._userService.delete(user.id)
+          //       .subscribe(() => {
+          //           abp.notify.info("Deleted User: " + user.fullName);
+          //           this.refresh();
+          //       });
+        }
+      }
+    );
   }
 
   //createUnit Show Modals
   save(): void {
     // this.saving = true;
-    let toSave: IPermissionFunctionDto[] = [];
+    let toSave: PermissionFunctionDto[] = [];
     for (let i = 0; i < this.changedDataIndex.length; i++) {
       let idx = this.changedDataIndex[i];
       toSave.push(this.datas[idx[0]].functions[idx[1]]);
     }
     if (toSave.length > 0) {
       this._service.update(toSave)
-          .finally(() => {
-            // this.saving = false;
-          })
-          .subscribe((result: boolean) => {
-              if (result) {
-                this.notify.info(this.l('SavedSuccessfully'));
-                this.refresh();
-              } else {
-                this.notify.error('Save Error!');
-              }
-          });
+        .finally(() => {
+          // this.saving = false;
+        })
+        .subscribe((result: boolean) => {
+          if (result) {
+            this.changedDataIndex = [];
+            this.notify.success(this.l('SavedSuccessfully'));
+            this.refresh();
+          } else {
+            this.notify.error('Save Error!');
+          }
+        });
+    } else {
+      abp.notify.warn('Nothing changed');
     }
   }
 
-  editUnit(user: PermissionSetDto): void {
-    //   this.editUserModal.show(user.id);
+  add(): void {
+    this.permissionsetModal.show(ActionState.Create);
   }
 }

@@ -3,8 +3,8 @@ import { ActionState } from '@shared/models/enums';
 import { Component, Injector, ViewChild, Inject } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { UserProfileDto, PagedResultDtoOfUserProfileDto } from '@shared/models/model-userprofile';
-import { UserProfileServiceProxy } from '@shared/service-proxies/service-proxies';
-import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
+import { UserProfileServiceProxy } from '@shared/service-proxies/proxy-userprofile';
+import { PagedRequestDto } from 'shared/paged-listing-component-base';
 import { PagedListingComponentCustom } from 'shared/layout/paged-listing-component-custom';
 import { CreateUserprofileComponent } from './create-userprofile/create-userprofile.component';
 import CustomStore from 'devextreme/data/custom_store';
@@ -25,6 +25,7 @@ export class UserprofilesComponent extends PagedListingComponentCustom<UserProfi
     dataSource: any = {};
     filterText = '';
     _timeoutFilter: any;
+    isFiltering = false;
 
     constructor(
         injector: Injector,
@@ -39,8 +40,15 @@ export class UserprofilesComponent extends PagedListingComponentCustom<UserProfi
         }
         let that = this;
         this._timeoutFilter = window.setInterval(function() {
-            window.clearInterval(that._timeoutFilter);
-            that.dataGrid.instance.refresh();
+            if (that.filterText.length > 0 || that.isFiltering) {
+                if (!that.isFiltering) {
+                    that.isFiltering = true;
+                } else if (that.filterText.length > 0) {
+                    that.isFiltering = false;
+                }
+                window.clearInterval(that._timeoutFilter);
+                that.dataGrid.instance.refresh();
+            }
         }, 1000);
      }
 
@@ -57,6 +65,12 @@ export class UserprofilesComponent extends PagedListingComponentCustom<UserProfi
 
                     if (that.isValidFilter(that.filterText, that.filterValidLenght)) {
                         filterText = that.filterText;
+                    }
+
+                    if (loadOptions.filter) {
+                        if (loadOptions.filter.length > 0) {
+                            filterText = loadOptions.filter[0][2];
+                        }
                     }
 
                     let orderby = '';
@@ -85,7 +99,7 @@ export class UserprofilesComponent extends PagedListingComponentCustom<UserProfi
             });
         }
     }
-
+    
     protected delete(profile: UserProfileDto): void {
         abp.message.confirm(
             "Delete profile '" + profile.userID + "'?",
