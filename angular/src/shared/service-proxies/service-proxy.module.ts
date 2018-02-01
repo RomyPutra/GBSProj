@@ -23,7 +23,9 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.CustomerServiceProxy,
         ApiServiceProxies.CountryServiceProxy,
         ApiServiceProxies.GetBookingServiceProxy,
-        ApiServiceProxies.GetFlightTimeServiceProxy
+        ApiServiceProxies.GetFlightTimeServiceProxy,
+        ApiServiceProxies.GetAgentTierServiceProxy,
+        ApiServiceProxies.GetAgentAccessFareServiceProxy
     ]
 })
 export class ServiceProxyModule { }

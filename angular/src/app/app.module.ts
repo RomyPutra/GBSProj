@@ -51,6 +51,8 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { GBSComponent } from './gbs/gbs.component';
 // import { EditPaySchemeComponent } from './gbs/update-payscheme/update-payscheme.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
+import { AgenttierComponent } from './agenttier/agenttier.component';
+import { AgentAccessFareComponent } from './accessfare/accessfare.component';
 
 @NgModule({
     declarations: [
@@ -90,8 +92,10 @@ import { FlighttimeComponent } from './flighttime/flighttime.component';
         // EditCustomerComponent,
         GBSComponent,
         // EditPaySchemeComponent
-        FlighttimeComponent
-],
+        FlighttimeComponent,
+        AgenttierComponent,
+        AgentAccessFareComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -111,3 +115,4 @@ import { FlighttimeComponent } from './flighttime/flighttime.component';
     ]
 })
 export class AppModule { }
+

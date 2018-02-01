@@ -14,6 +14,10 @@ export class SideBarNavComponent extends AppComponentBase {
     menuItems: MenuItem[] = [
         new MenuItem(this.l('Payment Setting'), '', 'payment', '/app/gbs'),
         new MenuItem(this.l('Flight Time'), '', 'flight', '/app/flighttime'),
+        new MenuItem('Agent', '', 'menu', '', [
+            new MenuItem(this.l('Tier'), '', 'supervisor_account', '/app/agenttier'),
+            new MenuItem(this.l('Access Fare'), '', 'airline_seat_recline_normal', '/app/accessfare'),
+        ]),
 
         // new MenuItem('eSWIS', '', 'menu', '', [
         //     new MenuItem('Units', 'Code_Master#Waste_Unit', '', '/app/units'),

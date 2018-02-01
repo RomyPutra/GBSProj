@@ -17,6 +17,8 @@ import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 // import { CustomersComponent } from './customers/customers.component';
 import { GBSComponent } from './gbs/gbs.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
+import { AgentAccessFareComponent } from './accessfare/accessfare.component';
+import { AgenttierComponent } from './agenttier/agenttier.component';
 
 @NgModule({
     imports: [
@@ -44,6 +46,8 @@ import { FlighttimeComponent } from './flighttime/flighttime.component';
                     // { path: 'state', component: StateComponent, canActivate: [AppRouteGuard] },
                     { path: 'gbs', component: GBSComponent, canActivate: [AppRouteGuard] },
                     { path: 'flighttime', component: FlighttimeComponent, canActivate: [AppRouteGuard] },
+                    { path: 'accessfare', component: AgentAccessFareComponent, canActivate: [AppRouteGuard] },
+                    { path: 'agenttier', component: AgenttierComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

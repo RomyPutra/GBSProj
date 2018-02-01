@@ -1,4 +1,4 @@
-<h3>FLIGHT TIME</h3>
+<h3>ACCESS FARE</h3>
 <div style="border-radius: 25px;padding: 20px;background:white;">
     <!-- ******************************************************** -->
     <dx-data-grid
@@ -18,24 +18,18 @@
         [width]="240" 
         placeholder="Search..."></dxo-search-panel>
   
-      <dxi-column dataField="ftGroupCode" caption="Group Time"></dxi-column>
-      <dxi-column dataField="startTime" caption="Started Time"></dxi-column>
-      <dxi-column dataField="endTime" caption="Ended Time"></dxi-column>
-      <dxi-column dataField="createDate" caption="Created At"></dxi-column>
-      <dxi-column dataField="updateDate" caption="Updated At"></dxi-column>
-      <!-- <dxi-column dataField="lastSyncBy" caption="Last Sync By"></dxi-column>
-      <dxi-column dataField="createBy" caption="Created By"></dxi-column>
-      <dxi-column dataField="updateBy" caption="Updated By"></dxi-column> -->
-      <dxi-column dataField="active" caption="Active"  cellTemplate="StatusCellTemplate"></dxi-column>
-
-				<div *dxTemplate="let r of 'StatusCellTemplate'">
-					<td>
-            <p *ngIf="(r.value === 1)">Active</p>
-            <p *ngIf="!(r.value === 1)">Inactive</p>
-            <!-- <i class="material-icons" *ngIf="(r.value === 1)" style="color:green;">check_box</i>
-            <i class="material-icons" *ngIf="!(r.value === 1)" style="color:red;">indeterminate_check_box</i> -->
-          </td>
-				</div>
+      <dxi-column dataField="analyst" caption="Analyst"></dxi-column>
+      <dxi-column dataField="marketCode" caption="Market"></dxi-column>
+      <dxi-column dataField="outRoute" caption="Outbound Route"></dxi-column>
+      <dxi-column dataField="outTier1" caption="Out Tier1"></dxi-column>
+      <dxi-column dataField="outTier2" caption="Out Tier2"></dxi-column>
+      <dxi-column dataField="outTier3" caption="Out Tier3"></dxi-column>
+      <dxi-column dataField="outGeneric" caption="Out Generic"></dxi-column>
+      <dxi-column dataField="inRoute" caption="Inbound Route"></dxi-column>
+      <dxi-column dataField="inTier1" caption="In Tier1"></dxi-column>
+      <dxi-column dataField="inTier2" caption="In Tier2"></dxi-column>
+      <dxi-column dataField="inTier3" caption="In Tier3"></dxi-column>
+      <dxi-column dataField="inGeneric" caption="In Generic"></dxi-column>
       <dxo-paging [pageSize]="20"></dxo-paging>
       <dxo-pager 
         [showPageSizeSelector]="true"
