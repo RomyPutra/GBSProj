@@ -109,4 +109,24 @@ namespace Plexform.Models
         public System.DateTime CreateDate { get; set; }
         public System.DateTime UpdateDate { get; set; }
     }
+
+    public class GROUPCAPModels
+    {
+        public System.String MarketCode { get; set; }
+        public System.String Analyst { get; set; }
+        public System.String InRoute { get; set; }
+        public System.Decimal InGrpCap { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.Decimal OutGrpCap { get; set; }
+    }
+
+    public class MAXDISCModels
+    {
+        public System.String MarketCode { get; set; }
+        public System.String Analyst { get; set; }
+        public System.String InRoute { get; set; }
+        public System.Decimal InMaxDisc { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.Decimal OutMaxDisc { get; set; }
+    }
 }

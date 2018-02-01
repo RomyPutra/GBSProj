@@ -1342,6 +1342,362 @@ namespace Plexform.GBS
         }
         #endregion
 
+        #region MARKET
+        public class MarketInfo
+        {
+            protected System.String _MarketCode = String.Empty;
+            private System.String _MarketName = String.Empty;
+            private System.String _Analyst = String.Empty;
+            private System.String _InRoute = String.Empty;
+            private System.String _OutRoute = String.Empty;
+            private System.Decimal _InGrpCap;
+            private System.Decimal _OutGrpCap;
+            private System.Decimal _InMaxDisc;
+            private System.Decimal _OutMaxDisc;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
+
+            #region properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+
+            public System.String MarketName
+            {
+                get
+                {
+                    return _MarketName;
+                }
+
+                set
+                {
+                    _MarketName = value;
+                }
+            }
+
+            public System.String Analyst
+            {
+                get
+                {
+                    return _Analyst;
+                }
+
+                set
+                {
+                    _Analyst = value;
+                }
+            }
+
+            public System.String InRoute
+            {
+                get
+                {
+                    return _InRoute;
+                }
+
+                set
+                {
+                    _InRoute = value;
+                }
+            }
+
+            public System.String OutRoute
+            {
+                get
+                {
+                    return _OutRoute;
+                }
+
+                set
+                {
+                    _OutRoute = value;
+                }
+            }
+
+            public System.Decimal InGrpCap
+            {
+                get
+                {
+                    return _InGrpCap;
+                }
+
+                set
+                {
+                    _InGrpCap = value;
+                }
+            }
+
+            public System.Decimal OutGrpCap
+            {
+                get
+                {
+                    return _OutGrpCap;
+                }
+
+                set
+                {
+                    _OutGrpCap = value;
+                }
+            }
+
+            public System.Decimal InMaxDisc
+            {
+                get
+                {
+                    return _InMaxDisc;
+                }
+
+                set
+                {
+                    _InMaxDisc = value;
+                }
+            }
+
+            public System.Decimal OutMaxDisc
+            {
+                get
+                {
+                    return _OutMaxDisc;
+                }
+
+                set
+                {
+                    _OutMaxDisc = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetGroupCap()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT Analyst, MarketCode, InRoute, InGrpCap, OutRoute, OutGrpCap FROM AD_MARKET";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_MARKET does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public DataTable GetMaxDisc()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT Analyst, MarketCode, InRoute, InMaxDisc, OutRoute, OutMaxDisc FROM AD_MARKET";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_MARKET does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
         #region Comunicate
         public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
 		{
@@ -1641,6 +1997,68 @@ namespace Plexform.GBS
                             OutAgentID = dt.Rows[i]["OutAgentID"].ToString(),
                             CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
                             UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.GROUPCAPModels>> GetGroupCapAll()
+        {
+            IList<Plexform.Models.GROUPCAPModels> list = new List<Plexform.Models.GROUPCAPModels>();
+            MarketInfo Model = new MarketInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetGroupCap();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.GROUPCAPModels
+                        {
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InGrpCap = (Decimal)dt.Rows[i]["InGrpCap"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutGrpCap = (Decimal)dt.Rows[i]["OutGrpCap"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.MAXDISCModels>> GetMaxDiscAll()
+        {
+            IList<Plexform.Models.MAXDISCModels> list = new List<Plexform.Models.MAXDISCModels>();
+            MarketInfo Model = new MarketInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetMaxDisc();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.MAXDISCModels
+                        {
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InMaxDisc = (Decimal)dt.Rows[i]["InMaxDisc"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutMaxDisc = (Decimal)dt.Rows[i]["OutMaxDisc"]
                         });
                     }
                 }

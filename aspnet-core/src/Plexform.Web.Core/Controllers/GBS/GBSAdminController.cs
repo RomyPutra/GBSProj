@@ -171,5 +171,43 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.GROUPCAPModels>> GetGroupCapAll()
+        {
+            IList<Plexform.Models.GROUPCAPModels> Scheme = new List<Plexform.Models.GROUPCAPModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetGroupCapAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.GROUPCAPModels>(
+                ObjectMapper.Map<List<Plexform.Models.GROUPCAPModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.MAXDISCModels>> GetMaxDiscAll()
+        {
+            IList<Plexform.Models.MAXDISCModels> Scheme = new List<Plexform.Models.MAXDISCModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetMaxDiscAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.MAXDISCModels>(
+                ObjectMapper.Map<List<Plexform.Models.MAXDISCModels>>(Scheme),
+                Scheme.Count
+            );
+        }
     }
 }
