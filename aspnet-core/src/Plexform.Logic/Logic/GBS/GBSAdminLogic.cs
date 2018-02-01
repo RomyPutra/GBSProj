@@ -1013,12 +1013,25 @@ namespace Plexform.GBS
 			try
 			{
 
-				strSQL = "SELECT MarketCode, [1] AS [Tier 1], [2] AS [Tier 2], [3] AS [Tier 3], [Generic] AS [Generic] ";
-				strSQL += "FROM ";
-				strSQL += "(SELECT MarketCode, InTier, InFareClass FROM AD_AGENTACCESSFARE) p ";
-				strSQL += "PIVOT ( ";
-				strSQL += "MAX(INFARECLASS) FOR INTIER IN ( [1],[2],[3],[Generic]) ) AS pvt ";
-				strSQL += "ORDER BY pvt.MarketCode";
+                strSQL = "SELECT Analyst, MarketCode [MarketCode] ";
+                strSQL += ",OutRoute[OutRoute],[Out1] AS[OutTier1], [Out2] AS[OutTier2], [Out3] AS[OutTier3], [OutGeneric] AS [OutGeneric] ";
+                strSQL += ",InRoute, [In1] AS[InTier1], [In2] AS[InTier2], [In3] AS[InTier3], [InGeneric] AS [InGeneric] ";
+                strSQL += "FROM ";
+                strSQL += "(SELECT Analyst, AAF.MarketCode, OutRoute,'Out'+OutTier[OutTier], OutFareClass, InRoute,'In'+InTier[InTier], InFareClass ";
+                strSQL += "FROM AD_AGENTACCESSFARE AAF ";
+                strSQL += "INNER JOIN AD_MARKET M ON AAF.MarketCode = M.MarketCode) p ";
+                strSQL += "PIVOT ";
+                strSQL += "( ";
+                strSQL += "MAX(OUTFARECLASS) ";
+                strSQL += "FOR OUTTIER IN ";
+                strSQL += "( [Out1],[Out2],[Out3],[OutGeneric]) ";
+                strSQL += ") AS pvt ";
+                strSQL += "PIVOT ";
+                strSQL += "( ";
+                strSQL += "MAX(INFARECLASS) ";
+                strSQL += "FOR INTIER IN ";
+                strSQL += "( [In1],[In2],[In3],[InGeneric]) ";
+                strSQL += ") AS pvt2";
 
 				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
 				{
@@ -1574,10 +1587,19 @@ namespace Plexform.GBS
 					{
 						list.Add(new Models.AGENTACCESSFAREModels
 						{
-							MarketCode = dt.Rows[i]["MarketCode"].ToString(),
-							Tier1 = dt.Rows[i]["Tier 1"].ToString(),
-							Tier2 = dt.Rows[i]["Tier 2"].ToString(),
-							Generic = dt.Rows[i]["Generic"].ToString()
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+							InTier1 = dt.Rows[i]["InTier1"].ToString(),
+                            InTier2 = dt.Rows[i]["InTier2"].ToString(),
+                            InTier3 = dt.Rows[i]["InTier3"].ToString(),
+                            InGeneric = dt.Rows[i]["InGeneric"].ToString(),
+                            OutTier1 = dt.Rows[i]["OutTier1"].ToString(),
+                            OutTier2 = dt.Rows[i]["OutTier2"].ToString(),
+                            OutTier3 = dt.Rows[i]["OutTier3"].ToString(),
+                            OutGeneric = dt.Rows[i]["OutGeneric"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+
 						});
 					}
 				}

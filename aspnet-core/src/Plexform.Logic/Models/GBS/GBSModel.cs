@@ -62,7 +62,8 @@ namespace Plexform.Models
 	}
 	public class AGENTACCESSFAREModels
 	{
-		public System.String MarketCode { get; set; }
+        public System.String Analyst { get; set; }
+        public System.String MarketCode { get; set; }
 		public System.String InTier { get; set; }
 		public System.String OutTier { get; set; }
 		public System.String InFareClass { get; set; }
@@ -77,10 +78,17 @@ namespace Plexform.Models
 		public System.DateTime UpdateDate { get; set; }
 		public System.String UpdateBy { get; set; }
 		public int Active { get; set; }
-		public System.String Tier1 { get; set; }
-		public System.String Tier2 { get; set; }
-		public System.String Generic { get; set; }
-	}
+        public System.String OutRoute { get; set; }
+        public System.String OutTier1 { get; set; }
+        public System.String OutTier2 { get; set; }
+        public System.String OutTier3 { get; set; }
+        public System.String OutGeneric { get; set; }
+        public System.String InRoute { get; set; }
+        public System.String InTier1 { get; set; }
+        public System.String InTier2 { get; set; }
+        public System.String InTier3 { get; set; }
+        public System.String InGeneric { get; set; }
+    }
 
     public class AGENTTIERModels
     {
