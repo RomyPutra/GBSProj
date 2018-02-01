@@ -1,6 +1,6 @@
 import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { UserProfileServiceProxy } from '@shared/service-proxies/service-proxies';
+import { UserProfileServiceProxy } from '@shared/service-proxies/proxy-userprofile';
 import { UserProfileDto } from '@shared/models/model-userprofile';
 import { RoleDto } from '@shared/models/model-role';
 import { AppComponentBase } from '@shared/app-component-base';
@@ -26,7 +26,6 @@ export class CreateUserprofileComponent extends AppComponentBase implements OnIn
     saving: boolean = false;
     user: UserProfileDto = null;
     userGroups: UserGroupDto[] = [];
-    selectedAccessCode: string
     action: ActionState;
     ActionState = ActionState;
 
@@ -39,10 +38,7 @@ export class CreateUserprofileComponent extends AppComponentBase implements OnIn
     }
 
     ngOnInit(): void {
-        // this._userService.getRoles()
-        // .subscribe((result) => {
-        //     this.roles = result.items;
-        // });
+        this.populateUserGroup();
     }
 
     show(action: ActionState, user?: UserProfileDto): void {
@@ -50,8 +46,6 @@ export class CreateUserprofileComponent extends AppComponentBase implements OnIn
         if (action === ActionState.Create) {
             this.active = true;
             this.modal.show();
-            this.populateUserGroup();
-            this.selectedAccessCode = '';
             this.user = new UserProfileDto();
             this.user.init({ isActive: true });
         } else if (action === ActionState.Edit) {
@@ -61,9 +55,18 @@ export class CreateUserprofileComponent extends AppComponentBase implements OnIn
                 this.active = true;
                 this.user = user;
                 this.modal.show();
-                this.populateUserGroup();
             }
         }
+    }
+
+    private populateUserGroup(): void {
+        this._serviceUserGroup.getAll()
+            .finally(() => {
+
+            })
+            .subscribe((result: PagedResultDtoOfUserGroupDto) => {
+                this.userGroups = result.items;
+            });
     }
 
     onShown(): void {
@@ -72,7 +75,7 @@ export class CreateUserprofileComponent extends AppComponentBase implements OnIn
 
     save(): void {
         //TODO: Refactor this, don't use jQuery style code
-        this.user.accessCode = this.selectedAccessCode;
+        // this.user.accessCode = this.user.accessCode;
         this.saving = true;
 
         if (this.action === ActionState.Create) {
@@ -109,26 +112,4 @@ export class CreateUserprofileComponent extends AppComponentBase implements OnIn
         this.modal.hide();
     }
 
-    private populateUserGroup(): void {
-        this._serviceUserGroup.getAll(0, 0)
-            .finally(() => {
-
-            })
-            .subscribe((result: PagedResultDtoOfUserGroupDto) => {
-                this.userGroups = result.items;
-                this.selectedAccessCode = this.user.accessCode;
-            });
-    }
-
-    onChangeCategorySelect(event) {
-        this.selectedAccessCode = event.target.value;
-        // if (value == 'add') {
-        //     alert("add new cat");
-        //     this.model.category = 'default';
-        // }
-
-        // //event.target.value = this.model.category;
-
-        // this.model.subcategory = 'default';
-    }
 }

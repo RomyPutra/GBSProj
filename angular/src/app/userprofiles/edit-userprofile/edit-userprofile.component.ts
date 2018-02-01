@@ -1,6 +1,6 @@
 import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { UserProfileServiceProxy } from '@shared/service-proxies/service-proxies';
+import { UserProfileServiceProxy } from '@shared/service-proxies/proxy-userprofile';
 import { RoleDto } from '@shared/models/model-role';
 import { UserProfileDto } from '@shared/models/model-userprofile';
 import { AppComponentBase } from '@shared/app-component-base';
@@ -86,14 +86,14 @@ export class EditUserprofileComponent extends AppComponentBase {
     }
 
     private populateUserGroup(): void {
-        this._serviceUserGroup.getAll(0, 0)
-            .finally(() => {
+        // this._serviceUserGroup.getAll(0, 0)
+        //     .finally(() => {
 
-            })
-            .subscribe((result: PagedResultDtoOfUserGroupDto) => {
-                this.userGroups = result.items;
-                this.selectedAccessCode = this.user.accessCode;
-            });
+        //     })
+        //     .subscribe((result: PagedResultDtoOfUserGroupDto) => {
+        //         this.userGroups = result.items;
+        //         this.selectedAccessCode = this.user.accessCode;
+        //     });
     }
 
     changeSelect() {

@@ -3,7 +3,7 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import data_grid from 'devextreme/ui/data_grid';
 import { AgentAccessFareDto, PagedResultDtoOfAgentAccessFareDto } from '@shared/models/model-gbsagent';
-import { GetAgentAccessFareServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GetAgentAccessFareServiceProxy } from '@shared/service-proxies/proxy-accessfare';
 
 @Component({
   templateUrl: './accessfare.component.html',

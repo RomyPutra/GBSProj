@@ -1,89 +1,252 @@
-<div bsModal #editCustomerModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editCustomerModal" aria-hidden="true" [config]="{backdrop: 'static'}">
-    <div class="modal-dialog modal-lg">
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Details for <span class="font-bold col-pink">{{bizRegID}}</span>
+                </h2>
+                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" [routerLink]="['/app/customer']">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+            </div>
 
-        <div #modalContent class="modal-content">
-            <form *ngIf="active" #editCustomerForm="ngForm" id="frm_edit_customer" novalidate (ngSubmit)="save()">
-                <div class="modal-header">
-                    <button type="button" class="close" (click)="close()" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">
-                        <span>Edit Customer ID: {{customer.bizRegID}}</span>
-                    </h4>
+            <div class="body">
+                <plex-loading *ngIf="isLoading">
+                    <label>{{loadingMessage}}</label>
+                </plex-loading>
+
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                    <li role="presentation" class="active"><a href="#company-profile" data-toggle="tab">Company Profile</a></li>
+                    <li role="presentation"><a href="#company-location" data-toggle="tab">Location</a></li>
+                    <li role="presentation"><a href="#company-employee" data-toggle="tab">Employee</a></li>
+                    <li role="presentation"><a href="#company-vehicle" data-toggle="tab">Vehicle</a></li>
+                    <li role="presentation"><a href="#company-logindetail" data-toggle="tab">Login Details</a></li>
+                </ul>
+
+                <div class="tab-content" style="padding-bottom:0;">
+                    <!-- Company profile Tab -->
+                    <div role="tabpanel" class="tab-pane animated fadeIn active" id="company-profile">
+                        <div class="body" style="padding-bottom:5px;">
+                            <div class="row">
+                                <form #editCustomerForm="ngForm" [formGroup]="editCustomer" novalidate (ngSubmit)="save()">
+                                    <div class="col-sm-4">
+                                        <mat-form-field class="material-full-width">
+                                            <input matInput [(ngModel)]="customer.regNo" formControlName="inputROCNo" placeholder="ROC Number" maxlength="50" required>
+                                            <mat-error *ngIf="editCustomer.controls['inputROCNo'].hasError('required')">This field is required.</mat-error>
+                                            <mat-hint align="end">{{customer.regNo?.length || 0}}/50</mat-hint>
+                                        </mat-form-field>
+                                        <mat-form-field class="material-full-width">
+                                            <input matInput [(ngModel)]="customer.companyName" formControlName="inputCompName" placeholder="Company Name" maxlength="200" required>
+                                            <mat-error *ngIf="editCustomer.controls['inputCompName'].hasError('required')">This field is required.</mat-error>
+                                            <mat-hint align="end">{{customer.companyName?.length || 0}}/200</mat-hint>
+                                        </mat-form-field>
+                                        <mat-form-field class="material-full-width">
+                                            <mat-select multiple [(ngModel)]="selectedRoles" formControlName="inputRole" placeholder="Select Role" required>
+                                                <mat-option *ngFor="let r of roles" [value]="r">{{r.codeDesc}}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="editCustomer.controls['inputRole'].hasError('required')">This field is required.</mat-error>
+                                        </mat-form-field>
+                                        <div style="margin-top:10px;">
+                                            <mat-checkbox color="primary" [(ngModel)]="isSelectedKKM" formControlName="checkUploadKKM">Upload KKM</mat-checkbox>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.address1" formControlName="inputAddress1" placeholder="Address 1" maxlength="255" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputAddress1'].hasError('required')">This field is required.</mat-error>
+                                                    <mat-hint align="end">{{customer.address1?.length || 0}}/255</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.address2" formControlName="inputAddress2" placeholder="Address 2" maxlength="100">
+                                                    <mat-hint align="end">{{customer.address2?.length || 0}}/100</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.address3" formControlName="inputAddress3" placeholder="Address 3" maxlength="40">
+                                                    <mat-hint align="end">{{customer.address3?.length || 0}}/40</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.address4" formControlName="inputAddress4" placeholder="Address 4" maxlength="40">
+                                                    <mat-hint align="end">{{customer.address4?.length || 0}}/40</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.postalCode" formControlName="inputPostCode" placeholder="Postal Code" maxlength="10" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputPostCode'].hasError('required')">This field is required.</mat-error>
+                                                    <mat-error *ngIf="editCustomer.controls['inputPostCode'].hasError('pattern')">Only numbers (0-9) are allowed.</mat-error>
+                                                    <mat-hint align="end">{{customer.postalCode?.length || 0}}/10</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <mat-select [(ngModel)]="selectedCountry" (change)="countryChanged()" formControlName="inputCountry" placeholder="Select Country" required>
+                                                        <mat-option *ngFor="let c of countries" [value]="c.countryCode">{{c.countryDesc}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error *ngIf="editCustomer.controls['inputCountry'].hasError('required')">This field is required.</mat-error>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <mat-select [(ngModel)]="selectedState" (change)="stateChanged()" formControlName="inputState" placeholder="Select State" required>
+                                                        <mat-option *ngFor="let s of getState(selectedCountry)" [value]="s.stateCode">{{s.stateDesc}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error *ngIf="editCustomer.controls['inputState'].hasError('required')">This field is required.</mat-error>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <mat-select [(ngModel)]="selectedPBT" formControlName="inputPBT" placeholder="Select PBT" required>
+                                                        <mat-option *ngFor="let p of getPBT(selectedCountry, selectedState)" [value]="p.pbtCode">{{p.pbtDesc}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error *ngIf="editCustomer.controls['inputPBT'].hasError('required')">This field is required.</mat-error>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <mat-select [(ngModel)]="selectedCity" (change)="cityChanged()" formControlName="inputDistrict" placeholder="Select District" required>
+                                                        <mat-option *ngFor="let t of getCity(selectedCountry, selectedState)" [value]="t.cityCode">{{t.cityDesc}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error *ngIf="editCustomer.controls['inputDistrict'].hasError('required')">This field is required.</mat-error>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <mat-select [(ngModel)]="selectedArea" formControlName="inputTown" placeholder="Select Town" required>
+                                                        <mat-option *ngFor="let a of getArea(selectedCountry, selectedState, selectedCity)" [value]="a.areaCode">{{a.areaDesc}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error *ngIf="editCustomer.controls['inputTown'].hasError('required')">This field is required.</mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.telNo" formControlName="inputTelNo" placeholder="Phone Number" maxlength="50" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputTelNo'].hasError('required')">This field is required.</mat-error>
+                                                    <mat-error *ngIf="editCustomer.controls['inputTelNo'].hasError('pattern')">Only numbers (0-9), plus (+), and minus (-) signs are allowed.</mat-error>
+                                                    <mat-hint align="end">{{customer.telNo?.length || 0}}/50</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.faxNo" formControlName="inputFaxNo" placeholder="Fax Number" maxlength="50" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputFaxNo'].hasError('pattern')">Only numbers (0-9), plus (+), and minus (-) signs are allowed.</mat-error>
+                                                    <mat-hint align="end">{{customer.faxNo?.length || 0}}/50</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.email" formControlName="inputEmail" placeholder="Email Address" maxlength="255" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputEmail'].hasError('email')">Please enter a valid email address.</mat-error>
+                                                    <mat-hint align="end">{{customer.email?.length || 0}}/255</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.contactPerson" formControlName="inputCP" placeholder="Contact Person" maxlength="200" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputCP'].hasError('required')">This field is required.</mat-error>
+                                                    <mat-hint align="end">{{customer.contactPerson?.length || 0}}/200</mat-hint>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <mat-select [(ngModel)]="customer.contactDesignation" formControlName="inputDesignation" placeholder="Select Designation" required>
+                                                        <mat-option *ngFor="let d of designations" [value]="d.code">{{d.codeDesc}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error *ngIf="editCustomer.controls['inputDesignation'].hasError('required')">This field is required.</mat-error>
+                                                </mat-form-field>
+                                                <mat-form-field class="material-full-width">
+                                                    <input matInput [(ngModel)]="customer.contactPersonTelNo" formControlName="inputContactNumber" placeholder="CP Phone Number" maxlength="50" required>
+                                                    <mat-error *ngIf="editCustomer.controls['inputContactNumber'].hasError('required')">This field is required.</mat-error>
+                                                    <mat-error *ngIf="editCustomer.controls['inputContactNumber'].hasError('pattern')">Only numbers (0-9), plus (+), and minus (-) signs are allowed.</mat-error>
+                                                    <mat-hint align="end">{{customer.contactPersonTelNo?.length || 0}}/50</mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button mat-button mat-raised-button color="primary" [disabled]="!editCustomerForm.form.valid" class="pull-right">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Tab -->
+                    <div role="tabpanel" class="tab-pane animated fadeIn" id="company-location">
+                        <div class="row clearfix" style="margin-top:10px;">
+                            <div class="col-sm-12 table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>DOE File No</th>
+                                            <th>Location</th>
+                                            <th>Address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let r of location">
+                                            <td>{{r.accNo}}</td>
+                                            <td>{{r.pbtDesc}}</td>
+                                            <td>{{r.address1}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employee Tab -->
+                    <div role="tabpanel" class="tab-pane animated fadeIn" id="company-employee">
+                        <employee-list></employee-list>
+                    </div>
+
+                    <!-- Vehicle Tab -->
+                    <div role="tabpanel" class="tab-pane animated fadeIn" id="company-vehicle">
+                        <div class="row clearfix" style="margin-top:10px;">
+                            <div class="col-sm-12 table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Reg No</th>
+                                            <th>Ownership</th>
+                                            <th>GPS Installation</th>
+                                            <th>Bin Lifter</th>
+                                            <th>Truck Painting</th>
+                                            <th>Registration Card</th>
+                                            <th>Photos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let r of vehicle">
+                                            <td>{{r.regNo}}</td>
+                                            <td>{{r.ownership}}</td>
+                                            <td>{{r.gpsInstallation}}</td>
+                                            <td>{{r.binLifterInstallation}}</td>
+                                            <td>{{r.truckPainting}}</td>
+                                            <td>{{r.registrationCard}}</td>
+                                            <td>{{r.photos}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Login Details Tab -->
+                    <div role="tabpanel" class="tab-pane animated fadeIn" id="company-logindetail">
+                        <div class="row clearfix" style="margin-top:10px;">
+                            <div class="col-sm-12 table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Updated By</th>
+                                            <th>Created By</th>
+                                            <th>Updated Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let r of userprofile">
+                                            <td>{{r.userName}}</td>
+                                            <td>{{r.password}}</td>
+                                            <td>{{r.updateBy}}</td>
+                                            <td>{{r.createBy}}</td>
+                                            <td>{{r.lastUpdate | date:'MM/dd/yyyy'}}</td>
+                                            <td>
+                                                <i class="material-icons" *ngIf="r.status" style="color:green;">check_box</i>
+                                                <i class="material-icons" *ngIf="!r.status" style="color:red;">indeterminate_check_box</i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="modal-body">
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input value="{{customer.companyName}}" id="name" type="text" name="CompanyName" [(ngModel)]="customer.companyName" required minlength="2" class="validate form-control">
-                                    <label for="name" class="form-label">Company Name</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input value="{{customer.address1}}" id="address" type="text" name="Address" [(ngModel)]="customer.address1" required minlength="2" class="validate form-control">
-                                    <label for="address" class="form-label">Address</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-sm-4">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input value="{{customer.state}}" id="state" type="text" name="State" [(ngModel)]="customer.state" required minlength="2" class="validate form-control">
-                                    <label for="state" class="form-label">State</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input value="{{customer.country" id="country" type="text" name="Country" [(ngModel)]="customer.country" required minlength="2" class="validate form-control">
-                                    <label for="country" class="form-label">Country</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input value="{{customer.postalCode}}" id="postalcode" type="text" name="PostalCode" [(ngModel)]="customer.postalCode" required maxlength="32" minlength="2" class="validate form-control">
-                                    <label for="postalcode" class="form-label">Postal Code</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-sm-10">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input value="{{customer.email}}" id="email" type="email" name="Email" [(ngModel)]="customer.email" required minlength="2" class="validate form-control">
-                                    <label for="email" class="form-label">Email</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2" style="margin-top:10px;">
-                            <div class="form-group form-float">
-                                <input type="checkbox" class="validate filled-in" id="status" [checked]="customer.status" (change)="changeLabel()" required>
-                                <label for="status">{{status}}</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
-                        {{l("Cancel")}}
-                    </button>
-                    <button [disabled]="!editCustomerForm.form.valid" type="submit" class="btn btn-primary waves-effect">
-                        {{l("Save")}}
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

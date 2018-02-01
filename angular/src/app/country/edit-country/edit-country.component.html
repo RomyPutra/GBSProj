@@ -1,0 +1,59 @@
+<div bsModal #editCountryModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editCountryModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #editCountryForm="ngForm" id="frm_edit_country" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Edit Country")}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="countryCode" type="text" name="countryCode" [(ngModel)]="country.countryCode" required maxlength="32" minlength="2" class="validate form-control" disabled>
+                                    <label for="countryCode" class="form-label">{{l("country code")}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="countryDesc" type="text" name="countryDesc" [(ngModel)]="country.countryDesc" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="countryDesc" class="form-label">{{l("country desc")}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-1">
+                                 <input type="checkbox" class="filled-in" id="usrstatus" [checked]="country.active" (change)="changeLabel()">
+                                <label for="usrstatus">{{l("Active")}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!editCountryForm.form.valid" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

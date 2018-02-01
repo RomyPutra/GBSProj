@@ -4,7 +4,7 @@ export class PermissionSetDto implements IPermissionSetDto {
     moduleID: number;
     moduleName: string;
     expanded: boolean;
-    functions: Array<IPermissionFunctionDto>;
+    functions: Array<PermissionFunctionDto>;
 
     static fromJS(data: any): PermissionSetDto {
         let result = new PermissionSetDto();
@@ -52,10 +52,11 @@ export interface IPermissionSetDto {
     moduleID: number;
     moduleName: string;
     expanded: boolean;
-    functions: Array<IPermissionFunctionDto>;
+    functions: Array<PermissionFunctionDto>;
 }
 
-export class IPermissionFunctionDto {
+export class PermissionFunctionDto {
+    appid: number;
     compositeKey: string;
     accessCode: string;
     groupName: string;
@@ -70,6 +71,7 @@ export class IPermissionFunctionDto {
     allowPro: number;
     isDeny: number;
     accessLevel: number;
+    lastSyncBy: string;
 }
 
 export class PagedResultDtoOfPermissionSetDto implements IPagedResultDtoOfPermissionSetDto {

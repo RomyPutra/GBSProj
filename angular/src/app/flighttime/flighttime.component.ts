@@ -3,7 +3,7 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import data_grid from 'devextreme/ui/data_grid';
 import { FlightTimeDto, PagedResultDtoOfFlightTimeDto } from '@shared/models/model-gbs';
-import { GetFlightTimeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GetFlightTimeServiceProxy } from '@shared/service-proxies/proxy-flighttime';
 
 @Component({
   templateUrl: './flighttime.component.html',

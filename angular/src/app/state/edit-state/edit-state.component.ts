@@ -1,8 +1,8 @@
 import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 
-import { StateServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CountryServiceProxy } from '@shared/service-proxies/service-proxies';
+import { StateServiceProxy } from '@shared/service-proxies/proxy-state';
+import { CountryServiceProxy } from '@shared/service-proxies/proxy-country';
 import { StateDto, PagedResultDtoOfStateDto } from '@shared/models/model-state';
 import { CountryDto, PagedResultDtoOfCountryDto } from '@shared/models/model-country';
 import { AppComponentBase } from '@shared/app-component-base';
@@ -34,7 +34,7 @@ export class EditStateComponent extends AppComponentBase {
     constructor(
         injector: Injector,
         private _stateService: StateServiceProxy,
-        private _countryService: CountryServiceProxy,             
+        private _countryService: CountryServiceProxy
     ) {
         super(injector);
     }

@@ -114,7 +114,6 @@ namespace Plexform.Controllers
 				Scheme.Count
 			);
 		}
-
 		[HttpGet]
 		public async Task<ListResultContainer<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFareAll(string Filter = "")
 		{
@@ -133,7 +132,6 @@ namespace Plexform.Controllers
 				Scheme.Count
 			);
 		}
-
 		[HttpGet]
 		public async Task<ListResultContainer<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFarePIVOT()
 		{
@@ -152,7 +150,6 @@ namespace Plexform.Controllers
 				Scheme.Count
 			);
 		}
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.AGENTTIERModels>> GetAgentTireListGrid()
         {

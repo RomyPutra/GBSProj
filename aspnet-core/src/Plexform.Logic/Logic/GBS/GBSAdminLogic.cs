@@ -970,7 +970,6 @@ namespace Plexform.GBS
 			}
 			#endregion
 		}
-
 		public DataTable GetAGENTACCESSFAREList(string FieldCond = "")
 		{
 			DataTable dt = new DataTable();

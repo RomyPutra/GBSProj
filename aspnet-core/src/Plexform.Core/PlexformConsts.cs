@@ -10,6 +10,8 @@
 
 		public const string GBSConnectionString = "GBS";
 
+		public const string AEONConnectionString = "AEON";
+
 		public const bool MultiTenancyEnabled = true;
     }
 }

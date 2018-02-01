@@ -1,68 +1,18 @@
 import { state } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-export class CreateGroupDto implements ICreateGroupDto {
-    appID: number;
-    groupName: string;
-    status: number;
-
-    constructor(data?: ICreateGroupDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.appID = data["appid"];
-            this.groupName = data["groupName"];
-            this.status = data["status"];
-        }
-    }
-
-    static fromJS(data: any): CreateGroupDto {
-        let result = new CreateGroupDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["appid"] = this.appID;
-        data["groupName"] = this.groupName;
-        data["status"] = this.status;
-        return data; 
-    }
-
-    clone() {
-        const json = this.toJSON();
-        let result = new CreateGroupDto();
-        result.init(json);
-        return result;
-    }
-}
-
-export interface ICreateGroupDto {
-    appID: number;
-    groupName: string;
-    status: number;
-}
-
 export class UserGroupDto implements IUserGroupDto {
-    appID: number;
+    appid: number;
     groupCode: string;
     groupName: string;
     accessLevel: number;
     status: number;
-    CreateDate: Date;
-    CreateBy: string;
-    LastUpdate: Date;
-    UpdateBy: string;
-    SyncCreate: Date;
-    LastSyncUpd: Date;
+    createDate: Date;
+    createBy: string;
+    lastUpdate: Date;
+    updateBy: string;
+    syncCreate: Date;
+    lastSyncUpd: Date;
 
     static fromJS(data: any): UserGroupDto {
         let result = new UserGroupDto();
@@ -82,33 +32,33 @@ export class UserGroupDto implements IUserGroupDto {
 
     init(data?: any) {
         if (data) {
-            this.appID = data["appid"];
+            this.appid = data["appid"];
             this.groupCode = data["groupCode"];
             this.groupName = data["groupName"];
             this.accessLevel = data["accessLevel"];
             this.status = data["status"];
-            this.CreateDate = data["createDate"];
-            this.CreateBy = data["createBy"];
-            this.LastUpdate = data["lastUpdate"];
-            this.UpdateBy = data["updateBy"];
-            this.SyncCreate = data["syncCreate"];
-            this.LastSyncUpd = data["lastSyncUpd"];
+            this.createDate = data["createDate"];
+            this.createBy = data["createBy"];
+            this.lastUpdate = data["lastUpdate"];
+            this.updateBy = data["updateBy"];
+            this.syncCreate = data["syncCreate"];
+            this.lastSyncUpd = data["lastSyncUpd"];
         }
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["appid"] = this.appID;
+        data["appid"] = this.appid;
         data["groupCode"] = this.groupCode;
         data["groupName"] = this.groupName;
         data["accessLevel"] = this.accessLevel;
         data["status"] = this.status;
-        data["createDate"] = this.CreateDate;
-        data["createBy"] = this.CreateBy;
-        data["lastUpdate"] = this.LastUpdate;
-        data["updateBy"] = this.UpdateBy;
-        data["syncCreate"] = this.SyncCreate;
-        data["lastSyncUpd"] = this.LastSyncUpd;
+        data["createDate"] = this.createDate;
+        data["createBy"] = this.createBy;
+        data["lastUpdate"] = this.lastUpdate;
+        data["updateBy"] = this.updateBy;
+        data["syncCreate"] = this.syncCreate;
+        data["lastSyncUpd"] = this.lastSyncUpd;
     return data;
     }
 
@@ -121,17 +71,17 @@ export class UserGroupDto implements IUserGroupDto {
 }
 
 export interface IUserGroupDto {
-    appID: number;
+    appid: number;
     groupCode: string;
     groupName: string;
     accessLevel: number;
     status: number;
-    CreateDate: Date;
-    CreateBy: string;
-    LastUpdate: Date;
-    UpdateBy: string;
-    SyncCreate: Date;
-    LastSyncUpd: Date;
+    createDate: Date;
+    createBy: string;
+    lastUpdate: Date;
+    updateBy: string;
+    syncCreate: Date;
+    lastSyncUpd: Date;
 }
 
 export class PagedResultDtoOfUserGroupDto implements IPagedResultDtoOfUserGroupDto {

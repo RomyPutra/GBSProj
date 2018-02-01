@@ -1,19 +1,21 @@
-import { EditUserGroupComponent } from './edit-usergroup/edit-usergroup.component';
+import { ActionState } from '@shared/models/enums';
+// import { EditUserGroupComponent } from './edit-usergroup/edit-usergroup.component';
 import { CreateUserGroupComponent } from './create-usergroup/create-usergroup.component';
 import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { UserGroupDto, PagedResultDtoOfUserGroupDto } from '@shared/models/model-usergroup';
 import { UserGroupServiceProxy } from '@shared/service-proxies/service-proxies';
-import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
+import { PagedRequestDto } from 'shared/paged-listing-component-base';
+import { PagedListingComponentCustom } from 'shared/layout/paged-listing-component-custom';
 
 @Component({
     templateUrl: './usergroups.component.html',
     animations: [appModuleAnimation()]
 })
-export class UsergroupsComponent extends PagedListingComponentBase<UserGroupDto> {
+export class UsergroupsComponent extends PagedListingComponentCustom<UserGroupDto> {
 
     @ViewChild('createUserGroupModal') createUserGroupModal: CreateUserGroupComponent;
-    @ViewChild('editUserGroupModal') editUserGroupModal: EditUserGroupComponent;
+    // @ViewChild('editUserGroupModal') editUserGroupModal: EditUserGroupComponent;
 
     active: boolean = false;
     groups: UserGroupDto[] = [];
@@ -23,29 +25,31 @@ export class UsergroupsComponent extends PagedListingComponentBase<UserGroupDto>
         private _userService: UserGroupServiceProxy
     ) {
         super(injector);
+
+        this.loadingMessage = 'Loading...';
     }
 
-    protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getAll(request.skipCount, request.maxResultCount)
+    protected refresh(): void {
+        this.isBusy = true;
+        this._userService.getAll()
             .finally(() => {
-                finishedCallback();
+                this.isBusy = false;
             })
             .subscribe((result: PagedResultDtoOfUserGroupDto) => {
                 this.groups = result.items;
-                this.showPaging(result, pageNumber);
             });
     }
 
     protected delete(group: UserGroupDto): void {
         abp.message.confirm(
-            "Delete group '" + group.groupCode + "'?",
+            "Delete group '" + group.groupName + "'?",
             (result: boolean) => {
                 if (result) {
-                //   this._userService.delete(user.id)
-                //       .subscribe(() => {
-                //           abp.notify.info("Deleted User: " + user.fullName);
-                //           this.refresh();
-                //       });
+                  this._userService.delete(group)
+                      .subscribe(() => {
+                          abp.notify.success("Deleted User Group: " + group.groupName);
+                          this.refresh();
+                      });
                 }
             }
         );
@@ -53,18 +57,11 @@ export class UsergroupsComponent extends PagedListingComponentBase<UserGroupDto>
 
     // Show Modals
     createUserGroup(): void {
-        this.createUserGroupModal.show();
+        this.createUserGroupModal.show(ActionState.Create);
     }
 
-    // editGroup(groups:UserGroupDto): void {
-    //     this.editGroupModal.show(groups.groupCode);
-    // }
-    // editGroup(groups:UserGroupDto): void {
-    //     this.editGroupModal.show(groups.groupCode);
-    // }
-
     editGroup(groups: UserGroupDto): void {
-        this.editUserGroupModal.show(groups.groupCode);
+        this.createUserGroupModal.show(ActionState.Edit, groups);
     }
 
 }

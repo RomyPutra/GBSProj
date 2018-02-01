@@ -4,8 +4,9 @@ import { AppComponentBase } from '@shared/app-component-base';
 
 import { CountryDto, PagedResultDtoOfCountryDto } from '@shared/models/model-country';
 import { StateDto } from '@shared/models/model-state';
-import { StateServiceProxy, UserServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CountryServiceProxy } from '@shared/service-proxies/service-proxies';
+import { StateServiceProxy } from '@shared/service-proxies/proxy-state';
+import { UserServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CountryServiceProxy } from '@shared/service-proxies/proxy-country';
 import { ActionState } from '@shared/models/enums';
 import { AppConsts } from '@shared/AppConsts';
 import { UtilsService } from '@abp/utils/utils.service';
