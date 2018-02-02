@@ -206,5 +206,62 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.SEASONALITYModels>> GetSeasonalityAll()
+        {
+            IList<Plexform.Models.SEASONALITYModels> Scheme = new List<Plexform.Models.SEASONALITYModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetSeasonalityAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.SEASONALITYModels>(
+                ObjectMapper.Map<List<Plexform.Models.SEASONALITYModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.DISCWEIGHTModels>> GetDiscWeightageAll()
+        {
+            IList<Plexform.Models.DISCWEIGHTModels> Scheme = new List<Plexform.Models.DISCWEIGHTModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetDiscWeightageAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.DISCWEIGHTModels>(
+                ObjectMapper.Map<List<Plexform.Models.DISCWEIGHTModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.FLOORFAREModels>> GetFloorFareAll()
+        {
+            IList<Plexform.Models.FLOORFAREModels> Scheme = new List<Plexform.Models.FLOORFAREModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetFloorFareAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.FLOORFAREModels>(
+                ObjectMapper.Map<List<Plexform.Models.FLOORFAREModels>>(Scheme),
+                Scheme.Count
+            );
+        }
     }
 }

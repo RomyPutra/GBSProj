@@ -1697,6 +1697,876 @@ namespace Plexform.GBS
         }
         #endregion
 
+        #region SEASONALITY
+        public class SeasonalityInfo
+        {
+            private System.String _SeaCode = String.Empty;
+            private System.String _Analyst = String.Empty;
+            private System.String _RouteCode = String.Empty;
+            private System.DateTime _SeasonDate;
+            private System.String _Season = String.Empty;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Flag;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
+
+            #region properties
+            public System.String SeaCode
+            {
+                get
+                {
+                    return _SeaCode;
+                }
+
+                set
+                {
+                    _SeaCode = value;
+                }
+            }
+
+            public System.String Analyst
+            {
+                get
+                {
+                    return _Analyst;
+                }
+
+                set
+                {
+                    _Analyst = value;
+                }
+            }
+
+            public System.String RouteCode
+            {
+                get
+                {
+                    return _RouteCode;
+                }
+
+                set
+                {
+                    _RouteCode = value;
+                }
+            }
+
+            public System.DateTime SeasonDate
+            {
+                get
+                {
+                    return _SeasonDate;
+                }
+
+                set
+                {
+                    _SeasonDate = value;
+                }
+            }
+
+            public System.String Season
+            {
+                get
+                {
+                    return _Season;
+                }
+
+                set
+                {
+                    _Season = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Flag
+            {
+                get
+                {
+                    return _Flag;
+                }
+
+                set
+                {
+                    _Flag = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetSeasonality()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT Analyst, RouteCode, CAST(SeasonDate as date) SeasonDate, Season FROM AD_SEASONALITY";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_SEASONALITY does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region DISCWEIGHTAGE
+        public class DISCWEIGHTAGEInfo
+        {
+            protected System.String _MarketCode = String.Empty;
+            private System.Decimal _InWALFDisc;
+            private System.Decimal _InWAPUDisc;
+            private System.Decimal _OutWALFDisc;
+            private System.Decimal _OutWAPUDisc;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy;
+            private System.Byte _Active;
+
+            #region  properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+
+            public System.Decimal InWALFDisc
+            {
+                get
+                {
+                    return _InWALFDisc;
+                }
+
+                set
+                {
+                    _InWALFDisc = value;
+                }
+            }
+
+            public System.Decimal InWAPUDisc
+            {
+                get
+                {
+                    return _InWAPUDisc;
+                }
+
+                set
+                {
+                    _InWAPUDisc = value;
+                }
+            }
+
+            public System.Decimal OutWALFDisc
+            {
+                get
+                {
+                    return _OutWALFDisc;
+                }
+
+                set
+                {
+                    _OutWALFDisc = value;
+                }
+            }
+
+            public System.Decimal OutWAPUDisc
+            {
+                get
+                {
+                    return _OutWAPUDisc;
+                }
+
+                set
+                {
+                    _OutWAPUDisc = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetDiscWeight()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT M.Analyst, DW.MarketCode, M.InRoute, DW.InWALFDisc, DW.InWAPUDisc, DW.OutWALFDisc, DW.OutWAPUDisc, M.OutRoute FROM AD_DISCWEIGHTAGE DW ";
+                strSQL += "INNER JOIN AD_Market M ON DW.MarketCode = M.MarketCode";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_DISCWEIGHTAGE does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region FLOORFARE
+        public class FloorFareInfo
+        {
+            protected System.String _MarketCode = String.Empty;
+            protected System.String _InCurrency = String.Empty;
+            protected System.String _OutCurrency = String.Empty;
+            private System.Decimal _InDisc;
+            private System.String _InFareClass = String.Empty;
+            private System.Decimal _InFloorFare;
+            private System.Decimal _OutDisc;
+            private System.String _OutFareClass = String.Empty;
+            private System.Decimal _OutFloorFare;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
+
+            #region Properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+
+            public System.String InCurrency
+            {
+                get
+                {
+                    return _InCurrency;
+                }
+
+                set
+                {
+                    _InCurrency = value;
+                }
+            }
+
+            public System.String OutCurrency
+            {
+                get
+                {
+                    return _OutCurrency;
+                }
+
+                set
+                {
+                    _OutCurrency = value;
+                }
+            }
+
+            public System.Decimal InDisc
+            {
+                get
+                {
+                    return _InDisc;
+                }
+
+                set
+                {
+                    _InDisc = value;
+                }
+            }
+
+            public System.String InFareClass
+            {
+                get
+                {
+                    return _InFareClass;
+                }
+
+                set
+                {
+                    _InFareClass = value;
+                }
+            }
+
+            public System.Decimal InFloorFare
+            {
+                get
+                {
+                    return _InFloorFare;
+                }
+
+                set
+                {
+                    _InFloorFare = value;
+                }
+            }
+
+            public System.Decimal OutDisc
+            {
+                get
+                {
+                    return _OutDisc;
+                }
+
+                set
+                {
+                    _OutDisc = value;
+                }
+            }
+
+            public System.String OutFareClass
+            {
+                get
+                {
+                    return _OutFareClass;
+                }
+
+                set
+                {
+                    _OutFareClass = value;
+                }
+            }
+
+            public System.Decimal OutFloorFare
+            {
+                get
+                {
+                    return _OutFloorFare;
+                }
+
+                set
+                {
+                    _OutFloorFare = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetFloorFare()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT M.Analyst, FF.MarketCode, M.InRoute, FF.InCurrency, FF.InDisc, FF.InFareClass, FF.InFloorFare, M.OutRoute, FF.OutCurrency, FF.OutDisc, FF.OutFareClass, FF.OutFloorFare FROM AD_FLOORFARE FF ";
+                strSQL += "INNER JOIN AD_Market M ON FF.MarketCode = M.MarketCode";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_DISCWEIGHTAGE does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
         #region Comunicate
         public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
 		{
@@ -2058,6 +2928,105 @@ namespace Plexform.GBS
                             InMaxDisc = (Decimal)dt.Rows[i]["InMaxDisc"],
                             OutRoute = dt.Rows[i]["OutRoute"].ToString(),
                             OutMaxDisc = (Decimal)dt.Rows[i]["OutMaxDisc"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.SEASONALITYModels>> GetSeasonalityAll()
+        {
+            IList<Plexform.Models.SEASONALITYModels> list = new List<Plexform.Models.SEASONALITYModels>();
+            SeasonalityInfo Model = new SeasonalityInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetSeasonality();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.SEASONALITYModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            RouteCode = dt.Rows[i]["RouteCode"].ToString(),
+                            SeasonDate = (DateTime)dt.Rows[i]["SeasonDate"],
+                            Season = dt.Rows[i]["Season"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.DISCWEIGHTModels>> GetDiscWeightageAll()
+        {
+            IList<Plexform.Models.DISCWEIGHTModels> list = new List<Plexform.Models.DISCWEIGHTModels>();
+            DISCWEIGHTAGEInfo Model = new DISCWEIGHTAGEInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetDiscWeight();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.DISCWEIGHTModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InWALFDisc = (Decimal)dt.Rows[i]["InWALFDisc"],
+                            InWAPUDisc = (Decimal)dt.Rows[i]["InWAPUDisc"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutWALFDisc = (Decimal)dt.Rows[i]["OutWALFDisc"],
+                            OutWAPUDisc = (Decimal)dt.Rows[i]["OutWAPUDisc"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.FLOORFAREModels>> GetFloorFareAll()
+        {
+            IList<Plexform.Models.FLOORFAREModels> list = new List<Plexform.Models.FLOORFAREModels>();
+            FloorFareInfo Model = new FloorFareInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetFloorFare();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.FLOORFAREModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InCurrency = dt.Rows[i]["InCurrency"].ToString(),
+                            InDisc = (Decimal)dt.Rows[i]["InDisc"],
+                            InFareClass = dt.Rows[i]["InFareClass"].ToString(),
+                            InFloorFare = (Decimal)dt.Rows[i]["InFloorFare"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutCurrency = dt.Rows[i]["OutCurrency"].ToString(),
+                            OutDisc = (Decimal)dt.Rows[i]["OutDisc"],
+                            OutFareClass = dt.Rows[i]["OutFareClass"].ToString(),
+                            OutFloorFare = (Decimal)dt.Rows[i]["OutFloorFare"]
                         });
                     }
                 }

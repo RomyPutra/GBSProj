@@ -128,4 +128,40 @@ namespace Plexform.Models
         public System.String OutRoute { get; set; }
         public System.Decimal OutMaxDisc { get; set; }
     }
+
+    public class SEASONALITYModels
+    {
+        public System.String Analyst { get; set; }
+        public System.String RouteCode { get; set; }
+        public System.DateTime SeasonDate { get; set; }
+        public System.String Season { get; set; }
+    }
+
+    public class DISCWEIGHTModels
+    {
+        public System.String Analyst { get; set; }
+        public System.String MarketCode { get; set; }
+        public System.String InRoute { get; set; }
+        public System.Decimal InWALFDisc { get; set; }
+        public System.Decimal InWAPUDisc { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.Decimal OutWALFDisc { get; set; }
+        public System.Decimal OutWAPUDisc { get; set; }
+    }
+
+    public class FLOORFAREModels
+    {
+        public System.String Analyst { get; set; }
+        public System.String MarketCode { get; set; }
+        public System.String InRoute { get; set; }
+        public System.String InCurrency { get; set; }
+        public System.Decimal InDisc { get; set; }
+        public System.String InFareClass { get; set; }
+        public System.Decimal InFloorFare { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.String OutCurrency { get; set; }
+        public System.Decimal OutDisc { get; set; }
+        public System.String OutFareClass { get; set; }
+        public System.Decimal OutFloorFare { get; set; }
+    }
 }
