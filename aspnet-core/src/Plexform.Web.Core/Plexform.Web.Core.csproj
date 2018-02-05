@@ -18,6 +18,12 @@
   <PropertyGroup>
     <DefineConstants>FEATURE_SIGNALR_ASPNETCORE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1705</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1705;NU1605</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\eSWIS\eSWIS.Logic\eSWIS.Logic.vbproj" />
     <ProjectReference Include="..\Plexform.Application\Plexform.Application.csproj" />

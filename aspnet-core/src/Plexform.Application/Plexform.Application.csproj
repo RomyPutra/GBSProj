@@ -13,6 +13,9 @@
   <PropertyGroup>
     <DefineConstants>FEATURE_SIGNALR_ASPNETCORE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1705;NU1605</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Users\UserGroupAppService.cs" />
     <Compile Remove="Users\UserProfileAppService.cs" />

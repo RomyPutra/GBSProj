@@ -11,6 +11,12 @@
   <PropertyGroup>
     <DefineConstants>FEATURE_SIGNALR_ASPNETCORE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1705</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1705;NU1605</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Update="Dockerfile">
