@@ -23,6 +23,10 @@ export abstract class AppComponentBase {
     appSession: AppSessionService;
     elementRef: ElementRef;
 
+    public isBusy: boolean = false;
+    public loadingMessage: string = '';
+    public timer;
+
     constructor(injector: Injector) {
         this.localization = injector.get(LocalizationService);
         this.permission = injector.get(PermissionCheckerService);

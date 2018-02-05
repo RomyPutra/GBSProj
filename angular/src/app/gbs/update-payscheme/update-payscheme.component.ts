@@ -1,6 +1,6 @@
 import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { GetBookingServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GetBookingServiceProxy } from '@shared/service-proxies/proxy-payscheme';
 import { GBSDto, PagedResultDtoOfGBSDto } from '@shared/models/model-gbs';
 import { RoleDto } from '@shared/models/model-role';
 import { AppComponentBase } from '@shared/app-component-base';

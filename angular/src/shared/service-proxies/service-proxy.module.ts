@@ -21,6 +21,11 @@ import { GetAgentAccessFareServiceProxy } from './proxy-accessfare';
 import { GetAgentTierServiceProxy } from './proxy-agenttier';
 import { GetFlightTimeServiceProxy } from './proxy-flighttime';
 import { GetBookingServiceProxy } from './proxy-payscheme';
+import { GetDiscountServiceProxy } from './proxy-discount';
+import { GetCapacityServiceProxy } from './proxy-capacity';
+import { GetDiscWeightageServiceProxy } from './proxy-discweightage';
+import { GetFloorFareServiceProxy } from './proxy-floorfare';
+import { GetSeasonalityServiceProxy } from './proxy-seasonality';
 
 @NgModule({
     providers: [
@@ -58,7 +63,12 @@ import { GetBookingServiceProxy } from './proxy-payscheme';
         GetBookingServiceProxy,
         GetFlightTimeServiceProxy,
         GetAgentTierServiceProxy,
-        GetAgentAccessFareServiceProxy
+        GetAgentAccessFareServiceProxy,
+        GetDiscountServiceProxy,
+        GetCapacityServiceProxy,
+        GetDiscWeightageServiceProxy,
+        GetFloorFareServiceProxy,
+        GetSeasonalityServiceProxy,
     ]
 })
 export class ServiceProxyModule { }

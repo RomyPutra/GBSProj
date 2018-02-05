@@ -21,7 +21,7 @@ export class EditUserGroupComponent extends AppComponentBase {
     active: boolean = false;
     saving: boolean = false;
     appid: number;
-    status="";
+    status='';
 
 	// groups: UserGroupDto[] = [];
     groups: UserGroupDto = null;
@@ -36,19 +36,19 @@ export class EditUserGroupComponent extends AppComponentBase {
 
     changeLabel() {
         this.groups.status = this.groups.status === 1 ? 0 : 1;
-        if (this.groups.status == 1){
-            this.status = "Actived";
+        if (this.groups.status === 1){
+            this.status = 'Actived';
         } else {
-            this.status = "InActived";
+            this.status = 'InActived';
         }
     }
 
     // userInRole(role: RoleDto, user: UserGroupDto): string {
     //     if (user.roleNames.indexOf(role.normalizedName) !== -1) {
-    //         return "checked";
+    //         return 'checked';
     //     }
     //     else {
-    //         return "";
+    //         return '';
     //     }
     // }
 
@@ -57,11 +57,11 @@ export class EditUserGroupComponent extends AppComponentBase {
         this._groupService.get(id)
         .subscribe((result) => {
                 this.groups = result;
-                this.appid = result.appID;
-                if (result.status == 0){
-                    this.status = "InActived";
+                this.appid = result.appid;
+                if (result.status === 0) {
+                    this.status = 'InActived';
                 } else {
-                    this.status = "Actived";
+                    this.status = 'Actived';
                 }
                 this.active = true;
                 this.modal.show();
@@ -74,15 +74,15 @@ export class EditUserGroupComponent extends AppComponentBase {
 
     save(): void {
         // var roles = [];
-        // $(this.modalContent.nativeElement).find("[name=role]").each(function (ind: number, elem: Element) {
-        //     if ($(elem).is(":checked")) {
-        //         roles.push(elem.getAttribute("value").valueOf());
+        // $(this.modalContent.nativeElement).find('[name=role]').each(function (ind: number, elem: Element) {
+        //     if ($(elem).is(':checked')) {
+        //         roles.push(elem.getAttribute('value').valueOf());
         //     }
         // });
 
         // this.user.roleNames = roles;
 
-        this.groups.appID = this.appid
+        this.groups.appid = this.appid
         this.saving = true;
         this._groupService.update(this.groups)
             .finally(() => { this.saving = false; })

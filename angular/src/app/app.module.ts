@@ -58,6 +58,11 @@ import { GBSComponent } from './gbs/gbs.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
 import { AgenttierComponent } from './agenttier/agenttier.component';
 import { AgentAccessFareComponent } from './accessfare/accessfare.component';
+import { CapacityComponent } from './capacity/capacity.component';
+import { DiscountComponent } from './discount/discount.component';
+import { SeasonalityComponent } from './seasonality/seasonality.component';
+import { DiscweightageComponent } from './discweightage/discweightage.component';
+import { FloorfareComponent } from './floorfare/floorfare.component';
 
 @NgModule({
     declarations: [
@@ -112,7 +117,12 @@ import { AgentAccessFareComponent } from './accessfare/accessfare.component';
         // EditPaySchemeComponent
         FlighttimeComponent,
         AgenttierComponent,
-        AgentAccessFareComponent
+        AgentAccessFareComponent,
+        CapacityComponent,
+        DiscountComponent,
+        SeasonalityComponent,
+        DiscweightageComponent,
+        FloorfareComponent
     ],
     imports: [
         CommonModule,

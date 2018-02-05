@@ -26,6 +26,11 @@ import { GBSComponent } from './gbs/gbs.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
 import { AgentAccessFareComponent } from './accessfare/accessfare.component';
 import { AgenttierComponent } from './agenttier/agenttier.component';
+import { CapacityComponent } from './capacity/capacity.component';
+import { DiscountComponent } from './discount/discount.component';
+import { DiscweightageComponent } from './discweightage/discweightage.component';
+import { FloorfareComponent } from './floorfare/floorfare.component';
+import { SeasonalityComponent } from './seasonality/seasonality.component';
 
 @NgModule({
     imports: [
@@ -62,6 +67,11 @@ import { AgenttierComponent } from './agenttier/agenttier.component';
                     { path: 'flighttime', component: FlighttimeComponent, canActivate: [AppRouteGuard] },
                     { path: 'accessfare', component: AgentAccessFareComponent, canActivate: [AppRouteGuard] },
                     { path: 'agenttier', component: AgenttierComponent, canActivate: [AppRouteGuard] },
+                    { path: 'capacity', component: CapacityComponent, canActivate: [AppRouteGuard] },
+                    { path: 'discount', component: DiscountComponent, canActivate: [AppRouteGuard] },
+                    { path: 'discweightage', component: DiscweightageComponent, canActivate: [AppRouteGuard] },
+                    { path: 'floorfare', component: FloorfareComponent, canActivate: [AppRouteGuard] },
+                    { path: 'seasonality', component: SeasonalityComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

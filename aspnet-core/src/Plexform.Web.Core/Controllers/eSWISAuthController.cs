@@ -40,19 +40,22 @@ namespace Plexform.Controllers
                 }
             };
 
-            var loginResult = await GetLoginResultAsync(userID);
-            if (loginResult != null)
-            {
-                var hexUserId = StringToHex(loginResult.UserID);
-                var lng = Convert.ToInt64(hexUserId, 16);
-                output.User = new UserLoginInfoDto
-                {
-                    Id = lng,
-                    UserName = loginResult.UserName,
-                    Name = loginResult.UserName,
-                    Surname = loginResult.UserName
-                };
-            }
+			if (!String.IsNullOrWhiteSpace(userID))
+			{
+				var loginResult = await GetLoginResultAsync(userID);
+				if (loginResult != null)
+				{
+					var hexUserId = StringToHex(loginResult.UserID);
+					var lng = Convert.ToInt64(hexUserId, 16);
+					output.User = new UserLoginInfoDto
+					{
+						Id = lng,
+						UserName = loginResult.UserName,
+						Name = loginResult.UserName,
+						Surname = loginResult.UserName
+					};
+				}
+			}
             //if (AbpSession.UserId.HasValue)
             //{
             //    output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetCurrentUserAsync());
