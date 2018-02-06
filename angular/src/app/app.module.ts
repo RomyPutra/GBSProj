@@ -16,6 +16,7 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatStepperModule, MatAutocompleteModule,
          MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { UploadComponent } from './upload/upload.component';
+import { ClickOutsideModule } from 'ng-click-outside';
 // import { TopBarComponent } from '@app/layout/topbar.component';
 // import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-area.component';
 // import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
@@ -146,7 +147,8 @@ import { FloorfareComponent } from './floorfare/floorfare.component';
         MatAutocompleteModule,
         MatSelectModule,
         MatProgressSpinnerModule,
-        FileDropModule
+        FileDropModule,
+        ClickOutsideModule
     ],
     providers: [
 

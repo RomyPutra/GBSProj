@@ -13,6 +13,7 @@
     [columnResizingMode]="nextColumn"
     [columnAutoWidth]="true"
     [dataSource]="group"
+    (onEditingStart)="viewDetail($event)"
     (onRowUpdating)="logEvents($event)"
     (onRowUpdated)="edit(a)"
     (onContentReady)="onContentReady($event)"
@@ -99,7 +100,7 @@
       [sorting]="true"
       [paging]="true">
       </dxo-remote-operations> -->
-      <dxo-paging [pageSize]="20"></dxo-paging>
+      <dxo-paging [pageSize]="5"></dxo-paging>
       <dxo-pager 
         [showPageSizeSelector]="true"
         [allowedPageSizes]="[5, 10, 20]"
@@ -107,7 +108,43 @@
       </dxo-pager>
     </dx-data-grid>
     <!-- ******************************************************** -->
+				<!-- <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="viewDetail()">
+                    <i class="material-icons">add</i>
+				</button> -->
   <!-- </div>   -->
+</div>
+<br>
+<div *ngIf="divview" style="border-radius: 25px;padding: 20px;background:white;">
+  <label>Currency</label><span> </span><label>{{review.currencyCode}}</label>
+  <button style="float:right;" (click)="blur($event)">Close</button>
+  <br>
+  <label>Departure date</label><span> </span>
+  <label *ngIf="(review.schemeCode === 'B3M')">more than 90 days</label>
+  <label *ngIf="(review.schemeCode === 'W3M')">more than 30 days and less than 90 days</label>
+  <label *ngIf="(review.schemeCode === 'W1M')">more than 7 days and less than 30 days</label>
+  <label *ngIf="(review.schemeCode === 'W1W')">less than 7 days</label>
+  <br>
+  <label>Payment schedule 1st = Immediate 30% of total base fare</label>
+  <br>
+  <div *ngIf="divview1">
+    <label>Payment schedule 2st =</label><span> </span>
+    <label>{{review.attempt_2}}</label>
+    <span> </span><label>hours</label><span> </span>
+    <label *ngIf="(review.code_2 === 'DOB')">after booking</label>    
+    <label *ngIf="(review.code_2 === 'STD')">before departure</label>
+  </div>
+  <div *ngIf="divview2">
+    <label>Payment schedule 3st =</label><span> </span>
+    <label>{{review.attempt_3}}</label>
+    <span> </span><label>hours</label><span> </span>
+    <label *ngIf="(review.code_3 === 'DOB')">after booking</label>    
+    <label *ngIf="(review.code_3 === 'STD')">before departure</label>
+  </div>
+  <label>Minimal deposit =</label><span> </span>
+  <label>{{review.minDeposit}}</label><span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <label>Maximal deposit =</label><span> </span>
+  <label>{{review.maxDeposit}}</label><span> </span><label>{{review.currencyCode}}</label>
 </div>
 
 <!-- <update-payscheme-modal #updatePayschemeModal (modalSave)="refresh()"></update-payscheme-modal> -->

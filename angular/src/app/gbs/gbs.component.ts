@@ -15,10 +15,14 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
     // @ViewChild('updatePayschemeModal') updatePayschemeModal: EditPaySchemeComponent;
     active: boolean = false;
 	saving: boolean = false;
+	divview: boolean = false;
+	divview1: boolean = false;
+	divview2: boolean = false;
 	code: string;
 	countrys: GBSCountryDto[];
 	countryx: GBSCountryDto;
 	group: GBSDto[];
+	review: GBSDto = new GBSDto;
 	// selectedItems: any[] = [];
 	listGrid: Array<GBSDto> = [];
 	codex: GbsCodex[];
@@ -135,5 +139,29 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 				this.listGrid.push(data.key);
 			});
 		}
-    }
+	}
+	
+	viewDetail(data: any) {
+		this.review = data.key;
+		this.divview = true;
+		if (data.key['attempt_2'] !== 0 && data.key['attempt_3'] !== 0) {
+			this.divview1 = true;
+			this.divview2 = true;
+		} else if (data.key['attempt_2'] !== 0) {
+			this.divview1 = true;
+			this.divview2 = false;
+		} else {
+			this.divview1 = false;
+			this.divview2 = false;
+		}
+	}
+
+	protected blur(e: Event) {
+		console.log(e);
+		this.divview = false;
+	}
+
+	// viewDetail(): void {
+    //     this.updatePayschemeModal.show(5, 1);
+    // }
 }

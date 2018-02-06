@@ -572,7 +572,7 @@ export class SessionServiceProxy {
      * @return Success
      */
     getCurrentLoginInformations(userID: string): Observable<GetCurrentLoginInformationsOutput> {
-        userID='admin';
+        // userID='admin';
         // let url_ = this.baseUrl + "/api/services/app/Session/GetCurrentLoginInformations";
         if (userID === undefined || userID === null)
             userID = "";
