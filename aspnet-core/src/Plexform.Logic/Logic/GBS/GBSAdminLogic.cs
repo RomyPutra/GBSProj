@@ -13,1004 +13,1004 @@ using Sharpbrake.Client;
 
 namespace Plexform.GBS
 {
-	public class GBSAdminLogic : SEAL.Model.Moyenne.CoreStandard
-	{
-		protected static DataAccess objDCom;
+    public class GBSAdminLogic : SEAL.Model.Moyenne.CoreStandard
+    {
+        protected static DataAccess objDCom;
 
-		private readonly IConfigurationRoot _appConfiguration;
+        private readonly IConfigurationRoot _appConfiguration;
 
-		public GBSAdminLogic()
-		{
-			_appConfiguration = AppConfigurations.Get(
-				typeof(GBSAdminLogic).GetAssembly().GetDirectoryPathOrNull()
-			);
-			objSQL = new SQLControl();
-			objDCom = new DataAccess();
-			objDCom.ConnectionString = _appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString);
-		}
+        public GBSAdminLogic()
+        {
+            _appConfiguration = AppConfigurations.Get(
+                typeof(GBSAdminLogic).GetAssembly().GetDirectoryPathOrNull()
+            );
+            objSQL = new SQLControl();
+            objDCom = new DataAccess();
+            objDCom.ConnectionString = _appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString);
+        }
 
-		#region Logic_PaymentScheme
-		public class PaymentInfo
-		{
-			private string _schemeCode = String.Empty;
-			private string _gRPID = String.Empty;
-			private string _countrycode = String.Empty;
-			private string _currencycode = String.Empty;
-			private int _minduration;
-			private int _duration;
-			private int _firstDeposit;
-			private string _description = String.Empty;
-			private string _paymentType = String.Empty;
-			private int _attempt_1;
-			private string _code_1;
-			private int _percentage_1;
-			private int _attempt_2;
-			private string _code_2;
-			private int _percentage_2;
-			private int _attempt_3;
-			private string _code_3;
-			private int _percentage_3;
-			private string _paymentMode = String.Empty;
-			private string _createBy = String.Empty;
-			private DateTime _syncCreate;
-			private DateTime _syncLastUpd;
-			private string _lastSyncBy = String.Empty;
-			private int _reminder_1;
-			private int _reminder_2;
+        #region Logic_PaymentScheme
+        public class PaymentInfo
+        {
+            private string _schemeCode = String.Empty;
+            private string _gRPID = String.Empty;
+            private string _countrycode = String.Empty;
+            private string _currencycode = String.Empty;
+            private int _minduration;
+            private int _duration;
+            private int _firstDeposit;
+            private string _description = String.Empty;
+            private string _paymentType = String.Empty;
+            private int _attempt_1;
+            private string _code_1;
+            private int _percentage_1;
+            private int _attempt_2;
+            private string _code_2;
+            private int _percentage_2;
+            private int _attempt_3;
+            private string _code_3;
+            private int _percentage_3;
+            private string _paymentMode = String.Empty;
+            private string _createBy = String.Empty;
+            private DateTime _syncCreate;
+            private DateTime _syncLastUpd;
+            private string _lastSyncBy = String.Empty;
+            private int _reminder_1;
+            private int _reminder_2;
 
-			private int _deposit_1;
-			private int _isnominal_1;
-			private int _ldeposit_11;
-			private int _lduration_11;
-			private int _ldeposit_12;
-			private int _lduration_12;
-			private int _ldeposit_13;
-			private int _lduration_13;
-			private int _pdeposit_11;
-			private int _pduration_11;
-			private int _pdeposit_12;
-			private int _pduration_12;
-			private int _pdeposit_13;
-			private int _pduration_13;
-			private int _deposit_2;
-			private int _deposit_3;
-			private int _mindeposit;
-			private int _maxdeposit;
-			private int _mindeposit2;
-			private int _maxdeposit2;
-			//private string _prevcountry;
+            private int _deposit_1;
+            private int _isnominal_1;
+            private int _ldeposit_11;
+            private int _lduration_11;
+            private int _ldeposit_12;
+            private int _lduration_12;
+            private int _ldeposit_13;
+            private int _lduration_13;
+            private int _pdeposit_11;
+            private int _pduration_11;
+            private int _pdeposit_12;
+            private int _pduration_12;
+            private int _pdeposit_13;
+            private int _pduration_13;
+            private int _deposit_2;
+            private int _deposit_3;
+            private int _mindeposit;
+            private int _maxdeposit;
+            private int _mindeposit2;
+            private int _maxdeposit2;
+            //private string _prevcountry;
 
-			#region Public Properties
-			public string SchemeCode
-			{
-				get { return _schemeCode; }
-				set { _schemeCode = value; }
-			}
-			public string GRPID
-			{
-				get { return _gRPID; }
-				set { _gRPID = value; }
-			}
-			public string CountryCode
-			{
-				get { return _countrycode; }
-				set { _countrycode = value; }
-			}
-			public string CurrencyCode
-			{
-				get { return _currencycode; }
-				set { _currencycode = value; }
-			}
-			public int MinDuration
-			{
-				get { return _minduration; }
-				set { _minduration = value; }
-			}
-			public int Duration
-			{
-				get { return _duration; }
-				set { _duration = value; }
-			}
+            #region Public Properties
+            public string SchemeCode
+            {
+                get { return _schemeCode; }
+                set { _schemeCode = value; }
+            }
+            public string GRPID
+            {
+                get { return _gRPID; }
+                set { _gRPID = value; }
+            }
+            public string CountryCode
+            {
+                get { return _countrycode; }
+                set { _countrycode = value; }
+            }
+            public string CurrencyCode
+            {
+                get { return _currencycode; }
+                set { _currencycode = value; }
+            }
+            public int MinDuration
+            {
+                get { return _minduration; }
+                set { _minduration = value; }
+            }
+            public int Duration
+            {
+                get { return _duration; }
+                set { _duration = value; }
+            }
 
-			public int FirstDeposit
-			{
-				get { return _firstDeposit; }
-				set { _firstDeposit = value; }
-			}
+            public int FirstDeposit
+            {
+                get { return _firstDeposit; }
+                set { _firstDeposit = value; }
+            }
 
-			public string Description
-			{
-				get { return _description; }
-				set { _description = value; }
-			}
+            public string Description
+            {
+                get { return _description; }
+                set { _description = value; }
+            }
 
-			public string PaymentType
-			{
-				get { return _paymentType; }
-				set { _paymentType = value; }
-			}
+            public string PaymentType
+            {
+                get { return _paymentType; }
+                set { _paymentType = value; }
+            }
 
-			public int Attempt_1
-			{
-				get { return _attempt_1; }
-				set { _attempt_1 = value; }
-			}
+            public int Attempt_1
+            {
+                get { return _attempt_1; }
+                set { _attempt_1 = value; }
+            }
 
-			public string Code_1
-			{
-				get { return _code_1; }
-				set { _code_1 = value; }
-			}
+            public string Code_1
+            {
+                get { return _code_1; }
+                set { _code_1 = value; }
+            }
 
-			public int Percentage_1
-			{
-				get { return _percentage_1; }
-				set { _percentage_1 = value; }
-			}
+            public int Percentage_1
+            {
+                get { return _percentage_1; }
+                set { _percentage_1 = value; }
+            }
 
-			public int Attempt_2
-			{
-				get { return _attempt_2; }
-				set { _attempt_2 = value; }
-			}
+            public int Attempt_2
+            {
+                get { return _attempt_2; }
+                set { _attempt_2 = value; }
+            }
 
-			public string Code_2
-			{
-				get { return _code_2; }
-				set { _code_2 = value; }
-			}
+            public string Code_2
+            {
+                get { return _code_2; }
+                set { _code_2 = value; }
+            }
 
-			public int Percentage_2
-			{
-				get { return _percentage_2; }
-				set { _percentage_2 = value; }
-			}
+            public int Percentage_2
+            {
+                get { return _percentage_2; }
+                set { _percentage_2 = value; }
+            }
 
-			public int Attempt_3
-			{
-				get { return _attempt_3; }
-				set { _attempt_3 = value; }
-			}
+            public int Attempt_3
+            {
+                get { return _attempt_3; }
+                set { _attempt_3 = value; }
+            }
 
-			public string Code_3
-			{
-				get { return _code_3; }
-				set { _code_3 = value; }
-			}
+            public string Code_3
+            {
+                get { return _code_3; }
+                set { _code_3 = value; }
+            }
 
-			public int Percentage_3
-			{
-				get { return _percentage_3; }
-				set { _percentage_3 = value; }
-			}
+            public int Percentage_3
+            {
+                get { return _percentage_3; }
+                set { _percentage_3 = value; }
+            }
 
-			public string PaymentMode
-			{
-				get { return _paymentMode; }
-				set { _paymentMode = value; }
-			}
+            public string PaymentMode
+            {
+                get { return _paymentMode; }
+                set { _paymentMode = value; }
+            }
 
-			public string CreateBy
-			{
-				get { return _createBy; }
-				set { _createBy = value; }
-			}
+            public string CreateBy
+            {
+                get { return _createBy; }
+                set { _createBy = value; }
+            }
 
-			public DateTime SyncCreate
-			{
-				get { return _syncCreate; }
-				set { _syncCreate = value; }
-			}
+            public DateTime SyncCreate
+            {
+                get { return _syncCreate; }
+                set { _syncCreate = value; }
+            }
 
-			public DateTime SyncLastUpd
-			{
-				get { return _syncLastUpd; }
-				set { _syncLastUpd = value; }
-			}
+            public DateTime SyncLastUpd
+            {
+                get { return _syncLastUpd; }
+                set { _syncLastUpd = value; }
+            }
 
-			public string LastSyncBy
-			{
-				get { return _lastSyncBy; }
-				set { _lastSyncBy = value; }
-			}
+            public string LastSyncBy
+            {
+                get { return _lastSyncBy; }
+                set { _lastSyncBy = value; }
+            }
 
-			public int Reminder_1
-			{
-				get { return _reminder_1; }
-				set { _reminder_1 = value; }
-			}
+            public int Reminder_1
+            {
+                get { return _reminder_1; }
+                set { _reminder_1 = value; }
+            }
 
-			public int Reminder_2
-			{
-				get { return _reminder_2; }
-				set { _reminder_2 = value; }
-			}
+            public int Reminder_2
+            {
+                get { return _reminder_2; }
+                set { _reminder_2 = value; }
+            }
 
-			public int Deposit_1
-			{
-				get { return _deposit_1; }
-				set { _deposit_1 = value; }
-			}
-			public int IsNominal_1
-			{
-				get { return _isnominal_1; }
-				set { _isnominal_1 = value; }
-			}
-			public int LDeposit_11
-			{
-				get { return _ldeposit_11; }
-				set { _ldeposit_11 = value; }
-			}
-			public int LDuration_11
-			{
-				get { return _lduration_11; }
-				set { _lduration_11 = value; }
-			}
-			public int LDeposit_12
-			{
-				get { return _ldeposit_12; }
-				set { _ldeposit_12 = value; }
-			}
-			public int LDuration_12
-			{
-				get { return _lduration_12; }
-				set { _lduration_12 = value; }
-			}
-			public int LDeposit_13
-			{
-				get { return _ldeposit_13; }
-				set { _ldeposit_13 = value; }
-			}
-			public int LDuration_13
-			{
-				get { return _lduration_13; }
-				set { _lduration_13 = value; }
-			}
-			public int PDeposit_11
-			{
-				get { return _pdeposit_11; }
-				set { _pdeposit_11 = value; }
-			}
-			public int PDuration_11
-			{
-				get { return _pduration_11; }
-				set { _pduration_11 = value; }
-			}
-			public int PDeposit_12
-			{
-				get { return _pdeposit_12; }
-				set { _pdeposit_12 = value; }
-			}
-			public int PDuration_12
-			{
-				get { return _pduration_12; }
-				set { _pduration_12 = value; }
-			}
-			public int PDeposit_13
-			{
-				get { return _pdeposit_13; }
-				set { _pdeposit_13 = value; }
-			}
-			public int PDuration_13
-			{
-				get { return _pduration_13; }
-				set { _pduration_13 = value; }
-			}
+            public int Deposit_1
+            {
+                get { return _deposit_1; }
+                set { _deposit_1 = value; }
+            }
+            public int IsNominal_1
+            {
+                get { return _isnominal_1; }
+                set { _isnominal_1 = value; }
+            }
+            public int LDeposit_11
+            {
+                get { return _ldeposit_11; }
+                set { _ldeposit_11 = value; }
+            }
+            public int LDuration_11
+            {
+                get { return _lduration_11; }
+                set { _lduration_11 = value; }
+            }
+            public int LDeposit_12
+            {
+                get { return _ldeposit_12; }
+                set { _ldeposit_12 = value; }
+            }
+            public int LDuration_12
+            {
+                get { return _lduration_12; }
+                set { _lduration_12 = value; }
+            }
+            public int LDeposit_13
+            {
+                get { return _ldeposit_13; }
+                set { _ldeposit_13 = value; }
+            }
+            public int LDuration_13
+            {
+                get { return _lduration_13; }
+                set { _lduration_13 = value; }
+            }
+            public int PDeposit_11
+            {
+                get { return _pdeposit_11; }
+                set { _pdeposit_11 = value; }
+            }
+            public int PDuration_11
+            {
+                get { return _pduration_11; }
+                set { _pduration_11 = value; }
+            }
+            public int PDeposit_12
+            {
+                get { return _pdeposit_12; }
+                set { _pdeposit_12 = value; }
+            }
+            public int PDuration_12
+            {
+                get { return _pduration_12; }
+                set { _pduration_12 = value; }
+            }
+            public int PDeposit_13
+            {
+                get { return _pdeposit_13; }
+                set { _pdeposit_13 = value; }
+            }
+            public int PDuration_13
+            {
+                get { return _pduration_13; }
+                set { _pduration_13 = value; }
+            }
 
 
 
-			public int Deposit_2
-			{
-				get { return _deposit_2; }
-				set { _deposit_2 = value; }
-			}
+            public int Deposit_2
+            {
+                get { return _deposit_2; }
+                set { _deposit_2 = value; }
+            }
 
-			public int Deposit_3
-			{
-				get { return _deposit_3; }
-				set { _deposit_3 = value; }
-			}
+            public int Deposit_3
+            {
+                get { return _deposit_3; }
+                set { _deposit_3 = value; }
+            }
 
-			public int Mindeposit
-			{
-				get { return _mindeposit; }
-				set { _mindeposit = value; }
-			}
+            public int Mindeposit
+            {
+                get { return _mindeposit; }
+                set { _mindeposit = value; }
+            }
 
-			public int Maxdeposit
-			{
-				get { return _maxdeposit; }
-				set { _maxdeposit = value; }
-			}
+            public int Maxdeposit
+            {
+                get { return _maxdeposit; }
+                set { _maxdeposit = value; }
+            }
 
-			public int Mindeposit2
-			{
-				get { return _mindeposit2; }
-				set { _mindeposit2 = value; }
-			}
+            public int Mindeposit2
+            {
+                get { return _mindeposit2; }
+                set { _mindeposit2 = value; }
+            }
 
-			public int Maxdeposit2
-			{
-				get { return _maxdeposit2; }
-				set { _maxdeposit2 = value; }
-			}
+            public int Maxdeposit2
+            {
+                get { return _maxdeposit2; }
+                set { _maxdeposit2 = value; }
+            }
 
-			//public string PrevCountry
-			//{
-			//	get { return _prevcountry; }
-			//	set { _prevcountry = value; }
-			//}
-			#endregion
-		}
-		private static String GetSqlFields(List<string> Fields)
-		{
-			String strFields = string.Empty;
-			if (Fields != null)
-			{
-				foreach (string sField in Fields)
-				{
-					if (strFields == string.Empty)
-					{
-						strFields = sField;
-					}
-					else
-					{
-						strFields += ", " + sField;
-					}
-				}
-			}
-			return strFields;
-		}
-		public DataTable GetSchemeByCode(string GRPID, string CountryCode = "", string SchemeCode = "")
-		{
-			DataTable dt = new DataTable();
-			String strSQL = string.Empty;
-			String strFields = string.Empty;
-			String strFilter = string.Empty;
-			List<string> lstFields = new List<string>();
+            //public string PrevCountry
+            //{
+            //	get { return _prevcountry; }
+            //	set { _prevcountry = value; }
+            //}
+            #endregion
+        }
+        private static String GetSqlFields(List<string> Fields)
+        {
+            String strFields = string.Empty;
+            if (Fields != null)
+            {
+                foreach (string sField in Fields)
+                {
+                    if (strFields == string.Empty)
+                    {
+                        strFields = sField;
+                    }
+                    else
+                    {
+                        strFields += ", " + sField;
+                    }
+                }
+            }
+            return strFields;
+        }
+        public DataTable GetSchemeByCode(string GRPID, string CountryCode = "", string SchemeCode = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            String strFields = string.Empty;
+            String strFilter = string.Empty;
+            List<string> lstFields = new List<string>();
 
-			String strJoint = string.Empty;
-			strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.Currency) Currency FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode) D ";
-			//strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.Currency) Currency, MAX(D.PREVCOUNTRY) PrevCountry FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode AND D.PREVCOUNTRY = DEPOPAYSCHEME.PREVCOUNTRY) D ";
+            String strJoint = string.Empty;
+            strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.Currency) Currency FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode) D ";
+            //strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.Currency) Currency, MAX(D.PREVCOUNTRY) PrevCountry FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode AND D.PREVCOUNTRY = DEPOPAYSCHEME.PREVCOUNTRY) D ";
 
-			DateTime bookingDate = Convert.ToDateTime("1900-01-01");
-			DateTime CheckDate = Convert.ToDateTime("2017-02-10");
-			Boolean newGBS = true;
-			try
-			{
-				lstFields.Add("DEPOPAYSCHEME.SchemeCode");
-				lstFields.Add("DEPOPAYSCHEME.CountryCode");
-				lstFields.Add("DEPOPAYSCHEME.GRPID");
-				lstFields.Add("DEPOPAYSCHEME.Duration");
-				lstFields.Add("DEPOPAYSCHEME.MinDuration");
-				lstFields.Add("DEPOPAYSCHEME.FirstDeposit");
-				lstFields.Add("DEPOPAYSCHEME.Description");
-				lstFields.Add("DEPOPAYSCHEME.PaymentType");
-				lstFields.Add("DEPOPAYSCHEME.Attempt_1");
-				lstFields.Add("DEPOPAYSCHEME.Code_1");
-				lstFields.Add("DEPOPAYSCHEME.Percentage_1");
-				lstFields.Add("DEPOPAYSCHEME.Attempt_2");
-				lstFields.Add("DEPOPAYSCHEME.Code_2");
-				lstFields.Add("DEPOPAYSCHEME.Percentage_2");
-				lstFields.Add("DEPOPAYSCHEME.Attempt_3");
-				lstFields.Add("DEPOPAYSCHEME.Code_3");
-				lstFields.Add("DEPOPAYSCHEME.Percentage_3");
-				lstFields.Add("DEPOPAYSCHEME.PaymentMode");
-				lstFields.Add("DEPOPAYSCHEME.CreateBy");
-				lstFields.Add("DEPOPAYSCHEME.SyncCreate");
-				lstFields.Add("DEPOPAYSCHEME.SyncLastUpd");
-				lstFields.Add("DEPOPAYSCHEME.LastSyncBy");
-				lstFields.Add("DEPOPAYSCHEME.Reminder_1");
-				lstFields.Add("DEPOPAYSCHEME.Reminder_2");
+            DateTime bookingDate = Convert.ToDateTime("1900-01-01");
+            DateTime CheckDate = Convert.ToDateTime("2017-02-10");
+            Boolean newGBS = true;
+            try
+            {
+                lstFields.Add("DEPOPAYSCHEME.SchemeCode");
+                lstFields.Add("DEPOPAYSCHEME.CountryCode");
+                lstFields.Add("DEPOPAYSCHEME.GRPID");
+                lstFields.Add("DEPOPAYSCHEME.Duration");
+                lstFields.Add("DEPOPAYSCHEME.MinDuration");
+                lstFields.Add("DEPOPAYSCHEME.FirstDeposit");
+                lstFields.Add("DEPOPAYSCHEME.Description");
+                lstFields.Add("DEPOPAYSCHEME.PaymentType");
+                lstFields.Add("DEPOPAYSCHEME.Attempt_1");
+                lstFields.Add("DEPOPAYSCHEME.Code_1");
+                lstFields.Add("DEPOPAYSCHEME.Percentage_1");
+                lstFields.Add("DEPOPAYSCHEME.Attempt_2");
+                lstFields.Add("DEPOPAYSCHEME.Code_2");
+                lstFields.Add("DEPOPAYSCHEME.Percentage_2");
+                lstFields.Add("DEPOPAYSCHEME.Attempt_3");
+                lstFields.Add("DEPOPAYSCHEME.Code_3");
+                lstFields.Add("DEPOPAYSCHEME.Percentage_3");
+                lstFields.Add("DEPOPAYSCHEME.PaymentMode");
+                lstFields.Add("DEPOPAYSCHEME.CreateBy");
+                lstFields.Add("DEPOPAYSCHEME.SyncCreate");
+                lstFields.Add("DEPOPAYSCHEME.SyncLastUpd");
+                lstFields.Add("DEPOPAYSCHEME.LastSyncBy");
+                lstFields.Add("DEPOPAYSCHEME.Reminder_1");
+                lstFields.Add("DEPOPAYSCHEME.Reminder_2");
 
-				lstFields.Add("DEPOPAYSCHEME.Deposit_1");
-				lstFields.Add("DEPOPAYSCHEME.IsNominal_1");
-				lstFields.Add("DEPOPAYSCHEME.LDeposit_11");
-				lstFields.Add("DEPOPAYSCHEME.LDuration_11");
-				lstFields.Add("DEPOPAYSCHEME.LDeposit_12");
-				lstFields.Add("DEPOPAYSCHEME.LDuration_12");
-				lstFields.Add("DEPOPAYSCHEME.LDeposit_13");
-				lstFields.Add("DEPOPAYSCHEME.LDuration_13");
-				lstFields.Add("DEPOPAYSCHEME.PDeposit_11");
-				lstFields.Add("DEPOPAYSCHEME.PDuration_11");
-				lstFields.Add("DEPOPAYSCHEME.PDeposit_12");
-				lstFields.Add("DEPOPAYSCHEME.PDuration_12");
-				lstFields.Add("DEPOPAYSCHEME.PDeposit_13");
-				lstFields.Add("DEPOPAYSCHEME.PDuration_13");
-				lstFields.Add("DEPOPAYSCHEME.Deposit_2");
-				lstFields.Add("DEPOPAYSCHEME.Deposit_3");
-				//lstFields.Add("DEPOPAYSCHEME.PrevCountry");
+                lstFields.Add("DEPOPAYSCHEME.Deposit_1");
+                lstFields.Add("DEPOPAYSCHEME.IsNominal_1");
+                lstFields.Add("DEPOPAYSCHEME.LDeposit_11");
+                lstFields.Add("DEPOPAYSCHEME.LDuration_11");
+                lstFields.Add("DEPOPAYSCHEME.LDeposit_12");
+                lstFields.Add("DEPOPAYSCHEME.LDuration_12");
+                lstFields.Add("DEPOPAYSCHEME.LDeposit_13");
+                lstFields.Add("DEPOPAYSCHEME.LDuration_13");
+                lstFields.Add("DEPOPAYSCHEME.PDeposit_11");
+                lstFields.Add("DEPOPAYSCHEME.PDuration_11");
+                lstFields.Add("DEPOPAYSCHEME.PDeposit_12");
+                lstFields.Add("DEPOPAYSCHEME.PDuration_12");
+                lstFields.Add("DEPOPAYSCHEME.PDeposit_13");
+                lstFields.Add("DEPOPAYSCHEME.PDuration_13");
+                lstFields.Add("DEPOPAYSCHEME.Deposit_2");
+                lstFields.Add("DEPOPAYSCHEME.Deposit_3");
+                //lstFields.Add("DEPOPAYSCHEME.PrevCountry");
 
-				lstFields.Add("D.Currency");
-				lstFields.Add("D.MinDeposit");
-				lstFields.Add("D.MaxDeposit");
-				lstFields.Add("D.MinDeposit2");
-				lstFields.Add("D.MaxDeposit2");
-				//lstFields.Add("D.PrevCountry");
+                lstFields.Add("D.Currency");
+                lstFields.Add("D.MinDeposit");
+                lstFields.Add("D.MaxDeposit");
+                lstFields.Add("D.MinDeposit2");
+                lstFields.Add("D.MaxDeposit2");
+                //lstFields.Add("D.PrevCountry");
 
-				strFields = GetSqlFields(lstFields);
-				if (CountryCode == "" || SchemeCode == "")
-					strFilter = "WHERE DEPOPAYSCHEME.GRPID='" + GRPID + "'";
-				else
-					strFilter = "WHERE DEPOPAYSCHEME.GRPID='" + GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + SchemeCode + "'";
+                strFields = GetSqlFields(lstFields);
+                if (CountryCode == "" || SchemeCode == "")
+                    strFilter = "WHERE DEPOPAYSCHEME.GRPID='" + GRPID + "'";
+                else
+                    strFilter = "WHERE DEPOPAYSCHEME.GRPID='" + GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + SchemeCode + "'";
 
-				strSQL = "SELECT " + strFields + " FROM DEPOPAYSCHEME  " + strJoint + strFilter + " ORDER BY MinDuration DESC";
+                strSQL = "SELECT " + strFields + " FROM DEPOPAYSCHEME  " + strJoint + strFilter + " ORDER BY MinDuration DESC";
 
-				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
-				{
-					connection.Open();
-					SqlCommand cmd = new SqlCommand(strSQL, connection);
-					SqlDataAdapter da = new SqlDataAdapter(cmd);
-					da.Fill(dt);
-					connection.Close();
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
 
-					if (dt != null && dt.Rows.Count > 0)
-					{
-						return dt;
-					}
-					else
-					{
-						return null;
-						throw new ApplicationException("PAYSCHEME does not exist.");
-					}
-				}
-				return null;
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
-		public bool SavePaymentScheme(PaymentInfo[] pInfo)
-		{
-			bool rValue = false;
-			ArrayList lstSQL = new ArrayList();
-			string strSQL = string.Empty;
-			try
-			{
-				foreach (PaymentInfo xInfo in pInfo)
-				{
-					objSQL.AddField("DEPOPAYSCHEME.SchemeCode", xInfo.SchemeCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.CountryCode", xInfo.CountryCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Duration", xInfo.Duration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.MinDuration", xInfo.MinDuration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.PaymentType", xInfo.PaymentType, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Attempt_1", xInfo.Attempt_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Code_1", xInfo.Code_1, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Percentage_1", xInfo.Percentage_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Attempt_2", xInfo.Attempt_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Code_2", xInfo.Code_2, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Percentage_2", xInfo.Percentage_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Attempt_3", xInfo.Attempt_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Code_3", xInfo.Code_3, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("DEPOPAYSCHEME.Percentage_3", xInfo.Percentage_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
-					//objSQL.AddField("DEPOPAYSCHEME.PrevCountry", xInfo.PrevCountry, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("PAYSCHEME does not exist.");
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool SavePaymentScheme(PaymentInfo[] pInfo)
+        {
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                foreach (PaymentInfo xInfo in pInfo)
+                {
+                    objSQL.AddField("DEPOPAYSCHEME.SchemeCode", xInfo.SchemeCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.CountryCode", xInfo.CountryCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Duration", xInfo.Duration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.MinDuration", xInfo.MinDuration, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.PaymentType", xInfo.PaymentType, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Attempt_1", xInfo.Attempt_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Code_1", xInfo.Code_1, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Percentage_1", xInfo.Percentage_1, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Attempt_2", xInfo.Attempt_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Code_2", xInfo.Code_2, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Percentage_2", xInfo.Percentage_2, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Attempt_3", xInfo.Attempt_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Code_3", xInfo.Code_3, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("DEPOPAYSCHEME.Percentage_3", xInfo.Percentage_3, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                    //objSQL.AddField("DEPOPAYSCHEME.PrevCountry", xInfo.PrevCountry, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
 
-					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'");
-					//strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "' AND DEPOPAYSCHEME.PrevCountry='" + xInfo.PrevCountry + "'");
-					lstSQL.Add(strSQL);
+                    strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'");
+                    //strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "' AND DEPOPAYSCHEME.PrevCountry='" + xInfo.PrevCountry + "'");
+                    lstSQL.Add(strSQL);
 
-					strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'";
-					//strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "', DEPODURATION.PrevCountry = '" + xInfo.PrevCountry + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode And D.PrevCountry = DEPOPAYSCHEME.PrevCountry WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "' AND DEPOPAYSCHEME.PrevCountry='" + xInfo.PrevCountry + "'";
-					lstSQL.Add(strSQL);
-				}
+                    strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'";
+                    //strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "', DEPODURATION.PrevCountry = '" + xInfo.PrevCountry + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode And D.PrevCountry = DEPOPAYSCHEME.PrevCountry WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "' AND DEPOPAYSCHEME.PrevCountry='" + xInfo.PrevCountry + "'";
+                    lstSQL.Add(strSQL);
+                }
 
-				rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
-				if (rValue == false)
-				{
-					return false;
-				}
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
 
-				return true;
+                return true;
 
-			}
-			catch (Exception ex)
-			{
-				return false;
-			}
-		}
-		public DataTable GetCountry(string Code = "")
-		{
-			DataTable dt = new DataTable();
-			String strSQL = string.Empty;
-			String strFields = string.Empty;
-			List<string> lstFields = new List<string>();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public DataTable GetCountry(string Code = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            String strFields = string.Empty;
+            List<string> lstFields = new List<string>();
 
-			Boolean newGBS = true;
-			try
-			{
-				lstFields.Add("CountryCode");
-				lstFields.Add("Name");
-				lstFields.Add("DefaultCurrencyCode");
+            Boolean newGBS = true;
+            try
+            {
+                lstFields.Add("CountryCode");
+                lstFields.Add("Name");
+                lstFields.Add("DefaultCurrencyCode");
 
-				strFields = GetSqlFields(lstFields);
-				if (Code == "")
-					strSQL = "SELECT " + strFields + " FROM COUNTRY ORDER BY Name ASC";
-				else
-					strSQL = "SELECT " + strFields + " FROM COUNTRY WHERE CountryCode ='" + Code + "' ORDER BY Name ASC";
+                strFields = GetSqlFields(lstFields);
+                if (Code == "")
+                    strSQL = "SELECT " + strFields + " FROM COUNTRY ORDER BY Name ASC";
+                else
+                    strSQL = "SELECT " + strFields + " FROM COUNTRY WHERE CountryCode ='" + Code + "' ORDER BY Name ASC";
 
-				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
-				{
-					connection.Open();
-					SqlCommand cmd = new SqlCommand(strSQL, connection);
-					SqlDataAdapter da = new SqlDataAdapter(cmd);
-					da.Fill(dt);
-					connection.Close();
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
 
-					if (dt != null && dt.Rows.Count > 0)
-					{
-						return dt;
-					}
-					else
-					{
-						return null;
-						throw new ApplicationException("Country does not exist.");
-					}
-				}
-				return null;
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
-		#endregion
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("Country does not exist.");
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
 
-		#region Logic_FlightTimeGroup
-		public class FlttimegroupInfo
-		{
-			private string _FTGroupCode = String.Empty;
-			private DateTime _StartTime;
-			private DateTime _EndTime;
-			private System.Guid _rowguid;
-			private DateTime _SyncCreate;
-			private DateTime _SyncLastUpd;
-			private DateTime _CreateDate;
-			private DateTime _UpdateDate;
-			private string _LastSyncBy = String.Empty;
-			private string _CreateBy = String.Empty;
-			private string _UpdateBy = String.Empty;
-			private byte _Active;
-			private byte _Status;
-			private byte _Inuse;
+        #region Logic_FlightTimeGroup
+        public class FlttimegroupInfo
+        {
+            private string _FTGroupCode = String.Empty;
+            private DateTime _StartTime;
+            private DateTime _EndTime;
+            private System.Guid _rowguid;
+            private DateTime _SyncCreate;
+            private DateTime _SyncLastUpd;
+            private DateTime _CreateDate;
+            private DateTime _UpdateDate;
+            private string _LastSyncBy = String.Empty;
+            private string _CreateBy = String.Empty;
+            private string _UpdateBy = String.Empty;
+            private byte _Active;
+            private byte _Status;
+            private byte _Inuse;
 
-			#region Public Properties
-			// '' <summary>
-			// '' Mandatory
-			// '' </summary>
-			public string FTGroupCode
-			{
-				get
-				{
-					return _FTGroupCode;
-				}
-				set
-				{
-					_FTGroupCode = value;
-				}
-			}
-			public DateTime StartTime
-			{
-				get
-				{
-					return _StartTime;
-				}
-				set
-				{
-					_StartTime = value;
-				}
-			}
-			public DateTime EndTime
-			{
-				get
-				{
-					return _EndTime;
-				}
-				set
-				{
-					_EndTime = value;
-				}
-			}
-			public System.Guid rowguid
-			{
-				get
-				{
-					return _rowguid;
-				}
-				set
-				{
-					_rowguid = value;
-				}
-			}
-			public byte Status
-			{
-				get
-				{
-					return _Status;
-				}
-				set
-				{
-					_Status = value;
-				}
-			}
-			public byte Inuse
-			{
-				get
-				{
-					return _Inuse;
-				}
-				set
-				{
-					_Inuse = value;
-				}
-			}
-			public DateTime SyncCreate
-			{
-				get
-				{
-					return _SyncCreate;
-				}
-				set
-				{
-					_SyncCreate = value;
-				}
-			}
-			public DateTime SyncLastUpd
-			{
-				get
-				{
-					return _SyncLastUpd;
-				}
-				set
-				{
-					_SyncLastUpd = value;
-				}
-			}
-			public string LastSyncBy
-			{
-				get
-				{
-					return _LastSyncBy;
-				}
-				set
-				{
-					_LastSyncBy = value;
-				}
-			}
-			public DateTime CreateDate
-			{
-				get
-				{
-					return _CreateDate;
-				}
-				set
-				{
-					_CreateDate = value;
-				}
-			}
-			public string CreateBy
-			{
-				get
-				{
-					return _CreateBy;
-				}
-				set
-				{
-					_CreateBy = value;
-				}
-			}
-			public DateTime UpdateDate
-			{
-				get
-				{
-					return _UpdateDate;
-				}
-				set
-				{
-					_UpdateDate = value;
-				}
-			}
-			public string UpdateBy
-			{
-				get
-				{
-					return _UpdateBy;
-				}
-				set
-				{
-					_UpdateBy = value;
-				}
-			}
-			public byte Active
-			{
-				get
-				{
-					return _Active;
-				}
-				set
-				{
-					_Active = value;
-				}
-			}
-			#endregion
-		}
-		public DataTable GetFLTTIMEGROUPList(string FieldCond = "", string SQL = "")
-		{
-			DataTable dt = new DataTable();
-			String strSQL = string.Empty;
-			try
-			{
-				//strSQL = "SELECT FTGroupCode,convert(varchar(5), StartTime, 108) StartTime,convert(varchar(5), EndTime, 108) EndTime,Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
-				strSQL = "SELECT FTGroupCode,CAST(Starttime as Time(0)) StartTime,CAST(Endtime as Time(0)) EndTime,Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
-				strSQL += "CreateBy,UpdateDate,UpdateBy,Active FROM AD_FlTTIMEGROUP " + FieldCond;
+            #region Public Properties
+            // '' <summary>
+            // '' Mandatory
+            // '' </summary>
+            public string FTGroupCode
+            {
+                get
+                {
+                    return _FTGroupCode;
+                }
+                set
+                {
+                    _FTGroupCode = value;
+                }
+            }
+            public DateTime StartTime
+            {
+                get
+                {
+                    return _StartTime;
+                }
+                set
+                {
+                    _StartTime = value;
+                }
+            }
+            public DateTime EndTime
+            {
+                get
+                {
+                    return _EndTime;
+                }
+                set
+                {
+                    _EndTime = value;
+                }
+            }
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+            public byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+                set
+                {
+                    _Status = value;
+                }
+            }
+            public byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+            public DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+            public DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+            public string LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+            public DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+            public string CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+            public DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+            public string UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+            public byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetFLTTIMEGROUPList(string FieldCond = "", string SQL = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+                //strSQL = "SELECT FTGroupCode,convert(varchar(5), StartTime, 108) StartTime,convert(varchar(5), EndTime, 108) EndTime,Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
+                strSQL = "SELECT FTGroupCode,CAST(Starttime as Time(0)) StartTime,CAST(Endtime as Time(0)) EndTime,Status,Flag,Inuse,SyncCreate,SyncLastUpd,LastSyncBy,CreateDate,";
+                strSQL += "CreateBy,UpdateDate,UpdateBy,Active FROM AD_FlTTIMEGROUP " + FieldCond;
 
-				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
-				{
-					connection.Open();
-					SqlCommand cmd = new SqlCommand(strSQL, connection);
-					SqlDataAdapter da = new SqlDataAdapter(cmd);
-					da.Fill(dt);
-					connection.Close();
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
 
-					if (dt != null && dt.Rows.Count > 0)
-					{
-						return dt;
-					}
-					else
-					{
-						return null;
-						throw new ApplicationException("FlightTime does not exist.");
-					}
-				}
-				return null;
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("FlightTime does not exist.");
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region AGENTACCESSFARE
         public class AGENTACCESSFAREInfo
-		{
-			private System.String _MarketCode = String.Empty;
-			private System.String _InTier = String.Empty;
-			private System.String _OutTier = String.Empty;
-			private System.String _InFareClass = String.Empty;
-			private System.String _OutFareClass = String.Empty;
-			private System.Guid _rowguid;
-			private System.Byte _Status;
-			private System.Byte _Inuse;
-			private System.DateTime _SyncCreate;
-			private System.DateTime _SyncLastUpd;
-			private System.String _LastSyncBy = String.Empty;
-			private System.DateTime _CreateDate;
-			private System.String _CreateBy = String.Empty;
-			private System.DateTime _UpdateDate;
-			private System.String _UpdateBy = String.Empty;
-			private System.Byte _Active;
+        {
+            private System.String _MarketCode = String.Empty;
+            private System.String _InTier = String.Empty;
+            private System.String _OutTier = String.Empty;
+            private System.String _InFareClass = String.Empty;
+            private System.String _OutFareClass = String.Empty;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
 
-			#region Public Properties
-			public String MarketCode
-			{
-				get
-				{
-					return _MarketCode;
-				}
-				set
-				{
-					_MarketCode = value;
-				}
-			}
-			public String InTier
-			{
-				get
-				{
-					return _InTier;
-				}
-				set
-				{
-					_InTier = value;
-				}
-			}
-			public String OutTier
-			{
-				get
-				{
-					return _OutTier;
-				}
-				set
-				{
-					_OutTier = value;
-				}
-			}
-			public String InFareClass
-			{
-				get
-				{
-					return _InFareClass;
-				}
-				set
-				{
-					_InFareClass = value;
-				}
-			}
-			public String OutFareClass
-			{
-				get
-				{
-					return _OutFareClass;
-				}
-				set
-				{
-					_OutFareClass = value;
-				}
-			}
-			public System.Guid rowguid
-			{
-				get
-				{
-					return _rowguid;
-				}
-				set
-				{
-					_rowguid = value;
-				}
-			}
-			public Byte Status
-			{
-				get
-				{
-					return _Status;
-				}
-				set
-				{
-					_Status = value;
-				}
-			}
-			public Byte Inuse
-			{
-				get
-				{
-					return _Inuse;
-				}
-				set
-				{
-					_Inuse = value;
-				}
-			}
-			public DateTime SyncCreate
-			{
-				get
-				{
-					return _SyncCreate;
-				}
-				set
-				{
-					_SyncCreate = value;
-				}
-			}
-			public DateTime SyncLastUpd
-			{
-				get
-				{
-					return _SyncLastUpd;
-				}
-				set
-				{
-					_SyncLastUpd = value;
-				}
-			}
-			public String LastSyncBy
-			{
-				get
-				{
-					return _LastSyncBy;
-				}
-				set
-				{
-					_LastSyncBy = value;
-				}
-			}
-			public DateTime CreateDate
-			{
-				get
-				{
-					return _CreateDate;
-				}
-				set
-				{
-					_CreateDate = value;
-				}
-			}
-			public String CreateBy
-			{
-				get
-				{
-					return _CreateBy;
-				}
-				set
-				{
-					_CreateBy = value;
-				}
-			}
-			public DateTime UpdateDate
-			{
-				get
-				{
-					return _UpdateDate;
-				}
-				set
-				{
-					_UpdateDate = value;
-				}
-			}
-			public String UpdateBy
-			{
-				get
-				{
-					return _UpdateBy;
-				}
-				set
-				{
-					_UpdateBy = value;
-				}
-			}
-			public Byte Active
-			{
-				get
-				{
-					return _Active;
-				}
-				set
-				{
-					_Active = value;
-				}
-			}
-			#endregion
-		}
-		public DataTable GetAGENTACCESSFAREList(string FieldCond = "")
-		{
-			DataTable dt = new DataTable();
-			String strSQL = string.Empty;
-			try
-			{
+            #region Public Properties
+            public String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+            public String InTier
+            {
+                get
+                {
+                    return _InTier;
+                }
+                set
+                {
+                    _InTier = value;
+                }
+            }
+            public String OutTier
+            {
+                get
+                {
+                    return _OutTier;
+                }
+                set
+                {
+                    _OutTier = value;
+                }
+            }
+            public String InFareClass
+            {
+                get
+                {
+                    return _InFareClass;
+                }
+                set
+                {
+                    _InFareClass = value;
+                }
+            }
+            public String OutFareClass
+            {
+                get
+                {
+                    return _OutFareClass;
+                }
+                set
+                {
+                    _OutFareClass = value;
+                }
+            }
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+            public Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+                set
+                {
+                    _Status = value;
+                }
+            }
+            public Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+            public DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+            public DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+            public String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+            public DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+            public String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+            public DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+            public String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+            public Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetAGENTACCESSFAREList(string FieldCond = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
 
-				strSQL = "SELECT MarketCode, InTier, InFareClass, OutTier, OutFareClass, Status, Flag, Inuse, Active, SyncCreate, SyncLastUpd, LastSyncBy, CreateDate, CreateBy, UpdateDate, UpdateBy ";
-				strSQL += "FROM AD_AGENTACCESSFARE";
+                strSQL = "SELECT MarketCode, InTier, InFareClass, OutTier, OutFareClass, Status, Flag, Inuse, Active, SyncCreate, SyncLastUpd, LastSyncBy, CreateDate, CreateBy, UpdateDate, UpdateBy ";
+                strSQL += "FROM AD_AGENTACCESSFARE";
 
-				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
-				{
-					connection.Open();
-					SqlCommand cmd = new SqlCommand(strSQL, connection);
-					SqlDataAdapter da = new SqlDataAdapter(cmd);
-					da.Fill(dt);
-					connection.Close();
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
 
-					if (dt != null && dt.Rows.Count > 0)
-					{
-						return dt;
-					}
-					else
-					{
-						return null;
-						throw new ApplicationException("AGENTACCESSFARE does not exist.");
-					}
-				}
-				//return null;
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
-		public DataTable GetAGENTACCESSFAREPIVOT()
-		{
-			DataTable dt = new DataTable();
-			String strSQL = string.Empty;
-			try
-			{
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AGENTACCESSFARE does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public DataTable GetAGENTACCESSFAREPIVOT()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
 
                 strSQL = "SELECT Analyst, MarketCode [MarketCode] ";
                 strSQL += ",OutRoute[OutRoute],[Out1] AS[OutTier1], [Out2] AS[OutTier2], [Out3] AS[OutTier3], [OutGeneric] AS [OutGeneric] ";
@@ -1032,31 +1032,31 @@ namespace Plexform.GBS
                 strSQL += "( [In1],[In2],[In3],[InGeneric]) ";
                 strSQL += ") AS pvt2";
 
-				using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
-				{
-					connection.Open();
-					SqlCommand cmd = new SqlCommand(strSQL, connection);
-					SqlDataAdapter da = new SqlDataAdapter(cmd);
-					da.Fill(dt);
-					connection.Close();
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
 
-					if (dt != null && dt.Rows.Count > 0)
-					{
-						return dt;
-					}
-					else
-					{
-						return null;
-						throw new ApplicationException("AGENTACCESSFARE does not exist.");
-					}
-				}
-				//return null;
-			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AGENTACCESSFARE does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region AGENTTIER
@@ -1669,6 +1669,40 @@ namespace Plexform.GBS
             {
 
                 strSQL = "SELECT Analyst, MarketCode, InRoute, InMaxDisc, OutRoute, OutMaxDisc FROM AD_MARKET";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_MARKET does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public DataTable GetMarket()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT MarketCode, MarketName, Analyst, InRoute, OutRoute FROM AD_MARKET";
 
                 using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
                 {
@@ -3074,254 +3108,1525 @@ namespace Plexform.GBS
         }
         #endregion
 
+        # region PUDISCOUNT
+        public class PUDiscountInfo
+        {
+            protected System.String _MarketCode = String.Empty;
+            protected System.String _NDO = String.Empty;
+            private System.Decimal _InPUDisc1;
+            private System.Decimal _InPUDisc2;
+            private System.Decimal _InPUDisc3;
+            private System.Decimal _InPUDisc4;
+            private System.Decimal _InPUDisc5;
+            private System.Decimal _InPUDisc6;
+            private System.Decimal _InPUDisc7;
+            private System.Decimal _InPUDisc8;
+            private System.Decimal _InPUDisc9;
+            private System.Decimal _InPUDisc10;
+            private System.Decimal _InPUDisc11;
+            private System.Decimal _OutPUDisc1;
+            private System.Decimal _OutPUDisc2;
+            private System.Decimal _OutPUDisc3;
+            private System.Decimal _OutPUDisc4;
+            private System.Decimal _OutPUDisc5;
+            private System.Decimal _OutPUDisc6;
+            private System.Decimal _OutPUDisc7;
+            private System.Decimal _OutPUDisc8;
+            private System.Decimal _OutPUDisc9;
+            private System.Decimal _OutPUDisc10;
+            private System.Decimal _OutPUDisc11;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
+
+            #region properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+
+            public System.String NDO
+            {
+                get
+                {
+                    return _NDO;
+                }
+
+                set
+                {
+                    _NDO = value;
+                }
+            }
+
+            public System.Decimal InPUDisc1
+            {
+                get
+                {
+                    return _InPUDisc1;
+                }
+
+                set
+                {
+                    _InPUDisc1 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc2
+            {
+                get
+                {
+                    return _InPUDisc2;
+                }
+
+                set
+                {
+                    _InPUDisc2 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc3
+            {
+                get
+                {
+                    return _InPUDisc3;
+                }
+
+                set
+                {
+                    _InPUDisc3 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc4
+            {
+                get
+                {
+                    return _InPUDisc4;
+                }
+
+                set
+                {
+                    _InPUDisc4 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc5
+            {
+                get
+                {
+                    return _InPUDisc5;
+                }
+
+                set
+                {
+                    _InPUDisc5 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc6
+            {
+                get
+                {
+                    return _InPUDisc6;
+                }
+
+                set
+                {
+                    _InPUDisc6 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc7
+            {
+                get
+                {
+                    return _InPUDisc7;
+                }
+
+                set
+                {
+                    _InPUDisc7 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc8
+            {
+                get
+                {
+                    return _InPUDisc8;
+                }
+
+                set
+                {
+                    _InPUDisc8 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc9
+            {
+                get
+                {
+                    return _InPUDisc9;
+                }
+
+                set
+                {
+                    _InPUDisc9 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc10
+            {
+                get
+                {
+                    return _InPUDisc10;
+                }
+
+                set
+                {
+                    _InPUDisc10 = value;
+                }
+            }
+
+            public System.Decimal InPUDisc11
+            {
+                get
+                {
+                    return _InPUDisc11;
+                }
+
+                set
+                {
+                    _InPUDisc11 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc1
+            {
+                get
+                {
+                    return _OutPUDisc1;
+                }
+
+                set
+                {
+                    _OutPUDisc1 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc2
+            {
+                get
+                {
+                    return _OutPUDisc2;
+                }
+
+                set
+                {
+                    _OutPUDisc2 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc3
+            {
+                get
+                {
+                    return _OutPUDisc3;
+                }
+
+                set
+                {
+                    _OutPUDisc3 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc4
+            {
+                get
+                {
+                    return _OutPUDisc4;
+                }
+
+                set
+                {
+                    _OutPUDisc4 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc5
+            {
+                get
+                {
+                    return _OutPUDisc5;
+                }
+
+                set
+                {
+                    _OutPUDisc5 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc6
+            {
+                get
+                {
+                    return _OutPUDisc6;
+                }
+
+                set
+                {
+                    _OutPUDisc6 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc7
+            {
+                get
+                {
+                    return _OutPUDisc7;
+                }
+
+                set
+                {
+                    _OutPUDisc7 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc8
+            {
+                get
+                {
+                    return _OutPUDisc8;
+                }
+
+                set
+                {
+                    _OutPUDisc8 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc9
+            {
+                get
+                {
+                    return _OutPUDisc9;
+                }
+
+                set
+                {
+                    _OutPUDisc9 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc10
+            {
+                get
+                {
+                    return _OutPUDisc10;
+                }
+
+                set
+                {
+                    _OutPUDisc10 = value;
+                }
+            }
+
+            public System.Decimal OutPUDisc11
+            {
+                get
+                {
+                    return _OutPUDisc11;
+                }
+
+                set
+                {
+                    _OutPUDisc11 = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetPUDiscount()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT M.Analyst, LD.MarketCode, N.NDODesc, M.InRoute, LD.InPUDisc1, LD.InPUDisc2, LD.InPUDisc3, LD.InPUDisc4, ";
+                strSQL += "LD.InPUDisc5, LD.InPUDisc6, LD.InPUDisc7, LD.InPUDisc8, LD.InPUDisc9, LD.InPUDisc10, LD.InPUDisc11, M.OutRoute, ";
+                strSQL += "LD.OutPUDisc1, LD.OutPUDisc2, LD.OutPUDisc3, LD.OutPUDisc4, LD.OutPUDisc5, LD.OutPUDisc6, LD.OutPUDisc7, LD.OutPUDisc8, ";
+                strSQL += "LD.OutPUDisc9, LD.OutPUDisc10, LD.OutPUDisc11 FROM AD_PUDISCOUNT LD INNER JOIN AD_MARKET M ON LD.MarketCode = M.MarketCode ";
+                strSQL += "INNER JOIN AD_NDO N ON LD.NDO = N.NDOCode";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_PUDISCOUNT does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region SPECIALFARE
+        public class SpecialFareInfo
+        {
+            protected System.String _MarketCode = String.Empty;
+            protected System.String _NDO = String.Empty;
+            protected System.String _SpecCode = String.Empty;
+            protected System.String _InDiscCrtCode = String.Empty;
+            protected System.String _InFlightTimeGrp = String.Empty;
+            protected System.String _InDepDOW = String.Empty;
+            protected System.String _InAgentTier = String.Empty;
+            protected System.String _InCurrency = String.Empty;
+            protected System.String _OutDiscCrtCode = String.Empty;
+            protected System.String _OutFlightTimeGrp = String.Empty;
+            protected System.String _OutDepDOW = String.Empty;
+            protected System.String _OutAgentTier = String.Empty;
+            protected System.String _OutCurrency = String.Empty;
+            private System.Decimal _InLFFare1;
+            private System.Decimal _InLFFare2;
+            private System.Decimal _InLFFare3;
+            private System.Decimal _InLFFare4;
+            private System.Decimal _InLFFare5;
+            private System.Decimal _InLFFare6;
+            private System.Decimal _InLFFare7;
+            private System.Decimal _InLFFare8;
+            private System.Decimal _InLFFare9;
+            private System.Decimal _InLFFare10;
+            private System.Decimal _InLFFare11;
+            private System.Decimal _OutLFFare1;
+            private System.Decimal _OutLFFare2;
+            private System.Decimal _OutLFFare3;
+            private System.Decimal _OutLFFare4;
+            private System.Decimal _OutLFFare5;
+            private System.Decimal _OutLFFare6;
+            private System.Decimal _OutLFFare7;
+            private System.Decimal _OutLFFare8;
+            private System.Decimal _OutLFFare9;
+            private System.Decimal _OutLFFare10;
+            private System.Decimal _OutLFFare11;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy = String.Empty;
+            private System.Byte _Active;
+
+            #region properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+
+            public System.String NDO
+            {
+                get
+                {
+                    return _NDO;
+                }
+
+                set
+                {
+                    _NDO = value;
+                }
+            }
+
+            public System.String SpecCode
+            {
+                get
+                {
+                    return _SpecCode;
+                }
+
+                set
+                {
+                    _SpecCode = value;
+                }
+            }
+
+            public System.String InDiscCrtCode
+            {
+                get
+                {
+                    return _InDiscCrtCode;
+                }
+
+                set
+                {
+                    _InDiscCrtCode = value;
+                }
+            }
+
+            public System.String InFlightTimeGrp
+            {
+                get
+                {
+                    return _InFlightTimeGrp;
+                }
+
+                set
+                {
+                    _InFlightTimeGrp = value;
+                }
+            }
+
+            public System.String InDepDOW
+            {
+                get
+                {
+                    return _InDepDOW;
+                }
+
+                set
+                {
+                    _InDepDOW = value;
+                }
+            }
+
+            public System.String InAgentTier
+            {
+                get
+                {
+                    return _InAgentTier;
+                }
+
+                set
+                {
+                    _InAgentTier = value;
+                }
+            }
+
+            public System.String InCurrency
+            {
+                get
+                {
+                    return _InCurrency;
+                }
+
+                set
+                {
+                    _InCurrency = value;
+                }
+            }
+
+            public System.String OutDiscCrtCode
+            {
+                get
+                {
+                    return _OutDiscCrtCode;
+                }
+
+                set
+                {
+                    _OutDiscCrtCode = value;
+                }
+            }
+
+            public System.String OutFlightTimeGrp
+            {
+                get
+                {
+                    return _OutFlightTimeGrp;
+                }
+
+                set
+                {
+                    _OutFlightTimeGrp = value;
+                }
+            }
+
+            public System.String OutDepDOW
+            {
+                get
+                {
+                    return _OutDepDOW;
+                }
+
+                set
+                {
+                    _OutDepDOW = value;
+                }
+            }
+
+            public System.String OutAgentTier
+            {
+                get
+                {
+                    return _OutAgentTier;
+                }
+
+                set
+                {
+                    _OutAgentTier = value;
+                }
+            }
+
+            public System.String OutCurrency
+            {
+                get
+                {
+                    return _OutCurrency;
+                }
+
+                set
+                {
+                    _OutCurrency = value;
+                }
+            }
+
+            public System.Decimal InLFFare1
+            {
+                get
+                {
+                    return _InLFFare1;
+                }
+
+                set
+                {
+                    _InLFFare1 = value;
+                }
+            }
+
+            public System.Decimal InLFFare2
+            {
+                get
+                {
+                    return _InLFFare2;
+                }
+
+                set
+                {
+                    _InLFFare2 = value;
+                }
+            }
+
+            public System.Decimal InLFFare3
+            {
+                get
+                {
+                    return _InLFFare3;
+                }
+
+                set
+                {
+                    _InLFFare3 = value;
+                }
+            }
+
+            public System.Decimal InLFFare4
+            {
+                get
+                {
+                    return _InLFFare4;
+                }
+
+                set
+                {
+                    _InLFFare4 = value;
+                }
+            }
+
+            public System.Decimal InLFFare5
+            {
+                get
+                {
+                    return _InLFFare5;
+                }
+
+                set
+                {
+                    _InLFFare5 = value;
+                }
+            }
+
+            public System.Decimal InLFFare6
+            {
+                get
+                {
+                    return _InLFFare6;
+                }
+
+                set
+                {
+                    _InLFFare6 = value;
+                }
+            }
+
+            public System.Decimal InLFFare7
+            {
+                get
+                {
+                    return _InLFFare7;
+                }
+
+                set
+                {
+                    _InLFFare7 = value;
+                }
+            }
+
+            public System.Decimal InLFFare8
+            {
+                get
+                {
+                    return _InLFFare8;
+                }
+
+                set
+                {
+                    _InLFFare8 = value;
+                }
+            }
+
+            public System.Decimal InLFFare9
+            {
+                get
+                {
+                    return _InLFFare9;
+                }
+
+                set
+                {
+                    _InLFFare9 = value;
+                }
+            }
+
+            public System.Decimal InLFFare10
+            {
+                get
+                {
+                    return _InLFFare10;
+                }
+
+                set
+                {
+                    _InLFFare10 = value;
+                }
+            }
+
+            public System.Decimal InLFFare11
+            {
+                get
+                {
+                    return _InLFFare11;
+                }
+
+                set
+                {
+                    _InLFFare11 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare1
+            {
+                get
+                {
+                    return _OutLFFare1;
+                }
+
+                set
+                {
+                    _OutLFFare1 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare2
+            {
+                get
+                {
+                    return _OutLFFare2;
+                }
+
+                set
+                {
+                    _OutLFFare2 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare3
+            {
+                get
+                {
+                    return _OutLFFare3;
+                }
+
+                set
+                {
+                    _OutLFFare3 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare4
+            {
+                get
+                {
+                    return _OutLFFare4;
+                }
+
+                set
+                {
+                    _OutLFFare4 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare5
+            {
+                get
+                {
+                    return _OutLFFare5;
+                }
+
+                set
+                {
+                    _OutLFFare5 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare6
+            {
+                get
+                {
+                    return _OutLFFare6;
+                }
+
+                set
+                {
+                    _OutLFFare6 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare7
+            {
+                get
+                {
+                    return _OutLFFare7;
+                }
+
+                set
+                {
+                    _OutLFFare7 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare8
+            {
+                get
+                {
+                    return _OutLFFare8;
+                }
+
+                set
+                {
+                    _OutLFFare8 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare9
+            {
+                get
+                {
+                    return _OutLFFare9;
+                }
+
+                set
+                {
+                    _OutLFFare9 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare10
+            {
+                get
+                {
+                    return _OutLFFare10;
+                }
+
+                set
+                {
+                    _OutLFFare10 = value;
+                }
+            }
+
+            public System.Decimal OutLFFare11
+            {
+                get
+                {
+                    return _OutLFFare11;
+                }
+
+                set
+                {
+                    _OutLFFare11 = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetSeries()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT M.Analyst, LD.MarketCode, N.NDODesc, CM.CodeDesc, M.InRoute, LD.InFlightTimeGrp, LD.InDepDOW, ";
+                strSQL += "LD.InAgentTier, LD.InCurrency, LD.InLFFare1, LD.InLFFare2, LD.InLFFare3, LD.InLFFare4, LD.InLFFare5, ";
+                strSQL += "LD.InLFFare6, LD.InLFFare7, LD.InLFFare8, LD.InLFFare9, LD.InLFFare10, LD.InLFFare11, M.OutRoute, ";
+                strSQL += "LD.OutFlightTimeGrp, LD.OutDepDOW, LD.OutAgentTier, LD.OutCurrency, LD.OutLFFare1, LD.OutLFFare2, ";
+                strSQL += "LD.OutLFFare3, LD.OutLFFare4, LD.OutLFFare5, LD.OutLFFare6, LD.OutLFFare7, LD.OutLFFare8, LD.OutLFFare9, ";
+                strSQL += "LD.OutLFFare10 ,LD.OutLFFare11 FROM AD_SPECIALFARE LD INNER JOIN AD_MARKET M ON LD.MarketCode = M.MarketCode ";
+                strSQL += "INNER JOIN AD_NDO N ON LD.NDO = N.NDOCode INNER JOIN CODEMASTER CM ON LD.SpecCode = CM.Code AND CM.CodeType = 'SPC' ";
+                strSQL += "WHERE SpecCode = 'SER'";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_SPECIALFARE does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public DataTable GetUmrahLabor()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT M.Analyst, LD.MarketCode, N.NDODesc, CM.CodeDesc, M.InRoute, LD.InFlightTimeGrp, LD.InDepDOW, ";
+                strSQL += "LD.InAgentTier, LD.InCurrency, LD.InLFFare1, LD.InLFFare2, LD.InLFFare3, LD.InLFFare4, LD.InLFFare5, ";
+                strSQL += "LD.InLFFare6, LD.InLFFare7, LD.InLFFare8, LD.InLFFare9, LD.InLFFare10, LD.InLFFare11, M.OutRoute, ";
+                strSQL += "LD.OutFlightTimeGrp, LD.OutDepDOW, LD.OutAgentTier, LD.OutCurrency, LD.OutLFFare1, LD.OutLFFare2, ";
+                strSQL += "LD.OutLFFare3, LD.OutLFFare4, LD.OutLFFare5, LD.OutLFFare6, LD.OutLFFare7, LD.OutLFFare8, LD.OutLFFare9, ";
+                strSQL += "LD.OutLFFare10, LD.OutLFFare11 FROM AD_SPECIALFARE LD INNER JOIN AD_MARKET M ON LD.MarketCode = M.MarketCode ";
+                strSQL += "INNER JOIN AD_NDO N ON LD.NDO = N.NDOCode INNER JOIN CODEMASTER CM ON LD.SpecCode = CM.Code AND CM.CodeType = 'SPC' ";
+                strSQL += "WHERE SpecCode IN ('LBR', 'UMR')";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_SPECIALFARE does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
         #region Comunicate
         public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
-		{
-			IList<Plexform.Models.CountryModels> list = new List<Plexform.Models.CountryModels>();
-			PaymentInfo Model = new PaymentInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetCountry(CountryCode);
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						list.Add(new Models.CountryModels
-						{
-							CountryCode = dt.Rows[i]["CountryCode"].ToString(),
-							CountryName = dt.Rows[i]["Name"].ToString(),
-							CurrencyCode = dt.Rows[i]["DefaultCurrencyCode"].ToString(),
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+        {
+            IList<Plexform.Models.CountryModels> list = new List<Plexform.Models.CountryModels>();
+            PaymentInfo Model = new PaymentInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetCountry(CountryCode);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.CountryModels
+                        {
+                            CountryCode = dt.Rows[i]["CountryCode"].ToString(),
+                            CountryName = dt.Rows[i]["Name"].ToString(),
+                            CurrencyCode = dt.Rows[i]["DefaultCurrencyCode"].ToString(),
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
-		public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetAllScheme(string GRPID = "")
-		{
-			IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
-			PaymentInfo Model = new PaymentInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetSchemeByCode(GRPID);
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						string Currency = "";
-						int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
-						if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
-						{
-							Currency = dt.Rows[i]["Currency"].ToString();
-							xMinDeposit = Convert.ToInt32(dt.Rows[i]["MinDeposit"]);
-							xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
-							xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
-							xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
-						};
-						list.Add(new Models.PaymentSchemeModels
-						{
-							GRPID = dt.Rows[i]["GRPID"].ToString(),
-							SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
-							CountryCode = dt.Rows[i]["CountryCode"].ToString(),
-							Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
-							Minduration = Convert.ToInt32(dt.Rows[i]["MinDuration"]),
-							PaymentType = dt.Rows[i]["PaymentType"].ToString(),
-							CurrencyCode = Currency,
-							MinDeposit = xMinDeposit,
-							MaxDeposit = xMaxDeposit,
-							MinDeposit2 = xMinDeposit2,
-							MaxDeposit2 = xMaxDeposit2,
-							Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
-							Code_1 = dt.Rows[i]["Code_1"].ToString(),
-							Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
-							Attempt_2 = Convert.ToInt32(dt.Rows[i]["Attempt_2"]),
-							Code_2 = dt.Rows[i]["Code_2"].ToString(),
-							Percentage_2 = Convert.ToInt32(dt.Rows[i]["Percentage_2"]),
-							Attempt_3 = Convert.ToInt32(dt.Rows[i]["Attempt_3"]),
-							Code_3 = dt.Rows[i]["Code_3"].ToString(),
-							Percentage_3 = Convert.ToInt32(dt.Rows[i]["Percentage_3"])
-							//, PrevCountry = dt.Rows[i]["PrevCountry"].ToString()
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+        public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetAllScheme(string GRPID = "")
+        {
+            IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
+            PaymentInfo Model = new PaymentInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetSchemeByCode(GRPID);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        string Currency = "";
+                        int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
+                        if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
+                        {
+                            Currency = dt.Rows[i]["Currency"].ToString();
+                            xMinDeposit = Convert.ToInt32(dt.Rows[i]["MinDeposit"]);
+                            xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
+                            xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
+                            xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
+                        };
+                        list.Add(new Models.PaymentSchemeModels
+                        {
+                            GRPID = dt.Rows[i]["GRPID"].ToString(),
+                            SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
+                            CountryCode = dt.Rows[i]["CountryCode"].ToString(),
+                            Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
+                            Minduration = Convert.ToInt32(dt.Rows[i]["MinDuration"]),
+                            PaymentType = dt.Rows[i]["PaymentType"].ToString(),
+                            CurrencyCode = Currency,
+                            MinDeposit = xMinDeposit,
+                            MaxDeposit = xMaxDeposit,
+                            MinDeposit2 = xMinDeposit2,
+                            MaxDeposit2 = xMaxDeposit2,
+                            Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
+                            Code_1 = dt.Rows[i]["Code_1"].ToString(),
+                            Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
+                            Attempt_2 = Convert.ToInt32(dt.Rows[i]["Attempt_2"]),
+                            Code_2 = dt.Rows[i]["Code_2"].ToString(),
+                            Percentage_2 = Convert.ToInt32(dt.Rows[i]["Percentage_2"]),
+                            Attempt_3 = Convert.ToInt32(dt.Rows[i]["Attempt_3"]),
+                            Code_3 = dt.Rows[i]["Code_3"].ToString(),
+                            Percentage_3 = Convert.ToInt32(dt.Rows[i]["Percentage_3"])
+                            //, PrevCountry = dt.Rows[i]["PrevCountry"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
-		public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetSchemeByCodes(string GRPID = "", string CountryCode = "", string SchemeCode = "")
-		{
-			IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
-			PaymentInfo Model = new PaymentInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetSchemeByCode(GRPID, CountryCode, SchemeCode);
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						string Currency = "";
-						int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
-						if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
-						{
-							Currency = dt.Rows[i]["Currency"].ToString();
-							xMinDeposit = Convert.ToInt32(dt.Rows[i]["MinDeposit"]);
-							xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
-							xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
-							xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
-						};
-						list.Add(new Models.PaymentSchemeModels
-						{
-							GRPID = dt.Rows[i]["GRPID"].ToString(),
-							SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
-							CountryCode = dt.Rows[i]["CountryCode"].ToString(),
-							Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
-							Minduration = Convert.ToInt32(dt.Rows[i]["MinDuration"]),
-							PaymentType = dt.Rows[i]["PaymentType"].ToString(),
-							CurrencyCode = Currency,
-							MinDeposit = xMinDeposit,
-							MaxDeposit = xMaxDeposit,
-							MinDeposit2 = xMinDeposit2,
-							MaxDeposit2 = xMaxDeposit2,
-							Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
-							Code_1 = dt.Rows[i]["Code_1"].ToString(),
-							Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
-							Attempt_2 = Convert.ToInt32(dt.Rows[i]["Attempt_2"]),
-							Code_2 = dt.Rows[i]["Code_2"].ToString(),
-							Percentage_2 = Convert.ToInt32(dt.Rows[i]["Percentage_2"]),
-							Attempt_3 = Convert.ToInt32(dt.Rows[i]["Attempt_3"]),
-							Code_3 = dt.Rows[i]["Code_3"].ToString(),
-							Percentage_3 = Convert.ToInt32(dt.Rows[i]["Percentage_3"])
-							//,PrevCountry = dt.Rows[i]["PrevCountry"].ToString()
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+        public async Task<IList<Plexform.Models.PaymentSchemeModels>> GetSchemeByCodes(string GRPID = "", string CountryCode = "", string SchemeCode = "")
+        {
+            IList<Plexform.Models.PaymentSchemeModels> list = new List<Plexform.Models.PaymentSchemeModels>();
+            PaymentInfo Model = new PaymentInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetSchemeByCode(GRPID, CountryCode, SchemeCode);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        string Currency = "";
+                        int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
+                        if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
+                        {
+                            Currency = dt.Rows[i]["Currency"].ToString();
+                            xMinDeposit = Convert.ToInt32(dt.Rows[i]["MinDeposit"]);
+                            xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
+                            xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
+                            xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
+                        };
+                        list.Add(new Models.PaymentSchemeModels
+                        {
+                            GRPID = dt.Rows[i]["GRPID"].ToString(),
+                            SchemeCode = dt.Rows[i]["SchemeCode"].ToString(),
+                            CountryCode = dt.Rows[i]["CountryCode"].ToString(),
+                            Duration = Convert.ToInt32(dt.Rows[i]["Duration"]),
+                            Minduration = Convert.ToInt32(dt.Rows[i]["MinDuration"]),
+                            PaymentType = dt.Rows[i]["PaymentType"].ToString(),
+                            CurrencyCode = Currency,
+                            MinDeposit = xMinDeposit,
+                            MaxDeposit = xMaxDeposit,
+                            MinDeposit2 = xMinDeposit2,
+                            MaxDeposit2 = xMaxDeposit2,
+                            Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
+                            Code_1 = dt.Rows[i]["Code_1"].ToString(),
+                            Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
+                            Attempt_2 = Convert.ToInt32(dt.Rows[i]["Attempt_2"]),
+                            Code_2 = dt.Rows[i]["Code_2"].ToString(),
+                            Percentage_2 = Convert.ToInt32(dt.Rows[i]["Percentage_2"]),
+                            Attempt_3 = Convert.ToInt32(dt.Rows[i]["Attempt_3"]),
+                            Code_3 = dt.Rows[i]["Code_3"].ToString(),
+                            Percentage_3 = Convert.ToInt32(dt.Rows[i]["Percentage_3"])
+                            //,PrevCountry = dt.Rows[i]["PrevCountry"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
-		public Task<bool> UpdatePaymentScheme(PaymentInfo[] InfoScheme)
-		{
-			var res = false;
-			try
-			{
-				res = SavePaymentScheme(InfoScheme);
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UpdatePaymentScheme(PaymentInfo[] InfoScheme)
+        {
+            var res = false;
+            try
+            {
+                res = SavePaymentScheme(InfoScheme);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public async Task<IList<Plexform.Models.FltTimeGroupModels>> GroupTime(string Filter = "")
-		{
-			IList<Plexform.Models.FltTimeGroupModels> list = new List<Plexform.Models.FltTimeGroupModels>();
-			FlttimegroupInfo Model = new FlttimegroupInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetFLTTIMEGROUPList(Filter);
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						list.Add(new Models.FltTimeGroupModels
-						{
-							FTGroupCode = dt.Rows[i]["FTGroupCode"].ToString(),
-							StartTime = (TimeSpan)dt.Rows[i]["StartTime"],
-							EndTime = (TimeSpan)dt.Rows[i]["EndTime"],
-							SyncCreate = (DateTime)dt.Rows[i]["SyncCreate"],
-							SyncLastUpd = (DateTime)dt.Rows[i]["SyncLastUpd"],
-							CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
-							UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"],
-							LastSyncBy = dt.Rows[i]["LastSyncBy"].ToString(),
-							CreateBy = dt.Rows[i]["CreateBy"].ToString(),
-							UpdateBy = dt.Rows[i]["UpdateBy"].ToString(),
-							Active = Convert.ToInt32(dt.Rows[i]["Active"])
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+        public async Task<IList<Plexform.Models.FltTimeGroupModels>> GroupTime(string Filter = "")
+        {
+            IList<Plexform.Models.FltTimeGroupModels> list = new List<Plexform.Models.FltTimeGroupModels>();
+            FlttimegroupInfo Model = new FlttimegroupInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetFLTTIMEGROUPList(Filter);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.FltTimeGroupModels
+                        {
+                            FTGroupCode = dt.Rows[i]["FTGroupCode"].ToString(),
+                            StartTime = (TimeSpan)dt.Rows[i]["StartTime"],
+                            EndTime = (TimeSpan)dt.Rows[i]["EndTime"],
+                            SyncCreate = (DateTime)dt.Rows[i]["SyncCreate"],
+                            SyncLastUpd = (DateTime)dt.Rows[i]["SyncLastUpd"],
+                            CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
+                            UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"],
+                            LastSyncBy = dt.Rows[i]["LastSyncBy"].ToString(),
+                            CreateBy = dt.Rows[i]["CreateBy"].ToString(),
+                            UpdateBy = dt.Rows[i]["UpdateBy"].ToString(),
+                            Active = Convert.ToInt32(dt.Rows[i]["Active"])
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
-		public async Task<IList<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFareAll(string Filter = "")
-		{
-			IList<Plexform.Models.AGENTACCESSFAREModels> list = new List<Plexform.Models.AGENTACCESSFAREModels>();
-			AGENTACCESSFAREInfo Model = new AGENTACCESSFAREInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetAGENTACCESSFAREList(Filter);
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						list.Add(new Models.AGENTACCESSFAREModels
-						{
-							MarketCode = dt.Rows[i]["MarketCode"].ToString(),
-							InTier = dt.Rows[i]["InTier"].ToString(),
-							OutTier = dt.Rows[i]["OutTier"].ToString(),
-							InFareClass = dt.Rows[i]["InFareClass"].ToString(),
-							OutFareClass = dt.Rows[i]["OutFareClass"].ToString(),
-							Status = Convert.ToInt32(dt.Rows[i]["Status"]),
-							Inuse = Convert.ToInt32(dt.Rows[i]["Inuse"]),
-							SyncCreate = (DateTime)dt.Rows[i]["SyncCreate"],
-							SyncLastUpd = (DateTime)dt.Rows[i]["SyncLastUpd"],
-							LastSyncBy = dt.Rows[i]["LastSyncBy"].ToString(),
-							CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
-							CreateBy = dt.Rows[i]["CreateBy"].ToString(),
-							UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"],
-							Active = Convert.ToInt32(dt.Rows[i]["Active"]),
-							UpdateBy = dt.Rows[i]["UpdateBy"].ToString()
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+        public async Task<IList<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFareAll(string Filter = "")
+        {
+            IList<Plexform.Models.AGENTACCESSFAREModels> list = new List<Plexform.Models.AGENTACCESSFAREModels>();
+            AGENTACCESSFAREInfo Model = new AGENTACCESSFAREInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetAGENTACCESSFAREList(Filter);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.AGENTACCESSFAREModels
+                        {
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            InTier = dt.Rows[i]["InTier"].ToString(),
+                            OutTier = dt.Rows[i]["OutTier"].ToString(),
+                            InFareClass = dt.Rows[i]["InFareClass"].ToString(),
+                            OutFareClass = dt.Rows[i]["OutFareClass"].ToString(),
+                            Status = Convert.ToInt32(dt.Rows[i]["Status"]),
+                            Inuse = Convert.ToInt32(dt.Rows[i]["Inuse"]),
+                            SyncCreate = (DateTime)dt.Rows[i]["SyncCreate"],
+                            SyncLastUpd = (DateTime)dt.Rows[i]["SyncLastUpd"],
+                            LastSyncBy = dt.Rows[i]["LastSyncBy"].ToString(),
+                            CreateDate = (DateTime)dt.Rows[i]["CreateDate"],
+                            CreateBy = dt.Rows[i]["CreateBy"].ToString(),
+                            UpdateDate = (DateTime)dt.Rows[i]["UpdateDate"],
+                            Active = Convert.ToInt32(dt.Rows[i]["Active"]),
+                            UpdateBy = dt.Rows[i]["UpdateBy"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
-		public async Task<IList<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFarePIVOT()
-		{
-			IList<Plexform.Models.AGENTACCESSFAREModels> list = new List<Plexform.Models.AGENTACCESSFAREModels>();
-			AGENTACCESSFAREInfo Model = new AGENTACCESSFAREInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetAGENTACCESSFAREPIVOT();
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						list.Add(new Models.AGENTACCESSFAREModels
-						{
+        public async Task<IList<Plexform.Models.AGENTACCESSFAREModels>> GetAgentAccessFarePIVOT()
+        {
+            IList<Plexform.Models.AGENTACCESSFAREModels> list = new List<Plexform.Models.AGENTACCESSFAREModels>();
+            AGENTACCESSFAREInfo Model = new AGENTACCESSFAREInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetAGENTACCESSFAREPIVOT();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.AGENTACCESSFAREModels
+                        {
                             Analyst = dt.Rows[i]["Analyst"].ToString(),
                             MarketCode = dt.Rows[i]["MarketCode"].ToString(),
-							InTier1 = dt.Rows[i]["InTier1"].ToString(),
+                            InTier1 = dt.Rows[i]["InTier1"].ToString(),
                             InTier2 = dt.Rows[i]["InTier2"].ToString(),
                             InTier3 = dt.Rows[i]["InTier3"].ToString(),
                             InGeneric = dt.Rows[i]["InGeneric"].ToString(),
@@ -3332,16 +4637,16 @@ namespace Plexform.GBS
                             InRoute = dt.Rows[i]["InRoute"].ToString(),
                             OutRoute = dt.Rows[i]["OutRoute"].ToString(),
 
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
         public async Task<IList<Plexform.Models.AGENTTIERModels>> GetAgentTierGrid()
         {
@@ -3584,6 +4889,209 @@ namespace Plexform.GBS
                             OutLFDisc8 = (Decimal)dt.Rows[i]["OutLFDisc8"],
                             OutLFDisc9 = (Decimal)dt.Rows[i]["OutLFDisc9"],
                             OutLFDisc10 = (Decimal)dt.Rows[i]["OutLFDisc10"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.PUDISCOUNTModels>> GetPUDiscountAll()
+        {
+            IList<Plexform.Models.PUDISCOUNTModels> list = new List<Plexform.Models.PUDISCOUNTModels>();
+            LFDiscountInfo Model = new LFDiscountInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetPUDiscount();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.PUDISCOUNTModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            NDODesc = dt.Rows[i]["NDODesc"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InPUDisc1 = (Decimal)dt.Rows[i]["InPUDisc1"],
+                            InPUDisc2 = (Decimal)dt.Rows[i]["InPUDisc2"],
+                            InPUDisc3 = (Decimal)dt.Rows[i]["InPUDisc3"],
+                            InPUDisc4 = (Decimal)dt.Rows[i]["InPUDisc4"],
+                            InPUDisc5 = (Decimal)dt.Rows[i]["InPUDisc5"],
+                            InPUDisc6 = (Decimal)dt.Rows[i]["InPUDisc6"],
+                            InPUDisc7 = (Decimal)dt.Rows[i]["InPUDisc7"],
+                            InPUDisc8 = (Decimal)dt.Rows[i]["InPUDisc8"],
+                            InPUDisc9 = (Decimal)dt.Rows[i]["InPUDisc9"],
+                            InPUDisc10 = (Decimal)dt.Rows[i]["InPUDisc10"],
+                            InPUDisc11 = (Decimal)dt.Rows[i]["InPUDisc11"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutPUDisc1 = (Decimal)dt.Rows[i]["OutPUDisc1"],
+                            OutPUDisc2 = (Decimal)dt.Rows[i]["OutPUDisc2"],
+                            OutPUDisc3 = (Decimal)dt.Rows[i]["OutPUDisc3"],
+                            OutPUDisc4 = (Decimal)dt.Rows[i]["OutPUDisc4"],
+                            OutPUDisc5 = (Decimal)dt.Rows[i]["OutPUDisc5"],
+                            OutPUDisc6 = (Decimal)dt.Rows[i]["OutPUDisc6"],
+                            OutPUDisc7 = (Decimal)dt.Rows[i]["OutPUDisc7"],
+                            OutPUDisc8 = (Decimal)dt.Rows[i]["OutPUDisc8"],
+                            OutPUDisc9 = (Decimal)dt.Rows[i]["OutPUDisc9"],
+                            OutPUDisc10 = (Decimal)dt.Rows[i]["OutPUDisc10"],
+                            OutPUDisc11 = (Decimal)dt.Rows[i]["OutPUDisc11"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.SPECIALFAREModels>> GetSeriesAll()
+        {
+            IList<Plexform.Models.SPECIALFAREModels> list = new List<Plexform.Models.SPECIALFAREModels>();
+            SpecialFareInfo Model = new SpecialFareInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetSeries();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.SPECIALFAREModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            NDODesc = dt.Rows[i]["NDODesc"].ToString(),
+                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InFlightTimeGrp = dt.Rows[i]["InFlightTimeGrp"].ToString(),
+                            InDepDOW = dt.Rows[i]["InDepDOW"].ToString(),
+                            InAgentTier = dt.Rows[i]["InAgentTier"].ToString(),
+                            InCurrency = dt.Rows[i]["InCurrency"].ToString(),
+                            InLFFare1 = (Decimal)dt.Rows[i]["InLFFare1"],
+                            InLFFare2 = (Decimal)dt.Rows[i]["InLFFare2"],
+                            InLFFare3 = (Decimal)dt.Rows[i]["InLFFare3"],
+                            InLFFare4 = (Decimal)dt.Rows[i]["InLFFare4"],
+                            InLFFare5 = (Decimal)dt.Rows[i]["InLFFare5"],
+                            InLFFare6 = (Decimal)dt.Rows[i]["InLFFare6"],
+                            InLFFare7 = (Decimal)dt.Rows[i]["InLFFare7"],
+                            InLFFare8 = (Decimal)dt.Rows[i]["InLFFare8"],
+                            InLFFare9 = (Decimal)dt.Rows[i]["InLFFare9"],
+                            InLFFare10 = (Decimal)dt.Rows[i]["InLFFare10"],
+                            InLFFare11 = (Decimal)dt.Rows[i]["InLFFare11"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutFlightTimeGrp = dt.Rows[i]["OutFlightTimeGrp"].ToString(),
+                            OutDepDOW = dt.Rows[i]["OutDepDOW"].ToString(),
+                            OutAgentTier = dt.Rows[i]["OutAgentTier"].ToString(),
+                            OutCurrency = dt.Rows[i]["OutCurrency"].ToString(),
+                            OutLFFare1 = (Decimal)dt.Rows[i]["OutLFFare1"],
+                            OutLFFare2 = (Decimal)dt.Rows[i]["OutLFFare2"],
+                            OutLFFare3 = (Decimal)dt.Rows[i]["OutLFFare3"],
+                            OutLFFare4 = (Decimal)dt.Rows[i]["OutLFFare4"],
+                            OutLFFare5 = (Decimal)dt.Rows[i]["OutLFFare5"],
+                            OutLFFare6 = (Decimal)dt.Rows[i]["OutLFFare6"],
+                            OutLFFare7 = (Decimal)dt.Rows[i]["OutLFFare7"],
+                            OutLFFare8 = (Decimal)dt.Rows[i]["OutLFFare8"],
+                            OutLFFare9 = (Decimal)dt.Rows[i]["OutLFFare9"],
+                            OutLFFare10 = (Decimal)dt.Rows[i]["OutLFFare10"],
+                            OutLFFare11 = (Decimal)dt.Rows[i]["OutLFFare11"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.SPECIALFAREModels>> GetUmrahLaborAll()
+        {
+            IList<Plexform.Models.SPECIALFAREModels> list = new List<Plexform.Models.SPECIALFAREModels>();
+            SpecialFareInfo Model = new SpecialFareInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetUmrahLabor();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.SPECIALFAREModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            NDODesc = dt.Rows[i]["NDODesc"].ToString(),
+                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InFlightTimeGrp = dt.Rows[i]["InFlightTimeGrp"].ToString(),
+                            InDepDOW = dt.Rows[i]["InDepDOW"].ToString(),
+                            InAgentTier = dt.Rows[i]["InAgentTier"].ToString(),
+                            InCurrency = dt.Rows[i]["InCurrency"].ToString(),
+                            InLFFare1 = (Decimal)dt.Rows[i]["InLFFare1"],
+                            InLFFare2 = (Decimal)dt.Rows[i]["InLFFare2"],
+                            InLFFare3 = (Decimal)dt.Rows[i]["InLFFare3"],
+                            InLFFare4 = (Decimal)dt.Rows[i]["InLFFare4"],
+                            InLFFare5 = (Decimal)dt.Rows[i]["InLFFare5"],
+                            InLFFare6 = (Decimal)dt.Rows[i]["InLFFare6"],
+                            InLFFare7 = (Decimal)dt.Rows[i]["InLFFare7"],
+                            InLFFare8 = (Decimal)dt.Rows[i]["InLFFare8"],
+                            InLFFare9 = (Decimal)dt.Rows[i]["InLFFare9"],
+                            InLFFare10 = (Decimal)dt.Rows[i]["InLFFare10"],
+                            InLFFare11 = (Decimal)dt.Rows[i]["InLFFare11"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutFlightTimeGrp = dt.Rows[i]["OutFlightTimeGrp"].ToString(),
+                            OutDepDOW = dt.Rows[i]["OutDepDOW"].ToString(),
+                            OutAgentTier = dt.Rows[i]["OutAgentTier"].ToString(),
+                            OutCurrency = dt.Rows[i]["OutCurrency"].ToString(),
+                            OutLFFare1 = (Decimal)dt.Rows[i]["OutLFFare1"],
+                            OutLFFare2 = (Decimal)dt.Rows[i]["OutLFFare2"],
+                            OutLFFare3 = (Decimal)dt.Rows[i]["OutLFFare3"],
+                            OutLFFare4 = (Decimal)dt.Rows[i]["OutLFFare4"],
+                            OutLFFare5 = (Decimal)dt.Rows[i]["OutLFFare5"],
+                            OutLFFare6 = (Decimal)dt.Rows[i]["OutLFFare6"],
+                            OutLFFare7 = (Decimal)dt.Rows[i]["OutLFFare7"],
+                            OutLFFare8 = (Decimal)dt.Rows[i]["OutLFFare8"],
+                            OutLFFare9 = (Decimal)dt.Rows[i]["OutLFFare9"],
+                            OutLFFare10 = (Decimal)dt.Rows[i]["OutLFFare10"],
+                            OutLFFare11 = (Decimal)dt.Rows[i]["OutLFFare11"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.MAXDISCModels>> GetMarketAll()
+        {
+            IList<Plexform.Models.MAXDISCModels> list = new List<Plexform.Models.MAXDISCModels>();
+            MarketInfo Model = new MarketInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetMarket();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.MAXDISCModels
+                        {
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString()
                         });
                     }
                 }

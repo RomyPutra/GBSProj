@@ -282,5 +282,81 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.PUDISCOUNTModels>> GetPUDiscountAll()
+        {
+            IList<Plexform.Models.PUDISCOUNTModels> Scheme = new List<Plexform.Models.PUDISCOUNTModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetPUDiscountAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.PUDISCOUNTModels>(
+                ObjectMapper.Map<List<Plexform.Models.PUDISCOUNTModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.SPECIALFAREModels>> GetSeriesAll()
+        {
+            IList<Plexform.Models.SPECIALFAREModels> Scheme = new List<Plexform.Models.SPECIALFAREModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetSeriesAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.SPECIALFAREModels>(
+                ObjectMapper.Map<List<Plexform.Models.SPECIALFAREModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.SPECIALFAREModels>> GetUmrahLaborAll()
+        {
+            IList<Plexform.Models.SPECIALFAREModels> Scheme = new List<Plexform.Models.SPECIALFAREModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetUmrahLaborAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.SPECIALFAREModels>(
+                ObjectMapper.Map<List<Plexform.Models.SPECIALFAREModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.MAXDISCModels>> GetMarketAll()
+        {
+            IList<Plexform.Models.MAXDISCModels> Scheme = new List<Plexform.Models.MAXDISCModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetMarketAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.MAXDISCModels>(
+                ObjectMapper.Map<List<Plexform.Models.MAXDISCModels>>(Scheme),
+                Scheme.Count
+            );
+        }
     }
 }

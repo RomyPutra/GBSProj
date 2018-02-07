@@ -193,4 +193,75 @@ namespace Plexform.Models
         public System.Decimal OutLFDisc9 { get; set; }
         public System.Decimal OutLFDisc10 { get; set; }
     }
+
+    public class PUDISCOUNTModels
+    {
+        public System.String Analyst { get; set; }
+        public System.String MarketCode { get; set; }
+        public System.String NDODesc { get; set; }
+        public System.String InRoute { get; set; }
+        public System.Decimal InPUDisc1 { get; set; }
+        public System.Decimal InPUDisc2 { get; set; }
+        public System.Decimal InPUDisc3 { get; set; }
+        public System.Decimal InPUDisc4 { get; set; }
+        public System.Decimal InPUDisc5 { get; set; }
+        public System.Decimal InPUDisc6 { get; set; }
+        public System.Decimal InPUDisc7 { get; set; }
+        public System.Decimal InPUDisc8 { get; set; }
+        public System.Decimal InPUDisc9 { get; set; }
+        public System.Decimal InPUDisc10 { get; set; }
+        public System.Decimal InPUDisc11 { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.Decimal OutPUDisc1 { get; set; }
+        public System.Decimal OutPUDisc2 { get; set; }
+        public System.Decimal OutPUDisc3 { get; set; }
+        public System.Decimal OutPUDisc4 { get; set; }
+        public System.Decimal OutPUDisc5 { get; set; }
+        public System.Decimal OutPUDisc6 { get; set; }
+        public System.Decimal OutPUDisc7 { get; set; }
+        public System.Decimal OutPUDisc8 { get; set; }
+        public System.Decimal OutPUDisc9 { get; set; }
+        public System.Decimal OutPUDisc10 { get; set; }
+        public System.Decimal OutPUDisc11 { get; set; }
+    }
+
+    public class SPECIALFAREModels
+    {
+        public System.String Analyst { get; set; }
+        public System.String MarketCode { get; set; }
+        public System.String NDODesc { get; set; }
+        public System.String CodeDesc { get; set; }
+        public System.String InRoute { get; set; }
+        public System.String InFlightTimeGrp { get; set; }
+        public System.String InDepDOW { get; set; }
+        public System.String InAgentTier { get; set; }
+        public System.String InCurrency { get; set; }
+        public System.Decimal InLFFare1 { get; set; }
+        public System.Decimal InLFFare2 { get; set; }
+        public System.Decimal InLFFare3 { get; set; }
+        public System.Decimal InLFFare4 { get; set; }
+        public System.Decimal InLFFare5 { get; set; }
+        public System.Decimal InLFFare6 { get; set; }
+        public System.Decimal InLFFare7 { get; set; }
+        public System.Decimal InLFFare8 { get; set; }
+        public System.Decimal InLFFare9 { get; set; }
+        public System.Decimal InLFFare10 { get; set; }
+        public System.Decimal InLFFare11 { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.String OutFlightTimeGrp { get; set; }
+        public System.String OutDepDOW { get; set; }
+        public System.String OutAgentTier { get; set; }
+        public System.String OutCurrency { get; set; }
+        public System.Decimal OutLFFare1 { get; set; }
+        public System.Decimal OutLFFare2 { get; set; }
+        public System.Decimal OutLFFare3 { get; set; }
+        public System.Decimal OutLFFare4 { get; set; }
+        public System.Decimal OutLFFare5 { get; set; }
+        public System.Decimal OutLFFare6 { get; set; }
+        public System.Decimal OutLFFare7 { get; set; }
+        public System.Decimal OutLFFare8 { get; set; }
+        public System.Decimal OutLFFare9 { get; set; }
+        public System.Decimal OutLFFare10 { get; set; }
+        public System.Decimal OutLFFare11 { get; set; }
+    }
 }
