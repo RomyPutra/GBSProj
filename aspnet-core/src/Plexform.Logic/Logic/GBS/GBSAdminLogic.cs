@@ -4379,6 +4379,177 @@ namespace Plexform.GBS
         }
         #endregion
 
+        #region CODEMASTER
+        public class CodemasterInfo
+        {
+            protected System.String _CodeType = String.Empty;
+            protected System.String _Code = String.Empty;
+            private System.String _CodeDesc = String.Empty;
+            private System.Int32 _CodeSeq;
+            private System.Byte _SysCode;
+            private System.Guid _rowguid;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.Byte _IsHost;
+
+            #region properties
+            public System.String CodeType
+            {
+                get
+                {
+                    return _CodeType;
+                }
+
+                set
+                {
+                    _CodeType = value;
+                }
+            }
+
+            public System.String Code
+            {
+                get
+                {
+                    return _Code;
+                }
+
+                set
+                {
+                    _Code = value;
+                }
+            }
+
+            public System.String CodeDesc
+            {
+                get
+                {
+                    return _CodeDesc;
+                }
+
+                set
+                {
+                    _CodeDesc = value;
+                }
+            }
+
+            public System.Int32 CodeSeq
+            {
+                get
+                {
+                    return _CodeSeq;
+                }
+
+                set
+                {
+                    _CodeSeq = value;
+                }
+            }
+
+            public System.Byte SysCode
+            {
+                get
+                {
+                    return _SysCode;
+                }
+
+                set
+                {
+                    _SysCode = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.Byte IsHost
+            {
+                get
+                {
+                    return _IsHost;
+                }
+
+                set
+                {
+                    _IsHost = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetCodeMasterbyCodeType(string CodeType = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            String Filter = string.Empty;
+            try
+            {
+                if (CodeType != "")
+                    Filter = "WHERE CodeType = '" + CodeType + "'";
+                strSQL = "SELECT CodeType, Code, CodeDesc, CodeSeq FROM CODEMASTER " + Filter + " ORDER BY CodeSeq ASC";
+
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_MARKET does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
         #region Comunicate
         public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
         {
@@ -5092,6 +5263,34 @@ namespace Plexform.GBS
                             Analyst = dt.Rows[i]["Analyst"].ToString(),
                             InRoute = dt.Rows[i]["InRoute"].ToString(),
                             OutRoute = dt.Rows[i]["OutRoute"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
+        {
+            IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
+            CodemasterInfo Model = new CodemasterInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetCodeMasterbyCodeType(CodeType);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.CODEMASTERModels
+                        {
+                            CodeType = dt.Rows[i]["CodeType"].ToString(),
+                            Code = dt.Rows[i]["Code"].ToString(),
+                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
                         });
                     }
                 }

@@ -358,5 +358,62 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterLFDiscount()
+        {
+            IList<Plexform.Models.CODEMASTERModels> Scheme = new List<Plexform.Models.CODEMASTERModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetCodeMasterbyCodeTypeAll("LFD");
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.CODEMASTERModels>(
+                ObjectMapper.Map<List<Plexform.Models.CODEMASTERModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterPUDiscount()
+        {
+            IList<Plexform.Models.CODEMASTERModels> Scheme = new List<Plexform.Models.CODEMASTERModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetCodeMasterbyCodeTypeAll("PUD");
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.CODEMASTERModels>(
+                ObjectMapper.Map<List<Plexform.Models.CODEMASTERModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterLFFare()
+        {
+            IList<Plexform.Models.CODEMASTERModels> Scheme = new List<Plexform.Models.CODEMASTERModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetCodeMasterbyCodeTypeAll("LFF");
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.CODEMASTERModels>(
+                ObjectMapper.Map<List<Plexform.Models.CODEMASTERModels>>(Scheme),
+                Scheme.Count
+            );
+        }
     }
 }

@@ -129,6 +129,13 @@ namespace Plexform.Models
         public System.Decimal OutMaxDisc { get; set; }
     }
 
+    public class CODEMASTERModels
+    {
+        public System.String CodeType { get; set; }
+        public System.String Code { get; set; }
+        public System.String CodeDesc { get; set; }
+    }
+
     public class SEASONALITYModels
     {
         public System.String Analyst { get; set; }
