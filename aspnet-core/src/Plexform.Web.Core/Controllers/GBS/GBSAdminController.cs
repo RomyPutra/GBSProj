@@ -263,5 +263,24 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.LFDISCOUNTModels>> GetLFDiscountAll()
+        {
+            IList<Plexform.Models.LFDISCOUNTModels> Scheme = new List<Plexform.Models.LFDISCOUNTModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetLFDiscountAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.LFDISCOUNTModels>(
+                ObjectMapper.Map<List<Plexform.Models.LFDISCOUNTModels>>(Scheme),
+                Scheme.Count
+            );
+        }
     }
 }

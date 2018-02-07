@@ -164,4 +164,33 @@ namespace Plexform.Models
         public System.String OutFareClass { get; set; }
         public System.Decimal OutFloorFare { get; set; }
     }
+
+    public class LFDISCOUNTModels
+    {
+        public System.String Analyst { get; set; }
+        public System.String MarketCode { get; set; }
+        public System.String NDODesc { get; set; }
+        public System.String InRoute { get; set; }
+        public System.Decimal InLFDisc1 { get; set; }
+        public System.Decimal InLFDisc2 { get; set; }
+        public System.Decimal InLFDisc3 { get; set; }
+        public System.Decimal InLFDisc4 { get; set; }
+        public System.Decimal InLFDisc5 { get; set; }
+        public System.Decimal InLFDisc6 { get; set; }
+        public System.Decimal InLFDisc7 { get; set; }
+        public System.Decimal InLFDisc8 { get; set; }
+        public System.Decimal InLFDisc9 { get; set; }
+        public System.Decimal InLFDisc10 { get; set; }
+        public System.String OutRoute { get; set; }
+        public System.Decimal OutLFDisc1 { get; set; }
+        public System.Decimal OutLFDisc2 { get; set; }
+        public System.Decimal OutLFDisc3 { get; set; }
+        public System.Decimal OutLFDisc4 { get; set; }
+        public System.Decimal OutLFDisc5 { get; set; }
+        public System.Decimal OutLFDisc6 { get; set; }
+        public System.Decimal OutLFDisc7 { get; set; }
+        public System.Decimal OutLFDisc8 { get; set; }
+        public System.Decimal OutLFDisc9 { get; set; }
+        public System.Decimal OutLFDisc10 { get; set; }
+    }
 }

@@ -2567,6 +2567,513 @@ namespace Plexform.GBS
         }
         #endregion
 
+        #region LFDISCOUNT
+        public class LFDiscountInfo
+        {
+            protected System.String _MarketCode = String.Empty;
+            protected System.String _NDO = String.Empty;
+            private System.Decimal _InLFDisc1;
+            private System.Decimal _InLFDisc2;
+            private System.Decimal _InLFDisc3;
+            private System.Decimal _InLFDisc4;
+            private System.Decimal _InLFDisc5;
+            private System.Decimal _InLFDisc6;
+            private System.Decimal _InLFDisc7;
+            private System.Decimal _InLFDisc8;
+            private System.Decimal _InLFDisc9;
+            private System.Decimal _InLFDisc10;
+            private System.Decimal _OutLFDisc1;
+            private System.Decimal _OutLFDisc2;
+            private System.Decimal _OutLFDisc3;
+            private System.Decimal _OutLFDisc4;
+            private System.Decimal _OutLFDisc5;
+            private System.Decimal _OutLFDisc6;
+            private System.Decimal _OutLFDisc7;
+            private System.Decimal _OutLFDisc8;
+            private System.Decimal _OutLFDisc9;
+            private System.Decimal _OutLFDisc10;
+            private System.Guid _rowguid;
+            private System.Byte _Status;
+            private System.Byte _Inuse;
+            private System.DateTime _SyncCreate;
+            private System.DateTime _SyncLastUpd;
+            private System.String _LastSyncBy = String.Empty;
+            private System.DateTime _CreateDate;
+            private System.String _CreateBy = String.Empty;
+            private System.DateTime _UpdateDate;
+            private System.String _UpdateBy;
+            private System.Byte _Active;
+
+            #region properties
+            public System.String MarketCode
+            {
+                get
+                {
+                    return _MarketCode;
+                }
+
+                set
+                {
+                    _MarketCode = value;
+                }
+            }
+
+            public System.String NDO
+            {
+                get
+                {
+                    return _NDO;
+                }
+
+                set
+                {
+                    _NDO = value;
+                }
+            }
+
+            public System.Decimal InLFDisc1
+            {
+                get
+                {
+                    return _InLFDisc1;
+                }
+
+                set
+                {
+                    _InLFDisc1 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc2
+            {
+                get
+                {
+                    return _InLFDisc2;
+                }
+
+                set
+                {
+                    _InLFDisc2 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc3
+            {
+                get
+                {
+                    return _InLFDisc3;
+                }
+
+                set
+                {
+                    _InLFDisc3 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc4
+            {
+                get
+                {
+                    return _InLFDisc4;
+                }
+
+                set
+                {
+                    _InLFDisc4 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc5
+            {
+                get
+                {
+                    return _InLFDisc5;
+                }
+
+                set
+                {
+                    _InLFDisc5 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc6
+            {
+                get
+                {
+                    return _InLFDisc6;
+                }
+
+                set
+                {
+                    _InLFDisc6 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc7
+            {
+                get
+                {
+                    return _InLFDisc7;
+                }
+
+                set
+                {
+                    _InLFDisc7 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc8
+            {
+                get
+                {
+                    return _InLFDisc8;
+                }
+
+                set
+                {
+                    _InLFDisc8 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc9
+            {
+                get
+                {
+                    return _InLFDisc9;
+                }
+
+                set
+                {
+                    _InLFDisc9 = value;
+                }
+            }
+
+            public System.Decimal InLFDisc10
+            {
+                get
+                {
+                    return _InLFDisc10;
+                }
+
+                set
+                {
+                    _InLFDisc10 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc1
+            {
+                get
+                {
+                    return _OutLFDisc1;
+                }
+
+                set
+                {
+                    _OutLFDisc1 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc2
+            {
+                get
+                {
+                    return _OutLFDisc2;
+                }
+
+                set
+                {
+                    _OutLFDisc2 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc3
+            {
+                get
+                {
+                    return _OutLFDisc3;
+                }
+
+                set
+                {
+                    _OutLFDisc3 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc4
+            {
+                get
+                {
+                    return _OutLFDisc4;
+                }
+
+                set
+                {
+                    _OutLFDisc4 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc5
+            {
+                get
+                {
+                    return _OutLFDisc5;
+                }
+
+                set
+                {
+                    _OutLFDisc5 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc6
+            {
+                get
+                {
+                    return _OutLFDisc6;
+                }
+
+                set
+                {
+                    _OutLFDisc6 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc7
+            {
+                get
+                {
+                    return _OutLFDisc7;
+                }
+
+                set
+                {
+                    _OutLFDisc7 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc8
+            {
+                get
+                {
+                    return _OutLFDisc8;
+                }
+
+                set
+                {
+                    _OutLFDisc8 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc9
+            {
+                get
+                {
+                    return _OutLFDisc9;
+                }
+
+                set
+                {
+                    _OutLFDisc9 = value;
+                }
+            }
+
+            public System.Decimal OutLFDisc10
+            {
+                get
+                {
+                    return _OutLFDisc10;
+                }
+
+                set
+                {
+                    _OutLFDisc10 = value;
+                }
+            }
+
+            public System.Guid rowguid
+            {
+                get
+                {
+                    return _rowguid;
+                }
+
+                set
+                {
+                    _rowguid = value;
+                }
+            }
+
+            public System.Byte Status
+            {
+                get
+                {
+                    return _Status;
+                }
+
+                set
+                {
+                    _Status = value;
+                }
+            }
+
+            public System.Byte Inuse
+            {
+                get
+                {
+                    return _Inuse;
+                }
+
+                set
+                {
+                    _Inuse = value;
+                }
+            }
+
+            public System.DateTime SyncCreate
+            {
+                get
+                {
+                    return _SyncCreate;
+                }
+
+                set
+                {
+                    _SyncCreate = value;
+                }
+            }
+
+            public System.DateTime SyncLastUpd
+            {
+                get
+                {
+                    return _SyncLastUpd;
+                }
+
+                set
+                {
+                    _SyncLastUpd = value;
+                }
+            }
+
+            public System.String LastSyncBy
+            {
+                get
+                {
+                    return _LastSyncBy;
+                }
+
+                set
+                {
+                    _LastSyncBy = value;
+                }
+            }
+
+            public System.DateTime CreateDate
+            {
+                get
+                {
+                    return _CreateDate;
+                }
+
+                set
+                {
+                    _CreateDate = value;
+                }
+            }
+
+            public System.String CreateBy
+            {
+                get
+                {
+                    return _CreateBy;
+                }
+
+                set
+                {
+                    _CreateBy = value;
+                }
+            }
+
+            public System.DateTime UpdateDate
+            {
+                get
+                {
+                    return _UpdateDate;
+                }
+
+                set
+                {
+                    _UpdateDate = value;
+                }
+            }
+
+            public System.String UpdateBy
+            {
+                get
+                {
+                    return _UpdateBy;
+                }
+
+                set
+                {
+                    _UpdateBy = value;
+                }
+            }
+
+            public System.Byte Active
+            {
+                get
+                {
+                    return _Active;
+                }
+
+                set
+                {
+                    _Active = value;
+                }
+            }
+            #endregion
+        }
+        public DataTable GetLFDiscount()
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            try
+            {
+
+                strSQL = "SELECT M.Analyst, LD.MarketCode, N.NDODesc, M.InRoute, LD.InLFDisc1, LD.InLFDisc2, LD.InLFDisc3, LD.InLFDisc4, ";
+                strSQL += "LD.InLFDisc5, LD.InLFDisc6, LD.InLFDisc7, LD.InLFDisc8, LD.InLFDisc9, LD.InLFDisc10, M.OutRoute, LD.OutLFDisc1, ";
+                strSQL += "LD.OutLFDisc2, LD.OutLFDisc3, LD.OutLFDisc4, LD.OutLFDisc5, LD.OutLFDisc6, LD.OutLFDisc7, LD.OutLFDisc8, LD.OutLFDisc9, ";
+                strSQL += "LD.OutLFDisc10 FROM AD_LFDISCOUNT LD INNER JOIN AD_MARKET M ON LD.MarketCode = M.MarketCode INNER JOIN AD_NDO N ON LD.NDO = N.NDOCode";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_LFDISCOUNT does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
         #region Comunicate
         public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
 		{
@@ -3027,6 +3534,56 @@ namespace Plexform.GBS
                             OutDisc = (Decimal)dt.Rows[i]["OutDisc"],
                             OutFareClass = dt.Rows[i]["OutFareClass"].ToString(),
                             OutFloorFare = (Decimal)dt.Rows[i]["OutFloorFare"]
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.LFDISCOUNTModels>> GetLFDiscountAll()
+        {
+            IList<Plexform.Models.LFDISCOUNTModels> list = new List<Plexform.Models.LFDISCOUNTModels>();
+            LFDiscountInfo Model = new LFDiscountInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetLFDiscount();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.LFDISCOUNTModels
+                        {
+                            Analyst = dt.Rows[i]["Analyst"].ToString(),
+                            MarketCode = dt.Rows[i]["MarketCode"].ToString(),
+                            NDODesc = dt.Rows[i]["NDODesc"].ToString(),
+                            InRoute = dt.Rows[i]["InRoute"].ToString(),
+                            InLFDisc1 = (Decimal)dt.Rows[i]["InDisc1"],
+                            InLFDisc2 = (Decimal)dt.Rows[i]["InDisc2"],
+                            InLFDisc3 = (Decimal)dt.Rows[i]["InDisc3"],
+                            InLFDisc4 = (Decimal)dt.Rows[i]["InDisc4"],
+                            InLFDisc5 = (Decimal)dt.Rows[i]["InDisc5"],
+                            InLFDisc6 = (Decimal)dt.Rows[i]["InDisc6"],
+                            InLFDisc7 = (Decimal)dt.Rows[i]["InDisc7"],
+                            InLFDisc8 = (Decimal)dt.Rows[i]["InDisc8"],
+                            InLFDisc9 = (Decimal)dt.Rows[i]["InDisc9"],
+                            InLFDisc10 = (Decimal)dt.Rows[i]["InDisc10"],
+                            OutRoute = dt.Rows[i]["OutRoute"].ToString(),
+                            OutLFDisc1 = (Decimal)dt.Rows[i]["OutDisc1"],
+                            OutLFDisc2 = (Decimal)dt.Rows[i]["OutDisc2"],
+                            OutLFDisc3 = (Decimal)dt.Rows[i]["OutDisc3"],
+                            OutLFDisc4 = (Decimal)dt.Rows[i]["OutDisc4"],
+                            OutLFDisc5 = (Decimal)dt.Rows[i]["OutDisc5"],
+                            OutLFDisc6 = (Decimal)dt.Rows[i]["OutDisc6"],
+                            OutLFDisc7 = (Decimal)dt.Rows[i]["OutDisc7"],
+                            OutLFDisc8 = (Decimal)dt.Rows[i]["OutDisc8"],
+                            OutLFDisc9 = (Decimal)dt.Rows[i]["OutDisc9"],
+                            OutLFDisc10 = (Decimal)dt.Rows[i]["OutDisc10"]
                         });
                     }
                 }
