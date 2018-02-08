@@ -116,7 +116,7 @@
 <br>
 <div *ngIf="divview" style="border-radius: 25px;padding: 20px;background:white;">
   <label>Currency</label><span> </span><label>{{review.currencyCode}}</label>
-  <button style="float:right;" (click)="blur($event)">Close</button>
+  <button style="float:right;" (click)="blur()">Close</button>
   <br>
   <label>Departure date</label><span> </span>
   <label *ngIf="(review.schemeCode === 'B3M')">more than 90 days</label>
@@ -145,6 +145,28 @@
   <br>
   <label>Maximal deposit =</label><span> </span>
   <label>{{review.maxDeposit}}</label><span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <br>
+  <h4>Example:</h4>
+  <br>
+  <label>Amount Due =</label><span> </span>
+  <input id="amount" type="number" (blur)="test($event.currentTarget.value, review.minDeposit, review.maxDeposit)" />
+  <span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <label>Immediate payment (30% of base fare) =</label><span> </span><label>{{fare}}</label>
+  <span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <label>Payment schedule 1<sup>st</sup> =</label><span> </span><label>{{ps1}}</label>
+  <span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <div *ngIf="divview1">
+    <label>Payment schedule 2<sup>nd</sup> =</label><span> </span><label>{{ps2}}</label>
+    <span> </span><label>{{review.currencyCode}}</label>
+  </div>
+  <div *ngIf="divview2">
+    <label>Payment schedule 3<sup>rd</sup> =</label><span> </span><label>{{ps3}}</label>  
+    <span> </span><label>{{review.currencyCode}}</label>
+  </div>
 </div>
 
 <!-- <update-payscheme-modal #updatePayschemeModal (modalSave)="refresh()"></update-payscheme-modal> -->

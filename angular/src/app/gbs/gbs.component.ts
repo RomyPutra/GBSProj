@@ -29,6 +29,10 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 	paytype: GbsPayType[];
 	hold: number = 0;
 	hold1: number = 1;
+	fare: number;
+	ps1: number;
+	ps2: number;
+	ps3: number;
 
 	constructor(
 		injector: Injector,
@@ -156,12 +160,47 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 		}
 	}
 
-	protected blur(e: Event) {
-		console.log(e);
+	test(amount: number, min: number, max: number) {
+		this.fare = 0;
+		this.ps1 = 0;
+		this.ps2 = 0;
+		this.ps3 = 0;
+		this.fare = amount * (30 / 100);
+		if ((this.fare * 0.1) < min && this.divview1 === true)
+		{
+			this.ps1 = min;
+		}
+		else if ((this.fare * 0.1) > max && this.divview1 === true)
+		{
+			this.ps1 = max;
+		}
+		else if ((this.fare * 0.1) <= max && (this.fare * 0.1) >= min && this.divview1 === true)
+		{
+			this.ps1 = (this.fare * 0.1);
+		}
+		else if (this.divview1 === false)
+		{
+			this.ps1 = amount;
+		}
+
+		if ((this.fare - this.ps1) >= max && this.divview2 === true)
+		{
+			this.ps2 = max;
+			this.ps3 = (amount - this.ps1 - this.ps2);
+		}
+		else if ((this.fare - this.ps1) < max && this.divview2 === true)
+		{
+			this.ps2 = (this.fare - this.ps1);
+			this.ps3 = (amount - this.ps1 - this.ps2);
+		}
+		else if (this.divview1 === true && this.divview2 === false)
+		{
+			this.ps2 = (amount - this.ps1);
+		}
+		// alert('F =' + this.fare + ', P1 =' + this.ps1 + ', P2 =' + this.ps2 + ', P3 =' + this.ps3)
+    }
+
+	protected blur() {
 		this.divview = false;
 	}
-
-	// viewDetail(): void {
-    //     this.updatePayschemeModal.show(5, 1);
-    // }
 }
