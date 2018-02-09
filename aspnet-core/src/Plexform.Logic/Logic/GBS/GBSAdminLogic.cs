@@ -4548,6 +4548,197 @@ namespace Plexform.GBS
                 return null;
             }
         }
+        public bool SaveAllCodeMaster(CodemasterInfo pCodeMaster)
+        {
+            objSQL.ClearFields();
+            objSQL.ClearCondtions();
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                objSQL.AddField("CodeType", pCodeMaster.CodeType, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("Code", pCodeMaster.Code, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("CodeDesc", pCodeMaster.CodeDesc, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("CodeSeq", pCodeMaster.CodeSeq, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SysCode", pCodeMaster.SysCode, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncCreate", pCodeMaster.SyncCreate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncLastUpd", pCodeMaster.SyncLastUpd, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("IsHost", pCodeMaster.IsHost, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = '" + pCodeMaster.Code + "'");
+
+                lstSQL.Add(strSQL);
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region SYS_PREFT
+        public class SYS_PREFTInfo
+        {
+            private short _appID;
+            private string _GRPID = String.Empty;
+            private string _sYSKey = String.Empty;
+            private string _sYSDesc = String.Empty;
+
+            private string _sYSValue = String.Empty;
+            private string _sYSValueEx = String.Empty;
+            private byte _sYSSet;
+            private Guid _rowguid = Guid.Empty;
+            private DateTime _syncCreate;
+            private DateTime _syncLastUpd;
+            private byte _isHost;
+            private string _lastSyncBy = String.Empty;
+
+            #region Public Properties
+            public short AppID
+            {
+                get { return _appID; }
+                set { _appID = value; }
+            }
+            public string GRPID
+            {
+                get { return _GRPID; }
+                set { _GRPID = value; }
+            }
+            public string SYSKey
+            {
+                get { return _sYSKey; }
+                set { _sYSKey = value; }
+            }
+            public string SYSDesc
+            {
+                get { return _sYSDesc; }
+                set { _sYSDesc = value; }
+            }
+            public string SYSValue
+            {
+                get { return _sYSValue; }
+                set { _sYSValue = value; }
+            }
+
+            public string SYSValueEx
+            {
+                get { return _sYSValueEx; }
+                set { _sYSValueEx = value; }
+            }
+
+            public byte SYSSet
+            {
+                get { return _sYSSet; }
+                set { _sYSSet = value; }
+            }
+
+            public Guid rowguid
+            {
+                get { return _rowguid; }
+                set { _rowguid = value; }
+            }
+
+            public DateTime SyncCreate
+            {
+                get { return _syncCreate; }
+                set { _syncCreate = value; }
+            }
+
+            public DateTime SyncLastUpd
+            {
+                get { return _syncLastUpd; }
+                set { _syncLastUpd = value; }
+            }
+
+            public byte IsHost
+            {
+                get { return _isHost; }
+                set { _isHost = value; }
+            }
+
+            public string LastSyncBy
+            {
+                get { return _lastSyncBy; }
+                set { _lastSyncBy = value; }
+            }
+            #endregion
+        }
+        public DataTable GetSYSPreftbyKey(string SYSKey = "")
+        {
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+            String Filter = string.Empty;
+            try
+            {
+                strSQL = "SELECT SYSKey, SYSValue, SYSValueEx FROM SYS_PREFT WHERE SYSKey = '" + SYSKey + "'";
+
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("AD_MARKET does not exist.");
+                    }
+                }
+                //return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool SaveSYS_PREFTrestrict(SYS_PREFTInfo pSYS_PREFT_Info)
+        {
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                objSQL.AddField("GRPID", pSYS_PREFT_Info.GRPID, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SYSKey", pSYS_PREFT_Info.SYSKey, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SYSValue", pSYS_PREFT_Info.SYSValue, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SYSValueEx", pSYS_PREFT_Info.SYSValueEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SYSSet", pSYS_PREFT_Info.SYSSet, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncCreate", pSYS_PREFT_Info.SyncCreate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncLastUpd", pSYS_PREFT_Info.SyncLastUpd, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("IsHost", pSYS_PREFT_Info.IsHost, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("LastSyncBy", pSYS_PREFT_Info.LastSyncBy, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYS_PREFT.SYSKey='" + pSYS_PREFT_Info.SYSKey + "'");
+
+                lstSQL.Add(strSQL);
+
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Comunicate
@@ -5300,6 +5491,62 @@ namespace Plexform.GBS
                 var temp = ex.ToString();
             }
             return await Task.FromResult(list);
+        }
+
+        public async Task<IList<Plexform.Models.SYSPREFTModels>> GetSYSPreftbySYSKeyAll(string SYSKey = "")
+        {
+            IList<Plexform.Models.SYSPREFTModels> list = new List<Plexform.Models.SYSPREFTModels>();
+            SYS_PREFTInfo Model = new SYS_PREFTInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetSYSPreftbyKey(SYSKey);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.SYSPREFTModels
+                        {
+                            SYSKey = dt.Rows[i]["SYSKey"].ToString(),
+                            SYSValue = dt.Rows[i]["SYSValue"].ToString(),
+                            SYSValueEx = dt.Rows[i]["SYSValueEx"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
+        {
+            var res = false;
+            try
+            {
+                res = SaveAllCodeMaster(pCodemaster);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
+
+        public Task<bool> UpdateSYSPreft(SYS_PREFTInfo pSYSPreft)
+        {
+            var res = false;
+            try
+            {
+                res = SaveSYS_PREFTrestrict(pSYSPreft);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
         }
         #endregion
     }

@@ -415,5 +415,98 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterRestriction()
+        {
+            IList<Plexform.Models.CODEMASTERModels> Scheme = new List<Plexform.Models.CODEMASTERModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetCodeMasterbyCodeTypeAll("RST");
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.CODEMASTERModels>(
+                ObjectMapper.Map<List<Plexform.Models.CODEMASTERModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.SYSPREFTModels>> GetSYSPreftRestrictionNote()
+        {
+            IList<Plexform.Models.SYSPREFTModels> Scheme = new List<Plexform.Models.SYSPREFTModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetSYSPreftbySYSKeyAll("RESTRICTIONNOTE");
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.SYSPREFTModels>(
+                ObjectMapper.Map<List<Plexform.Models.SYSPREFTModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.SYSPREFTModels>> GetSYSPreftRestrictionAlert()
+        {
+            IList<Plexform.Models.SYSPREFTModels> Scheme = new List<Plexform.Models.SYSPREFTModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetSYSPreftbySYSKeyAll("RESTRICTIONALERT");
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.SYSPREFTModels>(
+                ObjectMapper.Map<List<Plexform.Models.SYSPREFTModels>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpPut]
+        public async Task<bool> UpdateCodeMaster([FromBody]GBS.GBSAdminLogic.CodemasterInfo input)
+        {
+            bool res = false;
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+
+                res = await repo.UpdateCodeMaster(input);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+
+            return ObjectMapper.Map<bool>(res);
+        }
+
+        [HttpPut]
+        public async Task<bool> UpdateSYSPreft([FromBody]GBS.GBSAdminLogic.SYS_PREFTInfo input)
+        {
+            bool res = false;
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+
+                res = await repo.UpdateSYSPreft(input);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+
+            return ObjectMapper.Map<bool>(res);
+        }
     }
 }

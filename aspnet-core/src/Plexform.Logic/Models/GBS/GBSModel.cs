@@ -129,13 +129,6 @@ namespace Plexform.Models
         public System.Decimal OutMaxDisc { get; set; }
     }
 
-    public class CODEMASTERModels
-    {
-        public System.String CodeType { get; set; }
-        public System.String Code { get; set; }
-        public System.String CodeDesc { get; set; }
-    }
-
     public class SEASONALITYModels
     {
         public System.String Analyst { get; set; }
@@ -271,4 +264,20 @@ namespace Plexform.Models
         public System.Decimal OutLFFare10 { get; set; }
         public System.Decimal OutLFFare11 { get; set; }
     }
+
+    public class CODEMASTERModels
+    {
+        public System.String CodeType { get; set; }
+        public System.String Code { get; set; }
+        public System.String CodeDesc { get; set; }
+    }
+
+    public class SYSPREFTModels
+    {
+        public System.String SYSKey { get; set; }
+        public System.String SYSValue { get; set; }
+        public System.String SYSValueEx { get; set; }
+    }
+
+
 }
