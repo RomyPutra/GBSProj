@@ -17,6 +17,7 @@ export class AppPreBootstrap {
 
     private static getApplicationConfig(callback: () => void) {
         return abp.ajax({
+            // url: '/GBS-UI/assets/appconfig.json',
             url: '/assets/appconfig.json',
             method: 'GET',
             headers: {

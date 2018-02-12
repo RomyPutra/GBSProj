@@ -124,7 +124,7 @@ import { FloorfareComponent } from './floorfare/floorfare.component';
         SeasonalityComponent,
         DiscweightageComponent,
         FloorfareComponent
-    ],
+],
     imports: [
         CommonModule,
         FormsModule,
