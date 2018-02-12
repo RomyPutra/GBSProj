@@ -64,6 +64,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { SeasonalityComponent } from './seasonality/seasonality.component';
 import { DiscweightageComponent } from './discweightage/discweightage.component';
 import { FloorfareComponent } from './floorfare/floorfare.component';
+import { CreateRestrictionComponent } from './restriction/restriction.component';
 
 @NgModule({
     declarations: [
@@ -123,7 +124,8 @@ import { FloorfareComponent } from './floorfare/floorfare.component';
         DiscountComponent,
         SeasonalityComponent,
         DiscweightageComponent,
-        FloorfareComponent
+        FloorfareComponent,
+        CreateRestrictionComponent
     ],
     imports: [
         CommonModule,
