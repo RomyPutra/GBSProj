@@ -1,19 +1,17 @@
-import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit } from '@angular/core';
+import { Component, Injector, ViewChild, OnInit } from '@angular/core';
+import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { ModalDirective } from 'ngx-bootstrap';
 import { GetRestrictionServiceProxy } from '@shared/service-proxies/proxy-restriction';
 import { RestrictionDto } from '@shared/models/model-restriction';
 import { AppComponentBase } from '@shared/app-component-base';
 
 @Component({
-    templateUrl: './restriction.component.html'
+    templateUrl: './restriction.component.html',
+	animations: [appModuleAnimation()]
 })
-export class CreateRestrictionComponent extends AppComponentBase implements OnInit {
-
-    @ViewChild('createRestrictionModal') modal: ModalDirective;
-    @ViewChild('modalContent') modalContent: ElementRef;
-
-    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
-
+export class RestrictionComponent extends AppComponentBase implements OnInit {
+    test: any[] = [];
+    
     constructor(
         injector: Injector,
         private _restrictionService: GetRestrictionServiceProxy
@@ -22,24 +20,11 @@ export class CreateRestrictionComponent extends AppComponentBase implements OnIn
     }
 
     ngOnInit(): void {
-        // this._userService.getRoles()
-        // .subscribe((result) => {
-        //     this.roles = result.items;
-        // });
+        this._restrictionService.getRestriction()
+        .subscribe((result) => {
+            this.test = result.items;
+        });
     }
-
-    //show(): void {
-    //    this.active = true;
-    //    this.modal.show();
-    //    this.confirmPassword = '';
-    //    this.selectedAccessCode = '';
-    //    this.country = new CountryDto();
-    //    this.country.init({ isActive: true });
-    //}
-
-    //onShown(): void {
-    //    $.AdminBSB.input.activate($(this.modalContent.nativeElement));
-    //}
 
     //save(): void {
     //    this.saving = true;

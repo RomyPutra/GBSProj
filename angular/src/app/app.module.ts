@@ -14,7 +14,7 @@ import { FileDropModule } from 'ngx-file-drop';
 import { PlexLoadingComponent } from '@shared/layout/custom/plex-loading.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatStepperModule, MatAutocompleteModule,
-         MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
+         MatSelectModule, MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { UploadComponent } from './upload/upload.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 // import { TopBarComponent } from '@app/layout/topbar.component';
@@ -64,7 +64,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { SeasonalityComponent } from './seasonality/seasonality.component';
 import { DiscweightageComponent } from './discweightage/discweightage.component';
 import { FloorfareComponent } from './floorfare/floorfare.component';
-import { CreateRestrictionComponent } from './restriction/restriction.component';
+import { RestrictionComponent } from './restriction/restriction.component';
 
 @NgModule({
     declarations: [
@@ -125,7 +125,7 @@ import { CreateRestrictionComponent } from './restriction/restriction.component'
         SeasonalityComponent,
         DiscweightageComponent,
         FloorfareComponent,
-        CreateRestrictionComponent
+        RestrictionComponent
 ],
     imports: [
         CommonModule,
@@ -150,7 +150,9 @@ import { CreateRestrictionComponent } from './restriction/restriction.component'
         MatSelectModule,
         MatProgressSpinnerModule,
         FileDropModule,
-        ClickOutsideModule
+        ClickOutsideModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     providers: [
 

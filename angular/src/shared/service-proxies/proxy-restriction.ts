@@ -29,8 +29,8 @@ export class GetRestrictionServiceProxy {
     /**
      * @return Success
      */
-    getRestriction(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfRestrictionDto> {
-        let url_ = this.baseUrl + '/api/GBSAdmin/GetCodeMasterRestriction';
+    getRestriction(): Observable<PagedResultDtoOfRestrictionDto> {
+        let url_ = this.baseUrl + '/api/GBSAdmin/GetRestriction';
 
         url_ = url_.replace(/[?&]$/, '');
 

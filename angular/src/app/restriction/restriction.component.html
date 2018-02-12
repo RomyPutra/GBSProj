@@ -19,12 +19,22 @@
                             <td>{{l('Booking Period')}}</td>
                             <td>{{l('From :')}}</td>
                             <td>
-                                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                <mat-form-field>
+                                    <input [(ngModel)]="a" matInput id="BookStrDate" formControlName="BookStrDate" placeholder="Start Date" [matDatepicker]="BookStrDate">
+                                    <mat-datepicker-toggle matSuffix [for]="BookStrDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #BookStrDate disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
                                     <mat-datepicker #picker></mat-datepicker>-->
                             </td>
                             <td>{{l('To :')}}</td>
                             <td>
-                                        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                <mat-form-field>
+                                    <input [(ngModel)]="b" matInput id="BookEndDate" formControlName="BookEndDate" placeholder="End Date" [matDatepicker]="BookEndDate">
+                                    <mat-datepicker-toggle matSuffix [for]="BookEndDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #BookEndDate disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
                                         <mat-datepicker #picker></mat-datepicker>-->
                             </td>
                         </tr>
@@ -32,12 +42,22 @@
                                 <td>{{l('Travel Period')}}</td>
                                 <td>{{l('From :')}}</td>
                                 <td>
-                                        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                    <mat-form-field>
+                                        <input [(ngModel)]="c" matInput id="TravelStrDate" formControlName="TravelStrDate" placeholder="Start Date" [matDatepicker]="TravelStrDate">
+                                        <mat-datepicker-toggle matSuffix [for]="TravelStrDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #TravelStrDate disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
                                         <mat-datepicker #picker></mat-datepicker>-->
                                 </td>
                                 <td>{{l('To :')}}</td>
                                 <td>
-                                            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                    <mat-form-field>
+                                        <input [(ngModel)]="d" matInput id="TravelEndDate" formControlName="TravelEndDate" placeholder="End Date" [matDatepicker]="TravelEndDate">
+                                        <mat-datepicker-toggle matSuffix [for]="TravelEndDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #TravelEndDate disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
                                             <mat-datepicker #picker></mat-datepicker>-->
                                 </td>
                             </tr>

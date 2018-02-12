@@ -4739,10 +4739,10 @@ namespace Plexform.GBS
                 return false;
             }
         }
-        #endregion
+		#endregion
 
-        #region Comunicate
-        public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
+		#region Comunicate
+		public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
         {
             IList<Plexform.Models.CountryModels> list = new List<Plexform.Models.CountryModels>();
             PaymentInfo Model = new PaymentInfo();
@@ -5465,63 +5465,116 @@ namespace Plexform.GBS
             return await Task.FromResult(list);
         }
 
-        public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
-        {
-            IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
-            CodemasterInfo Model = new CodemasterInfo();
-            DataTable dt;
-            try
-            {
-                dt = GetCodeMasterbyCodeType(CodeType);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        list.Add(new Models.CODEMASTERModels
-                        {
-                            CodeType = dt.Rows[i]["CodeType"].ToString(),
-                            Code = dt.Rows[i]["Code"].ToString(),
-                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
-            return await Task.FromResult(list);
-        }
+		public async Task<IList<Plexform.Models.RestrictionModels>> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
+		{
+			IList<Plexform.Models.RestrictionModels> list = new List<Plexform.Models.RestrictionModels>();
+			DataTable dtMaster, dtPreft1, dtPreft2;
+			try
+			{
+				dtMaster = GetCodeMasterbyCodeType(CodeType);
+				if (dtMaster != null && dtMaster.Rows.Count > 0)
+				{
+					for (int i = 0; i < dtMaster.Rows.Count; i++)
+					{
+						list.Add(new Models.RestrictionModels
+						{
+							CodeType = dtMaster.Rows[i]["CodeType"].ToString(),
+							Code = dtMaster.Rows[i]["Code"].ToString(),
+							CodeDesc = dtMaster.Rows[i]["CodeDesc"].ToString()
+						});
+					}
+				}
+				dtPreft1 = GetSYSPreftbyKey(SYSKey1);
+				if (dtPreft1 != null && dtPreft1.Rows.Count > 0)
+				{
+					for (int i = 0; i < dtPreft1.Rows.Count; i++)
+					{
+						list.Add(new Models.RestrictionModels
+						{
+							SYSKey1 = dtPreft1.Rows[i]["SYSKey"].ToString(),
+							SYSValue1 = dtPreft1.Rows[i]["SYSValue"].ToString(),
+							SYSValueEx1 = dtPreft1.Rows[i]["SYSValueEx"].ToString()
+						});
+					}
+				}
+				dtPreft2 = GetSYSPreftbyKey(SYSKey2);
+				if (dtPreft2 != null && dtPreft2.Rows.Count > 0)
+				{
+					for (int i = 0; i < dtPreft2.Rows.Count; i++)
+					{
+						list.Add(new Models.RestrictionModels
+						{
+							SYSKey2 = dtPreft2.Rows[i]["SYSKey"].ToString(),
+							SYSValue2 = dtPreft2.Rows[i]["SYSValue"].ToString(),
+							SYSValueEx2 = dtPreft2.Rows[i]["SYSValueEx"].ToString()
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(list);
+		}
 
-        public async Task<IList<Plexform.Models.SYSPREFTModels>> GetSYSPreftbySYSKeyAll(string SYSKey = "")
-        {
-            IList<Plexform.Models.SYSPREFTModels> list = new List<Plexform.Models.SYSPREFTModels>();
-            SYS_PREFTInfo Model = new SYS_PREFTInfo();
-            DataTable dt;
-            try
-            {
-                dt = GetSYSPreftbyKey(SYSKey);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        list.Add(new Models.SYSPREFTModels
-                        {
-                            SYSKey = dt.Rows[i]["SYSKey"].ToString(),
-                            SYSValue = dt.Rows[i]["SYSValue"].ToString(),
-                            SYSValueEx = dt.Rows[i]["SYSValueEx"].ToString()
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
-            return await Task.FromResult(list);
-        }
+		public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
+		{
+			IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
+			CodemasterInfo Model = new CodemasterInfo();
+			DataTable dt;
+			try
+			{
+				dt = GetCodeMasterbyCodeType(CodeType);
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						list.Add(new Models.CODEMASTERModels
+						{
+							CodeType = dt.Rows[i]["CodeType"].ToString(),
+							Code = dt.Rows[i]["Code"].ToString(),
+							CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(list);
+		}
 
-        public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
+		//      public async Task<IList<Plexform.Models.SYSPREFTModels>> GetSYSPreftbySYSKeyAll(string SYSKey = "")
+		//      {
+		//          IList<Plexform.Models.SYSPREFTModels> list = new List<Plexform.Models.SYSPREFTModels>();
+		//          SYS_PREFTInfo Model = new SYS_PREFTInfo();
+		//          DataTable dt;
+		//          try
+		//          {
+		//              dt = GetSYSPreftbyKey(SYSKey);
+		//              if (dt != null && dt.Rows.Count > 0)
+		//              {
+		//                  for (int i = 0; i < dt.Rows.Count; i++)
+		//                  {
+		//                      list.Add(new Models.SYSPREFTModels
+		//                      {
+		//                          SYSKey = dt.Rows[i]["SYSKey"].ToString(),
+		//                          SYSValue = dt.Rows[i]["SYSValue"].ToString(),
+		//                          SYSValueEx = dt.Rows[i]["SYSValueEx"].ToString()
+		//                      });
+		//                  }
+		//              }
+		//          }
+		//          catch (Exception ex)
+		//          {
+		//              var temp = ex.ToString();
+		//          }
+		//          return await Task.FromResult(list);
+		//      }
+
+		public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
         {
             var res = false;
             try
