@@ -26,6 +26,7 @@ import { GetCapacityServiceProxy } from './proxy-capacity';
 import { GetDiscWeightageServiceProxy } from './proxy-discweightage';
 import { GetFloorFareServiceProxy } from './proxy-floorfare';
 import { GetSeasonalityServiceProxy } from './proxy-seasonality';
+import { GetRestrictionServiceProxy } from './proxy-restriction';
 
 @NgModule({
     providers: [
@@ -69,6 +70,7 @@ import { GetSeasonalityServiceProxy } from './proxy-seasonality';
         GetDiscWeightageServiceProxy,
         GetFloorFareServiceProxy,
         GetSeasonalityServiceProxy,
+        GetRestrictionServiceProxy
     ]
 })
 export class ServiceProxyModule { }
