@@ -183,20 +183,21 @@ export class GBSComponent extends PagedListingComponentBase<GBSDto> {
 			this.ps1 = amount;
 		}
 
-		if ((this.fare - this.ps1) >= max && this.divview2 === true)
+		if (this.divview2 === true)
 		{
-			this.ps2 = max;
+			this.ps2 = (this.fare * 0.9);
 			this.ps3 = (amount - this.ps1 - this.ps2);
 		}
-		else if ((this.fare - this.ps1) < max && this.divview2 === true)
-		{
-			this.ps2 = (this.fare - this.ps1);
-			this.ps3 = (amount - this.ps1 - this.ps2);
-		}
+		//else if ((this.fare - this.ps1) < max && this.divview2 === true)
+		//{
+		//	this.ps2 = (this.fare - this.ps1);
+		//	this.ps3 = (amount - this.ps1 - this.ps2);
+		//}
 		else if (this.divview1 === true && this.divview2 === false)
 		{
 			this.ps2 = (amount - this.ps1);
 		}
+		
 		// alert('F =' + this.fare + ', P1 =' + this.ps1 + ', P2 =' + this.ps2 + ', P3 =' + this.ps3)
     }
 

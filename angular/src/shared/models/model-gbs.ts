@@ -131,6 +131,7 @@ export class GBSDto implements IGBSDto {
     maxDeposit: number;
     minDeposit2: number;
     maxDeposit2: number;
+    depositValue: number;
     // prevCountry: string;
 
 
@@ -172,6 +173,7 @@ export class GBSDto implements IGBSDto {
             this.maxDeposit = data['maxDeposit'];
             this.minDeposit2 = data['minDeposit2'];
             this.maxDeposit2 = data['maxDeposit2'];
+            this.depositValue = data['depositValue'];
             // this.prevCountry = data['prevCountry'];
         }
     }
@@ -198,6 +200,7 @@ export class GBSDto implements IGBSDto {
         data['maxDeposit'] = this.maxDeposit;
         data['minDeposit2'] = this.minDeposit2;
         data['maxDeposit2'] = this.maxDeposit2;
+        data['depositValue'] = this.depositValue;
         // data['prevCountry'] = this.prevCountry;
     return data;
     }
@@ -231,6 +234,7 @@ export interface IGBSDto {
     maxDeposit: number;
     minDeposit2: number;
     maxDeposit2: number;
+    depositValue: number;
     // prevCountry: string;
 }
 

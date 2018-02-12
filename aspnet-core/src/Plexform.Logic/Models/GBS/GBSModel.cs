@@ -38,8 +38,9 @@ namespace Plexform.Models
 		public long MaxDeposit { get; set; }
 		public long MinDeposit2 { get; set; }
 		public long MaxDeposit2 { get; set; }
-		//public string PrevCountry { get; set; }
-	}
+        public long DepositValue { get; set; }
+        //public string PrevCountry { get; set; }
+    }
 	public class CountryModels
 	{
 		public string CountryCode { get; set; }

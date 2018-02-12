@@ -78,6 +78,7 @@ namespace Plexform.GBS
             private int _maxdeposit;
             private int _mindeposit2;
             private int _maxdeposit2;
+            private int _depositvalue;
             //private string _prevcountry;
 
             #region Public Properties
@@ -335,6 +336,12 @@ namespace Plexform.GBS
                 set { _maxdeposit2 = value; }
             }
 
+            public int DepositValue
+            {
+                get { return _depositvalue; }
+                set { _depositvalue = value; }
+            }
+
             //public string PrevCountry
             //{
             //	get { return _prevcountry; }
@@ -370,7 +377,7 @@ namespace Plexform.GBS
             List<string> lstFields = new List<string>();
 
             String strJoint = string.Empty;
-            strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.Currency) Currency FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode) D ";
+            strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.DepositValue) DepositValue, MAX(D.Currency) Currency FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode) D ";
             //strJoint = "OUTER APPLY (SELECT MAX(D.MinDeposit) MinDeposit, MAX(D.MaxDeposit) MaxDeposit, MAX(D.MinDeposit2) MinDeposit2, MAX(D.MaxDeposit2) MaxDeposit2, MAX(D.Currency) Currency, MAX(D.PREVCOUNTRY) PrevCountry FROM Depoduration D WHERE D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode AND D.PREVCOUNTRY = DEPOPAYSCHEME.PREVCOUNTRY) D ";
 
             DateTime bookingDate = Convert.ToDateTime("1900-01-01");
@@ -426,6 +433,7 @@ namespace Plexform.GBS
                 lstFields.Add("D.MaxDeposit");
                 lstFields.Add("D.MinDeposit2");
                 lstFields.Add("D.MaxDeposit2");
+                lstFields.Add("D.DepositValue");
                 //lstFields.Add("D.PrevCountry");
 
                 strFields = GetSqlFields(lstFields);
@@ -490,7 +498,7 @@ namespace Plexform.GBS
                     //strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "DEPOPAYSCHEME", "DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "' AND DEPOPAYSCHEME.PrevCountry='" + xInfo.PrevCountry + "'");
                     lstSQL.Add(strSQL);
 
-                    strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'";
+                    strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "', DEPODURATION.DepositValue = '" + xInfo.DepositValue + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "'";
                     //strSQL = "UPDATE DEPODURATION SET DEPODURATION.Currency = '" + xInfo.CurrencyCode + "', DEPODURATION.MinDeposit = '" + xInfo.Mindeposit + "', DEPODURATION.MaxDeposit = '" + xInfo.Maxdeposit + "', DEPODURATION.MinDeposit2 = '" + xInfo.Mindeposit2 + "', DEPODURATION.MaxDeposit2 = '" + xInfo.Maxdeposit2 + "', DEPODURATION.PrevCountry = '" + xInfo.PrevCountry + "' FROM DEPOPAYSCHEME inner join Depoduration D ON D.GroupCode = DEPOPAYSCHEME.GRPID And D.Currency = DEPOPAYSCHEME.CurrencyCode And D.PrevCountry = DEPOPAYSCHEME.PrevCountry WHERE DEPOPAYSCHEME.GRPID='" + xInfo.GRPID + "' AND DEPOPAYSCHEME.CountryCode='" + xInfo.CountryCode + "' AND DEPOPAYSCHEME.SchemeCode='" + xInfo.SchemeCode + "' AND DEPOPAYSCHEME.PrevCountry='" + xInfo.PrevCountry + "'";
                     lstSQL.Add(strSQL);
                 }
@@ -4783,7 +4791,7 @@ namespace Plexform.GBS
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         string Currency = "";
-                        int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
+                        int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0, xDepositValue = 0;
                         if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
                         {
                             Currency = dt.Rows[i]["Currency"].ToString();
@@ -4791,6 +4799,7 @@ namespace Plexform.GBS
                             xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
                             xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
                             xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
+                            xDepositValue = Convert.ToInt32(dt.Rows[i]["DepositValue"]);
                         };
                         list.Add(new Models.PaymentSchemeModels
                         {
@@ -4805,6 +4814,7 @@ namespace Plexform.GBS
                             MaxDeposit = xMaxDeposit,
                             MinDeposit2 = xMinDeposit2,
                             MaxDeposit2 = xMaxDeposit2,
+                            DepositValue = xDepositValue,
                             Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
                             Code_1 = dt.Rows[i]["Code_1"].ToString(),
                             Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
@@ -4839,7 +4849,7 @@ namespace Plexform.GBS
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         string Currency = "";
-                        int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0;
+                        int xMinDeposit = 0, xMaxDeposit = 0, xMinDeposit2 = 0, xMaxDeposit2 = 0, xDepositValue = 0;
                         if (dt.Rows[i]["Currency"].ToString() != "" && dt.Rows[i]["Currency"].ToString() != null)
                         {
                             Currency = dt.Rows[i]["Currency"].ToString();
@@ -4847,6 +4857,7 @@ namespace Plexform.GBS
                             xMaxDeposit = Convert.ToInt32(dt.Rows[i]["MaxDeposit"]);
                             xMinDeposit2 = Convert.ToInt32(dt.Rows[i]["MinDeposit2"]);
                             xMaxDeposit2 = Convert.ToInt32(dt.Rows[i]["MaxDeposit2"]);
+                            xDepositValue = Convert.ToInt32(dt.Rows[i]["DepositValue"]);
                         };
                         list.Add(new Models.PaymentSchemeModels
                         {
@@ -4861,6 +4872,7 @@ namespace Plexform.GBS
                             MaxDeposit = xMaxDeposit,
                             MinDeposit2 = xMinDeposit2,
                             MaxDeposit2 = xMaxDeposit2,
+                            DepositValue = xDepositValue,
                             Attempt_1 = Convert.ToInt32(dt.Rows[i]["Attempt_1"]),
                             Code_1 = dt.Rows[i]["Code_1"].ToString(),
                             Percentage_1 = Convert.ToInt32(dt.Rows[i]["Percentage_1"]),
