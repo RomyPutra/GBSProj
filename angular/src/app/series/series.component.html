@@ -1,0 +1,76 @@
+<h3>SERIES SETTINGS</h3>
+<div style="border-radius: 25px;padding: 20px;background:white;">
+    <!-- ******************************************************** -->
+    <dx-data-grid
+    id="gridContainer"
+    [rowAlternationEnabled]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [allowColumnResizing]="true"
+    [hoverStateEnabled]="true"
+    [columnResizingMode]="nextColumn"
+    [columnAutoWidth]="true"
+    [dataSource]="group">
+    
+      <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+  
+      <dxi-column dataField="analyst" caption="Analyst"></dxi-column>
+      <dxi-column dataField="marketCode" caption="Market"></dxi-column>
+      <dxi-column dataField="ndoDesc" caption="NDO"></dxi-column>
+      <dxi-column dataField="inRoute" caption="In Route"></dxi-column>
+      <dxi-column dataField="inFlightTimeGrp" caption="In Flight Time Group"></dxi-column>
+      <dxi-column dataField="inDepDOW" caption="In DepDOW"></dxi-column>
+      <dxi-column dataField="inAgentTier" caption="In Agent Tier"></dxi-column>
+      <dxi-column dataField="inCurrency" caption="In Currency"></dxi-column>
+      <dxi-column dataField="inLFFare1" caption="In LF<=85%"></dxi-column>
+      <dxi-column dataField="inLFFare2" caption="In LF<=80%"></dxi-column>
+      <dxi-column dataField="inLFFare3" caption="In LF<=70%"></dxi-column>
+      <dxi-column dataField="inLFFare4" caption="In LF<=65%"></dxi-column>
+      <dxi-column dataField="inLFFare5" caption="In LF<=60%"></dxi-column>
+      <dxi-column dataField="inLFFare6" caption="In LF<=50%"></dxi-column>
+      <dxi-column dataField="inLFFare7" caption="In LF<=40%"></dxi-column>
+      <dxi-column dataField="inLFFare8" caption="In LF<=30%"></dxi-column>
+      <dxi-column dataField="inLFFare9" caption="In LF<=20%"></dxi-column>
+      <dxi-column dataField="inLFFare10" caption="In LF<=10%"></dxi-column>
+      <dxi-column dataField="inLFFare11" caption="In LF<=5%"></dxi-column>
+      <dxi-column dataField="outRoute" caption="Out Route"></dxi-column>
+      <dxi-column dataField="outFlightTimeGrp" caption="Out Flight Time Group"></dxi-column>
+      <dxi-column dataField="outDepDOW" caption="Out DepDOW"></dxi-column>
+      <dxi-column dataField="outAgentTier" caption="Out Agent Tier"></dxi-column>
+      <dxi-column dataField="outCurrency" caption="Out Currency"></dxi-column>
+      <dxi-column dataField="outLFFare1" caption="Out LF<=85%"></dxi-column>
+      <dxi-column dataField="outLFFare2" caption="Out LF<=80%"></dxi-column>
+      <dxi-column dataField="outLFFare3" caption="Out LF<=70%"></dxi-column>
+      <dxi-column dataField="outLFFare4" caption="Out LF<=65%"></dxi-column>
+      <dxi-column dataField="outLFFare5" caption="Out LF<=60%"></dxi-column>
+      <dxi-column dataField="outLFFare6" caption="Out LF<=50%"></dxi-column>
+      <dxi-column dataField="outLFFare7" caption="Out LF<=40%"></dxi-column>
+      <dxi-column dataField="outLFFare8" caption="Out LF<=30%"></dxi-column>
+      <dxi-column dataField="outLFFare9" caption="Out LF<=20%"></dxi-column>
+      <dxi-column dataField="outLFFare10" caption="Out LF<=10%"></dxi-column>
+      <dxi-column dataField="outLFFare11" caption="Out LF<=5%"></dxi-column>
+
+      <dxo-paging [pageSize]="20"></dxo-paging>
+      <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true">
+      </dxo-pager>
+    </dx-data-grid>
+    <!-- ******************************************************** -->
+  <!-- <div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+    </div>
+    <ul>
+        <li *ngFor="let event of events">{{event}}</li>
+    </ul>
+  </div> -->
+</div>

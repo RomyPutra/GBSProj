@@ -67,6 +67,8 @@ import { FloorfareComponent } from './floorfare/floorfare.component';
 import { RestrictionComponent } from './restriction/restriction.component';
 import { LFDiscComponent } from './lfdisc/lfdisc.component';
 import { PUDiscComponent } from './pudisc/pudisc.component';
+import { SeriesComponent } from './series/series.component';
+import { UmrahlaborComponent } from './umrahlabor/umrahlabor.component';
 
 @NgModule({
     declarations: [
@@ -129,7 +131,9 @@ import { PUDiscComponent } from './pudisc/pudisc.component';
         FloorfareComponent,
         RestrictionComponent,
         LFDiscComponent,
-        PUDiscComponent
+        PUDiscComponent,
+        SeriesComponent,
+        UmrahlaborComponent
 ],
     imports: [
         CommonModule,
