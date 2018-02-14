@@ -24,6 +24,8 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l('Disc Weight'), '', 'storage', '/app/discweightage'),
         new MenuItem(this.l('Floor Fare'), '', 'storage', '/app/floorfare'),
         new MenuItem(this.l('Seasonality'), '', 'storage', '/app/seasonality'),
+        new MenuItem(this.l('Restriction'), '', 'storage', '/app/restriction'),
+        new MenuItem(this.l('Upload'), '', 'file_upload', '/app/upload'),
         new MenuItem(this.l('LF Discount'), '', 'storage', '/app/lfdisc'),
         new MenuItem(this.l('PU Discount'), '', 'storage', '/app/pudisc'),
         new MenuItem(this.l('Series'), '', 'storage', '/app/series'),

@@ -11,8 +11,11 @@
                     <tbody>
                         <tr>
                             <td>{{l('Restriction')}}</td>
-                            <td colspan="4"><mat-checkbox color="primary" formControlName="chkRestriction"></mat-checkbox>
-                                <label for="active">Active</label>
+                            <td colspan="4">
+                                <input type="checkbox" class="filled-in" id="usrstatus" [checked]="restriction.status" (change)="changeLabel()">
+                                <label for="usrstatus">{{status}}</label>
+                                <!-- <mat-checkbox color="primary"></mat-checkbox>
+                                <label for="active">Active</label> -->
                             </td>
                         </tr>
                         <tr>
@@ -20,7 +23,7 @@
                             <td>{{l('From :')}}</td>
                             <td>
                                 <mat-form-field>
-                                    <input [(ngModel)]="a" matInput id="BookStrDate" formControlName="BookStrDate" placeholder="Start Date" [matDatepicker]="BookStrDate">
+                                    <input [(ngModel)]="bookfrom" matInput id="BookStrDate" placeholder="Start Date" [matDatepicker]="BookStrDate">
                                     <mat-datepicker-toggle matSuffix [for]="BookStrDate"></mat-datepicker-toggle>
                                     <mat-datepicker #BookStrDate disabled="false"></mat-datepicker>
                                 </mat-form-field>
@@ -30,7 +33,7 @@
                             <td>{{l('To :')}}</td>
                             <td>
                                 <mat-form-field>
-                                    <input [(ngModel)]="b" matInput id="BookEndDate" formControlName="BookEndDate" placeholder="End Date" [matDatepicker]="BookEndDate">
+                                    <input [(ngModel)]="bookto" matInput id="BookEndDate" placeholder="End Date" [matDatepicker]="BookEndDate">
                                     <mat-datepicker-toggle matSuffix [for]="BookEndDate"></mat-datepicker-toggle>
                                     <mat-datepicker #BookEndDate disabled="false"></mat-datepicker>
                                 </mat-form-field>
@@ -43,7 +46,7 @@
                                 <td>{{l('From :')}}</td>
                                 <td>
                                     <mat-form-field>
-                                        <input [(ngModel)]="c" matInput id="TravelStrDate" formControlName="TravelStrDate" placeholder="Start Date" [matDatepicker]="TravelStrDate">
+                                        <input [(ngModel)]="transfrom" matInput id="TravelStrDate" placeholder="Start Date" [matDatepicker]="TravelStrDate">
                                         <mat-datepicker-toggle matSuffix [for]="TravelStrDate"></mat-datepicker-toggle>
                                         <mat-datepicker #TravelStrDate disabled="false"></mat-datepicker>
                                     </mat-form-field>
@@ -53,7 +56,7 @@
                                 <td>{{l('To :')}}</td>
                                 <td>
                                     <mat-form-field>
-                                        <input [(ngModel)]="d" matInput id="TravelEndDate" formControlName="TravelEndDate" placeholder="End Date" [matDatepicker]="TravelEndDate">
+                                        <input [(ngModel)]="transto" name="TravelEndDate" matInput id="TravelEndDate" placeholder="End Date" [matDatepicker]="TravelEndDate">
                                         <mat-datepicker-toggle matSuffix [for]="TravelEndDate"></mat-datepicker-toggle>
                                         <mat-datepicker #TravelEndDate disabled="false"></mat-datepicker>
                                     </mat-form-field>
@@ -64,15 +67,15 @@
                             <tr>
                                 <td>{{l('Restriction Note')}}</td>
                                 <td colspan="4">
-                                    <textarea matInput id="txaRestrictionNote" formControlName="restrictionNote" maxlength="50" placeholder="Promo Description" matTextareaAutosize matAutosizeMinRows="6"
-                                    matAutosizeMaxRows="6"></textarea>
+                                    <textarea matInput id="txaRestrictionNote" maxlength="50" placeholder="Promo Description" matTextareaAutosize matAutosizeMinRows="6"
+                                    matAutosizeMaxRows="6">{{restriction.restrictionnote}}</textarea>
                                 </td>
                             </tr>
                             <tr>
                                     <td>{{l('Restriction Alert')}}</td>
                                     <td colspan="4">
-                                        <textarea matInput id="txaRestrictionAlert" formControlName="restrictionAlert" maxlength="50" placeholder="Promo Description" matTextareaAutosize matAutosizeMinRows="6"
-                                        matAutosizeMaxRows="6"></textarea>
+                                        <textarea matInput id="txaRestrictionAlert" maxlength="50" placeholder="Promo Description" matTextareaAutosize matAutosizeMinRows="6"
+                                        matAutosizeMaxRows="6">{{restriction.restrictionalert}}</textarea>
                                     </td>
                                 </tr>
                     </tbody>

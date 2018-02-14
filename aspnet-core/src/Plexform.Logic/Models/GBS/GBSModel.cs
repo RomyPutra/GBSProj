@@ -268,15 +268,13 @@ namespace Plexform.Models
 
 	public class RestrictionModels
 	{
-		public System.String CodeType { get; set; }
-		public System.String Code { get; set; }
-		public System.String CodeDesc { get; set; }
-		public System.String SYSKey1 { get; set; }
-		public System.String SYSValue1 { get; set; }
-		public System.String SYSValueEx1 { get; set; }
-		public System.String SYSKey2 { get; set; }
-		public System.String SYSValue2 { get; set; }
-		public System.String SYSValueEx2 { get; set; }
+		public System.String Status { get; set; }
+		public System.String BookFrom { get; set; }
+		public System.String BookTo { get; set; }
+		public System.String TraFrom { get; set; }
+		public System.String TraTo { get; set; }
+		public System.String RestrictionNote{ get; set; }
+		public System.String RestrictionAlert { get; set; }
 	}
 
 	public class CODEMASTERModels

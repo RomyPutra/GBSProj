@@ -474,9 +474,9 @@ namespace Plexform.Controllers
         //}
 
 		[HttpGet]
-		public async Task<ListResultContainer<Plexform.Models.RestrictionModels>> GetRestriction()
+		public async Task<Plexform.Models.RestrictionModels> GetRestriction()
 		{
-			IList<Plexform.Models.RestrictionModels> Scheme = new List<Plexform.Models.RestrictionModels>();
+			Plexform.Models.RestrictionModels Scheme = new Plexform.Models.RestrictionModels();
 			try
 			{
 				var repo = new Plexform.GBS.GBSAdminLogic();
@@ -486,10 +486,7 @@ namespace Plexform.Controllers
 			{
 				var temp = ex.ToString();
 			}
-			return new ListResultContainer<Plexform.Models.RestrictionModels>(
-				ObjectMapper.Map<List<Plexform.Models.RestrictionModels>>(Scheme),
-				Scheme.Count
-			);
+			return ObjectMapper.Map<Plexform.Models.RestrictionModels>(Scheme);
 		}
 
 		[HttpPut]
