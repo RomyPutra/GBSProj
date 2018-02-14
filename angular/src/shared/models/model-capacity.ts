@@ -3,12 +3,12 @@ import { Observable } from 'rxjs/Observable';
 import { strictEqual } from 'assert';
 
 export class CapacityDto implements ICapacityDto {
-	MarketCode: string;
-	Analyst: string;
-	InRoute: string;
-	InGrpCap: number;
-	OutRoute: string;
-	OutGrpCap: number;
+	marketCode: string;
+	analyst: string;
+	inRoute: string;
+	inGrpCap: number;
+	outRoute: string;
+	outGrpCap: number;
     
     static fromJS(data: any): CapacityDto {
         let result = new CapacityDto();
@@ -28,22 +28,22 @@ export class CapacityDto implements ICapacityDto {
 
     init(data?: any) {
         if (data) {
-			this.MarketCode = data['MarketCode'];
-			this.Analyst = data['Analyst'];
-			this.InRoute = data['InRoute'];
-			this.InGrpCap = data['InGrpCap'];
-			this.OutRoute = data['OutRoute'];
-			this.OutGrpCap = data['OutGrpCap'];
+			this.marketCode = data['marketCode'];
+			this.analyst = data['analyst'];
+			this.inRoute = data['inRoute'];
+			this.inGrpCap = data['inGrpCap'];
+			this.outRoute = data['outRoute'];
+			this.outGrpCap = data['outGrpCap'];
         }
     }
 
     toJSON(data?: any) {
-		data['MarketCode'] = this.MarketCode;
-		data['Analyst'] = this.Analyst;
-		data['InRoute'] = this.InRoute;
-		data['InGrpCap'] = this.InGrpCap;
-		data['OutRoute'] = this.OutRoute;
-		data['OutGrpCap'] = this.OutGrpCap;
+		data['marketCode'] = this.marketCode;
+		data['analyst'] = this.analyst;
+		data['inRoute'] = this.inRoute;
+		data['inGrpCap'] = this.inGrpCap;
+		data['outRoute'] = this.outRoute;
+		data['outGrpCap'] = this.outGrpCap;
         
 		return data;
     }
@@ -57,12 +57,12 @@ export class CapacityDto implements ICapacityDto {
 }
 
 export interface ICapacityDto {
-	MarketCode: string;
-	Analyst: string;
-	InRoute: string;
-	InGrpCap: number;
-	OutRoute: string;
-	OutGrpCap: number;
+	marketCode: string;
+	analyst: string;
+	inRoute: string;
+	inGrpCap: number;
+	outRoute: string;
+	outGrpCap: number;
 }
 
 export class PagedResultDtoOfCapacityDto implements IPagedResultDtoOfCapacityDto {
