@@ -29,7 +29,7 @@ export class GetRestrictionServiceProxy {
     /**
      * @return Success
      */
-    getRestriction(): Observable<PagedResultDtoOfRestrictionDto> {
+    getRestriction(): Observable<RestrictionDto> {
         let url_ = this.baseUrl + '/api/GBSAdmin/GetRestriction';
 
         url_ = url_.replace(/[?&]$/, '');
@@ -49,23 +49,23 @@ export class GetRestrictionServiceProxy {
                 try {
                     return this.processGetRestriction(response_);
                 } catch (e) {
-                    return <Observable<PagedResultDtoOfRestrictionDto>><any>Observable.throw(e);
+                    return <Observable<RestrictionDto>><any>Observable.throw(e);
                 }
             } else {
-                return <Observable<PagedResultDtoOfRestrictionDto>><any>Observable.throw(response_);
+                return <Observable<RestrictionDto>><any>Observable.throw(response_);
             }
         });
     }
 
-    protected processGetRestriction(response: Response): Observable<PagedResultDtoOfRestrictionDto> {
-        const status = response.status; 
+    protected processGetRestriction(response: Response): Observable<RestrictionDto> {
+        const status = response.status;
 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
             const _responseText = response.text();
             let result200: any = null;
             let resultData200 = _responseText === '' ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfRestrictionDto.fromJS(resultData200) : new PagedResultDtoOfRestrictionDto();
+            result200 = resultData200 ? RestrictionDto.fromJS(resultData200) : new RestrictionDto();
             return Observable.of(result200);
         } else if (status === 401) {
             const _responseText = response.text();
@@ -77,7 +77,7 @@ export class GetRestrictionServiceProxy {
             const _responseText = response.text();
             return throwException('An unexpected server error occurred.', status, _responseText, _headers);
         }
-        return Observable.of<PagedResultDtoOfRestrictionDto>(<any>null);
+        return Observable.of<RestrictionDto>(<any>null);
     }
     // /**
     //  * @input (optional) 

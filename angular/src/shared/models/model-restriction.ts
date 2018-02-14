@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 
 export class RestrictionDto implements IRestrictionDto{
-    status: boolean;
+    status: string;
     bookfrom: Date;
     bookto: Date;
     travelfrom: Date;
@@ -27,25 +27,25 @@ export class RestrictionDto implements IRestrictionDto{
 
     init(data?: any) {
         if (data) {
-            this.status = data["status"];
-            this.bookfrom = data["bookfrom"];
-            this.bookto = data["bookto"];
-            this.travelfrom = data["travelfrom"];
-            this.travelto = data["travelto"];
-            this.restrictionnote = data["restrictionnote"];
-            this.restrictionalert = data["restrictionalert"];
+            this.status = data['status'];
+            this.bookfrom = data['bookFrom'];
+            this.bookto = data['bookTo'];
+            this.travelfrom = data['traFrom'];
+            this.travelto = data['traTo'];
+            this.restrictionnote = data['restrictionNote'];
+            this.restrictionalert = data['restrictionAlert'];
         }
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["status"] = this.status;
-        data["bookfrom"] = this.bookfrom;
-        data["bookto"] = this.bookto;
-        data["travelfrom"] = this.travelfrom;
-        data["travelto"] = this.travelto;
-        data["restrictionnote"] = this.restrictionnote;
-        data["restrictionalert"] = this.restrictionalert;
+        data['status'] = this.status;
+        data['bookFrom'] = this.bookfrom;
+        data['bookTo'] = this.bookto;
+        data['traFrom'] = this.travelfrom;
+        data['traTo'] = this.travelto;
+        data['restrictionNote'] = this.restrictionnote;
+        data['restrictionAlert'] = this.restrictionalert;
         return data;
     }
 
@@ -58,7 +58,7 @@ export class RestrictionDto implements IRestrictionDto{
 }
 
 export interface IRestrictionDto {
-    status: boolean;
+    status: string;
     bookfrom: Date;
     bookto: Date;
     travelfrom: Date;

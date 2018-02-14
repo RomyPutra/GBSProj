@@ -5477,9 +5477,9 @@ namespace Plexform.GBS
             return await Task.FromResult(list);
         }
 
-		public async Task<IList<Plexform.Models.RestrictionModels>> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
+		public async Task<Plexform.Models.RestrictionModels> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
 		{
-			IList<Plexform.Models.RestrictionModels> list = new List<Plexform.Models.RestrictionModels>();
+			Models.RestrictionModels obj = new Models.RestrictionModels();
 			DataTable dtMaster, dtPreft1, dtPreft2;
 			try
 			{
@@ -5488,12 +5488,26 @@ namespace Plexform.GBS
 				{
 					for (int i = 0; i < dtMaster.Rows.Count; i++)
 					{
-						list.Add(new Models.RestrictionModels
+						if(dtMaster.Rows[i]["Code"].ToString() == "IND")
 						{
-							CodeType = dtMaster.Rows[i]["CodeType"].ToString(),
-							Code = dtMaster.Rows[i]["Code"].ToString(),
-							CodeDesc = dtMaster.Rows[i]["CodeDesc"].ToString()
-						});
+							obj.Status = dtMaster.Rows[i]["CodeDesc"].ToString();
+						}
+						else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKFROM")
+						{
+							obj.BookFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+						}
+						else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKTO")
+						{
+							obj.BookTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+						}
+						else if (dtMaster.Rows[i]["Code"].ToString() == "TRAFROM")
+						{
+							obj.TraFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+						}
+						else if (dtMaster.Rows[i]["Code"].ToString() == "TRATO")
+						{
+							obj.TraTo= dtMaster.Rows[i]["CodeDesc"].ToString();
+						}
 					}
 				}
 				dtPreft1 = GetSYSPreftbyKey(SYSKey1);
@@ -5501,12 +5515,7 @@ namespace Plexform.GBS
 				{
 					for (int i = 0; i < dtPreft1.Rows.Count; i++)
 					{
-						list.Add(new Models.RestrictionModels
-						{
-							SYSKey1 = dtPreft1.Rows[i]["SYSKey"].ToString(),
-							SYSValue1 = dtPreft1.Rows[i]["SYSValue"].ToString(),
-							SYSValueEx1 = dtPreft1.Rows[i]["SYSValueEx"].ToString()
-						});
+						obj.RestrictionNote = dtPreft1.Rows[i]["SYSValue"].ToString();
 					}
 				}
 				dtPreft2 = GetSYSPreftbyKey(SYSKey2);
@@ -5514,12 +5523,7 @@ namespace Plexform.GBS
 				{
 					for (int i = 0; i < dtPreft2.Rows.Count; i++)
 					{
-						list.Add(new Models.RestrictionModels
-						{
-							SYSKey2 = dtPreft2.Rows[i]["SYSKey"].ToString(),
-							SYSValue2 = dtPreft2.Rows[i]["SYSValue"].ToString(),
-							SYSValueEx2 = dtPreft2.Rows[i]["SYSValueEx"].ToString()
-						});
+						obj.RestrictionAlert = dtPreft2.Rows[i]["SYSValue"].ToString();
 					}
 				}
 			}
@@ -5527,7 +5531,7 @@ namespace Plexform.GBS
 			{
 				var temp = ex.ToString();
 			}
-			return await Task.FromResult(list);
+			return await Task.FromResult(obj);
 		}
 
 		public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")

@@ -16,11 +16,23 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatStepperModule, MatAutocompleteModule,
          MatSelectModule, MatProgressSpinnerModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { UploadComponent } from './upload/upload.component';
-import { ClickOutsideModule } from 'ng-click-outside';
+
 // import { TopBarComponent } from '@app/layout/topbar.component';
 // import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-area.component';
 // import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 // import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
+// import { HomeComponent } from './home/home.component';
+// import { AboutComponent } from './about/about.component';
+// import { UsersComponent } from './users/users.component';
+// import { TenantsComponent } from './tenants/tenants.component';
+// import { RolesComponent } from 'app/roles/roles.component';
+// import { CreateUserComponent } from 'app/users/create-user/create-user.component';
+// import { EditUserComponent } from 'app/users/edit-user/edit-user.component';
+// import { EditTenantComponent } from "app/tenants/edit-tenant/edit-tenant.component";
+// import { CreateTenantComponent } from "app/tenants/create-tenant/create-tenant.component";
+// import { CreateRoleComponent } from "app/roles/create-role/create-role.component";
+// import { EditRoleComponent } from "app/roles/edit-role/edit-role.component";
+
 // import { UnitsComponent } from './units/units.component';
 // import { UsergroupsComponent } from './usergroups/usergroups.component';
 // import { CreateUserGroupComponent } from './usergroups/create-usergroup/create-usergroup.component';
@@ -48,6 +60,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
 // import { EmployeeComponent } from './employee/employee.component';
 // import { ModalEmployeeComponent } from './employee/modal-employee/modal-employee.component';
 // import { VoucherCreateEditComponent } from './AEON/voucher-create-edit/voucher-create-edit.component';
+
 import { TopBarComponent } from '@app/layout/topbarg.component';
 import { TopBarLanguageSwitchComponent } from '@app/layout/topbar-languageswitch.component';
 import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-areag.component';
@@ -55,7 +68,6 @@ import { SideBarNavComponent } from '@app/layout/sidebar-navg.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footerg.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { GBSComponent } from './gbs/gbs.component';
-// import { EditPaySchemeComponent } from './gbs/update-payscheme/update-payscheme.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
 import { AgenttierComponent } from './agenttier/agenttier.component';
 import { AgentAccessFareComponent } from './accessfare/accessfare.component';
@@ -75,6 +87,7 @@ import { RestrictionComponent } from './restriction/restriction.component';
         SideBarNavComponent,
         SideBarFooterComponent,
         RightSideBarComponent,
+
         // HomeComponent,
         // AboutComponent,
         // TenantsComponent,
@@ -112,11 +125,11 @@ import { RestrictionComponent } from './restriction/restriction.component';
         // ModalCurrencyComponent,
         // EmployeeComponent,
         // ModalEmployeeComponent,
-        // PlexLoadingComponent,
-        // UploadComponent,
         // VoucherCreateEditComponent,
+        PlexLoadingComponent,
+        UploadComponent,
+
         GBSComponent,
-        // EditPaySchemeComponent
         FlighttimeComponent,
         AgenttierComponent,
         AgentAccessFareComponent,
@@ -150,7 +163,6 @@ import { RestrictionComponent } from './restriction/restriction.component';
         MatSelectModule,
         MatProgressSpinnerModule,
         FileDropModule,
-        ClickOutsideModule,
         MatDatepickerModule,
         MatNativeDateModule
     ],

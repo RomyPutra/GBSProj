@@ -2,6 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
+
 // import { HomeComponent } from './home/home.component';
 // import { AboutComponent } from './about/about.component';
 // import { UsersComponent } from './users/users.component';
@@ -20,8 +21,9 @@ import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 // import { EmployeeComponent } from 'app/employee/employee.component';
 // import { StockComponent } from './stock/stock.component';
 // import { CurrencyComponent } from './currency/currency.component';
-// import { UploadComponent } from 'app/upload/upload.component';
+import { UploadComponent } from 'app/upload/upload.component';
 // import { VoucherCreateEditComponent } from './AEON/voucher-create-edit/voucher-create-edit.component';
+
 import { GBSComponent } from './gbs/gbs.component';
 import { FlighttimeComponent } from './flighttime/flighttime.component';
 import { AgentAccessFareComponent } from './accessfare/accessfare.component';
@@ -41,7 +43,7 @@ import { RestrictionComponent } from './restriction/restriction.component';
                 component: AppComponent,
                 children: [
                     // { path: 'home', component: HomeComponent, canActivate: [AppRouteGuard] },
-                    // { path: 'upload', component: UploadComponent, canActivate: [AppRouteGuard] },
+                    { path: 'upload', component: UploadComponent, canActivate: [AppRouteGuard] },
                     // { path: 'users', component: UsersComponent, canActivate: [AppRouteGuard] },
                     // { path: 'units', component: UnitsComponent, data: { permission: 'Code_Master#Waste_Unit' },
                     //     canActivate: [AppRouteGuard] },
@@ -64,6 +66,7 @@ import { RestrictionComponent } from './restriction/restriction.component';
                     // { path: 'stock', component: StockComponent, canActivate: [AppRouteGuard] },
                     // { path: 'currency', component: CurrencyComponent, canActivate: [AppRouteGuard] },
                     // { path: 'AEON/voucher/create', component: VoucherCreateEditComponent, canActivate: [AppRouteGuard] },
+
                     { path: 'gbs', component: GBSComponent, canActivate: [AppRouteGuard] },
                     { path: 'flighttime', component: FlighttimeComponent, canActivate: [AppRouteGuard] },
                     { path: 'accessfare', component: AgentAccessFareComponent, canActivate: [AppRouteGuard] },
