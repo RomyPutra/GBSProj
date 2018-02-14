@@ -25,6 +25,7 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l('Floor Fare'), '', 'storage', '/app/floorfare'),
         new MenuItem(this.l('Seasonality'), '', 'storage', '/app/seasonality'),
         new MenuItem(this.l('LF Discount'), '', 'storage', '/app/lfdisc'),
+        new MenuItem(this.l('PU Discount'), '', 'storage', '/app/pudisc'),
 
         // new MenuItem('eSWIS', '', 'menu', '', [
         //     new MenuItem('Units', 'Code_Master#Waste_Unit', '', '/app/units'),

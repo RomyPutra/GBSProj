@@ -28,6 +28,7 @@ import { GetFloorFareServiceProxy } from './proxy-floorfare';
 import { GetSeasonalityServiceProxy } from './proxy-seasonality';
 import { GetRestrictionServiceProxy } from './proxy-restriction';
 import { GetLFDiscServiceProxy } from './proxy-lfdisc';
+import { GetPUDiscServiceProxy } from './proxy-pudisc';
 
 @NgModule({
     providers: [
@@ -72,7 +73,8 @@ import { GetLFDiscServiceProxy } from './proxy-lfdisc';
         GetFloorFareServiceProxy,
         GetSeasonalityServiceProxy,
         GetRestrictionServiceProxy,
-        GetLFDiscServiceProxy
+        GetLFDiscServiceProxy,
+        GetPUDiscServiceProxy
     ]
 })
 export class ServiceProxyModule { }

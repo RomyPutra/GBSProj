@@ -66,6 +66,7 @@ import { DiscweightageComponent } from './discweightage/discweightage.component'
 import { FloorfareComponent } from './floorfare/floorfare.component';
 import { RestrictionComponent } from './restriction/restriction.component';
 import { LFDiscComponent } from './lfdisc/lfdisc.component';
+import { PUDiscComponent } from './pudisc/pudisc.component';
 
 @NgModule({
     declarations: [
@@ -127,7 +128,8 @@ import { LFDiscComponent } from './lfdisc/lfdisc.component';
         DiscweightageComponent,
         FloorfareComponent,
         RestrictionComponent,
-        LFDiscComponent
+        LFDiscComponent,
+        PUDiscComponent
 ],
     imports: [
         CommonModule,

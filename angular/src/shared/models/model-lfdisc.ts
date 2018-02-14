@@ -71,6 +71,7 @@ export class LFDiscDto implements ILFDiscDto {
             this.outLFDisc7 = data['outLFDisc7'];
             this.outLFDisc8 = data['outLFDisc8'];
             this.outLFDisc9 = data['outLFDisc9'];
+            this.outLFDisc10 = data['outLFDisc10'];
         }
     }
 
