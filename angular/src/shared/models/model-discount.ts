@@ -3,12 +3,12 @@ import { Observable } from 'rxjs/Observable';
 import { strictEqual } from 'assert';
 
 export class DiscountDto implements IDiscountDto {
-	MarketCode: string;
-	Analyst: string;
-	InRoute: string;
-	InMaxDisc: number;
-	OutRoute: string;
-	OutMaxDisc: number;
+	marketCode: string;
+	analyst: string;
+	inRoute: string;
+	inMaxDisc: number;
+	outRoute: string;
+	outMaxDisc: number;
     
     static fromJS(data: any): DiscountDto {
         let result = new DiscountDto();
@@ -28,22 +28,22 @@ export class DiscountDto implements IDiscountDto {
 
     init(data?: any) {
         if (data) {
-			this.MarketCode = data['MarketCode'];
-			this.Analyst = data['Analyst'];
-			this.InRoute = data['InRoute'];
-			this.InMaxDisc = data['InMaxDisc'];
-			this.OutRoute = data['OutRoute'];
-			this.OutMaxDisc = data['OutMaxDisc'];
+			this.marketCode = data['marketCode'];
+			this.analyst = data['analyst'];
+			this.inRoute = data['inRoute'];
+			this.inMaxDisc = data['inMaxDisc'];
+			this.outRoute = data['outRoute'];
+			this.outMaxDisc = data['outMaxDisc'];
         }
     }
 
     toJSON(data?: any) {
-		data['MarketCode'] = this.MarketCode;
-		data['Analyst'] = this.Analyst;
-		data['InRoute'] = this.InRoute;
-		data['InMaxDisc'] = this.InMaxDisc;
-		data['OutRoute'] = this.OutRoute;
-		data['OutMaxDisc'] = this.OutMaxDisc;
+		data['marketCode'] = this.marketCode;
+		data['analyst'] = this.analyst;
+		data['inRoute'] = this.inRoute;
+		data['inMaxDisc'] = this.inMaxDisc;
+		data['outRoute'] = this.outRoute;
+		data['outMaxDisc'] = this.outMaxDisc;
         
 		return data;
     }
@@ -57,12 +57,12 @@ export class DiscountDto implements IDiscountDto {
 }
 
 export interface IDiscountDto {
-	MarketCode: string;
-	Analyst: string;
-	InRoute: string;
-	InMaxDisc: number;
-	OutRoute: string;
-	OutMaxDisc: number;
+	marketCode: string;
+	analyst: string;
+	inRoute: string;
+	inMaxDisc: number;
+	outRoute: string;
+	outMaxDisc: number;
 }
 
 export class PagedResultDtoOfDiscountDto implements IPagedResultDtoOfDiscountDto {

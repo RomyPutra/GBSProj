@@ -65,6 +65,7 @@ import { SeasonalityComponent } from './seasonality/seasonality.component';
 import { DiscweightageComponent } from './discweightage/discweightage.component';
 import { FloorfareComponent } from './floorfare/floorfare.component';
 import { RestrictionComponent } from './restriction/restriction.component';
+import { LFDiscComponent } from './lfdisc/lfdisc.component';
 
 @NgModule({
     declarations: [
@@ -125,7 +126,8 @@ import { RestrictionComponent } from './restriction/restriction.component';
         SeasonalityComponent,
         DiscweightageComponent,
         FloorfareComponent,
-        RestrictionComponent
+        RestrictionComponent,
+        LFDiscComponent
 ],
     imports: [
         CommonModule,

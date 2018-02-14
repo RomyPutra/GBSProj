@@ -13,6 +13,7 @@ export class SideBarNavComponent extends AppComponentBase {
 
     menuItems: MenuItem[] = [
         new MenuItem(this.l('Payment Setting'), '', 'payment', '/app/gbs'),
+        new MenuItem(this.l('Restriction'), '', 'storage', '/app/restriction'),
         new MenuItem(this.l('Flight Time'), '', 'flight', '/app/flighttime'),
         new MenuItem('Agent', '', 'menu', '', [
             new MenuItem(this.l('Tier'), '', 'supervisor_account', '/app/agenttier'),
@@ -23,7 +24,7 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l('Disc Weight'), '', 'storage', '/app/discweightage'),
         new MenuItem(this.l('Floor Fare'), '', 'storage', '/app/floorfare'),
         new MenuItem(this.l('Seasonality'), '', 'storage', '/app/seasonality'),
-        new MenuItem(this.l('Restriction'), '', 'storage', '/app/restriction'),
+        new MenuItem(this.l('LF Discount'), '', 'storage', '/app/lfdisc'),
 
         // new MenuItem('eSWIS', '', 'menu', '', [
         //     new MenuItem('Units', 'Code_Master#Waste_Unit', '', '/app/units'),

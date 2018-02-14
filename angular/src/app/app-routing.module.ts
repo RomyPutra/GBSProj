@@ -32,6 +32,7 @@ import { DiscweightageComponent } from './discweightage/discweightage.component'
 import { FloorfareComponent } from './floorfare/floorfare.component';
 import { SeasonalityComponent } from './seasonality/seasonality.component';
 import { RestrictionComponent } from './restriction/restriction.component';
+import { LFDiscComponent } from './lfdisc/lfdisc.component';
 
 @NgModule({
     imports: [
@@ -74,6 +75,7 @@ import { RestrictionComponent } from './restriction/restriction.component';
                     { path: 'floorfare', component: FloorfareComponent, canActivate: [AppRouteGuard] },
                     { path: 'seasonality', component: SeasonalityComponent, canActivate: [AppRouteGuard] },
                     { path: 'restriction', component: RestrictionComponent, canActivate: [AppRouteGuard] },
+                    { path: 'lfdisc', component: LFDiscComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

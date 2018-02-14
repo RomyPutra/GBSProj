@@ -1,0 +1,66 @@
+<h3>LF DISCOUNT SETTINGS</h3>
+<div style="border-radius: 25px;padding: 20px;background:white;">
+    <!-- ******************************************************** -->
+    <dx-data-grid
+    id="gridContainer"
+    [rowAlternationEnabled]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [allowColumnResizing]="true"
+    [hoverStateEnabled]="true"
+    [columnResizingMode]="nextColumn"
+    [columnAutoWidth]="true"
+    [dataSource]="group">
+    
+      <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+  
+      <dxi-column dataField="analyst" caption="Analyst"></dxi-column>
+      <dxi-column dataField="marketCode" caption="Market"></dxi-column>
+      <dxi-column dataField="ndoDesc" caption="NDO"></dxi-column>
+      <dxi-column dataField="inRoute" caption="In Route"></dxi-column>
+      <dxi-column dataField="inLFDisc1" caption="In LF >= 10%"></dxi-column>
+      <dxi-column dataField="inLFDisc2" caption="In 5% <= LF < 10%"></dxi-column>
+      <dxi-column dataField="inLFDisc3" caption="In -5% <= LF < 5%"></dxi-column>
+      <dxi-column dataField="inLFDisc4" caption="In -10% <= LF < -5%"></dxi-column>
+      <dxi-column dataField="inLFDisc5" caption="In -15% <= LF < -10%"></dxi-column>
+      <dxi-column dataField="inLFDisc6" caption="In -20% <= LF < -15%"></dxi-column>
+      <dxi-column dataField="inLFDisc7" caption="In -25% <= LF < -20%"></dxi-column>
+      <dxi-column dataField="inLFDisc8" caption="In -30% <= LF < -25%"></dxi-column>
+      <dxi-column dataField="inLFDisc9" caption="In -30% <= LF < -20%"></dxi-column>
+      <dxi-column dataField="inLFDisc10" caption="In LF < -30%"></dxi-column>
+      <dxi-column dataField="outRoute" caption="Out Route"></dxi-column>
+      <dxi-column dataField="outLFDisc1" caption="Out LF >= 10%"></dxi-column>
+      <dxi-column dataField="outLFDisc2" caption="Out 5% <= LF < 10%"></dxi-column>
+      <dxi-column dataField="outLFDisc3" caption="Out -5% <= LF < 5%"></dxi-column>
+      <dxi-column dataField="outLFDisc4" caption="Out -10% <= LF < -5%"></dxi-column>
+      <dxi-column dataField="outLFDisc5" caption="Out -15% <= LF < -10%"></dxi-column>
+      <dxi-column dataField="outLFDisc6" caption="Out -20% <= LF < -15%"></dxi-column>
+      <dxi-column dataField="outLFDisc7" caption="Out -25% <= LF < -20%"></dxi-column>
+      <dxi-column dataField="outLFDisc8" caption="Out 30% <= LF < -25%"></dxi-column>
+      <dxi-column dataField="outLFDisc9" caption="Out -30% <= LF < -20%"></dxi-column>
+      <dxi-column dataField="outLFDisc10" caption="Out LF < -30%"></dxi-column>
+
+      <dxo-paging [pageSize]="20"></dxo-paging>
+      <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true">
+      </dxo-pager>
+    </dx-data-grid>
+    <!-- ******************************************************** -->
+  <!-- <div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+    </div>
+    <ul>
+        <li *ngFor="let event of events">{{event}}</li>
+    </ul>
+  </div> -->
+</div>
