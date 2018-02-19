@@ -29,6 +29,8 @@ import { GetSeasonalityServiceProxy } from './proxy-seasonality';
 import { GetRestrictionServiceProxy } from './proxy-restriction';
 import { GetLFDiscServiceProxy } from './proxy-lfdisc';
 import { GetPUDiscServiceProxy } from './proxy-pudisc';
+import { GetSeriesServiceProxy } from './proxy-series';
+import { GetumrahlaborServiceProxy } from './proxy-umrahlabor';
 
 @NgModule({
     providers: [
@@ -74,7 +76,9 @@ import { GetPUDiscServiceProxy } from './proxy-pudisc';
         GetSeasonalityServiceProxy,
         GetRestrictionServiceProxy,
         GetLFDiscServiceProxy,
-        GetPUDiscServiceProxy
+        GetPUDiscServiceProxy,
+        GetSeriesServiceProxy,
+        GetumrahlaborServiceProxy
     ]
 })
 export class ServiceProxyModule { }

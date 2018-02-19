@@ -28,6 +28,8 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l('Upload'), '', 'file_upload', '/app/upload'),
         new MenuItem(this.l('LF Discount'), '', 'storage', '/app/lfdisc'),
         new MenuItem(this.l('PU Discount'), '', 'storage', '/app/pudisc'),
+        new MenuItem(this.l('Series'), '', 'storage', '/app/series'),
+        new MenuItem(this.l('Umrah & Labor'), '', 'storage', '/app/umrahlabor'),
 
         // new MenuItem('eSWIS', '', 'menu', '', [
         //     new MenuItem('Units', 'Code_Master#Waste_Unit', '', '/app/units'),

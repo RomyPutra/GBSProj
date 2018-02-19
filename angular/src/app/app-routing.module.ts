@@ -36,6 +36,8 @@ import { SeasonalityComponent } from './seasonality/seasonality.component';
 import { RestrictionComponent } from './restriction/restriction.component';
 import { LFDiscComponent } from './lfdisc/lfdisc.component';
 import { PUDiscComponent } from './pudisc/pudisc.component';
+import { SeriesComponent } from './series/series.component';
+import { UmrahlaborComponent } from './umrahlabor/umrahlabor.component';
 
 @NgModule({
     imports: [
@@ -81,6 +83,8 @@ import { PUDiscComponent } from './pudisc/pudisc.component';
                     { path: 'restriction', component: RestrictionComponent, canActivate: [AppRouteGuard] },
                     { path: 'lfdisc', component: LFDiscComponent, canActivate: [AppRouteGuard] },
                     { path: 'pudisc', component: PUDiscComponent, canActivate: [AppRouteGuard] },
+                    { path: 'series', component: SeriesComponent, canActivate: [AppRouteGuard] },
+                    { path: 'umrahlabor', component: UmrahlaborComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])
