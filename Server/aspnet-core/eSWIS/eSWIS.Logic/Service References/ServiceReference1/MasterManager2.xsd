@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="MasterManager" elementFormDefault="qualified" targetNamespace="MasterManager" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://eswis.doe.gov.my/ESWISAPI/MasterManager.svc?xsd=xsd2" />
+  <xs:element name="WasteCodeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WasteCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WasteCodeList" nillable="true" type="ArrayOfWasteCode" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WasteTypeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WasteTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WasteTypeList" nillable="true" type="ArrayOfWasteType" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PackageTypeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PackageTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PackageTypeList" nillable="true" type="ArrayOfPackageType" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransportVehicleRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransportCompanyID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransportVehicleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransportVehicleList" nillable="true" type="ArrayOfTransportVehicle" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FacilityListRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FacilityListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FacilityList" nillable="true" type="tns:ArrayOfFacility" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfFacility">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Facility" nillable="true" type="tns:Facility" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacility" nillable="true" type="tns:ArrayOfFacility" />
+  <xs:complexType name="Facility">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Industry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="tns:Location" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Facility" nillable="true" type="tns:Facility" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LocationID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPerson" nillable="true" type="tns:ContactPerson" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="ContactPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TelNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactPerson" nillable="true" type="tns:ContactPerson" />
+  <xs:element name="TransportDriverRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransportCompanyID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransportDriverResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Drivers" nillable="true" type="tns:ArrayOfDriver" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfDriver">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Driver" nillable="true" type="tns:Driver" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriver" nillable="true" type="tns:ArrayOfDriver" />
+  <xs:complexType name="Driver">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NRICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DriverName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Driver" nillable="true" type="tns:Driver" />
+  <xs:element name="UOMRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UOMResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UOMList" nillable="true" type="tns:ArrayOfUOM" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfUOM">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UOM" nillable="true" type="tns:UOM" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUOM" nillable="true" type="tns:ArrayOfUOM" />
+  <xs:complexType name="UOM">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UOMCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UOMDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UOM" nillable="true" type="tns:UOM" />
+  <xs:element name="TransTypeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TransTypeList" nillable="true" type="ArrayOfTransType" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompanyTypeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompanyTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyTypeList" nillable="true" type="ArrayOfCompanyType" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperationTypeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperationTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OperationTypeList" nillable="true" type="tns:ArrayOfOperationType" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfOperationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OperationType" nillable="true" type="tns:OperationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperationType" nillable="true" type="tns:ArrayOfOperationType" />
+  <xs:complexType name="OperationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OperationTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationTypeDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationType" nillable="true" type="tns:OperationType" />
+  <xs:element name="ReceiveStatusRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReceiveStatusList" nillable="true" type="ArrayOfReceiveStatus" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,45 @@
+<h3>SEASON SETTINGS</h3>
+<div style="border-radius: 25px;padding: 20px;background:white;">
+    <!-- ******************************************************** -->
+    <dx-data-grid
+    id="gridContainer"
+    [rowAlternationEnabled]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [allowColumnResizing]="true"
+    [hoverStateEnabled]="true"
+    [columnResizingMode]="nextColumn"
+    [columnAutoWidth]="true"
+    [dataSource]="group">
+    
+      <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+  
+      <dxi-column dataField="analyst" caption="Analyst"></dxi-column>
+      <dxi-column dataField="routeCode" caption="Route"></dxi-column>
+      <dxi-column dataField="seasonDate" caption="Season Date"></dxi-column>
+      <dxi-column dataField="season" caption="Season"></dxi-column>
+
+      <dxo-paging [pageSize]="20"></dxo-paging>
+      <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true">
+      </dxo-pager>
+    </dx-data-grid>
+    <!-- ******************************************************** -->
+  <!-- <div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+    </div>
+    <ul>
+        <li *ngFor="let event of events">{{event}}</li>
+    </ul>
+  </div> -->
+</div>

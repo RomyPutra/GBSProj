@@ -1,0 +1,140 @@
+<div bsModal #createUserprofileModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="createUserprofileModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #createUserForm="ngForm" id="frm_create_user" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span *ngIf="action===ActionState.Create">{{l("CreateNewUser")}}</span>
+                        <span *ngIf="action===ActionState.Edit">{{l("EditUser")}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">    
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="userid" type="text" name="UserID" [(ngModel)]="user.userID" required maxlength="32" minlength="2" class="validate form-control" [disabled]="action===ActionState.Edit">
+                                    <label for="userid" class="form-label">User ID</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="username" type="text" name="UserName" [(ngModel)]="user.userName" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="username" class="form-label">{{l("UserName")}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="refid" type="text" name="RefID" [(ngModel)]="user.refID" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="refid" class="form-label">Ref. ID</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select name="AccessCode" class="form-control" id="selectUserGroup" [(ngModel)]="user.accessCode" >
+                                        <option value=""></option>
+                                        <option *ngFor="let data of userGroups;" value="{{data.groupCode}}">{{data.groupName}}</option>
+                                    </select>
+                                    <label for="selectUserGroup" class="form-label">Choose a user group</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="password" type="password" name="Password" [(ngModel)]="user.password" maxlength="32" class="validate form-control" [required]="action===ActionState.Create">
+                                    <label for="password" class="form-label">{{l("Password")}}</label>
+                                </div>
+                                <small *ngIf="action===ActionState.Edit" id="passwordHelpBlock" class="form-text text-muted" >
+                                    Leave blank if the password is unchanged
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+<!--
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="confirmpassword" type="password" name="ConfirmPassword" class="validate form-control" [(ngModel)]="confirmPassword" equalTo="#password" data-msg-equalto="Please enter the same password again." required maxlength="32">
+                                        <label for="confirmpassword" class="form-label">Confirm Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input id="name" type="text" name="Name" [(ngModel)]="user.name" required maxlength="32" class="validate form-control">
+                                                <label for="name" class="form-label">{{l("Name")}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input id="surname" type="text" name="Surname" [(ngModel)]="user.surname" required maxlength="32" class="validate form-control">
+                                                <label for="surname" class="form-label">{{l("Surname")}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input id="email" type="email" name="EmailAddress" [(ngModel)]="user.emailAddress" maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" class="validate form-control">
+                                                <label for="email" class="form-label">{{l("EmailAddress")}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-float">
+                                            <div class="">
+                                                <input id="isactive" type="checkbox" name="IsActive" [(ngModel)]="user.isActive" checked class="form-control" />
+                                                <label for="isactive" class="form-label">{{l("IsActive")}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!createUserForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

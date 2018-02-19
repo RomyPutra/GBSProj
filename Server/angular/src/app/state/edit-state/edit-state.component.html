@@ -1,0 +1,85 @@
+<div bsModal #editStateModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editStateModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #editStateForm="ngForm" id="frm_state" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("EditState")}}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <select class="form-control" id="selectCountryName" [(ngModel)]="selectedCountryCode" (change)="onChangeCategorySelect($event)" name="Country">
+                                        <option *ngFor="let data of country;" value="{{data.countryCode}}">{{data.countryDesc}}</option>
+                                    </select>
+                                    <label for="selectCountryName" class="form-label">Choose country</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" style="margin-top:10px;">
+                        <div class="col-sm-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="StateCode" type="text" name="StateCode" [(ngModel)]="state.stateCode" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="StateCode" class="form-label">State Code</label>
+                                </div>
+                            </div>
+                        </div>                   
+                        <div class="col-sm-8">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input id="stateDesc" type="text" name="stateDesc" [(ngModel)]="state.stateDesc" required maxlength="32" minlength="2" class="validate form-control">
+                                    <label for="stateDesc" class="form-label">State Description</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix" >
+                        <label class="col-sm-12">Status of State</label>
+                        <div class="col-sm-4">     
+                            <div class="form-group form-float">
+                                <p align="center">
+                                    <input  id="chkActive" type="checkbox" class="filled-in" id="chkActive" [checked]="isChecked1" (change)="changeCheckbox('Active')">
+                                    <label for="chkActive" title="displayPending">Active</label>
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- <div class="col-sm-4">
+                            <div class="form-group form-float">
+                                <p align="center">
+                                    <input id="chkInuse" type="checkbox" class="filled-in" id="chkInuse" [checked]="isChecked2" (change)="changeCheckbox('Inuse')">
+                                    <label for="chkInuse" title="displayInuse">In Use</label>
+                                </p>
+                            </div>
+                        </div>                        -->
+
+                        
+                    </div>
+
+                     
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!editStateForm.form.valid" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button> 
+                </div>
+
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>

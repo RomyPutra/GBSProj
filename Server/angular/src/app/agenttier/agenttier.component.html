@@ -1,0 +1,60 @@
+<h3>AGENT TIER</h3>
+<div style="border-radius: 25px;padding: 20px;background:white;">
+    <!-- ******************************************************** -->
+    <dx-data-grid
+    id="gridContainer"
+    [rowAlternationEnabled]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [allowColumnResizing]="true"
+    [hoverStateEnabled]="true"
+    [columnResizingMode]="nextColumn"
+    [columnAutoWidth]="true"
+    [dataSource]="group">
+    
+      <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+  
+      <dxi-column dataField="marketCode" caption="Market Code"></dxi-column>
+      <dxi-column dataField="inTier" caption="In Tier"></dxi-column>
+      <dxi-column dataField="inSubTier" caption="In Sub Tier"></dxi-column>
+      <dxi-column dataField="outTier" caption="Out Tier"></dxi-column>
+      <dxi-column dataField="outSubTier" caption="Out Sub Tier"></dxi-column>
+      <dxi-column dataField="inAgentID" caption="In Agent ID"></dxi-column>
+      <dxi-column dataField="outAgentID" caption="Out Agent ID"></dxi-column>
+      <!-- <dxi-column dataField="lastSyncBy" caption="Last Sync By"></dxi-column>
+      <dxi-column dataField="createBy" caption="Created By"></dxi-column>
+      <dxi-column dataField="updateBy" caption="Updated By"></dxi-column> -->
+      <dxi-column dataField="active" caption="Active"  cellTemplate="StatusCellTemplate"></dxi-column>
+
+				<div *dxTemplate="let r of 'StatusCellTemplate'">
+					<td>
+            <p *ngIf="(r.value === 1)">Active</p>
+            <p *ngIf="!(r.value === 1)">Inactive</p>
+            <!-- <i class="material-icons" *ngIf="(r.value === 1)" style="color:green;">check_box</i>
+            <i class="material-icons" *ngIf="!(r.value === 1)" style="color:red;">indeterminate_check_box</i> -->
+          </td>
+				</div>
+      <dxo-paging [pageSize]="20"></dxo-paging>
+      <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true">
+      </dxo-pager>
+    </dx-data-grid>
+    <!-- ******************************************************** -->
+  <!-- <div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+    </div>
+    <ul>
+        <li *ngFor="let event of events">{{event}}</li>
+    </ul>
+  </div> -->
+</div>

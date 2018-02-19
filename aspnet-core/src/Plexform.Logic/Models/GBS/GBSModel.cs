@@ -273,8 +273,14 @@ namespace Plexform.Models
 		public System.String BookTo { get; set; }
 		public System.String TraFrom { get; set; }
 		public System.String TraTo { get; set; }
+		//public System.DateTime BookFrom { get; set; }
+		//public System.DateTime BookTo { get; set; }
+		//public System.DateTime TraFrom { get; set; }
+		//public System.DateTime TraTo { get; set; }
 		public System.String RestrictionNote{ get; set; }
 		public System.String RestrictionAlert { get; set; }
+		public System.String RestrictionNoteEx { get; set; }
+		public System.String RestrictionAlertEx { get; set; }
 	}
 
 	public class CODEMASTERModels

@@ -1,0 +1,173 @@
+<h3>PAYMENT SCHEDULE</h3>
+<div style="border-radius: 25px;padding: 20px;background:white;">
+  <!-- <div class="body table-responsive"> -->
+    <!-- ******************************************************** -->
+    <dx-data-grid
+    id="gridContainer"
+    [rowAlternationEnabled]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="false"
+    [allowColumnResizing]="true"
+    [hoverStateEnabled]="true"
+    [columnResizingMode]="nextColumn"
+    [columnAutoWidth]="true"
+    [dataSource]="group"
+    (onEditingStart)="viewDetail($event)"
+    (onRowUpdating)="logEvents($event)"
+    (onRowUpdated)="edit(a)"
+    (onContentReady)="onContentReady($event)"
+    (onCellPrepared)="onCellPrepared($event)">
+    
+      <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..."></dxo-search-panel>
+  
+      <dxo-editing mode="batch" [allowUpdating]="true"></dxo-editing>
+
+      <!-- <dxi-column 
+      dataField="schemeCode" 
+      caption="#"
+      [allowFiltering]="false"
+      [width]="40"
+      [minWidth]="30"
+      [allowSorting]="false" 
+      cellTemplate="actionCellTemplate"></dxi-column> -->
+
+      <dxi-column dataField="schemeCode" caption="Code" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="countryCode" caption="Country" [allowEditing]="false">
+        <dxo-lookup
+          [dataSource]="countrys"
+          displayExpr="countryName"
+          valueExpr="countryID">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="currencyCode" caption="Currency" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="duration" caption="Dur (hrs)" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="minduration" caption="Min Dur (hrs)" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="paymentType" caption="Payment Type">
+        <dxo-lookup
+          [dataSource]="paytype"
+          displayExpr="Type"
+          valueExpr="Type">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="attempt_1" caption="Att. 1 (hrs)"></dxi-column>
+      <dxi-column dataField="code_1" caption="Code 1">
+        <dxo-lookup
+          [dataSource]="codex"
+          displayExpr="Code"
+          valueExpr="Code">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="percentage_1" caption="Perc. 1(%)"></dxi-column>
+      <dxi-column dataField="attempt_2" caption="Att. 2 (hrs)"></dxi-column>
+      <dxi-column dataField="code_2" caption="Code 2">
+        <dxo-lookup
+          [dataSource]="codex"
+          displayExpr="Code"
+          valueExpr="Code">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="percentage_2" caption="Perc. 2(%)"></dxi-column>
+      <dxi-column dataField="attempt_3" caption="Att. 3 (hrs)"></dxi-column>
+      <dxi-column dataField="code_3" caption="Code 3">
+        <dxo-lookup
+          [dataSource]="codex"
+          displayExpr="Code"
+          valueExpr="Code">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="percentage_3" caption="Perc. 3(%)"></dxi-column>
+      <dxi-column dataField="minDeposit" caption="Min Pay"></dxi-column>
+      <dxi-column dataField="maxDeposit" caption="Max Pay"></dxi-column>
+      <dxi-column dataField="minDeposit2" caption="Min Pay2"></dxi-column>
+      <dxi-column dataField="maxDeposit2" caption="Max Pay2"></dxi-column>
+      <dxi-column dataField="depositValue" caption="Deposit Value (%)"></dxi-column>
+  
+					<div *dxTemplate="let row of 'actionCellTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid">
+								<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="logEvents(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+							</ul>
+						</div>
+          </div>
+          
+      <!-- <dxo-remote-operations
+      [sorting]="true"
+      [paging]="true">
+      </dxo-remote-operations> -->
+      <dxo-paging [pageSize]="5"></dxo-paging>
+      <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true">
+      </dxo-pager>
+    </dx-data-grid>
+    <!-- ******************************************************** -->
+				<!-- <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="viewDetail()">
+                    <i class="material-icons">add</i>
+				</button> -->
+  <!-- </div>   -->
+</div>
+<br>
+<div *ngIf="divview" style="border-radius: 25px;padding: 20px;background:white;">
+  <label>Currency</label><span> </span><label>{{review.currencyCode}}</label>
+  <button style="float:right;" (click)="blur()">Close</button>
+  <br>
+  <label>Departure date</label><span> </span>
+  <label *ngIf="(review.schemeCode === 'B3M')">more than 90 days</label>
+  <label *ngIf="(review.schemeCode === 'W3M')">more than 30 days and less than 90 days</label>
+  <label *ngIf="(review.schemeCode === 'W1M')">more than 7 days and less than 30 days</label>
+  <label *ngIf="(review.schemeCode === 'W1W')">less than 7 days</label>
+  <br>
+  <label>Payment schedule 1st : Immediate 30% of total base fare</label>
+  <br>
+  <div *ngIf="divview1">
+    <label>Payment schedule 2st :</label><span> </span>
+    <label>{{review.attempt_2}}</label>
+    <span> </span><label>hours</label><span> </span>
+    <label *ngIf="(review.code_2 === 'DOB')">after booking</label>    
+    <label *ngIf="(review.code_2 === 'STD')">before departure</label>
+  </div>
+  <div *ngIf="divview2">
+    <label>Payment schedule 3st :</label><span> </span>
+    <label>{{review.attempt_3}}</label>
+    <span> </span><label>hours</label><span> </span>
+    <label *ngIf="(review.code_3 === 'DOB')">after booking</label>    
+    <label *ngIf="(review.code_3 === 'STD')">before departure</label>
+  </div>
+  <label>Minimal deposit :</label><span> </span>
+  <label>{{review.minDeposit}}</label><span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <label>Maximal deposit :</label><span> </span>
+  <label>{{review.maxDeposit}}</label><span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <br>
+  <h4>Example:</h4>
+  <br>
+  <label>Amount Due :</label><span> </span>
+  <input id="amount" type="number" (blur)="test($event.currentTarget.value, review.minDeposit, review.maxDeposit)" />
+  <span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <label>30% of base fare :</label><span> </span><label>{{fare}}</label>
+  <span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <label>Payment schedule 1<sup>st</sup> (Immediate payment) :</label><span> </span><label>{{ps1}}</label>
+  <span> </span><label>{{review.currencyCode}}</label>
+  <br>
+  <div *ngIf="divview1">
+    <label>Payment schedule 2<sup>nd</sup> :</label><span> </span><label>{{ps2}}</label>
+    <span> </span><label>{{review.currencyCode}}</label>
+  </div>
+  <div *ngIf="divview2">
+    <label>Payment schedule 3<sup>rd</sup> :</label><span> </span><label>{{ps3}}</label>  
+    <span> </span><label>{{review.currencyCode}}</label>
+  </div>
+</div>
+
+<!-- <update-payscheme-modal #updatePayschemeModal (modalSave)="refresh()"></update-payscheme-modal> -->

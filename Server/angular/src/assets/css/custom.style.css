@@ -1,0 +1,65 @@
+.dropdown .dropdown-menu-dxgrid {
+    left: unset;
+    position: absolute;
+    right: unset;
+    top: unset;
+    z-index: 1;
+}
+ 
+.dx-datagrid-content .dx-datagrid-table .dx-row > td:first-child {
+    overflow: initial;
+}
+
+.dx-datagrid .dx-row-alt > td {
+    background-color: #f9f9f9;
+}
+
+.dx-datagrid-headers {
+    border-bottom-width: 0px;
+}
+
+.dx-cell-focus-disabled{
+    text-align: center !important;
+    font-weight: bold;
+    color: black;
+} 
+
+.dx-datagrid-headers .dx-datagrid-action
+{
+    text-align:left !important;
+}
+
+.dx-pager .dx-pages .dx-selection, .dx-pager .dx-page-sizes .dx-selection {
+    color: #fff;
+    border-color: transparent;
+    background-color: #2199e8;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.theme-red .sidebar .menu .list li.active > :first-child i, .theme-red .sidebar .menu .list li.active > :first-child span {
+    color:whitesmoke; 
+}
+.theme-red .navbar {
+    background-color: #18283c; 
+}
+.sidebar .menu .list a span {
+    color:whitesmoke; 
+}
+
+body {
+    background-color: #f9f9f9;
+}

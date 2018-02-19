@@ -1,0 +1,214 @@
+<div bsModal #createEditEmployeeModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="createEditEmployeeModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" #createUserForm="ngForm" id="frm_create_user" (ngSubmit)="save()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span *ngIf="action===ActionState.Create">Create New Employee</span>
+                        <span *ngIf="action===ActionState.Edit">Edit Employee</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul *ngIf="isStandAlone" class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li role="presentation" class="active"><a href="#emp-info" data-toggle="tab">Employee Information</a></li>
+                        <li role="presentation"><a href="#login-info" data-toggle="tab">Login Information</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="emp-info">
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-7 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="employeeID" name="employeeID" [(ngModel)]="data.empData.employeeID"
+                                               maxlength="20" placeholder="Employee ID" autofocus required
+                                               [disabled]="action===ActionState.Edit">
+                                        <mat-hint align="end">{{data.empData.employeeID?.length || 0}}/20</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="employeeID" type="text" name="employeeID" [(ngModel)]="data.empData.employeeID" required maxlength="50" minlength="1" class="validate form-control" [disabled]="action===ActionState.Edit">
+                                            <label for="employeeID" class="form-label">Employee ID</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="col-sm-5 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="nricNo" name="nricNo" [(ngModel)]="data.empData.nricNo"
+                                               maxlength="50" placeholder="IC No" required>
+                                        <mat-hint align="end">{{data.empData.nricNo?.length || 0}}/50</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="nricNo" type="text" name="nricNo" [(ngModel)]="data.empData.nricNo" class="validate form-control" >
+                                            <label for="nricNo" class="form-label">IC No</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-7 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="nickName" name="nickName" [(ngModel)]="data.empData.nickName"
+                                               maxlength="200" placeholder="Full Name" required>
+                                        <mat-hint align="end">{{data.empData.nickName?.length || 0}}/200</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="nickName" type="text" name="nickName" [(ngModel)]="data.empData.nickName" class="validate form-control">
+                                            <label for="nickName" class="form-label">Full Name</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="col-sm-5 mb-0">
+                                    <mat-form-field class="material-full-width">
+                                        <input type="text" placeholder="Designation" matInput [formControl]="controlDesignation" [matAutocomplete]="autoDesignation" [(ngModel)]="selectedDesignation" (blur)="onBlurDesignation()" required>
+                                        <mat-autocomplete #autoDesignation="matAutocomplete" [displayWith]="displayDesignation">
+                                            <mat-option *ngFor="let data of filteredDesignations | async" [value]="data">
+                                                {{ displayDesignation(data) }}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-4 mb-0">
+                                    <mat-form-field class="material-full-width">
+                                        <mat-select name="salutation" id="salutation" placeholder="Salutation" [(ngModel)]="data.empData.salutation" required>
+                                            <mat-option *ngFor="let data of salutations" [value]="data.code">{{data.codeDesc}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-3 mb-0">
+                                    <mat-form-field class="material-full-width">
+                                        <mat-select name="sex" id="sex" placeholder="Gender" [(ngModel)]="data.empData.sex" required>
+                                            <mat-option *ngFor="let data of genders" [value]="data.code">{{data.codeDesc}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-5 mb-0">
+                                    <mat-form-field class="material-full-width">
+                                        <input type="text" placeholder="State" matInput [formControl]="controlState" [matAutocomplete]="autoState" [(ngModel)]="selectedState" (blur)="onBlurState()" required>
+                                        <mat-autocomplete #autoState="matAutocomplete" [displayWith]="displayState">
+                                            <mat-option *ngFor="let data of filteredStates | async" [value]="data">
+                                                {{ displayState(data) }}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-7 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="emailAddress" name="emailAddress" [(ngModel)]="data.empData.emailAddress"
+                                               maxlength="255" placeholder="Email" required>
+                                        <mat-hint align="end">{{data.empData.emailAddress?.length || 0}}/255</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="emailAddress" type="text" name="emailAddress" [(ngModel)]="data.empData.emailAddress" class="validate form-control">
+                                            <label for="emailAddress" class="form-label">Email</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="col-sm-5 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="emerContactNo" name="emerContactNo" [(ngModel)]="data.empData.emerContactNo"
+                                               maxlength="50" placeholder="Contact Number">
+                                        <mat-hint align="end">{{data.empData.emerContactNo?.length || 0}}/50</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="emerContactNo" type="text" name="emerContactNo" [(ngModel)]="data.empData.emerContactNo" class="validate form-control">
+                                            <label for="emerContactNo" class="form-label">Contact Number</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div *ngIf="isBranchVisible" class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-12 mb-0">
+                                    <!-- <mat-form-field class="material-full-width">
+                                        <input type="text" placeholder="Branch" matInput [formControl]="controlBranch" [matAutocomplete]="autoBranch" [(ngModel)]="selectedBranch" (blur)="onBlurBranch()" required>
+                                        <mat-autocomplete #autoBranch="matAutocomplete" [displayWith]="displayBranch" >
+                                            <mat-option *ngFor="let data of filteredBranches | async" [value]="data" >
+                                                {{ displayBranch(data)}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field> -->
+                                    <!-- <label for="role">Branch</label> -->
+                                    <mat-form-field class="material-full-width">
+                                        <mat-select id="role" placeholder="Select Branch" [formControl]="branchesform" multiple [(ngModel)]="selectedBranch">
+                                            <mat-option *ngFor="let r of branches" [value]="r">{{r.branchName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12 mb-0">
+                                    <input type="checkbox" class="filled-in" id="status" name="status" [(ngModel)]="isActive">
+                                    <label for="status">Active</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="isStandAlone" role="tabpanel" class="tab-pane animated fadeIn" id="login-info">
+                            <div class="row clearfix" style="margin-top:15px;" *ngIf="isUserGroupVisible">
+                                <div class="col-sm-12 mb-0">
+                                    <mat-form-field class="material-full-width">
+                                        <mat-select name="accessCode" id="accessCode" placeholder="User Group" [(ngModel)]="data.empData.accessCode" required>
+                                            <mat-option *ngFor="let data of userGroups" [value]="data.groupCode">{{data.groupName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row clearfix" style="margin-top:15px;">
+                                <div class="col-sm-6 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="username" name="username" [(ngModel)]="data.empData.userID"
+                                               maxlength="20" placeholder="User ID" required [disabled]="action===ActionState.Edit">
+                                        <mat-hint align="end">{{data.empData.userID?.length || 0}}/20</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="username" type="text" name="username" [(ngModel)]="data.empData.userID" class="validate form-control" required maxlength="50" minlength="2" [disabled]="action===ActionState.Edit">
+                                            <label for="username" class="form-label">User ID</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="col-sm-6 mb-0">
+                                    <mat-form-field class="material-full-width" hintLabel="">
+                                        <input matInput id="password" name="password" [(ngModel)]="data.password"
+                                               maxlength="20" placeholder="Password" [required]="action===ActionState.Create">
+                                        <mat-hint *ngIf="action===ActionState.Edit" align="start">Leave blank if the password is unchanged</mat-hint>
+                                    </mat-form-field>
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="password" type="password" name="Password" [(ngModel)]="data.password" maxlength="32" class="validate form-control" [required]="action===ActionState.Create">
+                                            <label for="password" class="form-label">{{l("Password")}}</label>
+                                        </div>
+                                        <small *ngIf="action===ActionState.Edit" id="passwordHelpBlock" class="form-text text-muted" >
+                                            Leave blank if the password is unchanged
+                                        </small>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button [disabled]="!createUserForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                        {{l("Save")}}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

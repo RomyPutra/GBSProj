@@ -1,0 +1,1151 @@
+﻿Imports SEAL.Data
+Imports System
+Imports System.Data
+Imports System.Collections
+Imports System.Collections.Generic
+Imports eSWIS.Shared
+Imports eSWIS.Shared.General
+
+Namespace UserSecurity
+#Region "UsrVerify Class"
+    Public NotInheritable Class UsrVerify
+        Inherits Core.CoreControl
+        Private UsrverifyInfo As UsrverifyInfo = New UsrverifyInfo
+        Private Log As New SystemLog()
+
+
+        Public Sub New(ByVal Conn As String)
+            ConnectionString = Conn
+            ConnectionSetup()
+        End Sub
+
+#Region "Data Manipulation-Add,Edit,Del"
+
+        Private Function Save(ByVal UsrverifyCont As Container.Usrverify, ByVal pType As SQLControl.EnumSQLType, ByRef message As String, Optional ByVal BatchExecute As Boolean = False, Optional ByRef BatchList As ArrayList = Nothing, Optional ByVal Commit As Boolean = False) As Boolean
+            Dim strSQL As String = ""
+            Dim blnExec As Boolean, blnFound As Boolean, blnFlag As Boolean
+            Dim rdr As System.Data.SqlClient.SqlDataReader
+            Save = False
+            Try
+                If UsrverifyCont Is Nothing Then
+                    'Message return
+                Else
+                    blnExec = False
+                    blnFound = False
+                    blnFlag = False
+                    If StartConnection(EnumIsoState.StateUpdatetable) = True Then
+                        StartSQLControl()
+                        With UsrverifyInfo.MyInfo
+                            strSQL = BuildSelect(.CheckFields, .TableName, "UserID = '" & UsrverifyCont.UserID & "'")
+                        End With
+                        rdr = CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataReader, CommandType.Text, , False), Data.SqlClient.SqlDataReader)
+                        blnExec = True
+
+                        If rdr Is Nothing = False Then
+                            With rdr
+                                If .Read Then
+                                    blnFound = True
+                                    If Convert.ToInt16(.Item("Flag")) = 0 Then
+                                        'Found but deleted
+                                        blnFlag = False
+                                    Else
+                                        'Found and active
+                                        blnFlag = True
+                                    End If
+                                End If
+                                .Close()
+                            End With
+                        End If
+                    End If
+
+                    If blnExec Then
+                        If blnFlag = True And blnFound = True And pType = SQLControl.EnumSQLType.stInsert Then
+                            message = "Record already exist"
+                            Return False
+                        Else
+                            StartSQLControl()
+                            With objSQL
+                                .TableName = "Usrverify"
+                                .AddField("UserType", UsrverifyCont.UserType, SQLControl.EnumDataType.dtNumeric)
+                                .AddField("KeyIndex", UsrverifyCont.KeyIndex, SQLControl.EnumDataType.dtNumeric)
+                                .AddField("VeriKey", UsrverifyCont.VeriKey, SQLControl.EnumDataType.dtStringN)
+                                .AddField("VeriCode", UsrverifyCont.VeriCode, SQLControl.EnumDataType.dtNumeric)
+                                .AddField("VeriType", UsrverifyCont.VeriType, SQLControl.EnumDataType.dtNumeric)
+                                .AddField("Status", UsrverifyCont.Status, SQLControl.EnumDataType.dtNumeric)
+                                .AddField("SyncCreate", UsrverifyCont.SyncCreate, SQLControl.EnumDataType.dtDateTime)
+                                .AddField("SyncLastUpd", UsrverifyCont.SyncLastUpd, SQLControl.EnumDataType.dtDateTime)
+                                .AddField("LastSyncBy", UsrverifyCont.LastSyncBy, SQLControl.EnumDataType.dtString)
+                                .AddField("Active", UsrverifyCont.Active, SQLControl.EnumDataType.dtNumeric)
+                                .AddField("Remark", UsrverifyCont.Remark, SQLControl.EnumDataType.dtStringN)
+                                .AddField("RequestDate1", UsrverifyCont.RequestDate1, SQLControl.EnumDataType.dtDateTime)
+                                .AddField("RequestDate2", UsrverifyCont.RequestDate2, SQLControl.EnumDataType.dtDateTime)
+
+                                Select Case pType
+                                    Case SQLControl.EnumSQLType.stInsert
+                                        If blnFound = True And blnFlag = False Then
+                                            strSQL = .BuildSQL(SQLControl.EnumSQLType.stUpdate, .TableName, "UserID = '" & UsrverifyCont.UserID & "'")
+                                        Else
+                                            If blnFound = False Then
+                                                .AddField("UserID", UsrverifyCont.UserID, SQLControl.EnumDataType.dtString)
+                                                strSQL = .BuildSQL(SQLControl.EnumSQLType.stInsert)
+                                            End If
+                                        End If
+                                    Case SQLControl.EnumSQLType.stUpdate
+                                        strSQL = .BuildSQL(SQLControl.EnumSQLType.stUpdate, .TableName, "UserID = '" & UsrverifyCont.UserID & "'")
+                                End Select
+                            End With
+                            Try
+                                If BatchExecute Then
+                                    BatchList.Add(strSQL)
+                                    If Commit Then
+                                        objConn.BatchExecute(BatchList, CommandType.Text, True)
+                                    End If
+                                Else
+                                    objConn.Execute(strSQL, DataAccess.EnumRtnType.rtNone, CommandType.Text)
+                                End If
+                            Catch axExecute As Exception
+                                If pType = SQLControl.EnumSQLType.stInsert Then
+                                    message = axExecute.Message.ToString()
+                                    Throw New ApplicationException("210002 " & axExecute.Message.ToString())
+                                Else
+                                    message = axExecute.Message.ToString()
+                                    Throw New ApplicationException("210004 " & axExecute.Message.ToString())
+                                End If
+                            Finally
+                                objSQL.Dispose()
+                            End Try
+                            Return True
+                        End If
+
+                    End If
+                End If
+            Catch axAssign As ApplicationException
+                message = axAssign.Message.ToString()
+                Return False
+            Catch exAssign As SystemException
+                message = exAssign.Message.ToString()
+                Return False
+            Finally
+                UsrverifyCont = Nothing
+                rdr = Nothing
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        Private Function SaveAccess(ByVal ContUserVerify As Container.Usrverify, ByVal ContUserProfile As Container.UserProfile, ByVal pType As SQLControl.EnumSQLType, ByRef message As String, Optional ByVal BatchExecute As Boolean = False, Optional ByRef BatchList As ArrayList = Nothing, Optional ByVal Commit As Boolean = False) As Boolean
+            Dim strSQL As String = ""
+            Dim blnExec As Boolean, blnFound As Boolean, blnFlag As Boolean
+            Dim rdr As System.Data.SqlClient.SqlDataReader
+            BatchList = New ArrayList()
+            SaveAccess = False
+            Try
+                If ContUserVerify Is Nothing Then
+                    'Message return
+                Else
+                    blnExec = False
+                    blnFound = False
+                    blnFlag = False
+                    If StartConnection(EnumIsoState.StateUpdatetable) = True Then
+                        StartSQLControl()
+                        With objSQL
+                            .TableName = "Usrverify"
+                            .AddField("VeriKey", ContUserVerify.VeriKey, SQLControl.EnumDataType.dtStringN)
+                            .AddField("Status", ContUserVerify.Status, SQLControl.EnumDataType.dtNumeric)
+                            .AddField("SyncLastUpd", ContUserVerify.SyncLastUpd, SQLControl.EnumDataType.dtDateTime)
+                            .AddField("LastSyncBy", ContUserVerify.LastSyncBy, SQLControl.EnumDataType.dtString)
+                            .AddField("UserType", ContUserVerify.UserType, SQLControl.EnumDataType.dtString)
+                            .AddField("UserID", ContUserVerify.UserID, SQLControl.EnumDataType.dtString)
+                            .AddField("RejectRemark", ContUserVerify.RejectRemark, SEAL.Data.SQLControl.EnumDataType.dtString)
+
+                            strSQL = .BuildSQL(SQLControl.EnumSQLType.stUpdate, .TableName, "UserID = '" & ContUserVerify.UserID & "' AND UserType = '" & ContUserVerify.UserType & "'")
+                            BatchList.Add(strSQL)
+                        End With
+                    End If
+                End If
+
+                If ContUserProfile IsNot Nothing Then
+                    blnExec = False
+                    blnFound = False
+                    blnFlag = False
+                    If StartConnection(EnumIsoState.StateUpdatetable) = True Then
+                        StartSQLControl()
+                        With objSQL
+                            .TableName = "USRPROFILE WITH (ROWLOCK)"
+                            .AddField("UserName", ContUserProfile.UserName, SQLControl.EnumDataType.dtStringN)
+                            .AddField("Password", ContUserProfile.Password, SQLControl.EnumDataType.dtString)
+                            .AddField("UserID", ContUserProfile.UserID, SQLControl.EnumDataType.dtString)
+                            .AddField("RefID", ContUserProfile.RefID, SQLControl.EnumDataType.dtString)
+                            .AddField("RefType", ContUserProfile.RefType, SQLControl.EnumDataType.dtNumeric)
+                            .AddField("ParentID", ContUserProfile.ParentID, SQLControl.EnumDataType.dtString)
+                            .AddField("Status", ContUserProfile.Status, SQLControl.EnumDataType.dtNumeric)
+                            .AddField("Logged", ContUserProfile.Logged, SQLControl.EnumDataType.dtNumeric)
+                            .AddField("LogStation", ContUserProfile.LogStation, SQLControl.EnumDataType.dtString)
+                            .AddField("LastLogin", ContUserProfile.LastLogin, SQLControl.EnumDataType.dtDateTime)
+                            .AddField("LastLogout", ContUserProfile.LastLogout, SQLControl.EnumDataType.dtDateTime)
+                            .AddField("CreateDate", ContUserProfile.CreateDate, SQLControl.EnumDataType.dtDateTime)
+                            .AddField("CreateBy", ContUserProfile.CreateBy, SQLControl.EnumDataType.dtString)
+                            .AddField("UpdateBy", ContUserProfile.UpdateBy, SQLControl.EnumDataType.dtString)
+                            .AddField("LastUpdate", ContUserProfile.LastUpdate, SQLControl.EnumDataType.dtDateTime)
+                            If pType = SQLControl.EnumSQLType.stInsert Then
+                                strSQL = .BuildSQL(SQLControl.EnumSQLType.stInsert)
+                            Else
+                                strSQL = "DELETE USRPROFILE WHERE USERID='" & objSQL.ParseValue(SEAL.Data.SQLControl.EnumDataType.dtString, ContUserProfile.UserIDOld) & "'"
+                                BatchList.Add(strSQL)
+                                strSQL = .BuildSQL(SQLControl.EnumSQLType.stInsert)
+                            End If
+                            BatchList.Add(strSQL)
+                        End With
+
+                        With objSQL
+                            .TableName = "USRAPP WITH (ROWLOCK)"
+                            .AddField("AccessCode", ContUserProfile.GroupCode, SQLControl.EnumDataType.dtString)
+                            .AddField("AppID", ContUserProfile.AppId, SQLControl.EnumDataType.dtString)
+                            .AddField("UserID", ContUserProfile.UserID, SQLControl.EnumDataType.dtString)
+                            If pType = SQLControl.EnumSQLType.stInsert Then
+                                strSQL = .BuildSQL(SQLControl.EnumSQLType.stInsert)
+                            Else
+                                strSQL = "DELETE USRAPP WHERE USERID='" & objSQL.ParseValue(SEAL.Data.SQLControl.EnumDataType.dtString, ContUserProfile.UserIDOld) & "'"
+                                BatchList.Add(strSQL)
+                                strSQL = .BuildSQL(SQLControl.EnumSQLType.stInsert)
+                            End If
+                            BatchList.Add(strSQL)
+                        End With
+                    End If
+                End If
+
+                Try
+                    objConn.BatchExecute(BatchList, CommandType.Text, True)
+                Catch axExecute As Exception
+                    If pType = SQLControl.EnumSQLType.stInsert Then
+                        message = axExecute.Message.ToString()
+                        Throw New ApplicationException("210002 " & axExecute.Message.ToString())
+                    Else
+                        message = axExecute.Message.ToString()
+                        Throw New ApplicationException("210004 " & axExecute.Message.ToString())
+                    End If
+                Finally
+                    objSQL.Dispose()
+                End Try
+                Return True
+            Catch axAssign As ApplicationException
+                message = axAssign.Message.ToString()
+                Return False
+            Catch exAssign As SystemException
+                message = exAssign.Message.ToString()
+                Return False
+            Finally
+                ContUserProfile = Nothing
+                ContUserVerify = Nothing
+                rdr = Nothing
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        'ADD
+        Public Function Insert(ByVal UsrverifyCont As Container.Usrverify, ByRef message As String, Optional ByVal BatchExecute As Boolean = False, Optional ByRef BatchList As ArrayList = Nothing, Optional ByVal Commit As Boolean = False) As Boolean
+            Return Save(UsrverifyCont, SQLControl.EnumSQLType.stInsert, message, BatchExecute, BatchList, Commit)
+        End Function
+
+        'AMEND
+        Public Function Update(ByVal UsrverifyCont As Container.Usrverify, ByRef message As String, Optional ByVal BatchExecute As Boolean = False, Optional ByRef BatchList As ArrayList = Nothing, Optional ByVal Commit As Boolean = False) As Boolean
+            Return Save(UsrverifyCont, SQLControl.EnumSQLType.stUpdate, message, BatchExecute, BatchList, Commit)
+        End Function
+
+        Public Function SaveAPI(ByVal UsrverifyCont As Container.Usrverify, ByVal UsrprofileCont As Container.UserProfile, Optional ByVal BatchExecute As Boolean = False, Optional ByRef BatchList As ArrayList = Nothing, Optional ByVal Commit As Boolean = False) As Boolean
+            Return SaveAccess(UsrverifyCont, UsrprofileCont, SQLControl.EnumSQLType.stInsert, "", True, Nothing, False)
+        End Function
+
+        Public Function UpdateAPI(ByVal UsrverifyCont As Container.Usrverify, ByVal UsrprofileCont As Container.UserProfile, Optional ByVal BatchExecute As Boolean = False, Optional ByRef BatchList As ArrayList = Nothing, Optional ByVal Commit As Boolean = False) As Boolean
+            Return SaveAccess(UsrverifyCont, UsrprofileCont, SQLControl.EnumSQLType.stUpdate, "", True, Nothing, False)
+        End Function
+
+        Public Function Delete(ByVal UsrverifyCont As Container.Usrverify, ByRef message As String) As Boolean
+            Dim strSQL As String
+            Dim blnFound As Boolean
+            Dim blnInUse As Boolean
+            Dim rdr As System.Data.SqlClient.SqlDataReader
+            Delete = False
+            blnFound = False
+            blnInUse = False
+            Try
+                If UsrverifyCont Is Nothing Then
+                    'Error Message
+                Else
+                    If StartConnection(EnumIsoState.StateUpdatetable) = True Then
+                        StartSQLControl()
+                        With UsrverifyInfo.MyInfo
+                            strSQL = BuildSelect(.CheckFields, .TableName, "UserID = '" & UsrverifyCont.UserID & "'")
+                        End With
+                        rdr = CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataReader, CommandType.Text, , False), Data.SqlClient.SqlDataReader)
+
+                        If rdr Is Nothing = False Then
+                            With rdr
+                                If .Read Then
+                                    blnFound = True
+                                    If Convert.ToInt16(.Item("InUse")) = 1 Then
+                                        blnInUse = True
+                                    End If
+                                End If
+                                .Close()
+                            End With
+                        End If
+
+                        If blnFound = True And blnInUse = True Then
+                            With objSQL
+                                strSQL = BuildUpdate(UsrverifyInfo.MyInfo.TableName, " SET Flag = 0" & _
+                                " , .SyncLastUpd = '" & UsrverifyCont.SyncLastUpd & "' , LastSyncBy = '" & _
+                                objSQL.ParseValue(SQLControl.EnumDataType.dtString, UsrverifyCont.LastSyncBy) & "' WHERE" & _
+                                "UserID = '" & UsrverifyCont.UserID & "'")
+                            End With
+                        End If
+
+                        If blnFound = True And blnInUse = False Then
+                            strSQL = BuildDelete(UsrverifyInfo.MyInfo.TableName, "UserID = '" & UsrverifyCont.UserID & "'")
+                        End If
+
+                        Try
+                            objConn.Execute(strSQL, DataAccess.EnumRtnType.rtNone, CommandType.Text)
+                            Return True
+                        Catch exExecute As Exception
+                            message = exExecute.Message.ToString()
+                            Return False
+                        End Try
+                    End If
+                End If
+
+            Catch axDelete As ApplicationException
+                message = axDelete.Message.ToString()
+                Return False
+            Catch exDelete As Exception
+                message = exDelete.Message.ToString()
+                Return False
+            Finally
+                UsrverifyCont = Nothing
+                rdr = Nothing
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        Public Overloads Function SaveRequest(ByVal UserID As System.String, ByVal DeviceID As System.String, ByVal DeviceType As System.Byte, ByVal Remark As System.String, ByVal DeviceBrand As System.String, ByVal SaveType As SQLControl.EnumSQLType) As Boolean
+            Try
+                If StartConnection() = True Then
+                    With UsrverifyInfo.MyInfo
+                        StartSQLControl()
+
+                        Dim contUsrVerify As Container.Usrverify
+                        contUsrVerify = New Container.Usrverify
+                        contUsrVerify.UserID = UserID
+                        contUsrVerify.UserType = 1
+                        contUsrVerify.KeyIndex = 1
+                        contUsrVerify.VeriKey = DeviceID
+                        contUsrVerify.VeriCode = 0
+                        contUsrVerify.VeriType = DeviceType
+
+                        If (SaveType = SQLControl.EnumSQLType.stUpdate) Then
+                            contUsrVerify.Status = 1
+                        Else
+                            contUsrVerify.Status = 0
+                        End If
+
+                        contUsrVerify.SyncCreate = System.DateTime.Now
+                        contUsrVerify.SyncLastUpd = System.DateTime.Now
+                        contUsrVerify.LastSyncBy = UserID
+                        contUsrVerify.Active = 1
+                        contUsrVerify.Remark = Remark
+                        contUsrVerify.DeviceBrand = DeviceBrand
+
+                        Return Save(contUsrVerify, SaveType, "", False, Nothing, False)
+                    End With
+                Else
+                    Return False
+                End If
+            Catch ex As Exception
+                Log.Notifier.Notify(ex)
+                Gibraltar.Agent.Log.Error("eCNLogic/Security/UsrVerify", ex.Message & " " & strSQL, ex.StackTrace)
+                Return False
+            Finally
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+#End Region
+
+#Region "Data Selection"
+        Public Overloads Function GetUsrVerify(ByVal UserID As System.String, Optional type As String = Nothing) As Container.Usrverify
+            Dim rUsrverify As Container.Usrverify = Nothing
+            Dim dtTemp As DataTable = Nothing
+            Dim lstField As New List(Of String)
+            Dim strSQL As String = Nothing
+            Dim strFilter As String = ""
+            Try
+                If StartConnection() = True Then
+                    With UsrverifyInfo.MyInfo
+                        If type IsNot Nothing AndAlso type <> "" Then
+                            strFilter = " AND UserType=" & type
+                        End If
+                        strSQL = BuildSelect(.FieldsList, .TableName, "UserID = '" & UserID & "'" & strFilter)
+                        dtTemp = CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, .TableName), Data.DataTable)
+                        Dim rowCount As Integer = 0
+                        If dtTemp Is Nothing = False Then
+                            If dtTemp.Rows.Count > 0 Then
+                                Dim drRow = dtTemp.Rows(0)
+                                rUsrverify = New Container.Usrverify
+                                rUsrverify.UserID = drRow.Item("UserID")
+                                rUsrverify.UserType = drRow.Item("UserType")
+                                rUsrverify.KeyIndex = drRow.Item("KeyIndex")
+                                rUsrverify.VeriKey = drRow.Item("VeriKey")
+                                rUsrverify.VeriCode = drRow.Item("VeriCode")
+                                rUsrverify.VeriType = drRow.Item("VeriType")
+                                rUsrverify.rowguid = drRow.Item("rowguid")
+                                rUsrverify.Status = drRow.Item("Status")
+                                rUsrverify.SyncCreate = drRow.Item("SyncCreate")
+                                rUsrverify.SyncLastUpd = drRow.Item("SyncLastUpd")
+                                rUsrverify.LastSyncBy = drRow.Item("LastSyncBy")
+                                rUsrverify.RequestDate1 = drRow.Item("RequestDate1")
+                                rUsrverify.RequestDate2 = drRow.Item("RequestDate2")
+                                rUsrverify.Active = drRow.Item("Active")
+                                rUsrverify.Remark = drRow.Item("Remark")
+                            Else
+                                rUsrverify = Nothing
+                            End If
+                        Else
+                            rUsrverify = Nothing
+                        End If
+                    End With
+                End If
+                Return rUsrverify
+            Catch ex As Exception
+                Throw ex
+            Finally
+                rUsrverify = Nothing
+                dtTemp = Nothing
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        Public Overloads Function GetUsrVerify(ByVal UserID As System.String, DecendingOrder As Boolean) As List(Of Container.Usrverify)
+            Dim rUsrverify As Container.Usrverify = Nothing
+            Dim lstUsrverify As List(Of Container.Usrverify) = New List(Of Container.Usrverify)
+            Dim dtTemp As DataTable = Nothing
+            Dim lstField As New List(Of String)
+            Dim strSQL As String = Nothing
+            Dim strDesc As String = ""
+            Try
+                If StartConnection() = True Then
+                    With UsrverifyInfo.MyInfo
+                        If DecendingOrder Then
+                            strDesc = " Order by UserID DESC"
+                        End If
+                        strSQL = BuildSelect(.FieldsList, .TableName, "UserID = '" & UserID & "'" & strDesc)
+                        dtTemp = CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, .TableName), Data.DataTable)
+                        Dim rowCount As Integer = 0
+                        If dtTemp Is Nothing = False Then
+                            For Each drRow As DataRow In dtTemp.Rows
+                                rUsrverify = New Container.Usrverify
+                                rUsrverify.UserID = drRow.Item("UserID")
+                                rUsrverify.UserType = drRow.Item("UserType")
+                                rUsrverify.KeyIndex = drRow.Item("KeyIndex")
+                                rUsrverify.VeriKey = drRow.Item("VeriKey")
+                                rUsrverify.VeriCode = drRow.Item("VeriCode")
+                                rUsrverify.VeriType = drRow.Item("VeriType")
+                                rUsrverify.rowguid = drRow.Item("rowguid")
+                                rUsrverify.Status = drRow.Item("Status")
+                                rUsrverify.SyncCreate = drRow.Item("SyncCreate")
+                                rUsrverify.SyncLastUpd = drRow.Item("SyncLastUpd")
+                                rUsrverify.LastSyncBy = drRow.Item("LastSyncBy")
+                                rUsrverify.Active = drRow.Item("Active")
+                                rUsrverify.Remark = drRow.Item("Remark")
+                                lstUsrverify.Add(rUsrverify)
+                            Next
+
+                        Else
+                            rUsrverify = Nothing
+                        End If
+                        Return lstUsrverify
+                    End With
+                End If
+            Catch ex As Exception
+                Throw ex
+            Finally
+                rUsrverify = Nothing
+                lstUsrverify = Nothing
+                lstField = Nothing
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        Public Overloads Function GetUsrAccessList(Optional ByVal FieldCond As String = Nothing) As Data.DataTable
+            Try
+                If StartConnection() = True Then
+                    With UsrverifyInfo.MyInfo
+                        StartSQLControl()
+                        strSQL = "SELECT up.UserID, bz.BizRegID, bz.CompanyName, bz.RegNo, uv.RequestDate1, uv.RequestDate2, uv.VeriKey, uv.SyncCreate, uv.SyncLastUpd, uv.LastSyncBy, uv.Status," & _
+                            " CASE WHEN uv.Status='0' THEN 'Pending' WHEN uv.Status='1' THEN 'Approved' ELSE 'Rejected' END AS StatusDesc" & _
+                            " FROM USRVERIFY uv WITH (NOLOCK)" & _
+                            " LEFT JOIN USRPROFILE up WITH (NOLOCK) ON uv.UserID=up.UserID" & _
+                            " LEFT JOIN BIZENTITY bz WITH (NOLOCK) ON up.ParentID = bz.BizRegID" & _
+                            " WHERE uv.UserType=2" & FieldCond & "ORDER BY uv.RequestDate1 DESC"
+                        Return CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, .TableName), Data.DataTable)
+                    End With
+                Else
+                    Return Nothing
+                End If
+            Catch ex As Exception
+                Log.Notifier.Notify(ex)
+                Gibraltar.Agent.Log.Error("UserSecurity/UsrVerify", ex.Message, ex.StackTrace)
+            Finally
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        Public Overloads Function GetUsrAccess(ByVal UserID As String) As Data.DataTable
+            Try
+                If StartConnection() = True Then
+                    With UsrverifyInfo.MyInfo
+                        StartSQLControl()
+                        strSQL = "SELECT up.UserID, bz.BizRegID, bz.CompanyName, bz.RegNo, uv.RequestDate1, uv.RequestDate2, uv.VeriKey, uv.SyncCreate, uv.SyncLastUpd, uv.LastSyncBy, uv.Remark, bl.AccNo," & _
+                            " CASE WHEN uv.Status='0' THEN 'Pending' WHEN uv.Status='1' THEN 'Approved' ELSE 'Rejected' END AS StatusDesc, uv.Status" & _
+                            " FROM USRVERIFY uv WITH (NOLOCK)" & _
+                            " LEFT JOIN USRPROFILE up WITH (NOLOCK) ON uv.UserID=up.UserID" & _
+                            " LEFT JOIN BIZENTITY bz WITH (NOLOCK) ON up.ParentID = bz.BizRegID" & _
+                            " LEFT JOIN BIZLOCATE bl WITH (NOLOCK) ON up.ParentID = bl.BizRegID" & _
+                            " WHERE uv.UserType=2 AND bl.BranchType=3 AND uv.UserID='" & objSQL.ParseValue(SEAL.Data.SQLControl.EnumDataType.dtString, UserID) & "'"
+                        Return CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, .TableName), Data.DataTable)
+                    End With
+                Else
+                    Return Nothing
+                End If
+            Catch ex As Exception
+                Log.Notifier.Notify(ex)
+                Gibraltar.Agent.Log.Error("UserSecurity/UsrVerify", ex.Message, ex.StackTrace)
+            Finally
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+        Public Overloads Function GetUsrAccessCont(ByVal UserID As String) As Container.Usrverify
+            Dim rUsrverify As Container.Usrverify = Nothing
+            Dim dtTemp As DataTable = Nothing
+            Dim lstField As New List(Of String)
+            Dim strSQL As String = Nothing
+            Dim strFilter As String = ""
+            Try
+                If StartConnection() = True Then
+                    With UsrverifyInfo.MyInfo
+                        StartSQLControl()
+                        strSQL = "SELECT up.UserID, bz.BizRegID, bz.CompanyName, bz.RegNo, uv.RequestDate1, uv.RequestDate2, uv.VeriKey, uv.SyncCreate, uv.SyncLastUpd, uv.LastSyncBy, uv.Remark, bl.AccNo," & _
+                            " CASE WHEN uv.Status='0' THEN 'Pending' WHEN uv.Status='1' THEN 'Approved' ELSE 'Rejected' END AS StatusDesc, uv.Status, uv.RejectRemark " & _
+                            " FROM USRVERIFY uv WITH (NOLOCK)" & _
+                            " LEFT JOIN USRPROFILE up WITH (NOLOCK) ON uv.UserID=up.UserID" & _
+                            " LEFT JOIN BIZENTITY bz WITH (NOLOCK) ON up.ParentID = bz.BizRegID" & _
+                            " LEFT JOIN BIZLOCATE bl WITH (NOLOCK) ON up.ParentID = bl.BizRegID AND bl.BizLocID = up.RefID" & _
+                            " WHERE uv.UserType=2 AND uv.UserID='" & objSQL.ParseValue(SEAL.Data.SQLControl.EnumDataType.dtString, UserID) & "'"
+                        dtTemp = CType(objConn.Execute(strSQL, DataAccess.EnumRtnType.rtDataTable, CommandType.Text, .TableName), Data.DataTable)
+                        Dim rowCount As Integer = 0
+                        If dtTemp Is Nothing = False Then
+                            If dtTemp.Rows.Count > 0 Then
+                                Dim drRow = dtTemp.Rows(0)
+                                rUsrverify = New Container.Usrverify
+                                rUsrverify.UserID = drRow.Item("UserID")
+                                rUsrverify.VeriKey = drRow.Item("VeriKey")
+                                rUsrverify.Status = drRow.Item("Status")
+                                rUsrverify.SyncCreate = drRow.Item("SyncCreate")
+                                rUsrverify.SyncLastUpd = drRow.Item("SyncLastUpd")
+                                rUsrverify.LastSyncBy = drRow.Item("LastSyncBy")
+                                rUsrverify.RequestDate1 = drRow.Item("RequestDate1")
+                                rUsrverify.RequestDate2 = IIf(IsDBNull(drRow.Item("RequestDate2")), "", drRow.Item("RequestDate2"))
+                                rUsrverify.Remark = drRow.Item("Remark")
+                                rUsrverify.RegNo = drRow.Item("RegNo")
+                                rUsrverify.CompanyName = drRow.Item("CompanyName")
+                                rUsrverify.AccNo = drRow.Item("AccNo")
+                                rUsrverify.RejectRemark = drRow.Item("RejectRemark")
+                            Else
+                                rUsrverify = Nothing
+                            End If
+                        Else
+                            rUsrverify = Nothing
+                        End If
+                    End With
+                End If
+                Return rUsrverify
+            Catch ex As Exception
+                Log.Notifier.Notify(ex)
+                Gibraltar.Agent.Log.Error("UserSecurity/UsrVerify", ex.Message, ex.StackTrace)
+            Finally
+                rUsrverify = Nothing
+                dtTemp = Nothing
+                EndSQLControl()
+                EndConnection()
+            End Try
+        End Function
+
+#End Region
+    End Class
+#End Region
+
+#Region "Container"
+    Namespace Container
+#Region "Usrverify Container"
+        Public Class Usrverify_FieldName
+            Public UserID As System.String = "UserID"
+            Public UserType As System.String = "UserType"
+            Public KeyIndex As System.String = "KeyIndex"
+            Public VeriKey As System.String = "VeriKey"
+            Public VeriCode As System.String = "VeriCode"
+            Public VeriType As System.String = "VeriType"
+            Public rowguid As System.String = "rowguid"
+            Public Flag As System.String = "Flag"
+            Public Status As System.String = "Status"
+            Public SyncCreate As System.String = "SyncCreate"
+            Public SyncLastUpd As System.String = "SyncLastUpd"
+            Public LastSyncBy As System.String = "LastSyncBy"
+            Public RequestDate1 As System.String = "RequestDate1"
+            Public RequestDate2 As System.String = "RequestDate2"
+            Public Active As System.String = "Active"
+            Public Remark As System.String = "Remark"
+            Public DeviceBrand As System.String = "DeviceBrand"
+            Public RejectRemark As System.String = "RejectRemark"
+        End Class
+
+        Public Class Usrverify
+            Protected _UserID As System.String
+            Private _UserType As System.Byte
+            Private _KeyIndex As System.Byte
+            Private _VeriKey As System.String
+            Private _VeriCode As System.Byte
+            Private _VeriType As System.Byte
+            Private _rowguid As System.Guid
+            Private _Status As System.Byte
+            Private _SyncCreate As System.DateTime
+            Private _SyncLastUpd As System.DateTime
+            Private _LastSyncBy As System.String
+            Private _RequestDate1 As System.DateTime
+            Private _RequestDate2 As System.DateTime
+            Private _Active As System.Byte
+            Private _Remark As System.String
+            Private _DeviceBrand As System.String
+            Private _RejectRemark As System.String
+            Private _CompanyName As System.String
+            Private _RegNo As System.String
+            Private _AccNo As System.String
+
+            ''' <summary>
+            ''' Mandatory
+            ''' </summary>
+            Public Property UserID As System.String
+                Get
+                    Return _UserID
+                End Get
+                Set(ByVal Value As System.String)
+                    _UserID = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property UserType As System.Byte
+                Get
+                    Return _UserType
+                End Get
+                Set(ByVal Value As System.Byte)
+                    _UserType = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property KeyIndex As System.Byte
+                Get
+                    Return _KeyIndex
+                End Get
+                Set(ByVal Value As System.Byte)
+                    _KeyIndex = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property VeriKey As System.String
+                Get
+                    Return _VeriKey
+                End Get
+                Set(ByVal Value As System.String)
+                    _VeriKey = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property VeriCode As System.Byte
+                Get
+                    Return _VeriCode
+                End Get
+                Set(ByVal Value As System.Byte)
+                    _VeriCode = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property VeriType As System.Byte
+                Get
+                    Return _VeriType
+                End Get
+                Set(ByVal Value As System.Byte)
+                    _VeriType = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property rowguid As System.Guid
+                Get
+                    Return _rowguid
+                End Get
+                Set(ByVal Value As System.Guid)
+                    _rowguid = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property Status As System.Byte
+                Get
+                    Return _Status
+                End Get
+                Set(ByVal Value As System.Byte)
+                    _Status = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property SyncCreate As System.DateTime
+                Get
+                    Return _SyncCreate
+                End Get
+                Set(ByVal Value As System.DateTime)
+                    _SyncCreate = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property SyncLastUpd As System.DateTime
+                Get
+                    Return _SyncLastUpd
+                End Get
+                Set(ByVal Value As System.DateTime)
+                    _SyncLastUpd = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property LastSyncBy As System.String
+                Get
+                    Return _LastSyncBy
+                End Get
+                Set(ByVal Value As System.String)
+                    _LastSyncBy = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property RequestDate1 As System.DateTime
+                Get
+                    Return _RequestDate1
+                End Get
+                Set(ByVal Value As System.DateTime)
+                    _RequestDate1 = Value
+                End Set
+            End Property
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property RequestDate2 As System.DateTime
+                Get
+                    Return _RequestDate2
+                End Get
+                Set(ByVal Value As System.DateTime)
+                    _RequestDate2 = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property Active As System.Byte
+                Get
+                    Return _Active
+                End Get
+                Set(ByVal Value As System.Byte)
+                    _Active = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property Remark As System.String
+                Get
+                    Return _Remark
+                End Get
+                Set(ByVal Value As System.String)
+                    _Remark = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property DeviceBrand As System.String
+                Get
+                    Return _DeviceBrand
+                End Get
+                Set(ByVal Value As System.String)
+                    _DeviceBrand = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property RejectRemark As System.String
+                Get
+                    Return _RejectRemark
+                End Get
+                Set(ByVal Value As System.String)
+                    _RejectRemark = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property CompanyName As System.String
+                Get
+                    Return _CompanyName
+                End Get
+                Set(ByVal Value As System.String)
+                    _CompanyName = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property RegNo As System.String
+                Get
+                    Return _RegNo
+                End Get
+                Set(ByVal Value As System.String)
+                    _RegNo = Value
+                End Set
+            End Property
+
+            ''' <summary>
+            ''' Mandatory, Not Allow Null
+            ''' </summary>
+            Public Property AccNo As System.String
+                Get
+                    Return _AccNo
+                End Get
+                Set(ByVal Value As System.String)
+                    _AccNo = Value
+                End Set
+            End Property
+
+        End Class
+#End Region
+    End Namespace
+#End Region
+
+#Region "Class Info"
+#Region "Usrverify Info"
+    Public Class UsrverifyInfo
+        Inherits Core.CoreBase
+        Protected Overrides Sub InitializeClassInfo()
+            With MyInfo
+                .FieldsList = "UserID,UserType,KeyIndex,VeriKey,VeriCode,VeriType,rowguid,Flag,Status,SyncCreate,SyncLastUpd,LastSyncBy,RequestDate1,RequestDate2,Active,Remark"
+                .CheckFields = "UserType,KeyIndex,VeriCode,VeriType,Flag,Status,Active"
+                .TableName = "Usrverify"
+                .DefaultCond = Nothing
+                .DefaultOrder = Nothing
+                .Listing = "UserID,UserType,KeyIndex,VeriKey,VeriCode,VeriType,rowguid,Flag,Status,SyncCreate,SyncLastUpd,LastSyncBy,RequestDate1,RequestDate2,Active,Remark"
+                .ListingCond = Nothing
+                .ShortList = Nothing
+                .ShortListCond = Nothing
+            End With
+        End Sub
+
+        Public Function JoinTableField(ByVal Prefix As String, ByVal FieldList As String) As String
+            Dim aFieldList As Array
+            Dim strFieldList As String = Nothing
+            aFieldList = FieldList.Split(",")
+            If Not aFieldList Is Nothing Then
+                For Each Str As String In aFieldList
+                    If strFieldList Is Nothing Then
+                        strFieldList = Prefix & "." & Str
+                    Else
+                        strFieldList &= "," & Prefix & "." & Str
+                    End If
+                Next
+            End If
+            aFieldList = Nothing
+
+            Return strFieldList
+        End Function
+    End Class
+#End Region
+#End Region
+
+#Region "Scheme"
+#Region "UsrVerify Scheme"
+    Public Class UsrVerifyScheme
+        Inherits Core.SchemeBase
+        Protected Overrides Sub InitializeInfo()
+
+            With this
+                .DataType = SQLControl.EnumDataType.dtString
+                .FieldName = "UserID"
+                .Length = 20
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(0, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "UserType"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(1, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "KeyIndex"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(2, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtStringN
+                .FieldName = "VeriKey"
+                .Length = 200
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(3, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "VeriCode"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(4, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "VeriType"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(5, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtString
+                .FieldName = "rowguid"
+                .Length = 16
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(6, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "Flag"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(7, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "Status"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(8, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtDateTime
+                .FieldName = "SyncCreate"
+                .Length = 8
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(9, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtDateTime
+                .FieldName = "SyncLastUpd"
+                .Length = 8
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(10, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtString
+                .FieldName = "LastSyncBy"
+                .Length = 20
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(11, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtNumeric
+                .FieldName = "Active"
+                .Length = 1
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(12, this)
+            With this
+                .DataType = SQLControl.EnumDataType.dtStringN
+                .FieldName = "Remark"
+                .Length = 255
+                .DecPlace = Nothing
+                .RegExp = String.Empty
+                .IsMandatory = True
+                .AllowNegative = False
+            End With
+            MyBase.AddItem(13, this)
+
+        End Sub
+
+        Public ReadOnly Property UserID As StrucElement
+            Get
+                Return MyBase.GetItem(0)
+            End Get
+        End Property
+
+        Public ReadOnly Property UserType As StrucElement
+            Get
+                Return MyBase.GetItem(1)
+            End Get
+        End Property
+        Public ReadOnly Property KeyIndex As StrucElement
+            Get
+                Return MyBase.GetItem(2)
+            End Get
+        End Property
+        Public ReadOnly Property VeriKey As StrucElement
+            Get
+                Return MyBase.GetItem(3)
+            End Get
+        End Property
+        Public ReadOnly Property VeriCode As StrucElement
+            Get
+                Return MyBase.GetItem(4)
+            End Get
+        End Property
+        Public ReadOnly Property VeriType As StrucElement
+            Get
+                Return MyBase.GetItem(5)
+            End Get
+        End Property
+        Public ReadOnly Property rowguid As StrucElement
+            Get
+                Return MyBase.GetItem(6)
+            End Get
+        End Property
+        Public ReadOnly Property Flag As StrucElement
+            Get
+                Return MyBase.GetItem(7)
+            End Get
+        End Property
+        Public ReadOnly Property Status As StrucElement
+            Get
+                Return MyBase.GetItem(8)
+            End Get
+        End Property
+        Public ReadOnly Property SyncCreate As StrucElement
+            Get
+                Return MyBase.GetItem(9)
+            End Get
+        End Property
+        Public ReadOnly Property SyncLastUpd As StrucElement
+            Get
+                Return MyBase.GetItem(10)
+            End Get
+        End Property
+        Public ReadOnly Property LastSyncBy As StrucElement
+            Get
+                Return MyBase.GetItem(11)
+            End Get
+        End Property
+        Public ReadOnly Property Active As StrucElement
+            Get
+                Return MyBase.GetItem(12)
+            End Get
+        End Property
+        Public ReadOnly Property Remark As StrucElement
+            Get
+                Return MyBase.GetItem(13)
+            End Get
+        End Property
+
+        Public Function GetElement(ByVal Key As Integer) As StrucElement
+            Return MyBase.GetItem(Key)
+        End Function
+    End Class
+#End Region
+#End Region
+
+End Namespace

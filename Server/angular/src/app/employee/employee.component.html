@@ -1,0 +1,230 @@
+<div class="row clearfix" [@routerTransition]>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="main-content" [ngClass]="{'card': isStandAlone}">
+			<div class="body table-responsive">
+				<!-- ******************************************************** -->
+				<dx-data-grid id="gridContainer" 
+					(onToolbarPreparing)="onToolbarPreparing($event)" 
+					[rowAlternationEnabled]="dxGridConf.rowAlternationEnabled"
+					[showColumnLines]="dxGridConf.showColumnLines" 
+					[showRowLines]="dxGridConf.showRowLines" 
+					[showBorders]="dxGridConf.showBorders"
+					[allowColumnResizing]="dxGridConf.allowColumnResizing" 
+					[hoverStateEnabled]="dxGridConf.hoverStateEnabled" 
+					[columnResizingMode]="dxGridConf.columnResizingMode"
+					[columnAutoWidth]="dxGridConf.columnAutoWidth" 
+					[dataSource]="dataSource" 
+					(onRowClick)="selectionChanged($event)" 
+					[masterDetail]="{ enabled: false, template: 'detail' }">
+
+					<dxo-selection mode="single"></dxo-selection>
+
+					<div *dxTemplate="let data of 'gridTitleTemplate'">
+						<span class="dx-header-title" *ngIf="isStandAlone">
+							Employee
+						</span>
+					</div>
+
+					<div *dxTemplate="let data of 'gridOtherTemplate'">
+						<div class="demo-radio-button" [ngStyle]="{'margin-left': isStandAlone ? '20px' : '0px'}">
+							<input name="stats" type="radio" id="radio_0" class="with-gap" [value]="0" [(ngModel)]="stats" (change)="refresh()" checked/>
+							<label for="radio_0">Show Active Employee</label>
+							<input name="stats" type="radio" id="radio_1" class="with-gap" [value]="1" [(ngModel)]="stats" (change)="refresh()" />
+							<label for="radio_1">Show Inactive Employee</label>
+						</div>
+					</div>
+
+					<div *dxTemplate="let data of 'gridMenuTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid-header">
+								<li>
+									<a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();">
+										<i class="material-icons">refresh</i> {{l('Refresh')}}</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<dxo-search-panel [visible]="true" [width]="240" placeholder="{{filterPlaceHolder}}"></dxo-search-panel>
+
+					<dxi-column 
+						dataField="employeeID" 
+						caption="#" 
+						[allowFiltering]="false" 
+						[width]="40" 
+						[minWidth]="30" 
+						[allowSorting]="false"
+					 	cellTemplate="actionCellTemplate"></dxi-column>
+					<dxi-column dataField="employeeID" caption="Emp ID"></dxi-column>
+					<dxi-column dataField="nickName" caption="Name"></dxi-column>
+					<dxi-column dataField="createBy" caption="Created By"></dxi-column>
+					<dxi-column dataField="createDate" caption="Created Date" dataType="date"></dxi-column>
+					<dxi-column dataField="updateBy" caption="Updated By"></dxi-column>
+					<dxi-column dataField="lastUpdate" caption="Updated Date" dataType="date"></dxi-column>
+					<dxi-column dataField="lastLogin"></dxi-column>
+
+					<div *dxTemplate="let row of 'actionCellTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid">
+								<li>
+									<a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(row.data)">
+										<i class="material-icons">create</i>{{l('Edit')}}</a>
+								</li>
+								<!-- <li>
+									<a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(row.data)">
+										<i class="material-icons">delete_sweep</i>{{l('Delete')}}</a>
+								</li> -->
+							</ul>
+						</div>
+					</div>
+
+					<div *dxTemplate="let r of 'detail'">
+						<div class="row clearfix">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="header">
+										<h2 class="align-left">Employee Detail</h2>
+										<ul class="header-dropdown m-r--5">
+											<li class="dropdown">
+												<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+												 (click)="closeDetail()">
+													<i class="material-icons">close</i>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="body">
+										<div class="row clearfix">
+											<div class="col-lg-4 col-md-6 col-sm-6" style="margin-bottom:0px;">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Employee ID</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.employeeID ? r.data.employeeID : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Salutation</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.salutation ? r.data.salutation : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Full Name</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.nickName ? r.data.nickName : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">IC No</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.nricNo ? r.data.nricNo : '-'}}</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-6 col-sm-6" style="margin-bottom:0px;">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Designation</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.designation ? r.data.designation : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">State</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.state ? r.data.state : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Email</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.emailAddress ? r.data.emailAddress : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Gender</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.sex ? r.data.sex : '-'}}</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-6 col-sm-6" style="margin-bottom:0px;">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">Contact Number</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.emerContactNo ? r.data.emerContactNo : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">User Group</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.accessCode ? r.data.accessCode : '-'}}</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="master-detail-title align-left">User ID</div>
+														<div class="form-group">
+															<div class="form-line">
+																<div class="master-detail-caption align-left">{{r.data.userID ? r.data.userID : '-'}}</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<dxo-paging [pageSize]="dxGridPager.pageSize"></dxo-paging>
+					<dxo-pager [showPageSizeSelector]="dxGridPager.showPageSizeSelector" [allowedPageSizes]="dxGridPager.allowedPageSizes" [showInfo]="dxGridPager.showInfo">
+					</dxo-pager>
+				</dx-data-grid>
+				<!-- ******************************************************** -->
+
+				<button *ngIf="isStandAlone && isAddVisible" type="button" data-toggle="modal" 
+					class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+					<i class="material-icons">add</i>
+				</button>
+
+				<plex-loading *ngIf="isBusy">
+					<label>{{loadingMessage}}</label>
+				</plex-loading>
+			</div>
+		</div>
+	</div>
+</div>
+
+<create-edit-employee-modal #createEditEmployeeModal (modalSave)="refresh()"></create-edit-employee-modal>

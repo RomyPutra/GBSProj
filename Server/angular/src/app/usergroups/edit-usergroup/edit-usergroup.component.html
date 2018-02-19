@@ -1,0 +1,66 @@
+<div bsModal #editUserGroupModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editUserGroupModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog">
+
+      <div #modalContent class="modal-content">
+          <form *ngIf="active" #editUserForm="ngForm" id="frm_edit_user" novalidate (ngSubmit)="save()">
+
+            <div class="modal-header">
+                <button type="button" class="close" (click)="close()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <span>{{l("Edit User Group")}}</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+                    <div class="col-sm-12">
+                        <label for="repeatSelect"> Repeat select: </label>
+                        <select name="repeatSelect" id="repeatSelect" [(ngModel)]="appid">
+                            <option value="1">DOE</option>
+                            <option value="2">Generator</option>
+                            <option value="3">Transporter</option>
+                            <option value="4">Reciever</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row clearfix">
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label for="displayname">{{l("DisplayName")}}</label>
+                                <input id="displayname" type="text" name="DisplayName" [(ngModel)]="groups.groupName" required maxlength="32" minlength="2"
+                                    class="validate form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-sm-12">
+                        <div class="col-sm-1">
+                            <!-- <input type="checkbox" name="Usrstatus" value="{{groups.status}}" class="filled-in" id="usrstatus"
+                            checked="checked" /> -->
+                            <!-- <input type="checkbox" class="filled-in" id="checkNew" [checked]="groups.status" (change)="changeLabel()">
+                            <label for="checkNew" title="Status">{{status}}</label> -->
+                            <input type="checkbox" class="filled-in" id="usrstatus" [checked]="groups.status" (change)="changeLabel()">
+                            <label for="usrstatus">{{status}}</label>
+                        </div>
+                        <!-- <label>Actived</label> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
+                    {{l("Cancel")}}
+                </button>
+                <button [disabled]="!editUserForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                    {{l("Save")}}
+                </button>
+            </div>
+
+      </form>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="body table-responsive">
+
+				<plex-loading *ngIf="isTableLoading">
+					<label>{{loadingMessage}}</label>
+				</plex-loading>
+				
+                <dx-data-grid
+					id="gridContainer"
+					(onToolbarPreparing)="onToolbarPreparing($event)"
+                    [rowAlternationEnabled]="dxGridConf.rowAlternationEnabled"
+					[showColumnLines]="dxGridConf.showColumnLines"
+					[showRowLines]="dxGridConf.showRowLines"
+					[showBorders]="dxGridConf.showBorders"
+					[allowColumnResizing]="dxGridConf.allowColumnResizing"
+					[hoverStateEnabled]="dxGridConf.hoverStateEnabled"
+					[columnResizingMode]="dxGridConf.columnResizingMode"
+					[columnAutoWidth]="dxGridConf.columnAutoWidth"
+					[dataSource]="dataSource"
+					[loadPanel]="loadPanel" >
+				
+					<div *dxTemplate="let data of 'gridTitleTemplate'">
+						<span class="dx-header-title">
+							Companies
+						</span>
+					</div>
+
+					<div *dxTemplate="let data of 'gridMenuTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid-header">
+								<li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<dxo-search-panel 
+						[visible]="true" 
+						[width]="240" 
+						placeholder="{{filterPlaceHolder}}"></dxo-search-panel>
+						
+					<dxi-column 
+						dataField="bizRegID" 
+						caption="#"
+						[allowFiltering]="false"
+						[width]="40"
+						[minWidth]="30"
+						[allowSorting]="false" 
+						cellTemplate="actionCellTemplate"></dxi-column>
+					<dxi-column dataField="bizRegID" [visible]="false" sortOrder="asc"></dxi-column>
+					<dxi-column dataField="regNo" caption="ROC No"></dxi-column>
+					<dxi-column dataField="companyName" caption="Company Name"></dxi-column>
+					<dxi-column dataField="kkmDesc" caption="Upload KKM" cellTemplate="kkmCellTemplate"></dxi-column>
+                    <dxi-column dataField="createDate" dataType="date" caption="Created Date"></dxi-column>
+                    <dxi-column dataField="updateBy" caption="Updated By"></dxi-column>
+                    <dxi-column dataField="lastUpdate" dataType="date" caption="Updated Date"></dxi-column>
+                    <dxi-column dataField="activeDesc" caption="Status" cellTemplate="statusCellTemplate"></dxi-column>
+                    
+					
+					<div *dxTemplate="let row of 'actionCellTemplate'">
+						<div class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="material-icons">more_vert</i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dxgrid">
+								<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editCustomer(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+								<!-- <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(row.data)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li> -->
+							</ul>
+						</div>
+					</div>
+					<div align="center" *dxTemplate="let r of 'kkmCellTemplate'">
+						<i class="material-icons" *ngIf="r.value=='Included'" style="color:green;">check_box</i>
+                        <i class="material-icons" *ngIf="r.value=='Not Included'" style="color:red;">indeterminate_check_box</i>
+					</div>
+                    <div align="center" *dxTemplate="let r of 'statusCellTemplate'">
+						<i class="material-icons" *ngIf="r.value=='Active'" style="color:green;">check_box</i>
+                        <i class="material-icons" *ngIf="r.value=='In-Active'" style="color:red;">indeterminate_check_box</i>
+                    </div>
+
+					<dxo-remote-operations
+						[filtering]="true"
+						[sorting]="true"
+						[paging]="true">
+					</dxo-remote-operations>
+
+					<dxo-paging [pageSize]="dxGridPager.pageSize"></dxo-paging>
+					<dxo-pager 
+						[showPageSizeSelector]="dxGridPager.showPageSizeSelector"
+						[allowedPageSizes]="dxGridPager.allowedPageSizes"
+						[showInfo]="dxGridPager.showInfo">
+					</dxo-pager>
+			 	</dx-data-grid>
+            
+                <!-- <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="createCustomer()">
+                    <i class="material-icons">add</i>
+				</button> -->
+				
+            </div>
+        </div>
+    </div>
+</div>
+
+<create-customer-modal #createCustomerModal (modalSave)="refresh()"></create-customer-modal>

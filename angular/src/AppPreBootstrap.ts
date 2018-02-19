@@ -17,8 +17,8 @@ export class AppPreBootstrap {
 
     private static getApplicationConfig(callback: () => void) {
         return abp.ajax({
-            // url: '/GBS-UI/assets/appconfig.json',
-            url: '/assets/appconfig.json',
+            //url: '/GBS-UI/assets/appconfig.json',
+            url: './assets/appconfig.json',
             method: 'GET',
             headers: {
                 'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
@@ -44,6 +44,17 @@ export class AppPreBootstrap {
     }
 
     private static getUserConfiguration(callback: () => void): JQueryPromise<any> {
+        // console.log(abp.ajax(
+        //     abp.ajax({
+        //         url: AppConsts.remoteServiceBaseUrl + '/AbpUserConfiguration/GetAll',
+        //         method: 'GET',
+        //         headers: {
+        //             Authorization: 'Bearer ' + abp.auth.getToken(),
+        //             '.AspNetCore.Culture': abp.utils.getCookieValue("Abp.Localization.CultureName"),
+        //             'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
+        //         }
+        //     })
+        // ));
         return abp.ajax({
             url: AppConsts.remoteServiceBaseUrl + '/AbpUserConfiguration/GetAll',
             method: 'GET',

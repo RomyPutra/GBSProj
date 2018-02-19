@@ -1,0 +1,93 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l("Tenants")}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();">
+                                    <i class="material-icons">refresh</i>Refresh</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body table-responsive">
+                <div class="form-group">
+                    <span class="btn bg-pink waves-effect btn-file">
+                        Browse
+                        <!-- <input type="file" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                        (change)="handleFileInput($event.target.files)"> -->
+                        <input type="file" id="file" multiple="false" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                            (change)="onExcelChange($event)">
+                    </span>
+
+                    <file-drop headertext="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                        <span>optional content (don't set headertext then)</span>
+                    </file-drop>
+                </div>
+                <!-- <table class="sjs-table">
+                    <th *ngFor="let head of excelToUploadHeader">
+                    {{head}}
+                    </th>
+                    <tr *ngFor="let row of excelToUpload">
+                    <td *ngFor="let val of row">
+                        {{val}}
+                    </td>
+                    </tr>
+                </table>
+        
+                <button (click)="uploadFileToActivity()">Upload</button>
+        
+                <button (click)="clearExcelData()">Clear</button> -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let head of excelToUploadHeader">
+                                {{head}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of pendingRecv" [ngStyle]="row.hasError && {'background-color': '#FFEBEE'}">
+                            <td>{{row.column0}}</td>
+                            <td>{{row.column1}}</td>
+                            <td>{{row.column2}}</td>
+                            <td>{{row.column3}}</td>
+                            <td>{{row.column4}}</td>
+                            <td *ngIf="!hasError(row, 5)">{{row.column5}}</td>
+                            <td>{{row.column6}}</td>
+                            <td>{{row.column7}}</td>
+                            <td>{{row.column8 | date: 'mediumDate'}}</td>
+                            <td>{{row.column9 | date: 'mediumDate'}}</td>
+                            <td>{{row.column10}}</td>
+                            <td>{{row.column11}}</td>
+                            <td>{{row.column12}}</td>
+                            <!-- <td *ngFor="let val of row">
+                                {{val}}
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn btn-success waves-effect" (click)="uploadFileToActivity()">
+                    <span>Upload</span>
+                </button>
+                <button type="button" class="btn btn-success waves-effect" (click)="clearExcelData()">
+                    <span>Clear</span>
+                </button>
+                <!-- <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="createTenant()">
+                    <i class="material-icons">add</i>
+                </button> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="MasterManager" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="MasterManager" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="MasterManager/Imports">
+      <xsd:import schemaLocation="https://eswis.doe.gov.my/ESWISAPI/MasterManager.svc?xsd=xsd0" namespace="MasterManager" />
+      <xsd:import schemaLocation="https://eswis.doe.gov.my/ESWISAPI/MasterManager.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://eswis.doe.gov.my/ESWISAPI/MasterManager.svc?xsd=xsd2" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WasteCodeRequest">
+    <wsdl:part name="parameters" element="tns:WasteCodeRequest" />
+  </wsdl:message>
+  <wsdl:message name="WasteCodeResponse">
+    <wsdl:part name="parameters" element="tns:WasteCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="WasteTypeRequest">
+    <wsdl:part name="parameters" element="tns:WasteTypeRequest" />
+  </wsdl:message>
+  <wsdl:message name="WasteTypeResponse">
+    <wsdl:part name="parameters" element="tns:WasteTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PackageTypeRequest">
+    <wsdl:part name="parameters" element="tns:PackageTypeRequest" />
+  </wsdl:message>
+  <wsdl:message name="PackageTypeResponse">
+    <wsdl:part name="parameters" element="tns:PackageTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransportVehicleRequest">
+    <wsdl:part name="parameters" element="tns:TransportVehicleRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransportVehicleResponse">
+    <wsdl:part name="parameters" element="tns:TransportVehicleResponse" />
+  </wsdl:message>
+  <wsdl:message name="FacilityListRequest">
+    <wsdl:part name="parameters" element="tns:FacilityListRequest" />
+  </wsdl:message>
+  <wsdl:message name="FacilityListResponse">
+    <wsdl:part name="parameters" element="tns:FacilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransportDriverRequest">
+    <wsdl:part name="parameters" element="tns:TransportDriverRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransportDriverResponse">
+    <wsdl:part name="parameters" element="tns:TransportDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="UOMRequest">
+    <wsdl:part name="parameters" element="tns:UOMRequest" />
+  </wsdl:message>
+  <wsdl:message name="UOMResponse">
+    <wsdl:part name="parameters" element="tns:UOMResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransTypeRequest">
+    <wsdl:part name="parameters" element="tns:TransTypeRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransTypeResponse">
+    <wsdl:part name="parameters" element="tns:TransTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompanyTypeRequest">
+    <wsdl:part name="parameters" element="tns:CompanyTypeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CompanyTypeResponse">
+    <wsdl:part name="parameters" element="tns:CompanyTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="OperationTypeRequest">
+    <wsdl:part name="parameters" element="tns:OperationTypeRequest" />
+  </wsdl:message>
+  <wsdl:message name="OperationTypeResponse">
+    <wsdl:part name="parameters" element="tns:OperationTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveStatusRequest">
+    <wsdl:part name="parameters" element="tns:ReceiveStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveStatusResponse">
+    <wsdl:part name="parameters" element="tns:ReceiveStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMasterManager">
+    <wsdl:operation name="GetWasteCodeList">
+      <wsdl:input wsaw:Action="GetWasteCodeList" name="WasteCodeRequest" message="tns:WasteCodeRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetWasteCodeListResponse" name="WasteCodeResponse" message="tns:WasteCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWasteTypeList">
+      <wsdl:input wsaw:Action="GetWasteTypeList" name="WasteTypeRequest" message="tns:WasteTypeRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetWasteTypeListResponse" name="WasteTypeResponse" message="tns:WasteTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageTypeList">
+      <wsdl:input wsaw:Action="GetPackageTypeList" name="PackageTypeRequest" message="tns:PackageTypeRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetPackageTypeListResponse" name="PackageTypeResponse" message="tns:PackageTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransportVehicle">
+      <wsdl:input wsaw:Action="GetTransportVehicle" name="TransportVehicleRequest" message="tns:TransportVehicleRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetTransportVehicleResponse" name="TransportVehicleResponse" message="tns:TransportVehicleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityList">
+      <wsdl:input wsaw:Action="GetFacilityList" name="FacilityListRequest" message="tns:FacilityListRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetFacilityListResponse" name="FacilityListResponse" message="tns:FacilityListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransportDriver">
+      <wsdl:input wsaw:Action="GetTransportDriver" name="TransportDriverRequest" message="tns:TransportDriverRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetTransportDriverResponse" name="TransportDriverResponse" message="tns:TransportDriverResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUOMList">
+      <wsdl:input wsaw:Action="GetUOMList" name="UOMRequest" message="tns:UOMRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetUOMListResponse" name="UOMResponse" message="tns:UOMResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransTypeList">
+      <wsdl:input wsaw:Action="GetTransTypeList" name="TransTypeRequest" message="tns:TransTypeRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetTransTypeListResponse" name="TransTypeResponse" message="tns:TransTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyTypeList">
+      <wsdl:input wsaw:Action="GetCompanyTypeList" name="CompanyTypeRequest" message="tns:CompanyTypeRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetCompanyTypeListResponse" name="CompanyTypeResponse" message="tns:CompanyTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationTypeList">
+      <wsdl:input wsaw:Action="GetOperationTypeList" name="OperationTypeRequest" message="tns:OperationTypeRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetOperationTypeListResponse" name="OperationTypeResponse" message="tns:OperationTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiveStatusList">
+      <wsdl:input wsaw:Action="GetReceiveStatusList" name="ReceiveStatusRequest" message="tns:ReceiveStatusRequest" />
+      <wsdl:output wsaw:Action="MasterManager/IMasterManager/GetReceiveStatusListResponse" name="ReceiveStatusResponse" message="tns:ReceiveStatusResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

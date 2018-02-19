@@ -1,0 +1,86 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    RESTRICTION SETTING
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <td>{{l('Restriction')}}</td>
+                            <td colspan="4">
+                                <input type="checkbox" class="filled-in" id="usrstatus" [checked]="restriction.status" (change)="changeLabel()">
+                                <label for="usrstatus">{{status}}</label>
+                                <!-- <mat-checkbox color="primary"></mat-checkbox>
+                                <label for="active">Active</label> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{l('Booking Period')}}</td>
+                            <td>{{l('From :')}}</td>
+                            <td>
+                                <mat-form-field>
+                                    <input [(ngModel)]="bookfrom" matInput id="BookStrDate" placeholder="Start Date" [matDatepicker]="BookStrDate">
+                                    <mat-datepicker-toggle matSuffix [for]="BookStrDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #BookStrDate disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                    <mat-datepicker #picker></mat-datepicker>-->
+                            </td>
+                            <td>{{l('To :')}}</td>
+                            <td>
+                                <mat-form-field>
+                                    <input [(ngModel)]="bookto" matInput id="BookEndDate" placeholder="End Date" [matDatepicker]="BookEndDate">
+                                    <mat-datepicker-toggle matSuffix [for]="BookEndDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #BookEndDate disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                        <mat-datepicker #picker></mat-datepicker>-->
+                            </td>
+                        </tr>
+                        <tr>
+                                <td>{{l('Travel Period')}}</td>
+                                <td>{{l('From :')}}</td>
+                                <td>
+                                    <mat-form-field>
+                                        <input [(ngModel)]="transfrom" matInput id="TravelStrDate" placeholder="Start Date" [matDatepicker]="TravelStrDate">
+                                        <mat-datepicker-toggle matSuffix [for]="TravelStrDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #TravelStrDate disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                        <mat-datepicker #picker></mat-datepicker>-->
+                                </td>
+                                <td>{{l('To :')}}</td>
+                                <td>
+                                    <mat-form-field>
+                                        <input [(ngModel)]="transto" name="TravelEndDate" matInput id="TravelEndDate" placeholder="End Date" [matDatepicker]="TravelEndDate">
+                                        <mat-datepicker-toggle matSuffix [for]="TravelEndDate"></mat-datepicker-toggle>
+                                        <mat-datepicker #TravelEndDate disabled="false"></mat-datepicker>
+                                    </mat-form-field>
+                                                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                            <mat-datepicker #picker></mat-datepicker>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{l('Restriction Note')}}</td>
+                                <td colspan="4">
+                                    <textarea matInput id="txaRestrictionNote" maxlength="50" placeholder="Promo Description" matTextareaAutosize matAutosizeMinRows="6"
+                                    matAutosizeMaxRows="6">{{restriction.restrictionnote}}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                    <td>{{l('Restriction Alert')}}</td>
+                                    <td colspan="4">
+                                        <textarea matInput id="txaRestrictionAlert" maxlength="50" placeholder="Promo Description" matTextareaAutosize matAutosizeMinRows="6"
+                                        matAutosizeMaxRows="6">{{restriction.restrictionalert}}</textarea>
+                                    </td>
+                                </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

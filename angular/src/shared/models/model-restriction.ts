@@ -2,12 +2,14 @@ import { Observable } from 'rxjs/Observable';
 
 export class RestrictionDto implements IRestrictionDto{
     status: string;
-    bookfrom: Date;
-    bookto: Date;
-    travelfrom: Date;
-    travelto: Date;
+    bookfrom: string;
+    bookto: string;
+    travelfrom: string;
+    travelto: string;
     restrictionnote: string;
     restrictionalert: string;
+    restrictionnoteex: string;
+    restrictionalertex: string;
 
     static fromJS(data: any): RestrictionDto {
         let result = new RestrictionDto();
@@ -34,6 +36,8 @@ export class RestrictionDto implements IRestrictionDto{
             this.travelto = data['traTo'];
             this.restrictionnote = data['restrictionNote'];
             this.restrictionalert = data['restrictionAlert'];
+            this.restrictionnoteex = data['restrictionNote'];
+            this.restrictionalertex = data['restrictionAlert'];
         }
     }
 
@@ -46,6 +50,8 @@ export class RestrictionDto implements IRestrictionDto{
         data['traTo'] = this.travelto;
         data['restrictionNote'] = this.restrictionnote;
         data['restrictionAlert'] = this.restrictionalert;
+        data['restrictionNoteEx'] = this.restrictionnoteex;
+        data['restrictionAlertEx'] = this.restrictionalertex;
         return data;
     }
 
@@ -59,12 +65,18 @@ export class RestrictionDto implements IRestrictionDto{
 
 export interface IRestrictionDto {
     status: string;
-    bookfrom: Date;
-    bookto: Date;
-    travelfrom: Date;
-    travelto: Date;
+    bookfrom: string;
+    bookto: string;
+    travelfrom: string;
+    travelto: string;
+    // bookfrom: Date;
+    // bookto: Date;
+    // travelfrom: Date;
+    // travelto: Date;
     restrictionnote: string;
     restrictionalert: string;
+    restrictionnoteex: string;
+    restrictionalertex: string;
 }
 
 export class PagedResultDtoOfRestrictionDto implements IPagedResultDtoOfRestrictionDto {

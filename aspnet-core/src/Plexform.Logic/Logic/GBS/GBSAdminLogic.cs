@@ -4589,10 +4589,74 @@ namespace Plexform.GBS
                 return false;
             }
         }
-        #endregion
+		#endregion
 
-        #region SYS_PREFT
-        public class SYS_PREFTInfo
+		public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
+		{
+			objSQL.ClearFields();
+			objSQL.ClearCondtions();
+			bool rValue = false;
+			ArrayList lstSQL = new ArrayList();
+			string strSQL = string.Empty;
+			try
+			{
+				objSQL.AddField("CodeDesc", pRestriction.Status, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'IND'");
+				lstSQL.Add(strSQL);
+				objSQL.AddField("CodeDesc", pRestriction.BookFrom, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'BOOKFROM'");
+				lstSQL.Add(strSQL);
+				objSQL.AddField("CodeDesc", pRestriction.BookTo, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'BOOKTO'");
+				lstSQL.Add(strSQL);
+				objSQL.AddField("CodeDesc", pRestriction.TraFrom, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'TRAFROM'");
+				lstSQL.Add(strSQL);
+				objSQL.AddField("CodeDesc", pRestriction.TraTo, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'TRATO'");
+				lstSQL.Add(strSQL);
+				if (pRestriction.RestrictionNote == pRestriction.RestrictionNoteEx)
+				{
+					objSQL.AddField("SYSValue", pRestriction.RestrictionNote, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONNOTE'");
+					lstSQL.Add(strSQL);
+				}
+				else
+				{
+					objSQL.AddField("SYSValue", pRestriction.RestrictionNote, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("SYSValueEx", pRestriction.RestrictionNoteEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONNOTE'");
+					lstSQL.Add(strSQL);
+				}
+				if (pRestriction.RestrictionAlert == pRestriction.RestrictionAlertEx)
+				{
+					objSQL.AddField("SYSValue", pRestriction.RestrictionAlert, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONALERT'");
+					lstSQL.Add(strSQL);
+				}
+				else
+				{
+					objSQL.AddField("SYSValue", pRestriction.RestrictionAlert, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					objSQL.AddField("SYSValueEx", pRestriction.RestrictionAlertEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONALERT'");
+					lstSQL.Add(strSQL);
+				}
+
+				rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+				if (rValue == false)
+				{
+					return false;
+				}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+		}
+
+		#region SYS_PREFT
+		public class SYS_PREFTInfo
         {
             private short _appID;
             private string _GRPID = String.Empty;
@@ -5495,18 +5559,22 @@ namespace Plexform.GBS
 						else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKFROM")
 						{
 							obj.BookFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+							//obj.BookFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
 						}
 						else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKTO")
 						{
 							obj.BookTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+							//obj.BookTo = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
 						}
 						else if (dtMaster.Rows[i]["Code"].ToString() == "TRAFROM")
 						{
 							obj.TraFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+							//obj.TraFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
 						}
 						else if (dtMaster.Rows[i]["Code"].ToString() == "TRATO")
 						{
-							obj.TraTo= dtMaster.Rows[i]["CodeDesc"].ToString();
+							obj.TraTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+							//obj.TraTo= Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
 						}
 					}
 				}
@@ -5532,6 +5600,20 @@ namespace Plexform.GBS
 				var temp = ex.ToString();
 			}
 			return await Task.FromResult(obj);
+		}
+
+		public Task<bool> UpdateRestriction(Models.RestrictionModels pRestriction)
+		{
+			var res = false;
+			try
+			{
+				res = SaveAllRestriction(pRestriction);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
 		}
 
 		public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")

@@ -1,0 +1,90 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="body table-responsive">
+                <dx-data-grid
+                    id="gridContainer"
+                    (onToolbarPreparing)="onToolbarPreparing($event)"
+                    [rowAlternationEnabled]="dxGridConf.rowAlternationEnabled"
+					[showColumnLines]="dxGridConf.showColumnLines"
+					[showRowLines]="dxGridConf.showRowLines"
+					[showBorders]="dxGridConf.showBorders"
+					[allowColumnResizing]="dxGridConf.allowColumnResizing"
+					[hoverStateEnabled]="dxGridConf.hoverStateEnabled"
+					[columnResizingMode]="dxGridConf.columnResizingMode"
+					[columnAutoWidth]="dxGridConf.columnAutoWidth"
+                    [dataSource]="stock" >
+                    
+                    <div *dxTemplate="let data of 'gridTitleTemplate'">
+                        <span class="dx-header-title">
+                            Stock
+                        </span>
+                    </div>
+
+                    <div *dxTemplate="let data of 'gridMenuTemplate'">
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dxgrid-header">
+                                <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <dxo-search-panel 
+                        [visible]="true" 
+                        [width]="240" 
+                        placeholder="Search..."></dxo-search-panel>
+
+                    <dxi-column 
+                        dataField="" 
+                        caption="#"
+                        [allowFiltering]="false"
+                        [width]="40"
+                        [minWidth]="30"
+                        [allowSorting]="false" 
+                        cellTemplate="actionCellTemplate"></dxi-column>
+                    <dxi-column dataField="itemCode"></dxi-column>
+                    <dxi-column dataField="itemDesc"></dxi-column>
+                    <dxi-column dataField="itmBrand" caption="Brand"></dxi-column>
+                    <dxi-column dataField="itmCatgDesc" caption="Catg"></dxi-column>
+                    <dxi-column dataField="sellPrice"></dxi-column>
+                    <dxi-column dataField="active" cellTemplate="statusCellTemplate" [width]="60"></dxi-column>
+
+                    <div *dxTemplate="let row of 'actionCellTemplate'">
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dxgrid">
+                                <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(row.data)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(row.data)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div *dxTemplate="let r of 'statusCellTemplate'">
+                        <td>
+                            <i class="material-icons" *ngIf="!r.status" style="color:green;">check_box</i>
+                            <i class="material-icons" *ngIf="r.status" style="color:red;">indeterminate_check_box</i>
+                        </td>
+                    </div>
+
+                    <dxo-paging [pageSize]="dxGridPager.pageSize"></dxo-paging>
+					<dxo-pager 
+						[showPageSizeSelector]="dxGridPager.showPageSizeSelector"
+						[allowedPageSizes]="dxGridPager.allowedPageSizes"
+						[showInfo]="dxGridPager.showInfo">
+					</dxo-pager>
+	            </dx-data-grid>
+  
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <create-stock-modal #createStockModal (modalSave)="refresh()"></create-stock-modal>
+  <!-- <edit-stock-modal #editStockModal (modalSave)="refresh()"></edit-stock-modal> -->

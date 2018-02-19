@@ -490,39 +490,21 @@ namespace Plexform.Controllers
 		}
 
 		[HttpPut]
-        public async Task<bool> UpdateCodeMaster([FromBody]GBS.GBSAdminLogic.CodemasterInfo input)
-        {
-            bool res = false;
-            try
-            {
-                var repo = new Plexform.GBS.GBSAdminLogic();
+		public async Task<bool> UpdateRestriction([FromBody]Models.RestrictionModels input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
 
-                res = await repo.UpdateCodeMaster(input);
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
+				res = await repo.UpdateRestriction(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
 
-            return ObjectMapper.Map<bool>(res);
-        }
-
-        [HttpPut]
-        public async Task<bool> UpdateSYSPreft([FromBody]GBS.GBSAdminLogic.SYS_PREFTInfo input)
-        {
-            bool res = false;
-            try
-            {
-                var repo = new Plexform.GBS.GBSAdminLogic();
-
-                res = await repo.UpdateSYSPreft(input);
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
-
-            return ObjectMapper.Map<bool>(res);
-        }
+			return ObjectMapper.Map<bool>(res);
+		}
     }
 }
