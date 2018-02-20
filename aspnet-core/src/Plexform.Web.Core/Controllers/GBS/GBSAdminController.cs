@@ -506,5 +506,23 @@ namespace Plexform.Controllers
 
 			return ObjectMapper.Map<bool>(res);
 		}
-    }
+
+		[HttpPut]
+		public async Task<bool> UploadGroupTime([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadGroupTime(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+	}
 }

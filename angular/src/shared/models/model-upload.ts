@@ -227,3 +227,124 @@ export class UploadPendingRecvDto {
         return result;
     }
 }
+
+export class UploadFlightTimeDto {
+    hasError = false;
+    errorColumns: any[] = [];
+
+	ftGroupCode: string;
+	startTime: string;
+	endTime: string;
+	syncCreate: string;
+	syncLastUpd: string;
+	createDate: string;
+	updateDate: string;
+	lastSyncBy: string;
+	createBy: string;
+	updateBy: string;
+	active: number;
+
+    static fromJS(data: any): UploadFlightTimeDto {
+        let result = new UploadFlightTimeDto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: any[]) {
+        if (data) {
+            if (data[0]) {
+                this.ftGroupCode = data[0];
+            } else {
+                this.isMandatory(1);
+            }
+
+            if (data[1]) {
+                this.startTime = data[1];
+            } else {
+                this.isMandatory(1);
+            }
+
+            if (data[2]) {
+                this.endTime = data[2];
+            } else {
+                this.isMandatory(1);
+            }
+			this.syncCreate = '';
+			this.syncLastUpd = '';
+			this.createDate = '';
+			this.updateDate = '';
+			this.lastSyncBy = '';
+			this.createBy = '';
+			this.updateBy = '';
+			this.active = 1;
+        }
+    }
+
+    isMandatory(index?: number) {
+        this.hasError = true;
+        this.errorColumns.push(index);
+    }
+
+    isNumber(value?: any, index?: number): number {
+        if (Number(value)) {
+            return Number(value);
+        } else {
+            this.hasError = true;
+            this.errorColumns.push(index);
+            return null;
+        }
+    }
+
+    isDate(value?: any, index?: number): Date {
+        if (Date.parse(value)) {
+            return new Date(Date.parse(value));
+        }  else {
+            this.hasError = true;
+            this.errorColumns.push(index);
+            return null;
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.hasError = false;
+            this.errorColumns = [];
+
+			this.ftGroupCode = '';
+			this.startTime = '';
+			this.endTime = '';
+			this.syncCreate = '';
+			this.syncLastUpd = '';
+			this.createDate = '';
+			this.updateDate = '';
+			this.lastSyncBy = '';
+			this.createBy = '';
+			this.updateBy = '';
+			this.active = 0;
+        }
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data['hasError'] = this.hasError;
+        data['errorList'] = this.errorColumns;
+
+		data['endTime'] = this.endTime;
+		data['syncCreate'] = this.syncCreate;
+		data['syncLastUpd'] = this.syncLastUpd;
+		data['createDate'] = this.createDate;
+		data['updateDate'] = this.updateDate;
+		data['lastSyncBy'] = this.lastSyncBy;
+		data['createBy'] = this.createBy;
+		data['updateBy'] = this.updateBy;
+		data['active'] = this.active;
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new UploadFlightTimeDto();
+        result.init(json);
+        return result;
+    }
+}

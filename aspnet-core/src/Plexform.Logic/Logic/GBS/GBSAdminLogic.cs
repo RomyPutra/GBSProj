@@ -517,7 +517,7 @@ namespace Plexform.GBS
                 return false;
             }
         }
-        public DataTable GetCountry(string Code = "")
+		public DataTable GetCountry(string Code = "")
         {
             DataTable dt = new DataTable();
             String strSQL = string.Empty;
@@ -777,10 +777,56 @@ namespace Plexform.GBS
                 return null;
             }
         }
-        #endregion
+		public bool SaveFlightTimeGroup(Models.FltTimeGroupModels[] pInfo)
+		{
+			bool rValue = false;
+			ArrayList lstSQL = new ArrayList();
+			string strSQL = string.Empty;
+			try
+			{
+				foreach (Models.FltTimeGroupModels Ad_flttimegroupCont in pInfo)
+				{
+					var StartTime = Ad_flttimegroupCont.StartTime.ToString();
+					var EndTime = Ad_flttimegroupCont.EndTime.ToString();
 
-        #region AGENTACCESSFARE
-        public class AGENTACCESSFAREInfo
+					objSQL.AddField("FTGroupCode", Ad_flttimegroupCont.FTGroupCode, SQLControl.EnumDataType.dtString);
+					objSQL.AddField("StartTime", StartTime, SQLControl.EnumDataType.dtString);
+					objSQL.AddField("EndTime", EndTime, SQLControl.EnumDataType.dtString);
+					//objSQL.AddField("rowguid", Ad_flttimegroupCont.rowguid, SQLControl.EnumDataType.dtString);
+					//objSQL.AddField("Status", Ad_flttimegroupCont.Status, SQLControl.EnumDataType.dtNumeric);
+					//objSQL.AddField("Inuse", Ad_flttimegroupCont.Inuse, SQLControl.EnumDataType.dtNumeric);
+					objSQL.AddField("SyncCreate", Ad_flttimegroupCont.SyncCreate, SQLControl.EnumDataType.dtDateTime);
+					objSQL.AddField("SyncLastUpd", Ad_flttimegroupCont.SyncLastUpd, SQLControl.EnumDataType.dtDateTime);
+					objSQL.AddField("LastSyncBy", Ad_flttimegroupCont.LastSyncBy, SQLControl.EnumDataType.dtString);
+					objSQL.AddField("CreateDate", Ad_flttimegroupCont.CreateDate, SQLControl.EnumDataType.dtDateTime);
+					objSQL.AddField("CreateBy", Ad_flttimegroupCont.CreateBy, SQLControl.EnumDataType.dtString);
+					objSQL.AddField("UpdateDate", Ad_flttimegroupCont.UpdateDate, SQLControl.EnumDataType.dtDateTime);
+					objSQL.AddField("UpdateBy", Ad_flttimegroupCont.UpdateBy, SQLControl.EnumDataType.dtString);
+					objSQL.AddField("Active", Ad_flttimegroupCont.Active, SQLControl.EnumDataType.dtNumeric);
+
+					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stInsert, "AD_FLTTIMEGROUP");
+					lstSQL.Add(strSQL);
+
+				}
+
+				rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+				if (rValue == false)
+				{
+					return false;
+				}
+
+				return true;
+
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+		}
+		#endregion
+
+		#region AGENTACCESSFARE
+		public class AGENTACCESSFAREInfo
         {
             private System.String _MarketCode = String.Empty;
             private System.String _InTier = String.Empty;
@@ -5699,6 +5745,60 @@ namespace Plexform.GBS
             }
             return Task.FromResult(res);
         }
-        #endregion
-    }
+
+		public Task<bool> UploadGroupTime(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<List<T>> GenerateListFromString<T>(string content, ref string errorMsg)
+		{
+			var res = new List<T>();
+			try
+			{
+				var json = Newtonsoft.Json.JsonConvert.DeserializeObject<T[]>(content);
+				if (json != null && json is Array)
+				{
+					res.AddRange(json);
+				}
+				else
+				{
+					var temp = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
+					if (temp != null)
+					{
+						if (temp is Array)
+						{
+							errorMsg = "Json format not match with the class container";
+						}
+						else
+						{
+							errorMsg = "Invalid json array";
+						}
+					}
+					else
+					{
+						errorMsg = "Invalid json array";
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				errorMsg = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+		#endregion
+	}
 }

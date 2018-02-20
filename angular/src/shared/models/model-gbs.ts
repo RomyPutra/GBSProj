@@ -297,12 +297,12 @@ export interface IPagedResultDtoOfGBSDto {
 
 export class FlightTimeDto implements IFlightTimeDto {
 	ftGroupCode: string;
-	startTime: Date;
-	endTime: Date;
-	syncCreate: Date;
-	syncLastUpd: Date;
-	createDate: Date;
-	updateDate: Date;
+	startTime: string;
+	endTime: string;
+	syncCreate: string;
+	syncLastUpd: string;
+	createDate: string;
+	updateDate: string;
 	lastSyncBy: string;
 	createBy: string;
 	updateBy: string;
@@ -314,13 +314,26 @@ export class FlightTimeDto implements IFlightTimeDto {
         return result;
     }
 
-    constructor(data?: IFlightTimeDto) {
-        if (data) {
+    constructor(data?: IFlightTimeDto, dataFT?: any) {
+        var today = new Date();
+        if (data == dataFT) {
             for (var property in data) {
                 if (data.hasOwnProperty(property)) {
                     (<any>this)[property] = (<any>data)[property];
                 }
             }
+        } else {
+                this.ftGroupCode = dataFT[0];
+                this.startTime = dataFT[1];
+                this.endTime = dataFT[2];
+    			this.syncCreate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    			this.syncLastUpd = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    			this.createDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    			this.updateDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    			this.lastSyncBy = '';
+    			this.createBy = '';
+    			this.updateBy = '';
+    			this.active = 1;
         }
     }
 
@@ -341,15 +354,25 @@ export class FlightTimeDto implements IFlightTimeDto {
     }
 
     toJSON(data?: any) {
-		data['endTime'] = this.endTime;
-		data['syncCreate'] = this.syncCreate;
-		data['syncLastUpd'] = this.syncLastUpd;
-		data['createDate'] = this.createDate;
-		data['updateDate'] = this.updateDate;
-		data['lastSyncBy'] = this.lastSyncBy;
-		data['createBy'] = this.createBy;
-		data['updateBy'] = this.updateBy;
-		data['active'] = this.active;
+        if(data['0']){
+            data = typeof data === 'object' ? data : {};
+			data['ftGroupCode'] = this.ftGroupCode;
+			data['startTime'] = this.startTime;
+            data['endTime'] = this.endTime;
+            console.log(data);
+        } else {
+			data['ftGroupCode'] = this.ftGroupCode;
+			data['startTime'] = this.startTime;
+            data['endTime'] = this.endTime;
+            data['syncCreate'] = this.syncCreate;
+            data['syncLastUpd'] = this.syncLastUpd;
+            data['createDate'] = this.createDate;
+            data['updateDate'] = this.updateDate;
+            data['lastSyncBy'] = this.lastSyncBy;
+            data['createBy'] = this.createBy;
+            data['updateBy'] = this.updateBy;
+            data['active'] = this.active;    
+        }
 		return data;
     }
 
@@ -363,12 +386,12 @@ export class FlightTimeDto implements IFlightTimeDto {
 
 export interface IFlightTimeDto {
 	ftGroupCode: string;
-	startTime: Date;
-	endTime: Date;
-	syncCreate: Date;
-	syncLastUpd: Date;
-	createDate: Date;
-	updateDate: Date;
+	startTime: string;
+	endTime: string;
+	syncCreate: string;
+	syncLastUpd: string;
+	createDate: string;
+	updateDate: string;
 	lastSyncBy: string;
 	createBy: string;
 	updateBy: string;
