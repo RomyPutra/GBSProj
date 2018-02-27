@@ -524,5 +524,94 @@ namespace Plexform.Controllers
 
 			return ObjectMapper.Map<bool>(res);
 		}
-	}
+
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.GB4Models>> GetPaxSettingAll()
+        {
+            IList<Plexform.Models.GB4Models> Scheme = new List<Plexform.Models.GB4Models>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetPaxSettingAll();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.GB4Models>(
+                ObjectMapper.Map<List<Plexform.Models.GB4Models>>(Scheme),
+                Scheme.Count
+            );
+        }
+
+        [HttpGet]
+        public async Task<Plexform.Models.GB4Models> GetPaxSettingSingle(string CountryCode, string Origin, string OrgID, string AgentID)
+        {
+            Plexform.Models.GB4Models Scheme = new Plexform.Models.GB4Models();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetPaxSettingSingle(CountryCode, Origin, OrgID, AgentID);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return ObjectMapper.Map<Plexform.Models.GB4Models>(Scheme);
+        }
+
+        [HttpPut]
+        public async Task<bool> UpdatePaxSetting([FromBody]Plexform.GBS.GBSAdminLogic.GB4SETTING input, [FromBody]Plexform.GBS.GBSAdminLogic.GB4SETTING inputOld)
+        {
+            bool res = false;
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+
+                res = await repo.UpdatePaxSetting(input, inputOld);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+
+            return ObjectMapper.Map<bool>(res);
+        }
+
+        [HttpPut]
+        public async Task<bool> SavePaxSetting([FromBody]Plexform.GBS.GBSAdminLogic.GB4SETTING input)
+        {
+            bool res = false;
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+
+                res = await repo.InsertPaxSetting(input);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+
+            return ObjectMapper.Map<bool>(res);
+        }
+
+        [HttpPut]
+        public async Task<bool> DeletePaxSetting([FromBody]List<Plexform.GBS.GBSAdminLogic.GB4SETTING> input)
+        {
+            bool res = false;
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+
+                res = await repo.DeletePaxSetting(input);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+
+            return ObjectMapper.Map<bool>(res);
+        }
+    }
 }

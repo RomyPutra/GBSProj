@@ -14,6 +14,7 @@ export class SideBarNavComponent extends AppComponentBase {
     menuItems: MenuItem[] = [
         new MenuItem(this.l('Payment Setting'), '', 'payment', '/app/gbs'),
         new MenuItem(this.l('Restriction'), '', 'storage', '/app/restriction'),
+        new MenuItem(this.l('GB2, GB4'), '', 'storage', '/app/GB4'),
         new MenuItem(this.l('Flight Time'), '', 'flight', '/app/flighttime'),
         new MenuItem('Agent', '', 'menu', '', [
             new MenuItem(this.l('Tier'), '', 'supervisor_account', '/app/agenttier'),

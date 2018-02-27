@@ -38,6 +38,7 @@ import { LFDiscComponent } from './lfdisc/lfdisc.component';
 import { PUDiscComponent } from './pudisc/pudisc.component';
 import { SeriesComponent } from './series/series.component';
 import { UmrahlaborComponent } from './umrahlabor/umrahlabor.component';
+import { GB4Component } from './GB4/GB4.component';
 
 @NgModule({
     imports: [
@@ -85,6 +86,7 @@ import { UmrahlaborComponent } from './umrahlabor/umrahlabor.component';
                     { path: 'pudisc', component: PUDiscComponent, canActivate: [AppRouteGuard] },
                     { path: 'series', component: SeriesComponent, canActivate: [AppRouteGuard] },
                     { path: 'umrahlabor', component: UmrahlaborComponent, canActivate: [AppRouteGuard] },
+                    { path: 'GB4', component: GB4Component, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

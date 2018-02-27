@@ -81,6 +81,7 @@ import { LFDiscComponent } from './lfdisc/lfdisc.component';
 import { PUDiscComponent } from './pudisc/pudisc.component';
 import { SeriesComponent } from './series/series.component';
 import { UmrahlaborComponent } from './umrahlabor/umrahlabor.component';
+import { GB4Component } from './GB4/GB4.component';
 
 @NgModule({
     declarations: [
@@ -146,7 +147,8 @@ import { UmrahlaborComponent } from './umrahlabor/umrahlabor.component';
         LFDiscComponent,
         PUDiscComponent,
         SeriesComponent,
-        UmrahlaborComponent
+        UmrahlaborComponent,
+        GB4Component
 ],
     imports: [
         CommonModule,
