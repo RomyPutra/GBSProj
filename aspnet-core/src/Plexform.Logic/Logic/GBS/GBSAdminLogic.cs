@@ -3162,7 +3162,7 @@ namespace Plexform.GBS
         }
         #endregion
 
-        # region PUDISCOUNT
+        #region PUDISCOUNT
         public class PUDiscountInfo
         {
             protected System.String _MarketCode = String.Empty;
@@ -4389,7 +4389,6 @@ namespace Plexform.GBS
                 return null;
             }
         }
-
         public DataTable GetUmrahLabor()
         {
             DataTable dt = new DataTable();
@@ -5690,34 +5689,6 @@ namespace Plexform.GBS
 			return await Task.FromResult(list);
 		}
 
-		//      public async Task<IList<Plexform.Models.SYSPREFTModels>> GetSYSPreftbySYSKeyAll(string SYSKey = "")
-		//      {
-		//          IList<Plexform.Models.SYSPREFTModels> list = new List<Plexform.Models.SYSPREFTModels>();
-		//          SYS_PREFTInfo Model = new SYS_PREFTInfo();
-		//          DataTable dt;
-		//          try
-		//          {
-		//              dt = GetSYSPreftbyKey(SYSKey);
-		//              if (dt != null && dt.Rows.Count > 0)
-		//              {
-		//                  for (int i = 0; i < dt.Rows.Count; i++)
-		//                  {
-		//                      list.Add(new Models.SYSPREFTModels
-		//                      {
-		//                          SYSKey = dt.Rows[i]["SYSKey"].ToString(),
-		//                          SYSValue = dt.Rows[i]["SYSValue"].ToString(),
-		//                          SYSValueEx = dt.Rows[i]["SYSValueEx"].ToString()
-		//                      });
-		//                  }
-		//              }
-		//          }
-		//          catch (Exception ex)
-		//          {
-		//              var temp = ex.ToString();
-		//          }
-		//          return await Task.FromResult(list);
-		//      }
-
 		public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
         {
             var res = false;
@@ -5747,6 +5718,193 @@ namespace Plexform.GBS
         }
 
 		public Task<bool> UploadGroupTime(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadAgentTier(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadAgentFare(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadDiscount(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadCapacity(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadDiscWeight(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadFloorFare(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadSeasonality(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadLFDiscount(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadPUDiscount(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadSeries(Models.FltTimeGroupModels[] UploadFile)
+		{
+			var res = false;
+			try
+			{
+				if (UploadFile != null)
+				{
+					res = SaveFlightTimeGroup(UploadFile);
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return Task.FromResult(res);
+		}
+
+		public Task<bool> UploadUmrahLabor(Models.FltTimeGroupModels[] UploadFile)
 		{
 			var res = false;
 			try

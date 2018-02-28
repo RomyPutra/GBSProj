@@ -46,6 +46,53 @@
       </dxo-pager>
     </dx-data-grid>
     <!-- ******************************************************** -->
+    <br>
+    <br>
+    <span class="btn bg-pink waves-effect btn-file">
+      Browse
+      <input type="file" id="file" multiple="false" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          (change)="onExcelChange($event)">
+    </span>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let head of excelToUploadHeader">
+                    {{head}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of pendingRecv" [ngStyle]="row.hasError && {'background-color': '#FFEBEE'}">
+                <td>{{row.marketCode}}</td>
+                <td>{{row.inTier}}</td>
+                <td>{{row.inSubTier}}</td>
+                <td>{{row.outTier}}</td>
+                <td>{{row.outSubTier}}</td>
+                <td>{{row.inAgentID}}</td>
+                <td>{{row.outAgentID}}</td>
+                <td>{{row.status}}</td>
+                <td>{{row.inuse}}</td>
+                <td>{{row.syncCreate}}</td>
+                <td>{{row.syncLastUpd}}</td>
+                <td>{{row.lastSyncBy}}</td>
+                <td>{{row.createDate}}</td>
+                <td>{{row.createBy}}</td>
+                <td>{{row.updateDate}}</td>
+                <td>{{row.updateBy}}</td>
+                <td>{{row.active}}</td>
+                            <!-- <td *ngFor="let val of row">
+                    {{val}}
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success waves-effect" (click)="uploadFileToActivity()">
+        <span>Upload</span>
+    </button>
+    <button type="button" class="btn btn-success waves-effect" (click)="clearExcelData()">
+        <span>Clear</span>
+    </button>
   <!-- <div id="events">
     <div>
         <div class="caption">

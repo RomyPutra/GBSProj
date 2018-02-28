@@ -348,3 +348,136 @@ export class UploadFlightTimeDto {
         return result;
     }
 }
+
+export class UploadAgentTierDto {
+    hasError = false;
+    errorColumns: any[] = [];
+
+    marketCode: string;
+    inTier: string;
+    inSubTier: string;
+    outTier: string;
+    outSubTier: string;
+    inAgentID: string;
+    outAgentID: string;
+    status: number;
+    inuse: number;
+    syncCreate: string;
+    syncLastUpd: string;
+    lastSyncBy: string;
+    createDate: string;
+    createBy: string;
+    updateDate: string;
+    updateBy: string;
+    active: number;
+
+    static fromJS(data: any): UploadFlightTimeDto {
+        let result = new UploadFlightTimeDto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: any[]) {
+        if (data) {
+            this.marketCode = '';
+            this.inTier = '';
+            this.inSubTier = '';
+            this.outTier = '';
+            this.outSubTier = '';
+            this.inAgentID = '';
+            this.outAgentID = '';
+            this.status = 0;
+            this.inuse = 0;
+            this.syncCreate = '';
+            this.syncLastUpd = '';
+            this.lastSyncBy = '';
+            this.createDate = '';
+            this.createBy = '';
+            this.updateDate = '';
+            this.updateBy = '';
+            this.active = 1;
+        }
+    }
+
+    isMandatory(index?: number) {
+        this.hasError = true;
+        this.errorColumns.push(index);
+    }
+
+    isNumber(value?: any, index?: number): number {
+        if (Number(value)) {
+            return Number(value);
+        } else {
+            this.hasError = true;
+            this.errorColumns.push(index);
+            return null;
+        }
+    }
+
+    isDate(value?: any, index?: number): Date {
+        if (Date.parse(value)) {
+            return new Date(Date.parse(value));
+        }  else {
+            this.hasError = true;
+            this.errorColumns.push(index);
+            return null;
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.hasError = false;
+            this.errorColumns = [];
+
+            this.marketCode = '';
+            this.inTier = '';
+            this.inSubTier = '';
+            this.outTier = '';
+            this.outSubTier = '';
+            this.inAgentID = '';
+            this.outAgentID = '';
+            this.status = 0;
+            this.inuse = 0;
+            this.syncCreate = '';
+            this.syncLastUpd = '';
+            this.lastSyncBy = '';
+            this.createDate = '';
+            this.createBy = '';
+            this.updateDate = '';
+            this.updateBy = '';
+            this.active = 0;
+        }
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data['hasError'] = this.hasError;
+        data['errorList'] = this.errorColumns;
+
+        data['marketCode'] = this.marketCode;
+        data['inTier'] = this.inTier;
+        data['inSubTier'] = this.inSubTier;
+        data['outTier'] = this.outTier;
+        data['outSubTier'] = this.outSubTier;
+        data['inAgentID'] = this.inAgentID;
+        data['outAgentID'] = this.outAgentID;
+        data['status'] = this.status;
+        data['inuse'] = this.inuse;
+        data['syncCreate'] = this.syncCreate;
+        data['syncLastUpd'] = this.syncLastUpd;
+        data['lastSyncBy'] = this.lastSyncBy;
+        data['createDate'] = this.createDate;
+        data['createBy'] = this.createBy;
+        data['updateDate'] = this.updateDate;
+        data['updateBy'] = this.updateBy;
+        data['active'] = this.active;
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new UploadFlightTimeDto();
+        result.init(json);
+        return result;
+    }
+}

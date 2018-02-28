@@ -95,7 +95,6 @@ namespace Plexform.Controllers
 
 			return ObjectMapper.Map<bool>(res);
 		}
-
 		[HttpGet]
 		public async Task<ListResultContainer<Plexform.Models.FltTimeGroupModels>> GroupTime(string Filter = "")
 		{
@@ -168,7 +167,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.GROUPCAPModels>> GetGroupCapAll()
         {
@@ -187,7 +185,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.MAXDISCModels>> GetMaxDiscAll()
         {
@@ -206,7 +203,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.SEASONALITYModels>> GetSeasonalityAll()
         {
@@ -225,7 +221,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.DISCWEIGHTModels>> GetDiscWeightageAll()
         {
@@ -244,7 +239,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.FLOORFAREModels>> GetFloorFareAll()
         {
@@ -263,7 +257,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.LFDISCOUNTModels>> GetLFDiscountAll()
         {
@@ -282,7 +275,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.PUDISCOUNTModels>> GetPUDiscountAll()
         {
@@ -301,7 +293,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.SPECIALFAREModels>> GetSeriesAll()
         {
@@ -320,7 +311,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.SPECIALFAREModels>> GetUmrahLaborAll()
         {
@@ -339,7 +329,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.MAXDISCModels>> GetMarketAll()
         {
@@ -358,7 +347,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterLFDiscount()
         {
@@ -377,7 +365,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterPUDiscount()
         {
@@ -396,7 +383,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
         [HttpGet]
         public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterLFFare()
         {
@@ -415,64 +401,6 @@ namespace Plexform.Controllers
                 Scheme.Count
             );
         }
-
-        //[HttpGet]
-        //public async Task<ListResultContainer<Plexform.Models.CODEMASTERModels>> GetCodeMasterRestriction()
-        //{
-        //    IList<Plexform.Models.CODEMASTERModels> Scheme = new List<Plexform.Models.CODEMASTERModels>();
-        //    try
-        //    {
-        //        var repo = new Plexform.GBS.GBSAdminLogic();
-        //        Scheme = await repo.GetCodeMasterbyCodeTypeAll("RST");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var temp = ex.ToString();
-        //    }
-        //    return new ListResultContainer<Plexform.Models.CODEMASTERModels>(
-        //        ObjectMapper.Map<List<Plexform.Models.CODEMASTERModels>>(Scheme),
-        //        Scheme.Count
-        //    );
-        //}
-
-        //[HttpGet]
-        //public async Task<ListResultContainer<Plexform.Models.SYSPREFTModels>> GetSYSPreftRestrictionNote()
-        //{
-        //    IList<Plexform.Models.SYSPREFTModels> Scheme = new List<Plexform.Models.SYSPREFTModels>();
-        //    try
-        //    {
-        //        var repo = new Plexform.GBS.GBSAdminLogic();
-        //        Scheme = await repo.GetSYSPreftbySYSKeyAll("RESTRICTIONNOTE");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var temp = ex.ToString();
-        //    }
-        //    return new ListResultContainer<Plexform.Models.SYSPREFTModels>(
-        //        ObjectMapper.Map<List<Plexform.Models.SYSPREFTModels>>(Scheme),
-        //        Scheme.Count
-        //    );
-        //}
-
-        //[HttpGet]
-        //public async Task<ListResultContainer<Plexform.Models.SYSPREFTModels>> GetSYSPreftRestrictionAlert()
-        //{
-        //    IList<Plexform.Models.SYSPREFTModels> Scheme = new List<Plexform.Models.SYSPREFTModels>();
-        //    try
-        //    {
-        //        var repo = new Plexform.GBS.GBSAdminLogic();
-        //        Scheme = await repo.GetSYSPreftbySYSKeyAll("RESTRICTIONALERT");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var temp = ex.ToString();
-        //    }
-        //    return new ListResultContainer<Plexform.Models.SYSPREFTModels>(
-        //        ObjectMapper.Map<List<Plexform.Models.SYSPREFTModels>>(Scheme),
-        //        Scheme.Count
-        //    );
-        //}
-
 		[HttpGet]
 		public async Task<Plexform.Models.RestrictionModels> GetRestriction()
 		{
@@ -488,7 +416,6 @@ namespace Plexform.Controllers
 			}
 			return ObjectMapper.Map<Plexform.Models.RestrictionModels>(Scheme);
 		}
-
 		[HttpPut]
 		public async Task<bool> UpdateRestriction([FromBody]Models.RestrictionModels input)
 		{
@@ -506,7 +433,6 @@ namespace Plexform.Controllers
 
 			return ObjectMapper.Map<bool>(res);
 		}
-
 		[HttpPut]
 		public async Task<bool> UploadGroupTime([FromBody]Models.FltTimeGroupModels[] input)
 		{
@@ -516,6 +442,193 @@ namespace Plexform.Controllers
 				var repo = new Plexform.GBS.GBSAdminLogic();
 
 				res = await repo.UploadGroupTime(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadAgentTier([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadAgentTier(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadAgentFare([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadAgentFare(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadDiscount([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadDiscount(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadCapacity([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadCapacity(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadDiscWeight([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadDiscWeight(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadFloorFare([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadFloorFare(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadSessionality([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadSeasonality(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadLFDiscount([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadLFDiscount(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadPUDiscount([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadPUDiscount(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadSeries([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadSeries(input);
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+
+			return ObjectMapper.Map<bool>(res);
+		}
+		[HttpPut]
+		public async Task<bool> UploadUmrahLabor([FromBody]Models.FltTimeGroupModels[] input)
+		{
+			bool res = false;
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+
+				res = await repo.UploadUmrahLabor(input);
 			}
 			catch (Exception ex)
 			{

@@ -303,7 +303,7 @@ export class FlightTimeDto implements IFlightTimeDto {
 	syncLastUpd: string;
 	createDate: string;
 	updateDate: string;
-	lastSyncBy: string;
+    lastSyncBy: string;
 	createBy: string;
 	updateBy: string;
 	active: number;
@@ -314,9 +314,9 @@ export class FlightTimeDto implements IFlightTimeDto {
         return result;
     }
 
-    constructor(data?: IFlightTimeDto, dataFT?: any) {
+    constructor(data?: FlightTimeDto, dataFT?: any) {
         var today = new Date();
-        if (data == dataFT) {
+        if (data === dataFT) {
             for (var property in data) {
                 if (data.hasOwnProperty(property)) {
                     (<any>this)[property] = (<any>data)[property];
@@ -359,7 +359,7 @@ export class FlightTimeDto implements IFlightTimeDto {
 			data['ftGroupCode'] = this.ftGroupCode;
 			data['startTime'] = this.startTime;
             data['endTime'] = this.endTime;
-            console.log(data);
+            // console.log(data);
         } else {
 			data['ftGroupCode'] = this.ftGroupCode;
 			data['startTime'] = this.startTime;

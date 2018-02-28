@@ -54,6 +54,61 @@
       </dxo-pager>
     </dx-data-grid>
     <!-- ******************************************************** -->
+    <br>
+    <br>
+    <span class="btn bg-pink waves-effect btn-file">
+      Browse
+      <input type="file" id="file" multiple="false" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          (change)="onExcelChange($event)">
+    </span>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let head of excelToUploadHeader">
+                    {{head}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of pendingRecv" [ngStyle]="row.hasError && {'background-color': '#FFEBEE'}">
+                <td>{{row.marketCode}}</td>
+                <td>{{row.analyst}}</td>
+                <td>{{row.ndoDesc}}</td>
+                <td>{{row.inRoute}}</td>
+                <td>{{row.inPUDisc1}}</td>
+                <td>{{row.inPUDisc2}}</td>
+                <td>{{row.inPUDisc3}}</td>
+                <td>{{row.inPUDisc4}}</td>
+                <td>{{row.inPUDisc5}}</td>
+                <td>{{row.inPUDisc6}}</td>
+                <td>{{row.inPUDisc7}}</td>
+                <td>{{row.inPUDisc8}}</td>
+                <td>{{row.inPUDisc9}}</td>
+                <td>{{row.inPUDisc10}}</td>
+                <td>{{row.outRoute}}</td>
+                <td>{{row.outPUDisc1}}</td>
+                <td>{{row.outPUDisc2}}</td>
+                <td>{{row.outPUDisc3}}</td>
+                <td>{{row.outPUDisc4}}</td>
+                <td>{{row.outPUDisc5}}</td>
+                <td>{{row.outPUDisc6}}</td>
+                <td>{{row.outPUDisc7}}</td>
+                <td>{{row.outPUDisc8}}</td>
+                <td>{{row.outPUDisc9}}</td>
+                <td>{{row.outPUDisc10}}</td>                
+            <!-- <td *ngFor="let val of row">
+                    {{val}}
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success waves-effect" (click)="uploadFileToActivity()">
+        <span>Upload</span>
+    </button>
+    <button type="button" class="btn btn-success waves-effect" (click)="clearExcelData()">
+        <span>Clear</span>
+    </button>
   <!-- <div id="events">
     <div>
         <div class="caption">

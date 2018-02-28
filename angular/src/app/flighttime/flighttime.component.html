@@ -50,33 +50,33 @@
       Browse
       <input type="file" id="file" multiple="false" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
           (change)="onExcelChange($event)">
-  </span>
-  <table class="table table-hover table-striped">
-    <thead>
-        <tr>
-            <th *ngFor="let head of excelToUploadHeader">
-                {{head}}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of pendingRecv" [ngStyle]="row.hasError && {'background-color': '#FFEBEE'}">
-          <td>{{row.ftGroupCode}}</td>
-          <td>{{row.startTime}}</td>
-          <td>{{row.endTime}}</td>
-          <!-- <td *ngFor="let val of row">
-                {{val}}
-            </td> -->
-        </tr>
-    </tbody>
-</table>
+    </span>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let head of excelToUploadHeader">
+                    {{head}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of pendingRecv" [ngStyle]="row.hasError && {'background-color': '#FFEBEE'}">
+            <td>{{row.ftGroupCode}}</td>
+            <td>{{row.startTime}}</td>
+            <td>{{row.endTime}}</td>
+            <!-- <td *ngFor="let val of row">
+                    {{val}}
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
 
-<button type="button" class="btn btn-success waves-effect" (click)="uploadFileToActivity()">
-    <span>Upload</span>
-</button>
-<button type="button" class="btn btn-success waves-effect" (click)="clearExcelData()">
-    <span>Clear</span>
-</button>
+    <button type="button" class="btn btn-success waves-effect" (click)="uploadFileToActivity()">
+        <span>Upload</span>
+    </button>
+    <button type="button" class="btn btn-success waves-effect" (click)="clearExcelData()">
+        <span>Clear</span>
+    </button>
 <!-- <div id="events">
     <div>
         <div class="caption">

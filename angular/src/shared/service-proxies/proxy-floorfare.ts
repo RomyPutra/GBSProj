@@ -80,6 +80,62 @@ export class GetFloorFareServiceProxy {
         return Observable.of<PagedResultDtoOfFloorFareDto>(<any>null);
     }
     // /**
+    //  * @input (optional)
+    //  * @return Success
+    //  */
+    post(input: Array<FloorFareDto>): Observable<Array<FloorFareDto>> {
+        let url_ = this.baseUrl + '/api/GBSAdmin/UploadFloorFare';
+        url_ = url_.replace(/[?&]$/, '');
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            method: 'put',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_: any) => {
+            return this.processUpdate(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processUpdate(response_);
+                } catch (e) {
+                    return <Observable<Array<FloorFareDto>>><any>Observable.throw(e);
+                }
+            } else {
+                return <Observable<Array<FloorFareDto>>><any>Observable.throw(response_);
+            }
+        });
+    }
+
+    protected processUpdate(response: Response): Observable<Array<FloorFareDto>> {
+        const status = response.status;
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === '' ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? FloorFareDto.fromJS(resultData200) : new FloorFareDto();
+            return Observable.of(result200);
+        } else if (status === 401) {
+            const _responseText = response.text();
+            return throwException('A server error occurred.', status, _responseText, _headers);
+        } else if (status === 403) {
+            const _responseText = response.text();
+            return throwException('A server error occurred.', status, _responseText, _headers);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException('An unexpected server error occurred.', status, _responseText, _headers);
+        }
+        return Observable.of<Array<FloorFareDto>>(<any>null);
+    }
+    // /**
     //  * @input (optional) 
     //  * @return Success
     //  */

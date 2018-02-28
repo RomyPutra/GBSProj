@@ -1,3 +1,4 @@
+import { CreateUserGroupComponent } from './../usergroups/create-usergroup/create-usergroup.component';
 import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
@@ -19,13 +20,13 @@ export class FlighttimeComponent extends PagedListingComponentBase<FlightTimeDto
   excelToUploadHeader: any;
   excelError: Number = 0;
   upload: UploadDto;
-  pendingRecv: UploadFlightTimeDto[] = [];
+  fileupload: FlightTimeDto[];
+  pendingfile: UploadFlightTimeDto[] = [];
   fileModel: any;
   public files: UploadFile[] = [];
   active: boolean = false;
   saving: boolean = false;
   code: string;
-  fileupload: FlightTimeDto[];
   group: FlightTimeDto[];
   listGrid: Array<FlightTimeDto> = [];
   hold: number = 0;
@@ -143,17 +144,21 @@ export class FlighttimeComponent extends PagedListingComponentBase<FlightTimeDto
       if (this.excelToUpload[0].length <= 3 && this.excelToUpload[0][0] === 'Group Time' && this.excelToUpload[0][1] === 'Started Time' && this.excelToUpload[0][2] === 'Ended Time') {
         this.excelToUploadHeader = this.excelToUpload[0];
         this.excelToUpload.shift();
-        this.fileupload = this.excelToUpload.map(item => new FlightTimeDto(this.group[0],item));
-        console.log(this.fileupload);
-        this.pendingRecv = this.excelToUpload.map(item => new UploadFlightTimeDto(item));
-        this.excelError = this.pendingRecv.filter(option => option.hasError).length;  
-        this.pendingRecv.sort((a, b) => {
+        let fileuploadx = this.excelToUpload.map(item => new FlightTimeDto(this.group[0], item));
+        this.fileupload = [];
+        this.group.forEach(fu => {
+          fileuploadx = fileuploadx.filter(t => t.ftGroupCode !== fu.ftGroupCode);
+        });
+        this.fileupload = fileuploadx;
+        this.pendingfile = this.excelToUpload.map(item => new UploadFlightTimeDto(item));
+        this.excelError = this.pendingfile.filter(option => option.hasError).length;
+        this.pendingfile.sort((a, b) => {
           if (a.hasError) {
             return -1;
           } else {
             return 1;
           }
-        });  
+        });
       } else {
         this.clearExcelData();
       }
@@ -191,9 +196,9 @@ export class FlighttimeComponent extends PagedListingComponentBase<FlightTimeDto
     this.fileModel = undefined;
     this.excelToUpload = undefined;
     this.excelToUploadHeader = undefined;
-    this.pendingRecv = [];  
+    this.pendingfile = [];  
     this.excelError = 0;
-    this.pendingRecv.sort((a, b) => {
+    this.pendingfile.sort((a, b) => {
       if (a.hasError) {
         return -1;
       } else {

@@ -109,7 +109,6 @@ namespace Plexform.Models
         public System.DateTime CreateDate { get; set; }
         public System.DateTime UpdateDate { get; set; }
     }
-
     public class GROUPCAPModels
     {
         public System.String MarketCode { get; set; }
@@ -119,7 +118,6 @@ namespace Plexform.Models
         public System.String OutRoute { get; set; }
         public System.Decimal OutGrpCap { get; set; }
     }
-
     public class MAXDISCModels
     {
         public System.String MarketCode { get; set; }
@@ -129,7 +127,6 @@ namespace Plexform.Models
         public System.String OutRoute { get; set; }
         public System.Decimal OutMaxDisc { get; set; }
     }
-
     public class SEASONALITYModels
     {
         public System.String Analyst { get; set; }
@@ -137,7 +134,6 @@ namespace Plexform.Models
         public System.DateTime SeasonDate { get; set; }
         public System.String Season { get; set; }
     }
-
     public class DISCWEIGHTModels
     {
         public System.String Analyst { get; set; }
@@ -149,7 +145,6 @@ namespace Plexform.Models
         public System.Decimal OutWALFDisc { get; set; }
         public System.Decimal OutWAPUDisc { get; set; }
     }
-
     public class FLOORFAREModels
     {
         public System.String Analyst { get; set; }
@@ -165,7 +160,6 @@ namespace Plexform.Models
         public System.String OutFareClass { get; set; }
         public System.Decimal OutFloorFare { get; set; }
     }
-
     public class LFDISCOUNTModels
     {
         public System.String Analyst { get; set; }
@@ -194,7 +188,6 @@ namespace Plexform.Models
         public System.Decimal OutLFDisc9 { get; set; }
         public System.Decimal OutLFDisc10 { get; set; }
     }
-
     public class PUDISCOUNTModels
     {
         public System.String Analyst { get; set; }
@@ -225,7 +218,6 @@ namespace Plexform.Models
         public System.Decimal OutPUDisc10 { get; set; }
         public System.Decimal OutPUDisc11 { get; set; }
     }
-
     public class SPECIALFAREModels
     {
         public System.String Analyst { get; set; }
@@ -265,7 +257,6 @@ namespace Plexform.Models
         public System.Decimal OutLFFare10 { get; set; }
         public System.Decimal OutLFFare11 { get; set; }
     }
-
 	public class RestrictionModels
 	{
 		public System.String Status { get; set; }
@@ -273,27 +264,15 @@ namespace Plexform.Models
 		public System.String BookTo { get; set; }
 		public System.String TraFrom { get; set; }
 		public System.String TraTo { get; set; }
-		//public System.DateTime BookFrom { get; set; }
-		//public System.DateTime BookTo { get; set; }
-		//public System.DateTime TraFrom { get; set; }
-		//public System.DateTime TraTo { get; set; }
 		public System.String RestrictionNote{ get; set; }
 		public System.String RestrictionAlert { get; set; }
 		public System.String RestrictionNoteEx { get; set; }
 		public System.String RestrictionAlertEx { get; set; }
 	}
-
 	public class CODEMASTERModels
 	{
 		public System.String CodeType { get; set; }
 		public System.String Code { get; set; }
 		public System.String CodeDesc { get; set; }
 	}
-
-	//   public class SYSPREFTModels
-	//   {
-	//       public System.String SYSKey { get; set; }
-	//       public System.String SYSValue { get; set; }
-	//       public System.String SYSValueEx { get; set; }
-	//   }
 }

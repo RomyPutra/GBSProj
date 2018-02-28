@@ -27,13 +27,17 @@ export class AgentTierDto implements IAgentTierDto {
         return result;
     }
 
-    constructor(data?: IAgentTierDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property)) {
-                    (<any>this)[property] = (<any>data)[property];
+    constructor(data?: IAgentTierDto, dataAT?: any) {
+        if (data === dataAT) {
+            if (data) {
+                for (var property in data) {
+                    if (data.hasOwnProperty(property)) {
+                        (<any>this)[property] = (<any>data)[property];
+                    }
                 }
             }
+        } else {
+            
         }
     }
 
