@@ -517,7 +517,7 @@ namespace Plexform.GBS
                 return false;
             }
         }
-		public DataTable GetCountry(string Code = "")
+        public DataTable GetCountry(string Code = "")
         {
             DataTable dt = new DataTable();
             String strSQL = string.Empty;
@@ -777,56 +777,56 @@ namespace Plexform.GBS
                 return null;
             }
         }
-		public bool SaveFlightTimeGroup(Models.FltTimeGroupModels[] pInfo)
-		{
-			bool rValue = false;
-			ArrayList lstSQL = new ArrayList();
-			string strSQL = string.Empty;
-			try
-			{
-				foreach (Models.FltTimeGroupModels Ad_flttimegroupCont in pInfo)
-				{
-					var StartTime = Ad_flttimegroupCont.StartTime.ToString();
-					var EndTime = Ad_flttimegroupCont.EndTime.ToString();
+        public bool SaveFlightTimeGroup(Models.FltTimeGroupModels[] pInfo)
+        {
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                foreach (Models.FltTimeGroupModels Ad_flttimegroupCont in pInfo)
+                {
+                    var StartTime = Ad_flttimegroupCont.StartTime.ToString();
+                    var EndTime = Ad_flttimegroupCont.EndTime.ToString();
 
-					objSQL.AddField("FTGroupCode", Ad_flttimegroupCont.FTGroupCode, SQLControl.EnumDataType.dtString);
-					objSQL.AddField("StartTime", StartTime, SQLControl.EnumDataType.dtString);
-					objSQL.AddField("EndTime", EndTime, SQLControl.EnumDataType.dtString);
-					//objSQL.AddField("rowguid", Ad_flttimegroupCont.rowguid, SQLControl.EnumDataType.dtString);
-					//objSQL.AddField("Status", Ad_flttimegroupCont.Status, SQLControl.EnumDataType.dtNumeric);
-					//objSQL.AddField("Inuse", Ad_flttimegroupCont.Inuse, SQLControl.EnumDataType.dtNumeric);
-					objSQL.AddField("SyncCreate", Ad_flttimegroupCont.SyncCreate, SQLControl.EnumDataType.dtDateTime);
-					objSQL.AddField("SyncLastUpd", Ad_flttimegroupCont.SyncLastUpd, SQLControl.EnumDataType.dtDateTime);
-					objSQL.AddField("LastSyncBy", Ad_flttimegroupCont.LastSyncBy, SQLControl.EnumDataType.dtString);
-					objSQL.AddField("CreateDate", Ad_flttimegroupCont.CreateDate, SQLControl.EnumDataType.dtDateTime);
-					objSQL.AddField("CreateBy", Ad_flttimegroupCont.CreateBy, SQLControl.EnumDataType.dtString);
-					objSQL.AddField("UpdateDate", Ad_flttimegroupCont.UpdateDate, SQLControl.EnumDataType.dtDateTime);
-					objSQL.AddField("UpdateBy", Ad_flttimegroupCont.UpdateBy, SQLControl.EnumDataType.dtString);
-					objSQL.AddField("Active", Ad_flttimegroupCont.Active, SQLControl.EnumDataType.dtNumeric);
+                    objSQL.AddField("FTGroupCode", Ad_flttimegroupCont.FTGroupCode, SQLControl.EnumDataType.dtString);
+                    objSQL.AddField("StartTime", StartTime, SQLControl.EnumDataType.dtString);
+                    objSQL.AddField("EndTime", EndTime, SQLControl.EnumDataType.dtString);
+                    //objSQL.AddField("rowguid", Ad_flttimegroupCont.rowguid, SQLControl.EnumDataType.dtString);
+                    //objSQL.AddField("Status", Ad_flttimegroupCont.Status, SQLControl.EnumDataType.dtNumeric);
+                    //objSQL.AddField("Inuse", Ad_flttimegroupCont.Inuse, SQLControl.EnumDataType.dtNumeric);
+                    objSQL.AddField("SyncCreate", Ad_flttimegroupCont.SyncCreate, SQLControl.EnumDataType.dtDateTime);
+                    objSQL.AddField("SyncLastUpd", Ad_flttimegroupCont.SyncLastUpd, SQLControl.EnumDataType.dtDateTime);
+                    objSQL.AddField("LastSyncBy", Ad_flttimegroupCont.LastSyncBy, SQLControl.EnumDataType.dtString);
+                    objSQL.AddField("CreateDate", Ad_flttimegroupCont.CreateDate, SQLControl.EnumDataType.dtDateTime);
+                    objSQL.AddField("CreateBy", Ad_flttimegroupCont.CreateBy, SQLControl.EnumDataType.dtString);
+                    objSQL.AddField("UpdateDate", Ad_flttimegroupCont.UpdateDate, SQLControl.EnumDataType.dtDateTime);
+                    objSQL.AddField("UpdateBy", Ad_flttimegroupCont.UpdateBy, SQLControl.EnumDataType.dtString);
+                    objSQL.AddField("Active", Ad_flttimegroupCont.Active, SQLControl.EnumDataType.dtNumeric);
 
-					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stInsert, "AD_FLTTIMEGROUP");
-					lstSQL.Add(strSQL);
+                    strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stInsert, "AD_FLTTIMEGROUP");
+                    lstSQL.Add(strSQL);
 
-				}
+                }
 
-				rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
-				if (rValue == false)
-				{
-					return false;
-				}
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
 
-				return true;
+                return true;
 
-			}
-			catch (Exception ex)
-			{
-				return false;
-			}
-		}
-		#endregion
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
 
-		#region AGENTACCESSFARE
-		public class AGENTACCESSFAREInfo
+        #region AGENTACCESSFARE
+        public class AGENTACCESSFAREInfo
         {
             private System.String _MarketCode = String.Empty;
             private System.String _InTier = String.Empty;
@@ -4634,74 +4634,345 @@ namespace Plexform.GBS
                 return false;
             }
         }
-		#endregion
+        #endregion
 
-		public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
-		{
-			objSQL.ClearFields();
-			objSQL.ClearCondtions();
-			bool rValue = false;
-			ArrayList lstSQL = new ArrayList();
-			string strSQL = string.Empty;
-			try
-			{
-				objSQL.AddField("CodeDesc", pRestriction.Status, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'IND'");
-				lstSQL.Add(strSQL);
-				objSQL.AddField("CodeDesc", pRestriction.BookFrom, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'BOOKFROM'");
-				lstSQL.Add(strSQL);
-				objSQL.AddField("CodeDesc", pRestriction.BookTo, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'BOOKTO'");
-				lstSQL.Add(strSQL);
-				objSQL.AddField("CodeDesc", pRestriction.TraFrom, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'TRAFROM'");
-				lstSQL.Add(strSQL);
-				objSQL.AddField("CodeDesc", pRestriction.TraTo, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-				strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'TRATO'");
-				lstSQL.Add(strSQL);
-				if (pRestriction.RestrictionNote == pRestriction.RestrictionNoteEx)
-				{
-					objSQL.AddField("SYSValue", pRestriction.RestrictionNote, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONNOTE'");
-					lstSQL.Add(strSQL);
-				}
-				else
-				{
-					objSQL.AddField("SYSValue", pRestriction.RestrictionNote, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("SYSValueEx", pRestriction.RestrictionNoteEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONNOTE'");
-					lstSQL.Add(strSQL);
-				}
-				if (pRestriction.RestrictionAlert == pRestriction.RestrictionAlertEx)
-				{
-					objSQL.AddField("SYSValue", pRestriction.RestrictionAlert, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONALERT'");
-					lstSQL.Add(strSQL);
-				}
-				else
-				{
-					objSQL.AddField("SYSValue", pRestriction.RestrictionAlert, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					objSQL.AddField("SYSValueEx", pRestriction.RestrictionAlertEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
-					strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONALERT'");
-					lstSQL.Add(strSQL);
-				}
+        #region GB24
+        public class GB4SETTING
+        {
+            private int _AppID;
+            private string _CountryCode = String.Empty;
+            private string _CountryName = String.Empty;
+            private string _Origin = String.Empty;
+            private string _OrgID = String.Empty;
+            private string _AgentID = String.Empty;
+            private int _NoofPax;
+            private byte _status;
+            private Guid _rowguid = Guid.Empty;
+            private DateTime _syncCreate;
+            private DateTime _syncLastUpd;
+            private string _LastSyncBy = String.Empty;
+            private DateTime _EffectiveDate;
+            private DateTime _ExpiryDate;
 
-				rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
-				if (rValue == false)
-				{
-					return false;
-				}
-				return true;
-			}
-			catch (Exception ex)
-			{
-				return false;
-			}
-		}
+            #region Public Properties
+            public int AppID
+            {
+                get { return _AppID; }
+                set { _AppID = value; }
+            }
+            public string CountryCode
+            {
+                get { return _CountryCode; }
+                set { _CountryCode = value; }
+            }
+            public string CountryName
+            {
+                get { return _CountryName; }
+                set { _CountryName = value; }
+            }
+            public string Origin
+            {
+                get { return _Origin; }
+                set { _Origin = value; }
+            }
+            public string OrgID
+            {
+                get { return _OrgID; }
+                set { _OrgID = value; }
+            }
+            public string AgentID
+            {
+                get { return _AgentID; }
+                set { _AgentID = value; }
+            }
+            public int NoofPax
+            {
+                get { return _NoofPax; }
+                set { _NoofPax = value; }
+            }
+            public byte status
+            {
+                get { return _status; }
+                set { _status = value; }
+            }
+            public Guid rowguid
+            {
+                get { return _rowguid; }
+                set { _rowguid = value; }
+            }
+            public DateTime SyncCreate
+            {
+                get { return _syncCreate; }
+                set { _syncCreate = value; }
+            }
+            public DateTime SyncLastUpd
+            {
+                get { return _syncLastUpd; }
+                set { _syncLastUpd = value; }
+            }
+            public string LastSyncBy
+            {
+                get { return _LastSyncBy; }
+                set { _LastSyncBy = value; }
+            }
+            public DateTime EffectiveDate
+            {
+                get { return _EffectiveDate; }
+                set { _EffectiveDate = value; }
+            }
+            public DateTime ExpiryDate
+            {
+                get { return _ExpiryDate; }
+                set { _ExpiryDate = value; }
+            }
+            #endregion
 
-		#region SYS_PREFT
-		public class SYS_PREFTInfo
+        }
+        public DataTable GetPaxSetting()
+        {
+
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+
+            try
+            {
+                strSQL = "SELECT DISTINCT CountryCode, EffectiveDate, ExpiryDate, CountryName, Origin, AG.OrgID, AG.OrgName, GB.AgentID, CASE WHEN GB.AgentID = '' THEN '' WHEN GB.AgentID <> '' THEN (SELECT Username FROM AG_PROFILE WHERE AgentID = GB.AgentID) END Username, NoofPax, GB.Status FROM GB4SETTING GB LEFT JOIN AG_PROFILE AG WITH (NOLOCK) ON GB.OrgID = AG.OrgID";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("GB4SETTING does not exist."); //added, for log purpose
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public DataTable GetSinglePaxSetting(string CountryCode, string Origin, string OrgID, string AgentID)
+        {
+
+            DataTable dt = new DataTable();
+            String strSQL = string.Empty;
+
+            try
+            {
+
+                strSQL = "SELECT * FROM GB4SETTING WHERE CountryCode = '" + CountryCode + "' AND Origin = '" + Origin + "' AND OrgID = '" + OrgID + "' AND AgentID  = '" + AgentID + "'";
+
+                using (var connection = new SqlConnection(_appConfiguration.GetConnectionString(PlexformConsts.GBSConnectionString)))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(strSQL, connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    connection.Close();
+
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        return null;
+                        throw new ApplicationException("GB4SETTING does not exist."); //added, for log purpose
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+        public Boolean SaveGB4SETTING(GB4SETTING gB4SETTING)
+        {
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                objSQL.AddField("AppID", gB4SETTING.AppID, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("CountryCode", gB4SETTING.CountryCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("CountryName", gB4SETTING.CountryName, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("Origin", gB4SETTING.Origin, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("OrgID", gB4SETTING.OrgID, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("AgentID", gB4SETTING.AgentID, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("NoofPax", gB4SETTING.NoofPax, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncCreate", gB4SETTING.SyncCreate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncLastUpd", gB4SETTING.SyncLastUpd, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("Status", gB4SETTING.status, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("LastSyncBy", gB4SETTING.LastSyncBy, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("EffectiveDate", gB4SETTING.EffectiveDate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("ExpiryDate", gB4SETTING.ExpiryDate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stInsert, "GB4SETTING", string.Empty);
+
+                lstSQL.Add(strSQL);
+
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public Boolean UpdateGB4SETTING(GB4SETTING gB4SETTING, GB4SETTING gB4 = null)
+        {
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                objSQL.AddField("AppID", gB4SETTING.AppID, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("CountryCode", gB4SETTING.CountryCode, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("CountryName", gB4SETTING.CountryName, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("Origin", gB4SETTING.Origin, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("OrgID", gB4SETTING.OrgID, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("AgentID", gB4SETTING.AgentID, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("NoofPax", gB4SETTING.NoofPax, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncCreate", gB4SETTING.SyncCreate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("SyncLastUpd", gB4SETTING.SyncLastUpd, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("Status", gB4SETTING.status, SQLControl.EnumDataType.dtNumeric, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("LastSyncBy", gB4SETTING.LastSyncBy, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("EffectiveDate", gB4SETTING.EffectiveDate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+                objSQL.AddField("ExpiryDate", gB4SETTING.ExpiryDate, SQLControl.EnumDataType.dtDateTime, SQLControl.EnumValidate.cNone);
+
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "GB4SETTING", "GB4SETTING.AgentID='" + gB4.AgentID + "' AND GB4SETTING.CountryCode='" + gB4.CountryCode + "' AND GB4SETTING.Origin='" + gB4.Origin + "' AND GB4SETTING.OrgID='" + gB4.OrgID + "'");
+                if (gB4SETTING.AgentID == "")
+                {
+                    string subFirst = strSQL.Substring(0, 22);
+                    string subRest = strSQL.Substring(22);
+                    strSQL = subFirst + "AgentID = '', " + subRest;
+                }
+
+                lstSQL.Add(strSQL);
+
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public Boolean DeleteGB4SETTING(List<GB4SETTING> LstgB4SETTING)
+        {
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                foreach (GB4SETTING gB4Setting in LstgB4SETTING)
+                {
+                    strSQL = "DELETE GB4SETTING WHERE OrgID = '" + gB4Setting.OrgID + "' AND CountryCode = '" + gB4Setting.CountryCode + "' AND Origin = '" + gB4Setting.Origin + "'";
+                    lstSQL.Add(strSQL);
+                }
+
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
+        {
+            objSQL.ClearFields();
+            objSQL.ClearCondtions();
+            bool rValue = false;
+            ArrayList lstSQL = new ArrayList();
+            string strSQL = string.Empty;
+            try
+            {
+                objSQL.AddField("CodeDesc", pRestriction.Status, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'IND'");
+                lstSQL.Add(strSQL);
+                objSQL.AddField("CodeDesc", pRestriction.BookFrom, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'BOOKFROM'");
+                lstSQL.Add(strSQL);
+                objSQL.AddField("CodeDesc", pRestriction.BookTo, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'BOOKTO'");
+                lstSQL.Add(strSQL);
+                objSQL.AddField("CodeDesc", pRestriction.TraFrom, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'TRAFROM'");
+                lstSQL.Add(strSQL);
+                objSQL.AddField("CodeDesc", pRestriction.TraTo, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "CODEMASTER", "CodeType ='RST'" + " AND Code = 'TRATO'");
+                lstSQL.Add(strSQL);
+                if (pRestriction.RestrictionNote == pRestriction.RestrictionNoteEx)
+                {
+                    objSQL.AddField("SYSValue", pRestriction.RestrictionNote, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONNOTE'");
+                    lstSQL.Add(strSQL);
+                }
+                else
+                {
+                    objSQL.AddField("SYSValue", pRestriction.RestrictionNote, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("SYSValueEx", pRestriction.RestrictionNoteEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONNOTE'");
+                    lstSQL.Add(strSQL);
+                }
+                if (pRestriction.RestrictionAlert == pRestriction.RestrictionAlertEx)
+                {
+                    objSQL.AddField("SYSValue", pRestriction.RestrictionAlert, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONALERT'");
+                    lstSQL.Add(strSQL);
+                }
+                else
+                {
+                    objSQL.AddField("SYSValue", pRestriction.RestrictionAlert, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    objSQL.AddField("SYSValueEx", pRestriction.RestrictionAlertEx, SQLControl.EnumDataType.dtString, SQLControl.EnumValidate.cNone);
+                    strSQL = objSQL.BuildSQL(SQLControl.EnumSQLType.stUpdate, "SYS_PREFT", "SYSKey ='RESTRICTIONALERT'");
+                    lstSQL.Add(strSQL);
+                }
+
+                rValue = objDCom.BatchExecute(lstSQL, CommandType.Text, true, false);
+                if (rValue == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        #region SYS_PREFT
+        public class SYS_PREFTInfo
         {
             private short _appID;
             private string _GRPID = String.Empty;
@@ -4856,10 +5127,10 @@ namespace Plexform.GBS
                 return false;
             }
         }
-		#endregion
+        #endregion
 
-		#region Comunicate
-		public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
+        #region Comunicate
+        public async Task<IList<Plexform.Models.CountryModels>> GetAllCountry(string CountryCode)
         {
             IList<Plexform.Models.CountryModels> list = new List<Plexform.Models.CountryModels>();
             PaymentInfo Model = new PaymentInfo();
@@ -5690,6 +5961,140 @@ namespace Plexform.GBS
 		}
 
 		public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
+=======
+        public async Task<Plexform.Models.RestrictionModels> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
+        {
+            Models.RestrictionModels obj = new Models.RestrictionModels();
+            DataTable dtMaster, dtPreft1, dtPreft2;
+            try
+            {
+                dtMaster = GetCodeMasterbyCodeType(CodeType);
+                if (dtMaster != null && dtMaster.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtMaster.Rows.Count; i++)
+                    {
+                        if (dtMaster.Rows[i]["Code"].ToString() == "IND")
+                        {
+                            obj.Status = dtMaster.Rows[i]["CodeDesc"].ToString();
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKFROM")
+                        {
+                            obj.BookFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.BookFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKTO")
+                        {
+                            obj.BookTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.BookTo = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "TRAFROM")
+                        {
+                            obj.TraFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.TraFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "TRATO")
+                        {
+                            obj.TraTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.TraTo= Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                    }
+                }
+                dtPreft1 = GetSYSPreftbyKey(SYSKey1);
+                if (dtPreft1 != null && dtPreft1.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtPreft1.Rows.Count; i++)
+                    {
+                        obj.RestrictionNote = dtPreft1.Rows[i]["SYSValue"].ToString();
+                    }
+                }
+                dtPreft2 = GetSYSPreftbyKey(SYSKey2);
+                if (dtPreft2 != null && dtPreft2.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtPreft2.Rows.Count; i++)
+                    {
+                        obj.RestrictionAlert = dtPreft2.Rows[i]["SYSValue"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(obj);
+        }
+
+        public Task<bool> UpdateRestriction(Models.RestrictionModels pRestriction)
+        {
+            var res = false;
+            try
+            {
+                res = SaveAllRestriction(pRestriction);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
+
+        public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
+        {
+            IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
+            CodemasterInfo Model = new CodemasterInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetCodeMasterbyCodeType(CodeType);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.CODEMASTERModels
+                        {
+                            CodeType = dt.Rows[i]["CodeType"].ToString(),
+                            Code = dt.Rows[i]["Code"].ToString(),
+                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        //      public async Task<IList<Plexform.Models.SYSPREFTModels>> GetSYSPreftbySYSKeyAll(string SYSKey = "")
+        //      {
+        //          IList<Plexform.Models.SYSPREFTModels> list = new List<Plexform.Models.SYSPREFTModels>();
+        //          SYS_PREFTInfo Model = new SYS_PREFTInfo();
+        //          DataTable dt;
+        //          try
+        //          {
+        //              dt = GetSYSPreftbyKey(SYSKey);
+        //              if (dt != null && dt.Rows.Count > 0)
+        //              {
+        //                  for (int i = 0; i < dt.Rows.Count; i++)
+        //                  {
+        //                      list.Add(new Models.SYSPREFTModels
+        //                      {
+        //                          SYSKey = dt.Rows[i]["SYSKey"].ToString(),
+        //                          SYSValue = dt.Rows[i]["SYSValue"].ToString(),
+        //                          SYSValueEx = dt.Rows[i]["SYSValueEx"].ToString()
+        //                      });
+        //                  }
+        //              }
+        //          }
+        //          catch (Exception ex)
+        //          {
+        //              var temp = ex.ToString();
+        //          }
+        //          return await Task.FromResult(list);
+        //      }
+
+        public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
+>>>>>>> d1fc536587b22e949c93a7c8d42090a08d997c32
         {
             var res = false;
             try
@@ -5957,6 +6362,112 @@ namespace Plexform.GBS
 			}
 			return Task.FromResult(res);
 		}
-		#endregion
-	}
+
+        public async Task<IList<Plexform.Models.GB4Models>> GetPaxSettingAll()
+        {
+            IList<Plexform.Models.GB4Models> list = new List<Plexform.Models.GB4Models>();
+            GB4SETTING Model = new GB4SETTING();
+            DataTable dt;
+            try
+            {
+                dt = GetPaxSetting();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.GB4Models
+                        {
+                            CountryCode = dt.Rows[i]["CountryCode"].ToString(),
+                            CountryName = dt.Rows[i]["CountryName"].ToString(),
+                            Origin = dt.Rows[i]["Origin"].ToString(),
+                            OrgID = dt.Rows[i]["OrgID"].ToString(),
+                            OrgName = dt.Rows[i]["OrgName"].ToString(),
+                            Username = dt.Rows[i]["Username"].ToString(),
+                            AgentID = dt.Rows[i]["AgentID"].ToString(),
+                            NoofPax = Convert.ToInt32(dt.Rows[i]["NoofPax"]),
+                            EffectiveDate = Convert.ToDateTime(dt.Rows[i]["EffectiveDate"]),
+                            ExpiryDate = Convert.ToDateTime(dt.Rows[i]["ExpiryDate"])
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
+
+        public async Task<Plexform.Models.GB4Models> GetPaxSettingSingle(string CountryCode, string Origin, string OrgID, string AgentID)
+        {
+            Plexform.Models.GB4Models res = new Plexform.Models.GB4Models();
+            GB4SETTING Model = new GB4SETTING();
+            DataTable dt;
+            try
+            {
+                dt = GetSinglePaxSetting(CountryCode, Origin, OrgID, AgentID);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    res.CountryCode = dt.Rows[0]["CountryCode"].ToString();
+                    res.CountryName = dt.Rows[0]["CountryName"].ToString();
+                    res.Origin = dt.Rows[0]["Origin"].ToString();
+                    res.OrgID = dt.Rows[0]["OrgID"].ToString();
+                    res.OrgName = dt.Rows[0]["OrgName"].ToString();
+                    res.Username = dt.Rows[0]["Username"].ToString();
+                    res.AgentID = dt.Rows[0]["AgentID"].ToString();
+                    res.NoofPax = Convert.ToInt32(dt.Rows[0]["NoofPax"]);
+                    res.EffectiveDate = Convert.ToDateTime(dt.Rows[0]["EffectiveDate"]);
+                    res.ExpiryDate = Convert.ToDateTime(dt.Rows[0]["ExpiryDate"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(res);
+        }
+
+        public Task<bool> UpdatePaxSetting(GB4SETTING InfoScheme, GB4SETTING InfoSchemeOld)
+        {
+            var res = false;
+            try
+            {
+                res = UpdateGB4SETTING(InfoScheme, InfoSchemeOld);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
+
+        public Task<bool> InsertPaxSetting(GB4SETTING InfoScheme)
+        {
+            var res = false;
+            try
+            {
+                res = SaveGB4SETTING(InfoScheme);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
+
+        public Task<bool> DeletePaxSetting(List<GB4SETTING> InfoScheme)
+        {
+            var res = false;
+            try
+            {
+                res = DeleteGB4SETTING(InfoScheme);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
+        #endregion
+    }
 }

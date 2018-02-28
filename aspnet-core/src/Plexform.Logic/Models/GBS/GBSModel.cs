@@ -275,4 +275,22 @@ namespace Plexform.Models
 		public System.String Code { get; set; }
 		public System.String CodeDesc { get; set; }
 	}
+	public class GB4Models
+	{
+		public int AppID { get; set; }
+		public System.String CountryCode { get; set; }
+		public System.String CountryName { get; set; }
+		public System.String Origin { get; set; }
+		public System.String OrgID { get; set; }
+		public System.String OrgName { get; set; }
+		public System.String Username { get; set; }
+		public System.String AgentID { get; set; }
+		public int NoofPax { get; set; }
+		public byte status { get; set; }
+		public DateTime SyncCreate { get; set; }
+		public DateTime SyncLastUpd { get; set; }
+		public System.String LastSyncBy { get; set; }
+		public DateTime EffectiveDate { get; set; }
+		public DateTime ExpiryDate { get; set; }
+	}
 }

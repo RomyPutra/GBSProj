@@ -31,6 +31,7 @@ import { GetLFDiscServiceProxy } from './proxy-lfdisc';
 import { GetPUDiscServiceProxy } from './proxy-pudisc';
 import { GetSeriesServiceProxy } from './proxy-series';
 import { GetumrahlaborServiceProxy } from './proxy-umrahlabor';
+import { GetGB4ServiceProxy } from './proxy-GB4';
 
 @NgModule({
     providers: [
@@ -78,7 +79,8 @@ import { GetumrahlaborServiceProxy } from './proxy-umrahlabor';
         GetLFDiscServiceProxy,
         GetPUDiscServiceProxy,
         GetSeriesServiceProxy,
-        GetumrahlaborServiceProxy
+        GetumrahlaborServiceProxy,
+        GetGB4ServiceProxy
     ]
 })
 export class ServiceProxyModule { }
