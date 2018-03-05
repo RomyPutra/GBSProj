@@ -24,6 +24,7 @@
         [width]="240" 
         placeholder="Search..."></dxo-search-panel>
   
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
       <dxo-editing mode="batch" [allowUpdating]="true"></dxo-editing>
 
       <!-- <dxi-column 
@@ -35,15 +36,15 @@
       [allowSorting]="false" 
       cellTemplate="actionCellTemplate"></dxi-column> -->
 
-      <dxi-column dataField="schemeCode" caption="Code" [allowEditing]="false"></dxi-column>
-      <dxi-column dataField="countryCode" caption="Country" [allowEditing]="false">
+      <dxi-column dataField="schemeCode" caption="Code" [allowEditing]="false" [fixed]="true"></dxi-column>
+      <dxi-column dataField="countryCode" caption="Country" [allowEditing]="false" [fixed]="true">
         <dxo-lookup
           [dataSource]="countrys"
           displayExpr="countryName"
           valueExpr="countryID">
         </dxo-lookup>
       </dxi-column>
-      <dxi-column dataField="currencyCode" caption="Currency" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="currencyCode" caption="Currency" [allowEditing]="false" [fixed]="true"></dxi-column>
       <dxi-column dataField="duration" caption="Dur (hrs)" [allowEditing]="false"></dxi-column>
       <dxi-column dataField="minduration" caption="Min Dur (hrs)" [allowEditing]="false"></dxi-column>
       <dxi-column dataField="paymentType" caption="Payment Type">
