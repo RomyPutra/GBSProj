@@ -1,7 +1,7 @@
 <h3>GB2, GB4 SETTINGS</h3>
 <div style="border-radius: 25px;padding: 20px;background:white;">
     <!-- ******************************************************** -->
-    <dx-data-grid
+  <dx-data-grid
     id="gridContainer"
     [rowAlternationEnabled]="true"
     [showColumnLines]="false"
@@ -11,29 +11,71 @@
     [hoverStateEnabled]="true"
     [columnResizingMode]="nextColumn"
     [columnAutoWidth]="true"
-    [dataSource]="group">
-    
-      <dxo-search-panel 
-        [visible]="true" 
-        [width]="240" 
-        placeholder="Search..."></dxo-search-panel>
-  
-      <dxi-column dataField="orgName" caption="Org Name"></dxi-column>
-      <dxi-column dataField="username" caption="UserName"></dxi-column>
+    [dataSource]="group"
+    (onContentReady)="onContentReady($event)"
+    (onCellPrepared)="onCellPrepared($event)"
+    (onSelectionChanged)="selectionChanged($event)"
+    (onEditorPreparing)="onEditorPreparing($event)">
+
+      <dxo-search-panel
+        [visible]="true"
+        [width]="240"
+        placeholder="Search...">
+      </dxo-search-panel>
+      <dxo-editing
+            mode="row"
+            [allowUpdating]="true"
+            [allowAdding]="true">
+      </dxo-editing>
+
+      <dxo-selection mode="multiple"></dxo-selection>
+      <dxi-column dataField="orgName" caption="Org Name" [setCellValue]="setStateValue">
+      <!-- <dxi-column dataField="orgName" caption="Org Name" [setCellValue]="agentEdit(value)"> -->
+        <dxo-lookup
+          [dataSource]="groupOrg"
+          displayExpr="orgName"
+          valueExpr="orgID">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="username" caption="UserName">
+        <dxo-lookup
+          [dataSource]="agentEdit"
+          displayExpr="orgName"
+          valueExpr="">
+        </dxo-lookup>
+      </dxi-column>
       <dxi-column dataField="countryCode" caption="Country Code"></dxi-column>
-      <dxi-column dataField="origin" caption="Origin"></dxi-column>
+      <dxi-column dataField="origin" caption="Origin">
+        <dxo-lookup
+          [dataSource]=""
+          displayExpr=""
+          valueExpr="">
+        </dxo-lookup>
+      </dxi-column>
       <dxi-column dataField="noofPax" caption="No.of Pax"></dxi-column>
-      <dxi-column dataField="status" caption="Status"></dxi-column>
-      <dxi-column dataField="effectiveDate" caption="Effective Start Date"></dxi-column>
-      <dxi-column dataField="expiryDate" caption="Effective End Date"></dxi-column>
+      <dxi-column dataField="status" caption="Status" cellTemplate="cellTemplate"></dxi-column>
+      <dxi-column dataField="effectiveDate" caption="Effective Start Date" dataType="date"></dxi-column>
+      <dxi-column dataField="expiryDate" caption="Effective End Date" dataType="date"></dxi-column>
+
+      <div *dxTemplate="let data of 'cellTemplate'">
+          <input type="checkbox" [checked]="data.value === 1"/>
+          <p *ngIf="(data.value === 1)">Active</p>
+          <p *ngIf="!(data.value === 1)">Inactive</p>
+      </div>
 
       <dxo-paging [pageSize]="20"></dxo-paging>
-      <dxo-pager 
+      <dxo-pager
         [showPageSizeSelector]="true"
         [allowedPageSizes]="[5, 10, 20]"
         [showInfo]="true">
       </dxo-pager>
     </dx-data-grid>
+    <dx-button id="gridDeleteSelected"
+      text="Delete Selected Records"
+      [height]="34"
+      [type]="danger"
+      (onClick)="deleteRecords()">
+    </dx-button>
     <!-- ******************************************************** -->
   <!-- <div id="events">
     <div>

@@ -670,7 +670,43 @@ namespace Plexform.Controllers
             }
             return ObjectMapper.Map<Plexform.Models.GB4Models>(Scheme);
         }
-        [HttpPut]
+		[HttpGet]
+		public async Task<ListResultContainer<Plexform.Models.GB4Models>> GetAllOrgID()
+		{
+			IList < Plexform.Models.GB4Models> Scheme = new List<Plexform.Models.GB4Models>();
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+				Scheme = await repo.GetAllOrgIDs();
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return new ListResultContainer<Plexform.Models.GB4Models>(
+				ObjectMapper.Map<List<Plexform.Models.GB4Models>>(Scheme),
+				Scheme.Count
+			);
+		}
+		[HttpGet]
+		public async Task<ListResultContainer<Plexform.Models.GB4Models>> GetAllAgentByOrgID()
+		{
+			IList<Plexform.Models.GB4Models> Scheme = new List<Plexform.Models.GB4Models>();
+			try
+			{
+				var repo = new Plexform.GBS.GBSAdminLogic();
+				Scheme = await repo.GetAllAgents();
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return new ListResultContainer<Plexform.Models.GB4Models>(
+				ObjectMapper.Map<List<Plexform.Models.GB4Models>>(Scheme),
+				Scheme.Count
+			);
+		}
+		[HttpPut]
         public async Task<bool> UpdatePaxSetting([FromBody]Plexform.GBS.GBSAdminLogic.GB4SETTING input, [FromBody]Plexform.GBS.GBSAdminLogic.GB4SETTING inputOld)
         {
             bool res = false;

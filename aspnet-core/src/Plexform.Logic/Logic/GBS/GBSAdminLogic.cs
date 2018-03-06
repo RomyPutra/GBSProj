@@ -4654,8 +4654,8 @@ namespace Plexform.GBS
             private DateTime _EffectiveDate;
             private DateTime _ExpiryDate;
 
-            #region Public Properties
-            public int AppID
+			#region Public Properties
+			public int AppID
             {
                 get { return _AppID; }
                 set { _AppID = value; }
@@ -4725,10 +4725,10 @@ namespace Plexform.GBS
                 get { return _ExpiryDate; }
                 set { _ExpiryDate = value; }
             }
-            #endregion
+			#endregion
 
-        }
-        public DataTable GetPaxSetting()
+		}
+		public DataTable GetPaxSetting()
         {
 
             DataTable dt = new DataTable();
@@ -4905,9 +4905,88 @@ namespace Plexform.GBS
                 return false;
             }
         }
-        #endregion
+		public DataTable GetAllOrgID()
+		{
+			DataTable dt;
+			String strSQL = string.Empty;
 
-        public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
+			try
+			{
+
+				strSQL = "SELECT DISTINCT OrgID, OrgName FROM AG_PROFILE ORDER BY OrgName";
+				dt = objDCom.Execute(strSQL, CommandType.Text, true); //amended by diana 20140124 - set to true
+				if (dt != null && dt.Rows.Count > 0)
+				{
+
+					return dt;
+				}
+				else
+				{
+					return null;
+					throw new ApplicationException("AG_PROFILE does not exist.");
+				}
+			}
+			catch (Exception ex)
+			{
+				//SystemLog.Notifier.Notify(ex);
+				return null;
+			}
+		}
+		public DataTable GetAllAgentbyOrgID(string OrgID)
+		{
+			DataTable dt;
+			String strSQL = string.Empty;
+
+			try
+			{
+
+				strSQL = "SELECT DISTINCT AgentID, Username FROM AG_PROFILE WHERE OrgID = '" + OrgID + "'";
+				dt = objDCom.Execute(strSQL, CommandType.Text, true); //amended by diana 20140124 - set to true
+				if (dt != null && dt.Rows.Count > 0)
+				{
+
+					return dt;
+				}
+				else
+				{
+					return null;
+					throw new ApplicationException("AG_PROFILE does not exist.");
+				}
+			}
+			catch (Exception ex)
+			{
+				//SystemLog.Notifier.Notify(ex);
+				return null;
+			}
+		}
+		public DataTable GetAllAgent()
+		{
+			DataTable dt;
+			String strSQL = string.Empty;
+			try
+			{
+				strSQL = "SELECT OrgID, AgentID, Username FROM AG_PROFILE";
+				dt = objDCom.Execute(strSQL, CommandType.Text, true);
+				if (dt != null && dt.Rows.Count > 0)
+				{
+
+					return dt;
+				}
+				else
+				{
+					return null;
+					throw new ApplicationException("AG_PROFILE does not exist.");
+				}
+			}
+			catch (Exception ex)
+			{
+				//SystemLog.Notifier.Notify(ex);
+				return null;
+			}
+		}
+		#endregion
+
+		public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
         {
             objSQL.ClearFields();
             objSQL.ClearCondtions();
@@ -5960,141 +6039,7 @@ namespace Plexform.GBS
 			return await Task.FromResult(list);
 		}
 
-		public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
-=======
-        public async Task<Plexform.Models.RestrictionModels> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
-        {
-            Models.RestrictionModels obj = new Models.RestrictionModels();
-            DataTable dtMaster, dtPreft1, dtPreft2;
-            try
-            {
-                dtMaster = GetCodeMasterbyCodeType(CodeType);
-                if (dtMaster != null && dtMaster.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dtMaster.Rows.Count; i++)
-                    {
-                        if (dtMaster.Rows[i]["Code"].ToString() == "IND")
-                        {
-                            obj.Status = dtMaster.Rows[i]["CodeDesc"].ToString();
-                        }
-                        else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKFROM")
-                        {
-                            obj.BookFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
-                            //obj.BookFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-                        }
-                        else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKTO")
-                        {
-                            obj.BookTo = dtMaster.Rows[i]["CodeDesc"].ToString();
-                            //obj.BookTo = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-                        }
-                        else if (dtMaster.Rows[i]["Code"].ToString() == "TRAFROM")
-                        {
-                            obj.TraFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
-                            //obj.TraFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-                        }
-                        else if (dtMaster.Rows[i]["Code"].ToString() == "TRATO")
-                        {
-                            obj.TraTo = dtMaster.Rows[i]["CodeDesc"].ToString();
-                            //obj.TraTo= Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-                        }
-                    }
-                }
-                dtPreft1 = GetSYSPreftbyKey(SYSKey1);
-                if (dtPreft1 != null && dtPreft1.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dtPreft1.Rows.Count; i++)
-                    {
-                        obj.RestrictionNote = dtPreft1.Rows[i]["SYSValue"].ToString();
-                    }
-                }
-                dtPreft2 = GetSYSPreftbyKey(SYSKey2);
-                if (dtPreft2 != null && dtPreft2.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dtPreft2.Rows.Count; i++)
-                    {
-                        obj.RestrictionAlert = dtPreft2.Rows[i]["SYSValue"].ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
-            return await Task.FromResult(obj);
-        }
-
-        public Task<bool> UpdateRestriction(Models.RestrictionModels pRestriction)
-        {
-            var res = false;
-            try
-            {
-                res = SaveAllRestriction(pRestriction);
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
-            return Task.FromResult(res);
-        }
-
-        public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
-        {
-            IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
-            CodemasterInfo Model = new CodemasterInfo();
-            DataTable dt;
-            try
-            {
-                dt = GetCodeMasterbyCodeType(CodeType);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        list.Add(new Models.CODEMASTERModels
-                        {
-                            CodeType = dt.Rows[i]["CodeType"].ToString(),
-                            Code = dt.Rows[i]["Code"].ToString(),
-                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                var temp = ex.ToString();
-            }
-            return await Task.FromResult(list);
-        }
-
-        //      public async Task<IList<Plexform.Models.SYSPREFTModels>> GetSYSPreftbySYSKeyAll(string SYSKey = "")
-        //      {
-        //          IList<Plexform.Models.SYSPREFTModels> list = new List<Plexform.Models.SYSPREFTModels>();
-        //          SYS_PREFTInfo Model = new SYS_PREFTInfo();
-        //          DataTable dt;
-        //          try
-        //          {
-        //              dt = GetSYSPreftbyKey(SYSKey);
-        //              if (dt != null && dt.Rows.Count > 0)
-        //              {
-        //                  for (int i = 0; i < dt.Rows.Count; i++)
-        //                  {
-        //                      list.Add(new Models.SYSPREFTModels
-        //                      {
-        //                          SYSKey = dt.Rows[i]["SYSKey"].ToString(),
-        //                          SYSValue = dt.Rows[i]["SYSValue"].ToString(),
-        //                          SYSValueEx = dt.Rows[i]["SYSValueEx"].ToString()
-        //                      });
-        //                  }
-        //              }
-        //          }
-        //          catch (Exception ex)
-        //          {
-        //              var temp = ex.ToString();
-        //          }
-        //          return await Task.FromResult(list);
-        //      }
-
         public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
->>>>>>> d1fc536587b22e949c93a7c8d42090a08d997c32
         {
             var res = false;
             try
@@ -6427,7 +6372,62 @@ namespace Plexform.GBS
             return await Task.FromResult(res);
         }
 
-        public Task<bool> UpdatePaxSetting(GB4SETTING InfoScheme, GB4SETTING InfoSchemeOld)
+		public async Task<IList<Plexform.Models.GB4Models>> GetAllOrgIDs()
+		{
+			IList<Plexform.Models.GB4Models> res = new List<Plexform.Models.GB4Models>();
+			GB4SETTING Model = new GB4SETTING();
+			DataTable dt;
+			try
+			{
+				dt = GetAllOrgID();
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						res.Add(new Models.GB4Models
+						{
+							OrgID = dt.Rows[i]["OrgID"].ToString(),
+							OrgName = dt.Rows[i]["OrgName"].ToString()
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(res);
+		}
+
+		public async Task<IList<Plexform.Models.GB4Models>> GetAllAgents()
+		{
+			IList<Plexform.Models.GB4Models> res = new List<Plexform.Models.GB4Models>();
+			GB4SETTING Model = new GB4SETTING();
+			DataTable dt;
+			try
+			{
+				dt = GetAllAgent();
+				if (dt != null && dt.Rows.Count > 0)
+				{
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						res.Add(new Models.GB4Models
+						{
+							OrgID = dt.Rows[i]["OrgID"].ToString(),
+							AgentID = dt.Rows[i]["AgentID"].ToString(),
+							Username = dt.Rows[i]["Username"].ToString()
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				var temp = ex.ToString();
+			}
+			return await Task.FromResult(res);
+		}
+
+		public Task<bool> UpdatePaxSetting(GB4SETTING InfoScheme, GB4SETTING InfoSchemeOld)
         {
             var res = false;
             try
