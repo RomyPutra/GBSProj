@@ -2,7 +2,8 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import data_grid from 'devextreme/ui/data_grid';
-import { DxLookupModule } from 'devextreme-angular';
+import { DxCheckBoxModule } from 'devextreme-angular';
+import { AppComponentBase } from '@shared/app-component-base';
 import { GB4Dto, PagedResultDtoOfGB4Dto, OrgGB4Dto, PagedResultDtoOfOrgGB4Dto } from '@shared/models/model-GB4';
 import { GetGB4ServiceProxy } from '@shared/service-proxies/proxy-GB4';
 
@@ -20,7 +21,7 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
   listGrid: Array<GB4Dto> = [];
   hold: number = 0;
   hold1: number = 1;
-  that: any;
+  organisation: any;
   
   constructor(
     injector: Injector,
@@ -50,6 +51,10 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
       });
     this._gbsService.getOrgGB4(request.skipCount, request.maxResultCount)
       .finally(() => {
+        this.organisation = {store: this.groupOrg,
+          paginate: true,
+          pageSize: 10};
+          //console.log(this.organisation);
         finishedCallback();
       })
       .subscribe((result: PagedResultDtoOfOrgGB4Dto) => {
@@ -58,44 +63,20 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
         }
         this.showPaging(result, pageNumber);
       });
-    this.that = this;
   }
 
   agentEdit(options) {
-    // return {
-    //   store: this.cities,
-    //   filter: options.data ? ["StateID", "=", options.data.StateID] : null
-    // };
-    console.log(options);
-    console.log(this.groupOrg);
-
     let filtered = [];
     if (this.groupOrg) {
       if (this.groupOrg.length > 0) {
         if (options.data) {
-          filtered = this.groupOrg.filter(t => t.orgID === options.data.orgName);
+          filtered = this.groupOrg.filter(t => t.orgName === options.data.orgName);
         }
       }
     }
-    console.log(filtered);
-    // console.log(GB4Component);
-        return {
-            store: this.groupOrg,
-            filter: options.data ? ['orgID', '=', options.data.orgName] : null
-        };
-    // if (options) {
-    //   if (options.data) {
-    //     if (options.data.orgName) {
-    //       this._gbsService.getAgnGB4()
-    //       .subscribe((result: PagedResultDtoOfOrgGB4Dto) => {
-    //         if (result.items.length > 0) {
-    //           this.groupOrg = result.items;
-    //         }
-    //         this.showPaging(result, 1);
-    //       });
-    //     }
-    //   }
-    // }
+    // console.log(options);
+    // console.log(this.groupOrg);
+    return {store: filtered};
   }
 
   onContentReady(e) {
@@ -108,14 +89,15 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
   onEditorPreparing(e) {
     if (e.parentType === 'dataRow' && e.dataField === 'username') {
       e.editorOptions.disabled = (e.row.data.orgID !== null);
+      // console.log(e.editorOptions.disabled + 'a');
     }
     if (e.parentType === 'dataRow' && e.dataField === 'countryCode') {
-      e.editorOptions.disabled = (e.row.data.orgID !== null);
+      e.editorOptions.disabled = true;//(e.row.data.orgID !== null);
+      // console.log(e.editorOptions.disabled + 'b');
     }
-    console.log('a');
   }
 
-  setStateValue(rowData: any, value: string): void {
+  setAgentValue(rowData: any, value: string): void {
     rowData.orgID = null;
     (<any>this).defaultSetCellValue(rowData, value);
   }
@@ -152,7 +134,6 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
   }
   deleteRecords() {
       this.selectedItems.forEach((item) => {
-        console.log(item);
           // this.dataSource.remove(item);
           // this.dataGrid.instance.refresh();
       });
@@ -181,23 +162,5 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
     } else {
       this.hold1 = this.hold1 + 1;
     };
-  }
-  
-  logEvents(data: any) {
-    // if (data.newData['countryCode'] === undefined) {
-      this.hold = this.hold + 1;
-      this.hold1 = 1;
-      this.listGrid.push(data.key);
-    // } else {
-    //   this.code = data.newData['countryCode'];
-    //   this._gbsService.get(this.code)
-    //   .subscribe((result: GBSCountryDto) => {
-    //     this.countryx = result;
-    //     data.key['currencyCode'] = this.countryx.currencyCode;
-    //     this.hold = this.hold + 1;
-    //     this.hold1 = 1;
-    //     this.listGrid.push(data.key);
-    //   });
-    // }
   }
 }  

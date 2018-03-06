@@ -4965,7 +4965,7 @@ namespace Plexform.GBS
 			String strSQL = string.Empty;
 			try
 			{
-				strSQL = "SELECT OrgID, AgentID, Username FROM AG_PROFILE";
+				strSQL = "SELECT OrgID, OrgName, AgentID, Username, Country FROM AG_PROFILE";
 				dt = objDCom.Execute(strSQL, CommandType.Text, true);
 				if (dt != null && dt.Rows.Count > 0)
 				{
@@ -6414,9 +6414,11 @@ namespace Plexform.GBS
 						res.Add(new Models.GB4Models
 						{
 							OrgID = dt.Rows[i]["OrgID"].ToString(),
-							AgentID = dt.Rows[i]["AgentID"].ToString(),
-							Username = dt.Rows[i]["Username"].ToString()
-						});
+                            OrgName = dt.Rows[i]["OrgName"].ToString(),
+                            AgentID = dt.Rows[i]["AgentID"].ToString(),
+							Username = dt.Rows[i]["Username"].ToString(),
+                            CountryCode = dt.Rows[i]["Country"].ToString()
+                        });
 					}
 				}
 			}

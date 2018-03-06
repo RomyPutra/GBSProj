@@ -135,6 +135,7 @@ export class OrgGB4Dto implements OrgIGB4Dto {
     orgName: string;
     agentID: string;
     username: string;
+    country: string;
     
     static fromJS(data: any): OrgGB4Dto {
         let result = new OrgGB4Dto();
@@ -157,7 +158,8 @@ export class OrgGB4Dto implements OrgIGB4Dto {
 			this.orgID = data['orgID'];
 			this.orgName = data['orgName'];
 			this.agentID = data['agentID'];
-			this.username = data['username'];
+            this.username = data['username'];
+            this.country = data['countryCode'];
         }
     }
 
@@ -165,7 +167,8 @@ export class OrgGB4Dto implements OrgIGB4Dto {
 		data['orgID'] = this.orgID;
 		data['orgName'] = this.orgName;
 		data['agentID'] = this.agentID;
-		data['username'] = this.username;
+        data['username'] = this.username;
+        data['countryCode'] = this.country;
         
 		return data;
     }
@@ -183,6 +186,7 @@ export interface OrgIGB4Dto {
     orgName: string;
     agentID: string;
     username: string;
+    country: string;
 }
 
 export class PagedResultDtoOfOrgGB4Dto implements IPagedResultDtoOfOrgGB4Dto {
