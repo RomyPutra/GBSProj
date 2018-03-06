@@ -152,7 +152,7 @@
   <h4>Example:</h4>
   <br>
   <label>Amount Due :</label><span> </span>
-  <input id="amount" type="number" (blur)="test($event.currentTarget.value, review.minDeposit, review.maxDeposit)" />
+  <input id="amount" type="number" min="1" (blur)="test($event.currentTarget.value, review.minDeposit, review.maxDeposit)" />
   <span> </span><label>{{review.currencyCode}}</label>
   <br>
   <label>30% of base fare :</label><span> </span><label>{{fare}}</label>

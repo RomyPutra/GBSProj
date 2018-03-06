@@ -10,6 +10,10 @@ using SEAL.Data;
 using System.Data.SqlClient;
 using System.Collections;
 using Sharpbrake.Client;
+using System.Xml.Serialization;
+using System.Reflection;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Plexform.GBS
 {
@@ -4654,8 +4658,8 @@ namespace Plexform.GBS
             private DateTime _EffectiveDate;
             private DateTime _ExpiryDate;
 
-			#region Public Properties
-			public int AppID
+            #region Public Properties
+            public int AppID
             {
                 get { return _AppID; }
                 set { _AppID = value; }
@@ -4725,10 +4729,10 @@ namespace Plexform.GBS
                 get { return _ExpiryDate; }
                 set { _ExpiryDate = value; }
             }
-			#endregion
+            #endregion
 
-		}
-		public DataTable GetPaxSetting()
+        }
+        public DataTable GetPaxSetting()
         {
 
             DataTable dt = new DataTable();
@@ -4905,88 +4909,448 @@ namespace Plexform.GBS
                 return false;
             }
         }
-		public DataTable GetAllOrgID()
-		{
-			DataTable dt;
-			String strSQL = string.Empty;
+        public DataTable GetAllOrgID()
+        {
+            DataTable dt;
+            String strSQL = string.Empty;
 
-			try
-			{
+            try
+            {
 
-				strSQL = "SELECT DISTINCT OrgID, OrgName FROM AG_PROFILE ORDER BY OrgName";
-				dt = objDCom.Execute(strSQL, CommandType.Text, true); //amended by diana 20140124 - set to true
-				if (dt != null && dt.Rows.Count > 0)
-				{
+                strSQL = "SELECT DISTINCT OrgID, OrgName FROM AG_PROFILE ORDER BY OrgName";
+                dt = objDCom.Execute(strSQL, CommandType.Text, true); //amended by diana 20140124 - set to true
+                if (dt != null && dt.Rows.Count > 0)
+                {
 
-					return dt;
-				}
-				else
-				{
-					return null;
-					throw new ApplicationException("AG_PROFILE does not exist.");
-				}
-			}
-			catch (Exception ex)
-			{
-				//SystemLog.Notifier.Notify(ex);
-				return null;
-			}
-		}
-		public DataTable GetAllAgentbyOrgID(string OrgID)
-		{
-			DataTable dt;
-			String strSQL = string.Empty;
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                    throw new ApplicationException("AG_PROFILE does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                //SystemLog.Notifier.Notify(ex);
+                return null;
+            }
+        }
+        public DataTable GetAllAgentbyOrgID(string OrgID)
+        {
+            DataTable dt;
+            String strSQL = string.Empty;
 
-			try
-			{
+            try
+            {
 
-				strSQL = "SELECT DISTINCT AgentID, Username FROM AG_PROFILE WHERE OrgID = '" + OrgID + "'";
-				dt = objDCom.Execute(strSQL, CommandType.Text, true); //amended by diana 20140124 - set to true
-				if (dt != null && dt.Rows.Count > 0)
-				{
+                strSQL = "SELECT DISTINCT AgentID, Username FROM AG_PROFILE WHERE OrgID = '" + OrgID + "'";
+                dt = objDCom.Execute(strSQL, CommandType.Text, true); //amended by diana 20140124 - set to true
+                if (dt != null && dt.Rows.Count > 0)
+                {
 
-					return dt;
-				}
-				else
-				{
-					return null;
-					throw new ApplicationException("AG_PROFILE does not exist.");
-				}
-			}
-			catch (Exception ex)
-			{
-				//SystemLog.Notifier.Notify(ex);
-				return null;
-			}
-		}
-		public DataTable GetAllAgent()
-		{
-			DataTable dt;
-			String strSQL = string.Empty;
-			try
-			{
-				strSQL = "SELECT OrgID, OrgName, AgentID, Username, Country FROM AG_PROFILE";
-				dt = objDCom.Execute(strSQL, CommandType.Text, true);
-				if (dt != null && dt.Rows.Count > 0)
-				{
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                    throw new ApplicationException("AG_PROFILE does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                //SystemLog.Notifier.Notify(ex);
+                return null;
+            }
+        }
+        public DataTable GetAllAgent()
+        {
+            DataTable dt;
+            String strSQL = string.Empty;
+            try
+            {
+                strSQL = "SELECT OrgID, OrgName, AgentID, Username, Country FROM AG_PROFILE";
+                dt = objDCom.Execute(strSQL, CommandType.Text, true);
+                if (dt != null && dt.Rows.Count > 0)
+                {
 
-					return dt;
-				}
-				else
-				{
-					return null;
-					throw new ApplicationException("AG_PROFILE does not exist.");
-				}
-			}
-			catch (Exception ex)
-			{
-				//SystemLog.Notifier.Notify(ex);
-				return null;
-			}
-		}
-		#endregion
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                    throw new ApplicationException("AG_PROFILE does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                //SystemLog.Notifier.Notify(ex);
+                return null;
+            }
+        }
+        #endregion
 
-		public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
+        #region Origin XML
+        public class ORIGIN
+        {
+            private string _DepartureStation = String.Empty;
+            private string _CustomState = String.Empty;
+            
+            #region Public Properties
+            public string DepartureStation
+            {
+                get { return _DepartureStation; }
+                set { _DepartureStation = value; }
+            }
+            public string CustomState
+            {
+                get { return _CustomState; }
+                set { _CustomState = value; }
+            }
+            #endregion
+
+        }
+
+        public class GetRouteListResponse
+        {
+            public RouteListExtend[] RouteListExtend { get; set; }
+        }
+
+
+        public class RouteListExtend
+        {
+            [XmlElement("DepartureStation")]
+            public string DepartureStation { get; set; }
+
+            [XmlElement("DepartureStationCurrencyCode")]
+            public string DepartureStationCurrencyCode { get; set; }
+
+            [XmlElement("ArrivalStation")]
+            public string ArrivalStation { get; set; }
+
+            [XmlElement("ArrivalStationCurrencyCode")]
+            public string ArrivalStationCurrencyCode { get; set; }
+
+            [XmlElement("PointToPointFlag")]
+            public string PointToPointFlag { get; set; }
+
+            [XmlElement("ConnectionFlag")]
+            public string ConnectionFlag { get; set; }
+
+            [XmlElement("InternationalFlag")]
+            public string InternationalFlag { get; set; }
+
+            [XmlElement("DepartureStationName")]
+            public string DepartureStationName { get; set; }
+
+            [XmlElement("DepartureStationAirportName")]
+            public string DepartureStationAirportName { get; set; }
+
+            [XmlElement("DepartureTimeZoneCode")]
+            public string DepartureTimeZoneCode { get; set; }
+
+            [XmlElement("ArrivalStationName")]
+            public string ArrivalStationName { get; set; }
+
+            [XmlElement("ArrivalStationAirportName")]
+            public string ArrivalStationAirportName { get; set; }
+
+            [XmlElement("ArrivalTimeZoneCode")]
+            public string ArrivalTimeZoneCode { get; set; }
+
+            [XmlElement("CultureCode")]
+            public string CultureCode { get; set; }
+
+            [XmlElement("CountryCode")]
+            public string CountryCode { get; set; }
+
+            [XmlElement("CarrierCode")]
+            public string CarrierCode { get; set; }
+
+            [XmlElement("DepartureCountry")]
+            public string DepartureCountry { get; set; }
+
+            [XmlElement("ArrivalCountry")]
+            public string ArrivalCountry { get; set; }
+
+            [XmlElement("CustomState")]
+            public string CustomState { get; set; }
+
+            [XmlElement("RCustomState")]
+            public string RCustomState { get; set; }
+        }
+
+        public class XMLParam
+        {
+            public enum FileName
+            {
+                CITYPAIR,
+                ALLCITYPAIR,
+                DEPARTCITYPAIR,
+                FLIGHTSEARCH_TWOWAY,
+
+                BOOKINGFROMSTATE
+            }
+        }
+
+        public DataTable CountryInfoStructure()
+        {
+            DataTable dt = new DataTable();
+            DataColumn[] keys = new DataColumn[2];
+            DataColumn column;
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "CityCode";
+
+            // Add the column to the DataTable.Columns collection.
+            dt.Columns.Add(column);
+            // Add the column to the array.
+            keys[0] = column;
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "CustomState";
+            dt.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Name";
+            dt.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "CityName";
+            dt.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "RCityCode";
+            dt.Columns.Add(column);
+            keys[1] = column;
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "RCustomState";
+            dt.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "RName";
+            dt.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "RCityName";
+            dt.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Currency";
+            dt.Columns.Add(column);
+
+            dt.PrimaryKey = keys;
+            return dt;
+        }
+
+        public DataTable GetLookUpCity(string CityDepart = "")
+        {
+            GetRouteListResponse AllCityPairResponse = new GetRouteListResponse();
+            GetRouteListResponse DepartCityPairResponse = new GetRouteListResponse();
+
+            try
+            {
+                DataTable dt = new DataTable();
+                DataTable dtDepart = new DataTable();
+                DataTable dtresp = new DataTable();
+                dt = CountryInfoStructure();
+                dtDepart = CountryInfoStructure();
+                dtresp = CountryInfoStructure();
+
+
+                AllCityPairResponse = LookUpAllCity();
+
+                if (AllCityPairResponse != null)
+                {
+                    dt = CreateDataTable(AllCityPairResponse.RouteListExtend.OrderBy(a => a.DepartureCountry).ToList());
+                }
+
+
+                DepartCityPairResponse = LookUpCity();
+                if (DepartCityPairResponse != null)
+                {
+                    dtDepart = CreateDataTable(DepartCityPairResponse.RouteListExtend.OrderBy(a => a.DepartureCountry).ToList());
+                }
+
+                if (dt == null || dt.Rows.Count == 0 || dtDepart == null || dtDepart.Rows.Count == 0)
+                {
+                    AllCityPairResponse = LookUpAllCity();
+                    if (AllCityPairResponse != null)
+                    {
+                        dt = CreateDataTable(AllCityPairResponse.RouteListExtend.OrderBy(a => a.DepartureCountry).ToList());
+                    }
+
+                    DepartCityPairResponse = LookUpCity();
+                    if (DepartCityPairResponse != null)
+                    {
+                        dtDepart = CreateDataTable(DepartCityPairResponse.RouteListExtend.OrderBy(a => a.DepartureCountry).ToList());
+                    }
+
+                }
+
+                if (dt != null || dt.Rows.Count != 0)
+                {
+                    if (CityDepart != "")
+                    {
+                        dtresp = dt.Clone();
+                        //DataRow[] drs = dt.Select("CityCode = '" + CityDepart + "'", "RName");
+                        DataRow[] drs = dt.Select("DepartureStation = '" + CityDepart + "'", "ArrivalCountry");
+                        if (drs != null)
+                        {
+                            foreach (DataRow dr in drs)
+                            {
+                                dtresp.ImportRow(dr);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DataView dv = dtDepart.DefaultView;
+                        //dv.Sort = "Name";
+                        dv.Sort = "DepartureCountry";
+                        return dv.ToTable();
+                    }
+
+                    if (dtresp != null)
+                    {
+                        return dtresp;
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public GetRouteListResponse LookUpCity(string CityDepart = "")
+        {
+            GetRouteListResponse AllCityPairResponse = new GetRouteListResponse();
+            GetRouteListResponse DepartCityPairResponse = new GetRouteListResponse();
+            try
+            {
+                AllCityPairResponse = LoadCityPairXML(XMLParam.FileName.ALLCITYPAIR);
+                DepartCityPairResponse = LoadCityPairXML(XMLParam.FileName.DEPARTCITYPAIR);
+                if ((DepartCityPairResponse != null && DepartCityPairResponse.RouteListExtend != null && DepartCityPairResponse.RouteListExtend.Length > 0)
+                    || (AllCityPairResponse != null && AllCityPairResponse.RouteListExtend != null && AllCityPairResponse.RouteListExtend.Length > 0))
+                {
+                    if (CityDepart != "")
+                    {
+                        AllCityPairResponse.RouteListExtend.Select(a => a.DepartureStation == CityDepart);
+                        AllCityPairResponse.RouteListExtend.OrderBy(a => a.ArrivalStationName);
+                        return AllCityPairResponse;
+                    }
+                    else
+                    {
+                        DepartCityPairResponse.RouteListExtend.OrderBy(a => a.DepartureStationName);
+                        return DepartCityPairResponse;
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                AllCityPairResponse = null;
+                DepartCityPairResponse = null;
+            }
+        }
+
+        public DataTable CreateDataTable<T>(IEnumerable<T> list)
+        {
+            Type type = typeof(T);
+            var properties = type.GetProperties();
+
+            DataTable dataTable = new DataTable();
+            foreach (PropertyInfo info in properties)
+            {
+                dataTable.Columns.Add(new DataColumn(info.Name, Nullable.GetUnderlyingType(info.PropertyType) ?? info.PropertyType));
+            }
+
+            foreach (T entity in list)
+            {
+                object[] values = new object[properties.Length];
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    values[i] = properties[i].GetValue(entity, null);
+                }
+
+                dataTable.Rows.Add(values);
+            }
+
+            return dataTable;
+        }
+
+        public GetRouteListResponse LookUpAllCity()
+        {
+            GetRouteListResponse AllCityPairResponse = new GetRouteListResponse();
+            try
+            {
+                AllCityPairResponse = LoadCityPairXML(XMLParam.FileName.ALLCITYPAIR);
+                if (AllCityPairResponse != null && AllCityPairResponse.RouteListExtend != null && AllCityPairResponse.RouteListExtend.Length > 0)
+                {
+                    return AllCityPairResponse;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                AllCityPairResponse = null;
+            }
+        }
+
+        public GetRouteListResponse LoadCityPairXML(XMLParam.FileName fileName)
+        {
+            //ACEGeneralManager generalManager = new ACEGeneralManager();
+            //SHARED.ACELookupService.GetRouteListResponse cityPair;
+            GetRouteListResponse result = null;
+            string XmlFilePath = "";
+            //if (Directory.Exists("XML"))
+            //{
+            //var directoryInfo = new DirectoryInfo();
+            //var helper = Plexform.Web.WebContentDirectoryFinder.DirectoryContains("","");
+            XmlFilePath = "E:\\projects\\GBSProj-master\\aspnet-core\\XML\\"+ fileName.ToString()+ "\\" + fileName.ToString() + ".xml";
+            //XmlFilePath = "\\XML\\" + fileName.ToString() + "\\" + fileName.ToString() + ".xml";
+           // }
+            if (File.Exists(XmlFilePath) == false)
+            {
+                return null;
+            }
+            else
+            {
+                StreamReader xmlStream = new StreamReader(XmlFilePath);
+                XmlSerializer serializer = new XmlSerializer(typeof(GetRouteListResponse));
+                result = (GetRouteListResponse)serializer.Deserialize(xmlStream);
+            }
+
+            if (result != null && result.RouteListExtend.Length > 0)
+                return result;
+            else
+                return null;
+        }
+        #endregion
+
+        public bool SaveAllRestriction(Models.RestrictionModels pRestriction)
         {
             objSQL.ClearFields();
             objSQL.ClearCondtions();
@@ -5936,108 +6300,108 @@ namespace Plexform.GBS
             return await Task.FromResult(list);
         }
 
-		public async Task<Plexform.Models.RestrictionModels> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
-		{
-			Models.RestrictionModels obj = new Models.RestrictionModels();
-			DataTable dtMaster, dtPreft1, dtPreft2;
-			try
-			{
-				dtMaster = GetCodeMasterbyCodeType(CodeType);
-				if (dtMaster != null && dtMaster.Rows.Count > 0)
-				{
-					for (int i = 0; i < dtMaster.Rows.Count; i++)
-					{
-						if(dtMaster.Rows[i]["Code"].ToString() == "IND")
-						{
-							obj.Status = dtMaster.Rows[i]["CodeDesc"].ToString();
-						}
-						else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKFROM")
-						{
-							obj.BookFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
-							//obj.BookFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-						}
-						else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKTO")
-						{
-							obj.BookTo = dtMaster.Rows[i]["CodeDesc"].ToString();
-							//obj.BookTo = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-						}
-						else if (dtMaster.Rows[i]["Code"].ToString() == "TRAFROM")
-						{
-							obj.TraFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
-							//obj.TraFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-						}
-						else if (dtMaster.Rows[i]["Code"].ToString() == "TRATO")
-						{
-							obj.TraTo = dtMaster.Rows[i]["CodeDesc"].ToString();
-							//obj.TraTo= Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
-						}
-					}
-				}
-				dtPreft1 = GetSYSPreftbyKey(SYSKey1);
-				if (dtPreft1 != null && dtPreft1.Rows.Count > 0)
-				{
-					for (int i = 0; i < dtPreft1.Rows.Count; i++)
-					{
-						obj.RestrictionNote = dtPreft1.Rows[i]["SYSValue"].ToString();
-					}
-				}
-				dtPreft2 = GetSYSPreftbyKey(SYSKey2);
-				if (dtPreft2 != null && dtPreft2.Rows.Count > 0)
-				{
-					for (int i = 0; i < dtPreft2.Rows.Count; i++)
-					{
-						obj.RestrictionAlert = dtPreft2.Rows[i]["SYSValue"].ToString();
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(obj);
-		}
+        public async Task<Plexform.Models.RestrictionModels> GetRestriction(string CodeType = "", string SYSKey1 = "", string SYSKey2 = "")
+        {
+            Models.RestrictionModels obj = new Models.RestrictionModels();
+            DataTable dtMaster, dtPreft1, dtPreft2;
+            try
+            {
+                dtMaster = GetCodeMasterbyCodeType(CodeType);
+                if (dtMaster != null && dtMaster.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtMaster.Rows.Count; i++)
+                    {
+                        if (dtMaster.Rows[i]["Code"].ToString() == "IND")
+                        {
+                            obj.Status = dtMaster.Rows[i]["CodeDesc"].ToString();
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKFROM")
+                        {
+                            obj.BookFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.BookFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "BOOKTO")
+                        {
+                            obj.BookTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.BookTo = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "TRAFROM")
+                        {
+                            obj.TraFrom = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.TraFrom = Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                        else if (dtMaster.Rows[i]["Code"].ToString() == "TRATO")
+                        {
+                            obj.TraTo = dtMaster.Rows[i]["CodeDesc"].ToString();
+                            //obj.TraTo= Convert.ToDateTime(dtMaster.Rows[i]["CodeDesc"]);
+                        }
+                    }
+                }
+                dtPreft1 = GetSYSPreftbyKey(SYSKey1);
+                if (dtPreft1 != null && dtPreft1.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtPreft1.Rows.Count; i++)
+                    {
+                        obj.RestrictionNote = dtPreft1.Rows[i]["SYSValue"].ToString();
+                    }
+                }
+                dtPreft2 = GetSYSPreftbyKey(SYSKey2);
+                if (dtPreft2 != null && dtPreft2.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtPreft2.Rows.Count; i++)
+                    {
+                        obj.RestrictionAlert = dtPreft2.Rows[i]["SYSValue"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(obj);
+        }
 
-		public Task<bool> UpdateRestriction(Models.RestrictionModels pRestriction)
-		{
-			var res = false;
-			try
-			{
-				res = SaveAllRestriction(pRestriction);
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UpdateRestriction(Models.RestrictionModels pRestriction)
+        {
+            var res = false;
+            try
+            {
+                res = SaveAllRestriction(pRestriction);
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
-		{
-			IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
-			CodemasterInfo Model = new CodemasterInfo();
-			DataTable dt;
-			try
-			{
-				dt = GetCodeMasterbyCodeType(CodeType);
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						list.Add(new Models.CODEMASTERModels
-						{
-							CodeType = dt.Rows[i]["CodeType"].ToString(),
-							Code = dt.Rows[i]["Code"].ToString(),
-							CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(list);
-		}
+        public async Task<IList<Plexform.Models.CODEMASTERModels>> GetCodeMasterbyCodeTypeAll(string CodeType = "")
+        {
+            IList<Plexform.Models.CODEMASTERModels> list = new List<Plexform.Models.CODEMASTERModels>();
+            CodemasterInfo Model = new CodemasterInfo();
+            DataTable dt;
+            try
+            {
+                dt = GetCodeMasterbyCodeType(CodeType);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(new Models.CODEMASTERModels
+                        {
+                            CodeType = dt.Rows[i]["CodeType"].ToString(),
+                            Code = dt.Rows[i]["Code"].ToString(),
+                            CodeDesc = dt.Rows[i]["CodeDesc"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(list);
+        }
 
         public Task<bool> UpdateCodeMaster(CodemasterInfo pCodemaster)
         {
@@ -6067,246 +6431,246 @@ namespace Plexform.GBS
             return Task.FromResult(res);
         }
 
-		public Task<bool> UploadGroupTime(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadGroupTime(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadAgentTier(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadAgentTier(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadAgentFare(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadAgentFare(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadDiscount(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadDiscount(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadCapacity(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadCapacity(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadDiscWeight(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadDiscWeight(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadFloorFare(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadFloorFare(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadSeasonality(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadSeasonality(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadLFDiscount(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadLFDiscount(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadPUDiscount(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadPUDiscount(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadSeries(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadSeries(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<bool> UploadUmrahLabor(Models.FltTimeGroupModels[] UploadFile)
-		{
-			var res = false;
-			try
-			{
-				if (UploadFile != null)
-				{
-					res = SaveFlightTimeGroup(UploadFile);
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<bool> UploadUmrahLabor(Models.FltTimeGroupModels[] UploadFile)
+        {
+            var res = false;
+            try
+            {
+                if (UploadFile != null)
+                {
+                    res = SaveFlightTimeGroup(UploadFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
-		public Task<List<T>> GenerateListFromString<T>(string content, ref string errorMsg)
-		{
-			var res = new List<T>();
-			try
-			{
-				var json = Newtonsoft.Json.JsonConvert.DeserializeObject<T[]>(content);
-				if (json != null && json is Array)
-				{
-					res.AddRange(json);
-				}
-				else
-				{
-					var temp = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
-					if (temp != null)
-					{
-						if (temp is Array)
-						{
-							errorMsg = "Json format not match with the class container";
-						}
-						else
-						{
-							errorMsg = "Invalid json array";
-						}
-					}
-					else
-					{
-						errorMsg = "Invalid json array";
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				errorMsg = ex.ToString();
-			}
-			return Task.FromResult(res);
-		}
+        public Task<List<T>> GenerateListFromString<T>(string content, ref string errorMsg)
+        {
+            var res = new List<T>();
+            try
+            {
+                var json = Newtonsoft.Json.JsonConvert.DeserializeObject<T[]>(content);
+                if (json != null && json is Array)
+                {
+                    res.AddRange(json);
+                }
+                else
+                {
+                    var temp = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
+                    if (temp != null)
+                    {
+                        if (temp is Array)
+                        {
+                            errorMsg = "Json format not match with the class container";
+                        }
+                        else
+                        {
+                            errorMsg = "Invalid json array";
+                        }
+                    }
+                    else
+                    {
+                        errorMsg = "Invalid json array";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMsg = ex.ToString();
+            }
+            return Task.FromResult(res);
+        }
 
         public async Task<IList<Plexform.Models.GB4Models>> GetPaxSettingAll()
         {
@@ -6372,64 +6736,64 @@ namespace Plexform.GBS
             return await Task.FromResult(res);
         }
 
-		public async Task<IList<Plexform.Models.GB4Models>> GetAllOrgIDs()
-		{
-			IList<Plexform.Models.GB4Models> res = new List<Plexform.Models.GB4Models>();
-			GB4SETTING Model = new GB4SETTING();
-			DataTable dt;
-			try
-			{
-				dt = GetAllOrgID();
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						res.Add(new Models.GB4Models
-						{
-							OrgID = dt.Rows[i]["OrgID"].ToString(),
-							OrgName = dt.Rows[i]["OrgName"].ToString()
-						});
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(res);
-		}
+        public async Task<IList<Plexform.Models.GB4Models>> GetAllOrgIDs()
+        {
+            IList<Plexform.Models.GB4Models> res = new List<Plexform.Models.GB4Models>();
+            GB4SETTING Model = new GB4SETTING();
+            DataTable dt;
+            try
+            {
+                dt = GetAllOrgID();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        res.Add(new Models.GB4Models
+                        {
+                            OrgID = dt.Rows[i]["OrgID"].ToString(),
+                            OrgName = dt.Rows[i]["OrgName"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(res);
+        }
 
-		public async Task<IList<Plexform.Models.GB4Models>> GetAllAgents()
-		{
-			IList<Plexform.Models.GB4Models> res = new List<Plexform.Models.GB4Models>();
-			GB4SETTING Model = new GB4SETTING();
-			DataTable dt;
-			try
-			{
-				dt = GetAllAgent();
-				if (dt != null && dt.Rows.Count > 0)
-				{
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						res.Add(new Models.GB4Models
-						{
-							OrgID = dt.Rows[i]["OrgID"].ToString(),
+        public async Task<IList<Plexform.Models.GB4Models>> GetAllAgents()
+        {
+            IList<Plexform.Models.GB4Models> res = new List<Plexform.Models.GB4Models>();
+            GB4SETTING Model = new GB4SETTING();
+            DataTable dt;
+            try
+            {
+                dt = GetAllAgent();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        res.Add(new Models.GB4Models
+                        {
+                            OrgID = dt.Rows[i]["OrgID"].ToString(),
                             OrgName = dt.Rows[i]["OrgName"].ToString(),
                             AgentID = dt.Rows[i]["AgentID"].ToString(),
-							Username = dt.Rows[i]["Username"].ToString(),
+                            Username = dt.Rows[i]["Username"].ToString(),
                             CountryCode = dt.Rows[i]["Country"].ToString()
                         });
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				var temp = ex.ToString();
-			}
-			return await Task.FromResult(res);
-		}
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(res);
+        }
 
-		public Task<bool> UpdatePaxSetting(GB4SETTING InfoScheme, GB4SETTING InfoSchemeOld)
+        public Task<bool> UpdatePaxSetting(GB4SETTING InfoScheme, GB4SETTING InfoSchemeOld)
         {
             var res = false;
             try
@@ -6469,6 +6833,33 @@ namespace Plexform.GBS
                 var temp = ex.ToString();
             }
             return Task.FromResult(res);
+        }
+
+        public async Task<IList<Plexform.Models.OriginModels>> GetOrigin()
+        {
+            IList<Plexform.Models.OriginModels> res = new List<Plexform.Models.OriginModels>();
+            ORIGIN Model = new ORIGIN();
+            DataTable dt;
+            try
+            {
+                dt = GetLookUpCity();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        res.Add(new Models.OriginModels
+                        {
+                            DepartureStation = dt.Rows[i]["DepartureStation"].ToString(),
+                            CustomState = dt.Rows[i]["CustomState"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return await Task.FromResult(res);
         }
         #endregion
     }

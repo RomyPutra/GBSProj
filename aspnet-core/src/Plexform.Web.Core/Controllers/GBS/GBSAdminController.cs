@@ -757,5 +757,23 @@ namespace Plexform.Controllers
 
             return ObjectMapper.Map<bool>(res);
         }
+        [HttpGet]
+        public async Task<ListResultContainer<Plexform.Models.OriginModels>> GetAllOrigin()
+        {
+            IList<Plexform.Models.OriginModels> Scheme = new List<Plexform.Models.OriginModels>();
+            try
+            {
+                var repo = new Plexform.GBS.GBSAdminLogic();
+                Scheme = await repo.GetOrigin();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex.ToString();
+            }
+            return new ListResultContainer<Plexform.Models.OriginModels>(
+                ObjectMapper.Map<List<Plexform.Models.OriginModels>>(Scheme),
+                Scheme.Count
+            );
+        }
     }
 }
