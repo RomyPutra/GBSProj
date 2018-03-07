@@ -74,7 +74,7 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
         }
       }
     }
-    // console.log(options);
+    // console.log(filtered);
     // console.log(this.groupOrg);
     return {store: filtered};
   }
@@ -86,14 +86,39 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
       });
   }
 
+  changeLabel(e) {
+    // console.log(e);
+    // console.log(e.target.labels[0].textContent);
+    if (e.target.labels[0].textContent === 'Inactive') {
+      e.target.labels[0].textContent = 'Active';
+    } else {
+      e.target.labels[0].textContent = 'Inactive';
+    }
+  }
+
   onEditorPreparing(e) {
+    console.log(e);
     if (e.parentType === 'dataRow' && e.dataField === 'username') {
       e.editorOptions.disabled = (e.row.data.orgID !== null);
       // console.log(e.editorOptions.disabled + 'a');
     }
     if (e.parentType === 'dataRow' && e.dataField === 'countryCode') {
-      e.editorOptions.disabled = true;//(e.row.data.orgID !== null);
-      // console.log(e.editorOptions.disabled + 'b');
+      e.editorOptions.disabled = true;
+    }
+    if (e.parentType === 'dataRow' && e.dataField === 'effectiveDate') {
+      console.log(e.StartPosition + '4');
+      e.alignment = 'right';
+      // e.EditForm.StartPosition = 4;
+    }
+    if (e.parentType === 'dataRow' && e.dataField === 'expiryDate') {
+      console.log(e.StartPosition + '6');
+      e.visibleIndex = 6;
+      // e.EditForm.StartPosition = 6;
+    }
+    if (e.parentType === 'dataRow' && e.dataField === 'noofPax') {
+      console.log(e.StartPosition + '7');
+      e.visibleIndex = 7;
+      // e.EditForm.StartPosition = 7;
     }
   }
 
