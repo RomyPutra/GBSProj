@@ -245,3 +245,111 @@ export interface IPagedResultDtoOfOrgGB4Dto {
     totalCount: number;
     items: OrgGB4Dto[];
 }
+
+export class OriginGB4Dto implements OriginIGB4Dto {
+    departureStation: string;
+    customState: string;
+    departureCountry: string;
+    
+    static fromJS(data: any): OriginGB4Dto {
+        let result = new OriginGB4Dto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: OrgIGB4Dto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    (<any>this)[property] = (<any>data)[property];
+                }
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+			this.departureStation = data['departureStation'];
+			this.customState = data['customState'];
+			this.departureCountry = data['departureCountry'];
+        }
+    }
+
+    toJSON(data?: any) {
+		data['departureStation'] = this.departureStation;
+		data['customState'] = this.customState;
+		data['departureCountry'] = this.departureCountry;
+        
+		return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new OriginGB4Dto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface OriginIGB4Dto {
+    departureStation: string;
+    customState: string;
+    departureCountry: string;
+}
+
+export class PagedResultDtoOfOriginGB4Dto implements IPagedResultDtoOfOriginGB4Dto {
+    totalCount: number;
+    items: OriginGB4Dto[];
+
+    static fromJS(data: any): PagedResultDtoOfOriginGB4Dto {
+        let result = new PagedResultDtoOfOriginGB4Dto();
+        result.init(data);
+        return result;
+    }
+
+    constructor(data?: IPagedResultDtoOfOriginGB4Dto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    (<any>this)[property] = (<any>data)[property];
+                }
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data['totalCount'];
+            if (data['items'] && data['items'].constructor === Array) {
+                this.items = [];
+                for (let item of data['items']) {
+                    this.items.push(OriginGB4Dto.fromJS(item));
+                }
+            }
+        }
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data['totalCount'] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data['items'] = [];
+            for (let item of this.items) {
+                data['items'].push(item.toJSON());
+            }
+        }
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new PagedResultDtoOfOriginGB4Dto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IPagedResultDtoOfOriginGB4Dto {
+    totalCount: number;
+    items: OriginGB4Dto[];
+}

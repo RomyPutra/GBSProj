@@ -15,7 +15,10 @@
     (onContentReady)="onContentReady($event)"
     (onCellPrepared)="onCellPrepared($event)"
     (onSelectionChanged)="selectionChanged($event)"
-    (onEditorPreparing)="onEditorPreparing($event)">
+    (onEditorPreparing)="onEditorPreparing($event)"
+    (onRowInserted)="logEvent($event)"
+    (onRowUpdated)="logEvent($event)"
+    (onRowRemoved)="logEvent($event)">
 
       <dxo-search-panel
         [visible]="true"
@@ -36,7 +39,7 @@
           valueExpr="orgName">
         </dxo-lookup>
       </dxi-column>
-      <dxi-column dataField="username" caption="User Name">
+      <dxi-column dataField="username" caption="User Name" [setCellValue]="setCountryValue">
         <dxo-lookup
           [dataSource]="agentEdit"
           displayExpr="username"
@@ -46,9 +49,9 @@
       <dxi-column dataField="countryCode" caption="Country Code"></dxi-column>
       <dxi-column dataField="origin" caption="Origin">
         <dxo-lookup
-          [dataSource]=""
-          displayExpr=""
-          valueExpr="">
+          [dataSource]="originGB4"
+          displayExpr="customState"
+          valueExpr="departureStation">
         </dxo-lookup>
       </dxi-column>
       <dxi-column dataField="noofPax" caption="Min Pax"></dxi-column>

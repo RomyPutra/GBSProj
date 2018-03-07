@@ -1,10 +1,13 @@
+import { PagedResultDtoOfOriginGB4Dto } from './../../shared/models/model-GB4';
 import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
 import data_grid from 'devextreme/ui/data_grid';
 import { DxCheckBoxModule } from 'devextreme-angular';
+import DataSource from 'devextreme/data/data_source';
+import ArrayStore from 'devextreme/data/array_store';
 import { AppComponentBase } from '@shared/app-component-base';
-import { GB4Dto, PagedResultDtoOfGB4Dto, OrgGB4Dto, PagedResultDtoOfOrgGB4Dto } from '@shared/models/model-GB4';
+import { GB4Dto, PagedResultDtoOfGB4Dto, OrgGB4Dto, PagedResultDtoOfOrgGB4Dto, OriginGB4Dto } from '@shared/models/model-GB4';
 import { GetGB4ServiceProxy } from '@shared/service-proxies/proxy-GB4';
 
 @Component({
@@ -18,10 +21,13 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
   code: string;
   group: GB4Dto[];
   groupOrg: OrgGB4Dto[];
+  groupOri: OriginGB4Dto[];
   listGrid: Array<GB4Dto> = [];
   hold: number = 0;
   hold1: number = 1;
   organisation: any;
+  agent: any;
+  originGB4: any;
   
   constructor(
     injector: Injector,
@@ -35,7 +41,7 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
             }
             this.showPaging(result, 1);
           });
-    this.agentEdit = this.agentEdit.bind(this);
+        this.agentEdit = this.agentEdit.bind(this);
   }
   
   protected list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void {
@@ -49,12 +55,12 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
         }
         this.showPaging(result, pageNumber);
       });
+
     this._gbsService.getOrgGB4(request.skipCount, request.maxResultCount)
       .finally(() => {
         this.organisation = {store: this.groupOrg,
           paginate: true,
           pageSize: 10};
-          //console.log(this.organisation);
         finishedCallback();
       })
       .subscribe((result: PagedResultDtoOfOrgGB4Dto) => {
@@ -63,20 +69,38 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
         }
         this.showPaging(result, pageNumber);
       });
+
+      this._gbsService.getOriginGB4()
+      .finally(() => {
+        this.originGB4 = {store: this.groupOri,
+          paginate: true,
+          pageSize: 10};
+        finishedCallback();
+      })
+      .subscribe((result: PagedResultDtoOfOriginGB4Dto) => {
+        if (result.items.length > 0) {
+          this.groupOri = result.items;
+        }
+        this.showPaging(result, 1);
+      });
   }
 
   agentEdit(options) {
-    let filtered = [];
+    console.log(options.data);
+    // let filtered = [];
     if (this.groupOrg) {
       if (this.groupOrg.length > 0) {
         if (options.data) {
-          filtered = this.groupOrg.filter(t => t.orgName === options.data.orgName);
+          // filtered = this.groupOrg.filter(t => t.orgName === options.data.orgName);
+          this.agent = this.groupOrg.filter(t => t.orgName === options.data.orgName);
+          let temp = this.agent.filter(c => c.username === options.data.username);
+          if (temp && temp.length > 0) {
+            options.data.countryCode = temp[0].country;
+          }
         }
       }
     }
-    // console.log(filtered);
-    // console.log(this.groupOrg);
-    return {store: filtered};
+    return {store: this.agent};
   }
 
   onContentReady(e) {
@@ -87,8 +111,6 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
   }
 
   changeLabel(e) {
-    // console.log(e);
-    // console.log(e.target.labels[0].textContent);
     if (e.target.labels[0].textContent === 'Inactive') {
       e.target.labels[0].textContent = 'Active';
     } else {
@@ -97,34 +119,22 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
   }
 
   onEditorPreparing(e) {
-    console.log(e);
     if (e.parentType === 'dataRow' && e.dataField === 'username') {
       e.editorOptions.disabled = (e.row.data.orgID !== null);
-      // console.log(e.editorOptions.disabled + 'a');
     }
     if (e.parentType === 'dataRow' && e.dataField === 'countryCode') {
       e.editorOptions.disabled = true;
-    }
-    if (e.parentType === 'dataRow' && e.dataField === 'effectiveDate') {
-      console.log(e.StartPosition + '4');
-      e.alignment = 'right';
-      // e.EditForm.StartPosition = 4;
-    }
-    if (e.parentType === 'dataRow' && e.dataField === 'expiryDate') {
-      console.log(e.StartPosition + '6');
-      e.visibleIndex = 6;
-      // e.EditForm.StartPosition = 6;
-    }
-    if (e.parentType === 'dataRow' && e.dataField === 'noofPax') {
-      console.log(e.StartPosition + '7');
-      e.visibleIndex = 7;
-      // e.EditForm.StartPosition = 7;
     }
   }
 
   setAgentValue(rowData: any, value: string): void {
     rowData.orgID = null;
     (<any>this).defaultSetCellValue(rowData, value);
+  }
+
+  setCountryValue(rowData: any, value: any): void {
+    // rowData.countryCode = null;
+    (<any>this).defaultSetCellValue(rowData, value.username);
   }
 
   onCellPrepared(e) {
@@ -188,4 +198,11 @@ export class GB4Component extends PagedListingComponentBase<GB4Dto> {
       this.hold1 = this.hold1 + 1;
     };
   }
+
+	logEvent(data: any) {
+		if (data) {
+      console.log(data);
+		}
+	}
+
 }  

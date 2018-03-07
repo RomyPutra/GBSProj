@@ -5321,17 +5321,9 @@ namespace Plexform.GBS
 
         public GetRouteListResponse LoadCityPairXML(XMLParam.FileName fileName)
         {
-            //ACEGeneralManager generalManager = new ACEGeneralManager();
-            //SHARED.ACELookupService.GetRouteListResponse cityPair;
             GetRouteListResponse result = null;
             string XmlFilePath = "";
-            //if (Directory.Exists("XML"))
-            //{
-            //var directoryInfo = new DirectoryInfo();
-            //var helper = Plexform.Web.WebContentDirectoryFinder.DirectoryContains("","");
-            XmlFilePath = "E:\\projects\\GBSProj-master\\aspnet-core\\XML\\"+ fileName.ToString()+ "\\" + fileName.ToString() + ".xml";
-            //XmlFilePath = "\\XML\\" + fileName.ToString() + "\\" + fileName.ToString() + ".xml";
-           // }
+            XmlFilePath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\XML\\" + fileName.ToString()+ "\\" + fileName.ToString() + ".xml";
             if (File.Exists(XmlFilePath) == false)
             {
                 return null;
@@ -6850,7 +6842,8 @@ namespace Plexform.GBS
                         res.Add(new Models.OriginModels
                         {
                             DepartureStation = dt.Rows[i]["DepartureStation"].ToString(),
-                            CustomState = dt.Rows[i]["CustomState"].ToString()
+                            CustomState = dt.Rows[i]["CustomState"].ToString(),
+                            DepartureCountry = dt.Rows[i]["DepartureCountry"].ToString()
                         });
                     }
                 }

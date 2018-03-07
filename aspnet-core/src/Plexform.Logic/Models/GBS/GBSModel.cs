@@ -298,5 +298,6 @@ namespace Plexform.Models
     {
         public System.String DepartureStation { get; set; }
         public System.String CustomState { get; set; }
+        public System.String DepartureCountry { get; set; }
     }
 }
