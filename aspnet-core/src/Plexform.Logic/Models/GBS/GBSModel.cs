@@ -293,4 +293,10 @@ namespace Plexform.Models
 		public DateTime EffectiveDate { get; set; }
 		public DateTime ExpiryDate { get; set; }
 	}
+
+    public class OriginModels
+    {
+        public System.String DepartureStation { get; set; }
+        public System.String CustomState { get; set; }
+    }
 }
